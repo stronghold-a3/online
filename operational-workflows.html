@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stronghold A3 - Crisis-Proof Operational Workflow</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Roboto+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ['Oswald', 'sans-serif'],
+                        body: ['Roboto Condensed', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        :root {
+            --background: 215 90% 8%;
+            --foreground: 210 40% 98%;
+            --card: 215 80% 12%;
+            --card-foreground: 210 40% 98%;
+            --primary: 211 100% 25%;
+            --accent: 45 100% 50%;
+            --destructive: 348 83% 47%;
+            --border: 215 40% 22%;
+        }
+
+        body {
+            color: #f8fafc;
+            font-family: 'Roboto Condensed', sans-serif;
+            background: radial-gradient(circle at 20% 0%, #002b5c 0%, #001b3d 45%, #000c1f 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: 0.02em;
+        }
+
+        /* Liquid Glass Card Styling */
+        .glass {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.03));
+            backdrop-filter: blur(20px) saturate(160%);
+            -webkit-backdrop-filter: blur(20px) saturate(160%);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.18);
+        }
+
+        .glass-strong {
+            background: linear-gradient(135deg, rgba(0, 43, 92, 0.55), rgba(0, 12, 31, 0.65));
+            backdrop-filter: blur(28px) saturate(180%);
+            -webkit-backdrop-filter: blur(28px) saturate(180%);
+            border: 1px solid rgba(255, 215, 0, 0.18);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.15);
+        }
+
+        .glass-gold {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.16), rgba(255, 215, 0, 0.04));
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 215, 0, 0.35);
+            box-shadow: 0 8px 32px rgba(255, 215, 0, 0.05);
+        }
+
+        .glass-red {
+            background: linear-gradient(135deg, rgba(220, 20, 60, 0.25), rgba(220, 20, 60, 0.08));
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(220, 20, 60, 0.5);
+            box-shadow: 0 8px 32px rgba(220, 20, 60, 0.1);
+        }
+
+        .text-gold {
+            color: #FFD700;
+        }
+
+        .border-gold {
+            border-color: rgba(255, 215, 0, 0.3);
+        }
+
+        /* Pulsing states for high urgency and system vitals */
+        .pulse-green {
+            animation: pulseG 2s infinite;
+        }
+
+        .pulse-red {
+            animation: pulseR 1.2s infinite;
+        }
+
+        @keyframes pulseG {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6); }
+            50% { box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+        }
+
+        @keyframes pulseR {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(220, 20, 60, 0.7); }
+            50% { box-shadow: 0 0 0 12px rgba(220, 20, 60, 0); }
+        }
+
+        .animate-spring {
+            animation: spring 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes spring {
+            0% { transform: scale(0.96); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Presentation Mode Overrides */
+        .slide-hidden {
+            display: none !important;
+        }
+
+        .lite-mode {
+            background: #001026 !important;
+        }
+        .lite-mode .glass, 
+        .lite-mode .glass-strong, 
+        .lite-mode .glass-gold, 
+        .lite-mode .glass-red {
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+            background: #021a3a !important;
+        }
+        
+        /* 16:9 Presentation Canvas Container */
+        .presentation-canvas {
+            aspect-ratio: 16 / 9;
+            width: 100%;
+            max-width: 1280px;
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-between min-height-screen p-4 md:p-6 select-none">
+
+    <header class="w-full max-w-7xl flex items-center justify-between mb-4 glass px-6 py-3 rounded-2xl border-white/10">
+        <div class="flex items-center gap-4">
+            <!-- Circular Implementation of the Specified Logo with Golden Glow -->
+            <div class="relative w-12 h-12 rounded-full overflow-hidden border-2 border-[#FFD700] shadow-[0_0_15px_rgba(255,215,0,0.4)]">
+                <img src="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Logo.jpg" 
+                     alt="Stronghold A3 Logo" 
+                     class="w-full h-full object-cover">
+            </div>
+            <div>
+                <span class="text-xs uppercase tracking-widest text-gold font-display">Crisis-Proof SOPs</span>
+                <h1 class="text-lg md:text-xl font-bold font-display uppercase tracking-wider leading-none">Stronghold A3</h1>
+            </div>
+        </div>
+        <div class="flex items-center gap-4">
+            <span class="hidden md:inline px-3 py-1 text-xs rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-mono pulse-green">
+                <i class="fa-solid fa-circle-nodes mr-1"></i> ACTIVE: DECEN-NET
+            </span>
+            <span id="slide-index-counter" class="text-sm font-mono tracking-widest text-gold">Slide 01/14</span>
+        </div>
+    </header>
+
+    <main class="w-full flex-grow flex items-center justify-center py-2">
+        <div class="presentation-canvas w-full glass-strong rounded-3xl p-6 md:p-8 relative overflow-hidden flex flex-col justify-between border-white/10 shadow-2xl">
+            
+            <!-- Dynamic Background elements for depth -->
+            <div class="absolute inset-0 bg-gradient-to-tr from-blue-950/10 via-transparent to-[#FFD700]/5 pointer-events-none z-0"></div>
+
+            <!-- ================= SLIDE 1: Title & Operational Scope ================= -->
+            <div id="slide-1" class="slide-content h-full flex flex-col justify-center items-center text-center z-10 animate-spring">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FFD700]/10 text-gold border border-[#FFD700]/30 text-xs uppercase tracking-widest mb-6">
+                    <i class="fa-solid fa-shield-halved animate-pulse"></i> SOP Manual Presentation
+                </div>
+                <h1 class="text-5xl md:text-6xl font-bold uppercase tracking-wider text-white mb-4 leading-none">
+                    CRISIS-PROOF <span class="text-gold font-bold">OPERATIONAL WORKFLOW</span>
+                </h1>
+                <p class="text-lg md:text-xl text-slate-300 max-w-3xl mb-8 leading-relaxed font-body">
+                    Maintaining operational continuity, frontline guard deployment, and real-time client transparency under high-risk Eastern Visayas environmental and physical shocks.
+                </p>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-4xl text-left">
+                    <div class="glass p-3 rounded-xl border-white/5">
+                        <span class="text-xs text-slate-400 block uppercase tracking-wider">Scope</span>
+                        <span class="text-sm font-semibold text-white">Uninterrupted Security Services</span>
+                    </div>
+                    <div class="glass p-3 rounded-xl border-white/5">
+                        <span class="text-xs text-slate-400 block uppercase tracking-wider">Target Hazards</span>
+                        <span class="text-sm font-semibold text-white">Absenteeism, Typhoons, Outages, Breaches</span>
+                    </div>
+                    <div class="glass p-3 rounded-xl border-white/5">
+                        <span class="text-xs text-slate-400 block uppercase tracking-wider">Ecosystem Architecture</span>
+                        <span class="text-sm font-semibold text-white">Cloud SMS (Offline) + Coded SMS Fallback</span>
+                    </div>
+                    <div class="glass p-3 rounded-xl border-white/5">
+                        <span class="text-xs text-slate-400 block uppercase tracking-wider">Command Model</span>
+                        <span class="text-sm font-semibold text-white text-gold">Decentralized Multi-Tiered</span>
+                    </div>
+                </div>
+                <p class="mt-8 text-xs text-slate-500 font-mono">
+                    Referenced File: <span class="text-gold">CRISIS-PROOF OPERATIONAL WORKFLOW - Stronghold A3.pdf</span>
+                </p>
+            </div>
+
+            <!-- ================= SLIDE 2: Decentralized Command Structure ================= -->
+            <div id="slide-2" class="slide-content h-full flex flex-col justify-between z-10 slide-hidden animate-spring">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-bold uppercase text-white tracking-wide border-b border-white/10 pb-2 flex justify-between items-center">
+                        <span>1. DECENTRALIZED CRISIS COMMAND STRUCTURE</span>
+                        <span class="text-xs bg-gold/10 text-gold px-3 py-1 rounded border border-gold/20 font-mono">DECISION NODE AUTHORITY</span>
+                    </h2>
+                    <p class="text-sm text-slate-300 mt-2">
+                        To prevent administrative bottlenecks during disasters, the chain of command shifts from "daily operations" to "decentralized crisis response."
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 my-2 flex-grow overflow-y-auto">
+                    <div class="glass p-3 rounded-xl border-white/10 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs text-gold uppercase tracking-wider font-bold"><i class="fa-solid fa-crown mr-1"></i> Owners/Leadership</span>
+                            <p class="text-xs text-slate-300 mt-1">Strategic escalation & high-level LGU/PNP liaison. Authorizes emergency fund releases instantly.</p>
+                        </div>
+                        <span class="text-[10px] uppercase tracking-wider font-semibold text-slate-400 mt-2 bg-white/5 px-2 py-0.5 rounded self-start">Level: Strategic</span>
+                    </div>
+                    <div class="glass p-3 rounded-xl border-[#FFD700]/30 bg-blue-950/20 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs text-emerald-400 uppercase tracking-wider font-bold"><i class="fa-solid fa-tower-broadcast mr-1"></i> Ops Manager</span>
+                            <p class="text-xs text-slate-300 mt-1">Central commander. Toggles Crisis Mode on Cloud Dashboard, directs zonal supervisors, drives client transparency.</p>
+                        </div>
+                        <span class="text-[10px] uppercase tracking-wider font-semibold text-gold mt-2 bg-gold/10 px-2 py-0.5 rounded self-start">Level: Tactical Command</span>
+                    </div>
+                    <div class="glass p-3 rounded-xl border-white/10 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs text-sky-400 uppercase tracking-wider font-bold"><i class="fa-solid fa-box-open mr-1"></i> Admin</span>
+                            <p class="text-xs text-slate-300 mt-1">Secures logistics, stages "Bayanihan" packs, hosts backup templates, and initiates phone tree fallback.</p>
+                        </div>
+                        <span class="text-[10px] uppercase tracking-wider font-semibold text-slate-400 mt-2 bg-white/5 px-2 py-0.5 rounded self-start">Level: Logistics</span>
+                    </div>
+                    <div class="glass p-3 rounded-xl border-white/10 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs text-[#FFD700] uppercase tracking-wider font-bold"><i class="fa-solid fa-users mr-1"></i> Field Zonal Cmd</span>
+                            <p class="text-xs text-slate-300 mt-1"><strong>Supervisors & Asst. Supervisors</strong> dispatch backups, run field relays, execute evacuations, distribute storm packs.</p>
+                        </div>
+                        <span class="text-[10px] uppercase tracking-wider font-semibold text-slate-400 mt-2 bg-white/5 px-2 py-0.5 rounded self-start">Level: Field Zonal</span>
+                    </div>
+                </div>
+                <div class="glass p-3 rounded-xl border-white/10 flex items-center justify-between">
+                    <div>
+                        <span class="text-xs text-gold uppercase font-bold tracking-wide"><i class="fa-solid fa-person-military-pointing mr-1.5"></i> On-Site Structure:</span>
+                        <span class="text-xs text-slate-300 ml-2">Head Guard serves as localized site node (for >5 guards), conducting roll calls and securing posts, protecting frontline Security Guards.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= SLIDE 3: DIAGRAM 1: 3-BRIDGE ARCHITECTURE ================= -->
+            <div id="slide-3" class="slide-content h-full flex flex-col justify-between z-10 slide-hidden animate-spring">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-bold uppercase text-white tracking-wide border-b border-white/10 pb-2 flex justify-between items-center">
+                        <span>DIAGRAM 1: THE 3-BRIDGE COMMUNICATION ARCHITECTURE</span>
+                        <span class="text-xs bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded border border-emerald-500/20 font-mono">DATA SURVIVABILITY GRAPH</span>
+                    </h2>
+                    <p class="text-sm text-slate-300 mt-1">
+                        Ensuring zero data loss during critical regional telecom infrastructure drops.
+                    </p>
+                </div>
+                
+                <!-- Communication visual graph -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-2 flex-grow items-center">
+                    <!-- Bridge 1 (Primary) -->
+                    <div class="glass p-4 rounded-2xl border-emerald-500/20 bg-emerald-500/5 relative overflow-hidden h-full flex flex-col justify-between">
+                        <div class="absolute top-0 right-0 w-2 h-full bg-emerald-500/30"></div>
+                        <div>
+                            <span class="text-xs font-mono text-emerald-400 uppercase block tracking-wider mb-1">Bridge 1: Primary (Normal Ops)</span>
+                            <h3 class="text-xl font-bold text-white uppercase mb-2"><i class="fa-solid fa-mobile-screen mr-1"></i> Cloud SMS App</h3>
+                            <p class="text-xs text-slate-300">Guard logs tours, checks, and updates natively on mobile devices. Data uses high bandwidth networks to auto-sync instantly with Dashboard.</p>
+                        </div>
+                        <div class="bg-emerald-500/10 p-2 rounded-lg border border-emerald-500/20 mt-4 text-center">
+                            <span class="text-xs text-emerald-300 font-mono tracking-widest uppercase">Status: Live / Autocached</span>
+                        </div>
+                    </div>
+
+                    <!-- Bridge 2 (Secondary) -->
+                    <div class="glass p-4 rounded-2xl border-amber-500/20 bg-amber-500/5 relative overflow-hidden h-full flex flex-col justify-between">
+                        <div class="absolute top-0 right-0 w-2 h-full bg-amber-500/30"></div>
+                        <div>
+                            <span class="text-xs font-mono text-amber-400 uppercase block tracking-wider mb-1">Bridge 2: Secondary Fallback</span>
+                            <h3 class="text-xl font-bold text-white uppercase mb-2"><i class="fa-solid fa-network-wired mr-1"></i> SMS Gateway</h3>
+                            <p class="text-xs text-slate-300">If internet data drops, native client-app compresses reports into low-bandwidth, highly encrypted coded SMS bursts directly to Dashboard.</p>
+                        </div>
+                        <div class="bg-amber-500/10 p-2 rounded-lg border border-amber-500/20 mt-4 text-center">
+                            <span class="text-xs text-amber-300 font-mono tracking-widest uppercase">Status: Automated Compressed</span>
+                        </div>
+                    </div>
+
+                    <!-- Bridge 3 (Tertiary) -->
+                    <div class="glass p-4 rounded-2xl border-rose-500/20 bg-rose-500/5 relative overflow-hidden h-full flex flex-col justify-between">
+                        <div class="absolute top-0 right-0 w-2 h-full bg-rose-500/30"></div>
+                        <div>
+                            <span class="text-xs font-mono text-rose-400 uppercase block tracking-wider mb-1">Bridge 3: Tertiary Blackout</span>
+                            <h3 class="text-xl font-bold text-white uppercase mb-2"><i class="fa-solid fa-radio mr-1"></i> Two-Way Radio Mesh</h3>
+                            <p class="text-xs text-slate-300">In zero cellular visibility, local mesh networks activate. Guards/Head Guards utilize hand radios and local Viber triangulation to feed Supervisors.</p>
+                        </div>
+                        <div class="bg-rose-500/10 p-2 rounded-lg border border-rose-500/20 mt-4 text-center">
+                            <span class="text-xs text-rose-300 font-mono tracking-widest uppercase">Status: Zero Data / Radio Mesh</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass p-3 rounded-xl border-white/5 text-center">
+                    <span class="text-xs text-slate-300 font-bold uppercase"><i class="fa-solid fa-quote-left mr-1.5 text-gold"></i> Core Resilience Rule:</span>
+                    <span class="text-xs text-slate-400 ml-1">The security guard never stops logging. The system simply adapts and changes transmission lanes.</span>
+                </div>
+            </div>
+
+            <!-- ================= SLIDE 4: DIAGRAM 2: CRISIS COMMAND MATRIX ================= -->
+            <div id="slide-4" class="slide-content h-full flex flex-col justify-between z-10 slide-hidden animate-spring">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-bold uppercase text-white tracking-wide border-b border-white/10 pb-2 flex justify-between items-center">
+                        <span>DIAGRAM 2: CRISIS COMMAND & ESCALATION MATRIX</span>
+                        <span class="text-xs bg-gold/10 text-gold px-3 py-1 rounded border border-gold/20 font-mono">NON-LINEAR COMMUNICATIONS FLOW</span>
+                    </h2>
+                    <p class="text-sm text-slate-300 mt-1">
+                        Decentralized feedback loops designed to streamline ground coordination and reduce strategic bottlenecks.
+                    </p>
+                </div>
+                
+                <div class="flex-grow flex items-center justify-center my-3">
+                    <div class="w-full max-w-4xl grid grid-cols-4 gap-4 relative">
+                        <!-- Connecting arrows visual simulation with background border lines -->
+                        <div class="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-[#FFD700]/5 via-sky-500/20 to-[#FFD700]/5 z-0"></div>
+
+                        <!-- Strategic -->
+                        <div class="glass p-4 rounded-xl border-[#FFD700]/30 z-10 text-center flex flex-col justify-between h-48 bg-blue-950/35">
+                            <div class="w-10 h-10 rounded-full bg-[#FFD700]/10 border border-[#FFD700]/30 flex items-center justify-center mx-auto text-gold mb-2">
+                                <i class="fa-solid fa-building-shield"></i>
+                            </div>
+                            <h3 class="text-xs font-bold text-white uppercase">Owners / Leadership</h3>
+                            <p class="text-[10px] text-slate-400 mt-1">LGU/PNP negotiations, Emergency budget funding, Risk liability clearance.</p>
+                            <span class="text-[9px] uppercase font-mono text-gold mt-2 block bg-[#FFD700]/5 py-0.5 rounded">T-1: STRATEGIC</span>
+                        </div>
+
+                        <!-- Tactical Command -->
+                        <div class="glass p-4 rounded-xl border-emerald-500/30 z-10 text-center flex flex-col justify-between h-48 bg-emerald-950/10">
+                            <div class="w-10 h-10 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center mx-auto text-emerald-400 mb-2">
+                                <i class="fa-solid fa-desktop"></i>
+                            </div>
+                            <h3 class="text-xs font-bold text-white uppercase">Operations Manager</h3>
+                            <p class="text-[10px] text-slate-400 mt-1">Cloud Dashboard, Crisis Mode Toggle, Direct updates to strategic and clients.</p>
+                            <span class="text-[9px] uppercase font-mono text-emerald-400 mt-2 block bg-emerald-500/5 py-0.5 rounded">T-2: COMMAND HUB</span>
+                        </div>
+
+                        <!-- Zonal Support -->
+                        <div class="glass p-4 rounded-xl border-sky-500/30 z-10 text-center flex flex-col justify-between h-48 bg-sky-950/10">
+                            <div class="w-10 h-10 rounded-full bg-sky-500/10 border border-sky-500/30 flex items-center justify-center mx-auto text-sky-400 mb-2">
+                                <i class="fa-solid fa-map-location-dot"></i>
+                            </div>
+                            <h3 class="text-xs font-bold text-white uppercase">Supervisor & Asst.</h3>
+                            <p class="text-[10px] text-slate-400 mt-1">Zonal tactical deployment, relief guard coordination, physical logistics.</p>
+                            <span class="text-[9px] uppercase font-mono text-sky-400 mt-2 block bg-sky-500/5 py-0.5 rounded">T-3: ZONAL FIELD</span>
+                        </div>
+
+                        <!-- Local Site Execution -->
+                        <div class="glass p-4 rounded-xl border-white/10 z-10 text-center flex flex-col justify-between h-48">
+                            <div class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mx-auto text-slate-300 mb-2">
+                                <i class="fa-solid fa-person-military-to-person"></i>
+                            </div>
+                            <h3 class="text-xs font-bold text-white uppercase">Head & Site Guards</h3>
+                            <p class="text-[10px] text-slate-400 mt-1">Roll calls, emergency post preservation, physical defense, offline reporting.</p>
+                            <span class="text-[9px] uppercase font-mono text-slate-400 mt-2 block bg-white/5 py-0.5 rounded">T-4: SITE FORCE</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass p-3 rounded-xl border-white/5 text-center text-xs text-slate-400 flex items-center justify-center gap-4">
+                    <span><i class="fa-solid fa-truck-ramp-box text-sky-400"></i> Admin logistics backing.</span>
+                    <span><i class="fa-solid fa-clock text-gold"></i> Dynamic cross-communication minimizes tactical execution latency.</span>
+                </div>
+            </div>
+
+            <!-- ================= SLIDE 5: PHASE 1: PRE-CRISIS READINESS ================= -->
+            <div id="slide-5" class="slide-content h-full flex flex-col justify-between z-10 slide-hidden animate-spring">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-bold uppercase text-white tracking-wide border-b border-white/10 pb-2 flex justify-between items-center">
+                        <span>PHASE 1: PRE-CRISIS (Baseline Digital Readiness)</span>
+                        <span class="text-xs bg-sky-500/10 text-sky-400 px-3 py-1 rounded border border-sky-500/20 font-mono">MITIGATION STEP</span>
+                    </h2>
+                    <p class="text-sm text-slate-300 mt-1">
+                        Ensuring personnel, systems, and communications are completely primed before any disaster hits Eastern Visayas.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-4">
+                    <div class="glass p-5 rounded-2xl border-white/10 relative">
+                        <span class="absolute top-4 right-4 text-3xl font-bold text-white/5">01</span>
+                        <h3 class="text-lg font-bold text-gold uppercase mb-2"><i class="fa-solid fa-mobile-button mr-1.5"></i> Offline-First Setup</h3>
+                        <p class="text-sm text-slate-300">
+                            All guards and supervisors operate the customized Cloud SMS app. Preloaded templates, local site instructions, emergency protocols, and contact indices are fully cached natively on mobile devices.
+                        </p>
+                    </div>
+
+                    <div class="glass p-5 rounded-2xl border-white/10 relative">
+                        <span class="absolute top-4 right-4 text-3xl font-bold text-white/5">02</span>
+                        <h3 class="text-lg font-bold text-gold uppercase mb-2"><i class="fa-solid fa-kit-medical mr-1.5"></i> Pre-Positioned Kits</h3>
+                        <p class="text-sm text-slate-300">
+                            Supervisors and zonal hubs are pre-equipped with tactical battery power banks, secondary dual-SIM cards ("Emergency Load"), and emergency disaster kits ("Bayanihan Packs") for rapid deployment.
+                        </p>
+                    </div>
+
+                    <div class="glass p-5 rounded-2xl border-white/10 relative">
+                        <span class="absolute top-4 right-4 text-3xl font-bold text-white/5">03</span>
+                        <h3 class="text-lg font-bold text-gold uppercase mb-2"><i class="fa-solid fa-bell mr-1.5"></i> Automated Client Notice</h3>
+                        <p class="text-sm text-slate-300">
+                            Ops Manager pre-wires critical, localized "Crisis Updates" within the system dashboard. Templates are bound to live client indexes, configured for immediate automated SMS and Viber dispatch.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="p-4 rounded-xl border border-gold/20 bg-gold/5 flex items-start gap-4">
+                    <i class="fa-solid fa-lightbulb text-gold text-lg mt-0.5"></i>
+                    <div>
+                        <span class="text-xs uppercase font-bold text-gold tracking-wider">The Rule of Pre-Positioning:</span>
+                        <p class="text-xs text-slate-300">By pushing critical field database caches and robust communications hardware directly to local terminals before any regional weather/physical system shocks, we neutralize our minute-zero dependency on regional internet infrastructures.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= SLIDE 6: PHASE 2: CRISIS TRIGGER ================= -->
+            <div id="slide-6" class="slide-content h-full flex flex-col justify-between z-10 slide-hidden animate-spring">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-bold uppercase text-white tracking-wide border-b border-white/10 pb-2 flex justify-between items-center">
+                        <span>PHASE 2: CRISIS TRIGGER & MODE SHIFT</span>
+                        <span class="text-xs bg-red-500/10 text-red-400 px-3 py-1 rounded border border-red-500/20 font-mono pulse-red">ACTION MODE ACTIVE</span>
+                    </h2>
+                    <p class="text-sm text-slate-300 mt-1">
+                        System shift from Normal Operations to Emergency Crisis Response instantly and with zero structural latency.
+                    </p>
+                </div>
+
+                <div class="my-3 overflow-x-auto">
+                    <table class="w-full text-left text-xs border-collapse">
+                        <thead>
+                            <tr class="border-b border-white/10 text-slate-400 font-display uppercase tracking-wider bg-white/5">
+                                <th class="p-3">Step</th>
+                                <th class="p-3">Emergency Action Protocol</th>
+                                <th class="p-3">RACI Owner</th>
+                                <th class="p-3">Digital/Non-Linear Mechanism</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-white/5">
+                            <tr>
+                                <td class="p-3 font-bold text-gold">2.1</td>
+                                <td class="p-3 text-white font-semibold">Trigger Activation</td>
+                                <td class="p-3"><span class="px-2 py-0.5 rounded bg-blue-950/40 border border-blue-500/30 text-sky-400">Ops Manager [A]</span></td>
+                                <td class="p-3 text-slate-300">Emergency occurs (e.g. Typhoon, breach, absenteeism). Ops Manager toggles <strong class="text-gold">"CRISIS MODE"</strong> on central admin dashboard.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-bold text-gold">2.2</td>
+                                <td class="p-3 text-white font-semibold">System Auto-Alert</td>
+                                <td class="p-3"><span class="px-2 py-0.5 rounded bg-emerald-950/40 border border-emerald-500/30 text-emerald-400">System [Auto]</span></td>
+                                <td class="p-3 text-slate-300">Autocast "Red Alert" pushes to all Supervisors, Assistant Supervisors, and Head Guards via App, SMS, and Viber instantly and simultaneously.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-bold text-gold">2.3</td>
+                                <td class="p-3 text-white font-semibold">Client Transparency</td>
+                                <td class="p-3"><span class="px-2 py-0.5 rounded bg-emerald-950/40 border border-emerald-500/30 text-emerald-400">System [Auto]</span></td>
+                                <td class="p-3 text-slate-300">Pre-approved "Crisis Preparedness Notice" automatically is dispatched directly to impacted Client, guaranteeing live ground coverage.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-bold text-gold">2.4</td>
+                                <td class="p-3 text-white font-semibold">Manual Comms Fallback</td>
+                                <td class="p-3"><span class="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-slate-300">Admin [R]</span></td>
+                                <td class="p-3 text-slate-300">If internet and automated gateways fail, Admin initiates a manual phone/radio tree sequence directly to all Head Guards on-site.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="glass p-3 rounded-xl border-white/5 flex justify-between items-center text-xs text-slate-400">
+                    <span><i class="fa-solid fa-bolt text-gold"></i> Dynamic alert structure limits human delays.</span>
+                    <span class="font-mono text-[10px]">VERIFIED DOLE DO-174 OPERATIONS</span>
+                </div>
+            </div>
+
+            <!-- ================= SLIDE 7: SCENARIO 1: ABSENTEEISM ================= -->
+            <div id="slide-7" class="slide-content h-full flex flex-col justify-between z-10 slide-hidden animate-spring">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-bold uppercase text-white tracking-wide border-b border-white/10 pb-2 flex justify-between items-center">
+                        <span>SCENARIO 1: ABSENTEEISM & RAPID REDEPLOYMENT</span>
+                        <span class="text-xs bg-gold/10 text-gold px-3 py-1 rounded border border-gold/20 font-mono">OPERATIONAL SCENARIO</span>
+                    </h2>
+                    <p class="text-sm text-slate-300 mt-1">
+                        Frontline labor disruptions or sudden guard dropouts are resolved dynamically through real-time backup positioning.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-2 flex-grow items-center">
+                    <div class="glass p-5 rounded-2xl border-emerald-500/20 bg-emerald-500/5 h-full flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs uppercase text-emerald-400 tracking-wider font-bold font-mono"><i class="fa-solid fa-circle-check mr-1"></i> Path A: Digital Routing</span>
+                            <div class="mt-4 space-y-3 text-xs text-slate-300">
+                                <div class="flex items-start gap-2">
+                                    <span class="bg-emerald-500/20 text-emerald-300 font-mono rounded w-5 h-5 flex items-center justify-center shrink-0 mt-0.5">1</span>
+                                    <p><strong>Head Guard or Guard (R)</strong> logs duty failure instantly inside the Cloud SMS app.</p>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <span class="bg-emerald-500/20 text-emerald-300 font-mono rounded w-5 h-5 flex items-center justify-center shrink-0 mt-0.5">2</span>
+                                    <p><strong>Assistant Supervisor (R)</strong> accesses the dashboard and reviews the "Available Relief Guards" active live geographic map.</p>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <span class="bg-emerald-500/20 text-emerald-300 font-mono rounded w-5 h-5 flex items-center justify-center shrink-0 mt-0.5">3</span>
+                                    <p><strong>Supervisor (A)</strong> issues instant backup mobilization via digital notification, auto-pushing the orders to the relief team.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-emerald-500/10 p-2 rounded-lg border border-emerald-500/20 text-center text-xs text-emerald-300 mt-4">
+                            Typical Activation Latency: &lt;10 Minutes
+                        </div>
+                    </div>
+
+                    <div class="glass p-5 rounded-2xl border-amber-500/20 bg-amber-500/5 h-full flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs uppercase text-amber-400 tracking-wider font-bold font-mono"><i class="fa-solid fa-triangle-exclamation mr-1"></i> Path B: Low-Bandwidth Fallback</span>
+                            <div class="mt-4 space-y-3 text-xs text-slate-300">
+                                <div class="flex items-start gap-2">
+                                    <span class="bg-amber-500/20 text-amber-300 font-mono rounded w-5 h-5 flex items-center justify-center shrink-0 mt-0.5">1</span>
+                                    <p>Offline, <strong>Head Guard</strong> triggers coded SMS report or two-way radio call to Assistant Supervisor.</p>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <span class="bg-amber-500/20 text-amber-300 font-mono rounded w-5 h-5 flex items-center justify-center shrink-0 mt-0.5">2</span>
+                                    <p>Assistant Supervisor identifies nearest relief using pre-saved paper / offline manual rosters.</p>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <span class="bg-amber-500/20 text-amber-300 font-mono rounded w-5 h-5 flex items-center justify-center shrink-0 mt-0.5">3</span>
+                                    <p>Supervisor manages the on-site physical transition and handover parameters at the client facility.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-amber-500/10 p-2 rounded-lg border border-amber-500/20 text-center text-xs text-amber-300 mt-4">
+                            Standard Fallback: Radio & Offline Spreadsheets
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass p-3 rounded-xl border-white/5 text-center text-xs text-slate-400">
+                    <span><i class="fa-solid fa-shield-halved text-gold"></i> Client remains completely shielded from operational friction, maintaining continuous perimeter security.</span>
+                </div>
+            </div>
+
+            <!-- ================= SLIDE 8: SCENARIO 2: TYPHOON PROTOCOL ================= -->
+            <div id="slide-8" class="slide-content h-full flex flex-col justify-between z-10 slide-hidden animate-spring">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-bold uppercase text-white tracking-wide border-b border-white/10 pb-2 flex justify-between items-center">
+                        <span>SCENARIO 2: TYPHOONS & ENVIRONMENTAL SHOCKS</span>
+                        <span class="text-xs bg-gold/10 text-gold px-3 py-1 rounded border border-gold/20 font-mono">WEATHER RESPONSE</span>
+                    </h2>
+                    <p class="text-sm text-slate-300 mt-1">
+                        System operations during Typhoons (PAGASA Signal No. 2 or higher) ensuring frontline physical safety and continuous client coverage.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-2 flex-grow items-center">
+                    <div class="glass p-4 rounded-xl border-white/10 h-full flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs text-gold uppercase block tracking-wider font-mono mb-2">Step 1: Secure Zone</span>
+                            <h3 class="text-base font-bold text-white uppercase"><i class="fa-solid fa-house-shield mr-1"></i> Frontline Safe Positioning</h3>
+                            <p class="text-xs text-slate-300 mt-2">
+                                <strong>Head Guard (R)</strong> relocates on-site personnel into pre-identified secure zones within the facility. Safe positioning and perimeter locks are submitted and recorded via the offline app.
+                            </p>
+                        </div>
+                        <span class="text-[10px] text-slate-500 uppercase mt-4">Action: Guards</span>
+                    </div>
+
+                    <div class="glass p-4 rounded-xl border-white/10 h-full flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs text-gold uppercase block tracking-wider font-mono mb-2">Step 2: Logistics Deployment</span>
+                            <h3 class="text-base font-bold text-white uppercase"><i class="fa-solid fa-truck-droplet mr-1"></i> Bayanihan Supply packs</h3>
+                            <p class="text-xs text-slate-300 mt-2">
+                                <strong>Assistant Supervisor (R)</strong> acts on tactical logistics. Distributes emergency food rations, storm gear, and high-capacity battery units (Bayanihan packs) to protected guard terminals.
+                            </p>
+                        </div>
+                        <span class="text-[10px] text-slate-500 uppercase mt-4">Action: Zonal Logistics</span>
+                    </div>
+
+                    <div class="glass p-4 rounded-xl border-white/10 h-full flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs text-gold uppercase block tracking-wider font-mono mb-2">Step 3: Verification Checks</span>
+                            <h3 class="text-base font-bold text-white uppercase"><i class="fa-solid fa-hourglass-start mr-1"></i> 2-Hour Radio Checks</h3>
+                            <p class="text-xs text-slate-300 mt-2">
+                                <strong>Supervisor (A)</strong> checks active guard GPS tracking. In network blackout, Supervisor triggers manual Two-way Radio and Viber rolls every 2 hours to confirm zero physical issues.
+                            </p>
+                        </div>
+                        <span class="text-[10px] text-slate-500 uppercase mt-4">Action: Zonal Command</span>
+                    </div>
+                </div>
+
+                <div class="p-3 rounded-lg border border-emerald-500/20 bg-emerald-500/5 text-center text-xs text-emerald-300">
+                    <i class="fa-solid fa-check-double mr-1.5"></i> Integrates seamlessly with <strong class="text-white">RA 10121 DRRM Guidelines</strong>, safeguarding lives while executing airtight contract obligations.
+                </div>
+            </div>
+
+            <!-- ================= SLIDE 9: SCENARIO 3: POWER / NETWORK OUTAGE ================= -->
+            <div id="slide-9" class="slide-content h-full flex flex-col justify-between z-10 slide-hidden animate-spring">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-bold uppercase text-white tracking-wide border-b border-white/10 pb-2 flex justify-between items-center">
+                        <span>SCENARIO 3: POWER & NETWORK OUTAGES (The Dead Zone)</span>
+                        <span class="text-xs bg-gold/10 text-gold px-3 py-1 rounded border border-gold/20 font-mono">INFRASTRUCTURE SHOCK</span>
+                    </h2>
+                    <p class="text-sm text-slate-300 mt-1">
+                        Operational reporting does not cease during total infrastructure, grid, or cellular data loss in the region.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-2 flex-grow items-center">
+                    <div class="space-y-3">
+                        <div class="glass p-3 rounded-xl border-white/10 flex items-start gap-3">
+                            <span class="w-8 h-8 rounded-full bg-gold/10 text-gold flex items-center justify-center shrink-0 font-bold font-mono">1</span>
+                            <div>
+                                <h4 class="text-xs font-bold uppercase text-white">Continuous Offline Recording</h4>
+                                <p class="text-[11px] text-slate-300">Guards proceed with standard patrol protocols, logging data natively into offline cached databases. Incident photo/voice logs are saved securely onto local device memory.</p>
+                            </div>
+                        </div>
+                        <div class="glass p-3 rounded-xl border-white/10 flex items-start gap-3">
+                            <span class="w-8 h-8 rounded-full bg-gold/10 text-gold flex items-center justify-center shrink-0 font-bold font-mono">2</span>
+                            <div>
+                                <h4 class="text-xs font-bold uppercase text-white">Local Integration Hub</h4>
+                                <p class="text-[11px] text-slate-300">Head Guard collects offline updates on-site and executes a manual coded SMS burst or radio transmission directly to Assistant Supervisor.</p>
+                            </div>
+                        </div>
+                        <div class="glass p-3 rounded-xl border-white/10 flex items-start gap-3">
+                            <span class="w-8 h-8 rounded-full bg-gold/10 text-gold flex items-center justify-center shrink-0 font-bold font-mono">3</span>
+                            <div>
+                                <h4 class="text-xs font-bold uppercase text-white">Manual Proxy Sync</h4>
+                                <p class="text-[11px] text-slate-300">Assistant Supervisor processes the low-bandwidth report and manually pushes the data onto the cloud SMS Dashboard on behalf of the site.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Flow representation visual graphic -->
+                    <div class="glass p-6 rounded-2xl border-white/10 flex flex-col justify-between h-full bg-blue-950/20 text-center">
+                        <span class="text-xs text-gold uppercase tracking-widest block font-mono">Offline-First Synchronisation</span>
+                        <div class="my-6 flex justify-around items-center gap-2">
+                            <div class="flex flex-col items-center">
+                                <div class="w-12 h-12 rounded-full bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-400 mb-2">
+                                    <i class="fa-solid fa-wifi-slash"></i>
+                                </div>
+                                <span class="text-[10px] text-slate-400 font-mono">Blackout Zone</span>
+                            </div>
+                            <span class="text-xl text-slate-500">→</span>
+                            <div class="flex flex-col items-center">
+                                <div class="w-12 h-12 rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 mb-2">
+                                    <i class="fa-solid fa-floppy-disk"></i>
+                                </div>
+                                <span class="text-[10px] text-slate-400 font-mono">Local App Cache</span>
+                            </div>
+                            <span class="text-xl text-slate-500">→</span>
+                            <div class="flex flex-col items-center">
+                                <div class="w-12 h-12 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-2">
+                                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                                </div>
+                                <span class="text-[10px] text-emerald-400 font-mono">Auto Sync</span>
+                            </div>
+                        </div>
+                        <p class="text-xs text-slate-300">
+                            Ops Manager provides direct client notifications verifying site security but noting the active system fallback to Bridge 2/3.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="glass p-3 rounded-xl border-white/5 text-center text-xs text-slate-400 font-mono">
+                    COMPLIES WITH RA 10173 DATA PRIVACY - SECURED DIGITAL VAULT PREVENTS COMPLIANCE SPILLS
+                </div>
+            </div>
+
+            <!-- ================= SLIDE 10: SCENARIO 4: SECURITY BREACH ================= -->
+            <div id="slide-10" class="slide-content h-full flex flex-col justify-between z-10 slide-hidden animate-spring">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-bold uppercase text-white tracking-wide border-b border-white/10 pb-2 flex justify-between items-center">
+                        <span>SCENARIO 4: SERIOUS SECURITY BREACH</span>
+                        <span class="text-xs bg-red-500/10 text-red-400 px-3 py-1 rounded border border-red-500/20 font-mono pulse-red">CRITICAL RISK ALERT</span>
+                    </h2>
+                    <p class="text-sm text-slate-300 mt-1">
+                        Instant, non-linear reaction loops triggered by armed intrusions, major theft, or violent trespass.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 my-3 flex-grow">
+                    <div class="glass p-4 rounded-xl border-red-500/30 bg-red-500/5 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-mono text-red-400 uppercase">Phase 1</span>
+                            <h4 class="text-sm font-bold text-white uppercase mt-1"><i class="fa-solid fa-truck-unconscious mr-1.5"></i> SOS Trigger</h4>
+                            <p class="text-[11px] text-slate-300 mt-2">Guard triggers SOS/Panic button on custom app or broadcasts emergency coded radio: "BREACH SITE A."</p>
+                        </div>
+                        <span class="text-[10px] text-slate-400">RACI: Guard [R]</span>
+                    </div>
+
+                    <div class="glass p-4 rounded-xl border-white/10 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-mono text-slate-400 uppercase">Phase 2</span>
+                            <h4 class="text-sm font-bold text-white uppercase mt-1"><i class="fa-solid fa-lock mr-1.5"></i> Local Lockdown</h4>
+                            <p class="text-[11px] text-slate-300 mt-2">Head Guard locks down secondary entry points, organizes local defenses, and inventories personnel.</p>
+                        </div>
+                        <span class="text-[10px] text-slate-400">RACI: Head Guard [R]</span>
+                    </div>
+
+                    <div class="glass p-4 rounded-xl border-[#FFD700]/30 bg-blue-950/25 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-mono text-gold uppercase">Phase 3</span>
+                            <h4 class="text-sm font-bold text-white uppercase mt-1"><i class="fa-solid fa-person-running mr-1.5"></i> Field Command</h4>
+                            <p class="text-[11px] text-slate-300 mt-2">Supervisor rushes to the coordinates, handles LGU/PNP local units, and takes physical command of the breach.</p>
+                        </div>
+                        <span class="text-[10px] text-gold font-bold">RACI: Supervisor [A]</span>
+                    </div>
+
+                    <div class="glass p-4 rounded-xl border-emerald-500/30 bg-emerald-500/5 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-mono text-emerald-400 uppercase">Phase 4</span>
+                            <h4 class="text-sm font-bold text-white uppercase mt-1"><i class="fa-solid fa-phone mr-1.5"></i> Desk dispatch</h4>
+                            <p class="text-[11px] text-slate-300 mt-2">Ops Manager coordinates with PNP regional offices, updates Clients emergency contacts, and logs event metrics.</p>
+                        </div>
+                        <span class="text-[10px] text-emerald-400 font-bold">RACI: Ops Manager [A]</span>
+                    </div>
+                </div>
+
+                <div class="glass p-3 rounded-xl border-white/5 flex items-center justify-between text-xs text-slate-400">
+                    <span><i class="fa-solid fa-triangle-exclamation text-red-500"></i> Strategic Escalation: Ops Manager reports directly to Owners/Leadership to shield client liability.</span>
+                    <span class="font-mono text-[10px]">SOS TRIGGER REACTION LATENCY: IMMEDIATE</span>
+                </div>
+            </div>
+
+            <!-- ================= SLIDE 11: DIAGRAM 3: SCENARIO DECISION TREE ================= -->
+            <div id="slide-11" class="slide-content h-full flex flex-col justify-between z-10 slide-hidden animate-spring">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-bold uppercase text-white tracking-wide border-b border-white/10 pb-2 flex justify-between items-center">
+                        <span>DIAGRAM 3: SCENARIO DECISION TREE (Civil Unrest / Mob)</span>
+                        <span class="text-xs bg-gold/10 text-gold px-3 py-1 rounded border border-gold/20 font-mono">TACTICAL RESPONSE SOP</span>
+                    </h2>
+                    <p class="text-sm text-slate-300 mt-1">
+                        Active guidelines for handling civil unrest or hostile protests threatening facility zones.
+                    </p>
+                </div>
+
+                <div class="flex-grow flex flex-col justify-center my-2">
+                    <div class="max-w-4xl mx-auto w-full grid grid-cols-1 md:grid-cols-3 gap-4 relative">
+                        
+                        <!-- Initial evaluation box -->
+                        <div class="glass p-4 rounded-xl border-[#FFD700]/30 flex flex-col justify-between bg-blue-950/20 text-center col-span-3 md:col-span-1">
+                            <span class="text-[10px] text-gold uppercase block font-mono">Strategic Assessment</span>
+                            <h3 class="text-sm font-bold text-white uppercase my-1"><i class="fa-solid fa-scale-unbalanced mr-1.5"></i> Ops Evaluation</h3>
+                            <p class="text-xs text-slate-300 mt-1">Ops Manager monitors CCTV/GPS feeds and logs physical threat intelligence levels from local police units.</p>
+                            <span class="text-[10px] uppercase font-mono text-slate-400 mt-2 bg-white/5 py-1 rounded">RACI: Ops Manager [A]</span>
+                        </div>
+
+                        <!-- Defend protocol -->
+                        <div class="glass p-4 rounded-xl border-sky-500/20 bg-sky-500/5 flex flex-col justify-between">
+                            <div>
+                                <span class="text-[10px] text-sky-400 uppercase block font-mono">Decision Path A</span>
+                                <h3 class="text-sm font-bold text-white uppercase my-1"><i class="fa-solid fa-shield mr-1.5"></i> Secure Perimeter</h3>
+                                <p class="text-xs text-slate-300 mt-1"><strong>"DEFEND" ORDER:</strong> Supervisor reinforces gates, equips personnel with full protective gear, locks down primary access points.</p>
+                            </div>
+                            <div class="mt-4 p-2 rounded bg-sky-500/10 border border-sky-500/20 text-center text-[10px] text-sky-300">
+                                Rules of Engagement: STRICT OBSERVE, NO PHYSICAL COMBAT
+                            </div>
+                        </div>
+
+                        <!-- Extract protocol -->
+                        <div class="glass p-4 rounded-xl border-rose-500/35 bg-rose-500/5 flex flex-col justify-between">
+                            <div>
+                                <span class="text-[10px] text-rose-400 uppercase block font-mono font-bold">Decision Path B</span>
+                                <h3 class="text-sm font-bold text-white uppercase my-1"><i class="fa-solid fa-person-running mr-1.5"></i> Safe Extraction</h3>
+                                <p class="text-xs text-slate-300 mt-1"><strong>"EXTRACT" ORDER:</strong> Supervisor guides personnel through pre-planned, hidden exit lanes, abandoning structural posts to prioritize safety.</p>
+                            </div>
+                            <div class="mt-4 p-2 rounded bg-rose-500/10 border border-rose-500/20 text-center text-[10px] text-rose-300">
+                                Rules of Engagement: COORDINATED SECURE EVACUATION
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass p-3 rounded-xl border-white/5 text-center text-xs text-slate-400">
+                    <span><i class="fa-solid fa-hand-fist text-red-400"></i> Frontline ROE: Under civil unrest, protecting life is the absolute priority. Protects both personnel and client liability.</span>
+                </div>
+            </div>
+
+            <!-- ================= SLIDE 12: PHASE 4: POST-CRISIS RECOVERY ================= -->
+            <div id="slide-12" class="slide-content h-full flex flex-col justify-between z-10 slide-hidden animate-spring">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-bold uppercase text-white tracking-wide border-b border-white/10 pb-2 flex justify-between items-center">
+                        <span>PHASE 4: POST-CRISIS RECOVERY & DATA RECONCILIATION</span>
+                        <span class="text-xs bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded border border-emerald-500/20 font-mono pulse-green">RECOVERY STANDBY</span>
+                    </h2>
+                    <p class="text-sm text-slate-300 mt-1">
+                        System operations and client verification parameters as regional network loops go live post-crisis.
+                    </p>
+                </div>
+
+                <div class="my-3 overflow-x-auto">
+                    <table class="w-full text-left text-xs border-collapse">
+                        <thead>
+                            <tr class="border-b border-white/10 text-slate-400 font-display uppercase tracking-wider bg-white/5">
+                                <th class="p-3">Step</th>
+                                <th class="p-3">Incident Recovery Procedure</th>
+                                <th class="p-3">RACI Owner</th>
+                                <th class="p-3">Digital/Non-Linear Mechanism</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-white/5">
+                            <tr>
+                                <td class="p-3 font-bold text-gold">4.1</td>
+                                <td class="p-3 text-white font-semibold">Auto-Sync & Reconciliation</td>
+                                <td class="p-3"><span class="px-2 py-0.5 rounded bg-emerald-950/40 border border-emerald-500/30 text-emerald-400">System / Ops Mgr [A]</span></td>
+                                <td class="p-3 text-slate-300">As network lines restore, offline devices automatically dump cached logs into central servers. Ops Manager audits and validates data consistency.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-bold text-gold">4.2</td>
+                                <td class="p-3 text-white font-semibold">Welfare & Damage Assessment</td>
+                                <td class="p-3"><span class="px-2 py-0.5 rounded bg-blue-950/40 border border-blue-500/30 text-sky-400">Head Guard [R] / Sup [A]</span></td>
+                                <td class="p-3 text-slate-300">Head Guard files a comprehensive "Post-Crisis Assessment" detailing physical site damages, emergency log events, and personnel welfare (medical/trauma).</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-bold text-gold">4.3</td>
+                                <td class="p-3 text-white font-semibold">Client Report Distribution</td>
+                                <td class="p-3"><span class="px-2 py-0.5 rounded bg-emerald-950/40 border border-emerald-500/30 text-emerald-400">Ops Mgr [R] / GM [A]</span></td>
+                                <td class="p-3 text-slate-300">Dashboard automatically generates and exports an audit-ready, professional Post-Incident Summary report, which is delivered directly to Client leadership.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-bold text-gold">4.4</td>
+                                <td class="p-3 text-white font-semibold">System Deactivation</td>
+                                <td class="p-3"><span class="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-slate-300">Ops Manager [A]</span></td>
+                                <td class="p-3 text-slate-300">Ops Manager turns off "CRISIS MODE," returning system operations, shifts, and digital patrol logs back to standard baseline parameters.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="glass p-3 rounded-xl border-white/5 text-center text-xs text-slate-400">
+                    <span><i class="fa-solid fa-file-shield text-emerald-400"></i> Transparent, automated reporting highlights elite operational standards and validates our premium position.</span>
+                </div>
+            </div>
+
+            <!-- ================= SLIDE 13: THE ZERO-LIABILITY GUARANTEE ================= -->
+            <div id="slide-13" class="slide-content h-full flex flex-col justify-between z-10 slide-hidden animate-spring">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-bold uppercase text-white tracking-wide border-b border-white/10 pb-2 flex justify-between items-center">
+                        <span>THE ZERO-LIABILITY CLIENT GUARANTEE</span>
+                        <span class="text-xs bg-[#FFD700]/15 text-gold px-3 py-1 rounded border border-[#FFD700]/25 font-mono">LEGAL COMPLIANCE MATRIX</span>
+                    </h2>
+                    <p class="text-sm text-slate-300 mt-1">
+                        Our operational security measures translate directly into airtight legal and regulatory protection for client companies.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 my-3 flex-grow">
+                    <div class="glass p-4 rounded-xl border-[#FFD700]/20 flex flex-col justify-between bg-[#FFD700]/5">
+                        <div>
+                            <div class="w-8 h-8 rounded-full bg-[#FFD700]/10 flex items-center justify-center text-gold mb-2"><i class="fa-solid fa-gavel"></i></div>
+                            <h4 class="text-xs font-bold text-white uppercase">DOLE DO-174 Compliance</h4>
+                            <p class="text-[10px] text-slate-300 mt-2">Guarantees zero risk of "labor-only" contracting liabilities. Client has total legal isolation; personnel payroll is securely guaranteed.</p>
+                        </div>
+                        <span class="text-[9px] font-mono text-gold mt-2">Airtight Labor Safety</span>
+                    </div>
+
+                    <div class="glass p-4 rounded-xl border-sky-500/20 flex flex-col justify-between bg-sky-500/5">
+                        <div>
+                            <div class="w-8 h-8 rounded-full bg-sky-500/10 flex items-center justify-center text-sky-400 mb-2"><i class="fa-solid fa-building-shield"></i></div>
+                            <h4 class="text-xs font-bold text-white uppercase">PNP-SOSIA Audit Readiness</h4>
+                            <p class="text-[10px] text-slate-300 mt-2">Our secure, cloud-based Document Vault ensures retrieval of licenses, certifications, and logs within 15 minutes, neutralizing risk of sudden operational suspensions.</p>
+                        </div>
+                        <span class="text-[9px] font-mono text-sky-300 mt-2">15-Min Document Audit</span>
+                    </div>
+
+                    <div class="glass p-4 rounded-xl border-emerald-500/20 flex flex-col justify-between bg-emerald-500/5">
+                        <div>
+                            <div class="w-8 h-8 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-2"><i class="fa-solid fa-shield-heart"></i></div>
+                            <h4 class="text-xs font-bold text-white uppercase">RA 10121 DRRM Integration</h4>
+                            <p class="text-[10px] text-slate-300 mt-2">First-responder readiness parameters and business continuity protocols are run directly inside our digital Cloud SMS platform.</p>
+                        </div>
+                        <span class="text-[9px] font-mono text-emerald-300 mt-2">Disaster Aligned BCP</span>
+                    </div>
+
+                    <div class="glass p-4 rounded-xl border-indigo-500/20 flex flex-col justify-between bg-indigo-500/5">
+                        <div>
+                            <div class="w-8 h-8 rounded-full bg-indigo-500/10 flex items-center justify-center text-indigo-400 mb-2"><i class="fa-solid fa-user-secret"></i></div>
+                            <h4 class="text-xs font-bold text-white uppercase">RA 10173 Data Privacy</h4>
+                            <p class="text-[10px] text-slate-300 mt-2">Eliminates paper logbooks prone to compliance leaks. Encrypted, offline-first digital database processes patrol records securely.</p>
+                        </div>
+                        <span class="text-[9px] font-mono text-indigo-300 mt-2">Full Data Insulation</span>
+                    </div>
+                </div>
+
+                <div class="p-3 rounded bg-blue-950/40 border border-white/10 text-center text-xs text-slate-400">
+                    <strong class="text-white">EASTERN VISAYAS DEFINTIVE STANDARD:</strong> Tactical precision engineered directly within system frameworks to insulate clients from external risk.
+                </div>
+            </div>
+
+            <!-- ================= SLIDE 14: STRATEGIC SUCCESS FACTORS & CONCLUSION ================= -->
+            <div id="slide-14" class="slide-content h-full flex flex-col justify-between z-10 slide-hidden animate-spring">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-bold uppercase text-white tracking-wide border-b border-white/10 pb-2 flex justify-between items-center">
+                        <span>SOP SUCCESS FACTORS & DRILLS MANUAL</span>
+                        <span class="text-xs bg-gold/10 text-gold px-3 py-1 rounded border border-gold/20 font-mono">CONTINUOUS READINESS</span>
+                    </h2>
+                    <p class="text-sm text-slate-300 mt-1">
+                        Maintaining operational excellence requires strict enforcement of these non-negotiable success parameters.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-2 flex-grow items-center">
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-3">
+                            <i class="fa-solid fa-sim-card text-gold text-lg mt-0.5"></i>
+                            <div>
+                                <h4 class="text-sm font-bold uppercase text-white">The "Emergency Load" Protocol</h4>
+                                <p class="text-xs text-slate-300">Stronghold A3 equips all guard personnel with dedicated pre-loaded dual-SIM cards (Smart/Globe) reserved only for crisis communication, protecting contact loops if personal data is consumed.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-nodes text-gold text-lg mt-0.5"></i>
+                            <div>
+                                <h4 class="text-sm font-bold uppercase text-white">Quarterly Blackout & Breach Drills</h4>
+                                <p class="text-xs text-slate-300">Once a quarter, Ops Manager executes simulated infrastructure failure and mock security breaches. Ground personnel must successfully run roll calls and submit offline logs.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-3">
+                            <i class="fa-solid fa-handshake-angle text-gold text-lg mt-0.5"></i>
+                            <div>
+                                <h4 class="text-sm font-bold uppercase text-white">Client Expectation Alignment</h4>
+                                <p class="text-xs text-slate-300">During task-based 72-Hour onboarding phases, explicitly present this redundant communication and decision matrix to clients: "If a typhoon strikes at 2 AM, our redundant networks and backup protocols will keep you secure and informed."</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i class="fa-solid fa-scroll text-gold text-lg mt-0.5"></i>
+                            <div>
+                                <h4 class="text-sm font-bold uppercase text-white">Frontline Rules of Engagement (ROE)</h4>
+                                <p class="text-xs text-slate-300">Frontline personnel must be trained on-site that in active civil unrest, guard safety is the first priority. Guards observe, log, secure access points, and extract if necessary—no tactical vigilante engagement.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass p-4 rounded-xl border-[#FFD700]/30 bg-blue-950/20 text-center flex items-center justify-center gap-6">
+                    <span class="text-sm uppercase tracking-wider text-gold font-bold font-display">Ensure Operational Resilience Today.</span>
+                    <div class="flex gap-4 text-xs font-mono">
+                        <span><i class="fa-solid fa-globe text-[#FFD700] mr-1"></i> strong-a3-control.com</span>
+                        <span><i class="fa-solid fa-envelope text-[#FFD700] mr-1"></i> command@stronghold-a3.com</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="w-full max-w-7xl flex flex-col md:flex-row items-center justify-between gap-4 mt-4 glass px-6 py-4 rounded-2xl border-white/10">
+        <div class="flex items-center gap-3">
+            <button id="btn-prev" class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white hover:bg-[#FFD700]/20 hover:text-gold hover:border-[#FFD700]/40 transition duration-200">
+                <i class="fa-solid fa-arrow-left"></i> Previous
+            </button>
+            <button id="btn-next" class="px-4 py-2 rounded-xl bg-[#FFD700]/10 border border-[#FFD700]/30 text-gold hover:bg-[#FFD700]/20 transition duration-200">
+                Next <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+        
+        <!-- Navigation Indicator list index -->
+        <div class="flex items-center gap-1.5 flex-wrap justify-center" id="carousel-indicators">
+            <!-- Programmatically loaded -->
+        </div>
+
+        <div class="flex items-center gap-3">
+            <button id="btn-play" class="p-2.5 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:text-white" title="Toggle Auto-Play">
+                <i class="fa-solid fa-play"></i>
+            </button>
+            <button id="btn-lite" class="p-2.5 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:text-white" title="Toggle High-Contrast Lite Mode">
+                <i class="fa-solid fa-eye"></i>
+            </button>
+        </div>
+    </footer>
+
+    <script>
+        const totalSlides = 14;
+        let currentSlide = 1;
+        let autoplayInterval = null;
+        let isAutoplayActive = false;
+
+        const slideCounter = document.getElementById('slide-index-counter');
+        const carouselIndicators = document.getElementById('carousel-indicators');
+
+        // Create Indicators
+        for (let i = 1; i <= totalSlides; i++) {
+            const indicator = document.createElement('button');
+            indicator.className = `w-2.5 h-2.5 rounded-full transition-all duration-300 ${i === 1 ? 'bg-gold w-6' : 'bg-slate-600 hover:bg-slate-400'}`;
+            indicator.id = `indicator-${i}`;
+            indicator.onclick = () => goToSlide(i);
+            carouselIndicators.appendChild(indicator);
+        }
+
+        function updateDeckUI() {
+            // Hide all slides
+            for (let i = 1; i <= totalSlides; i++) {
+                const slide = document.getElementById(`slide-${i}`);
+                if (slide) {
+                    if (i === currentSlide) {
+                        slide.classList.remove('slide-hidden');
+                    } else {
+                        slide.classList.add('slide-hidden');
+                    }
+                }
+
+                // Update indicators
+                const indicator = document.getElementById(`indicator-${i}`);
+                if (indicator) {
+                    if (i === currentSlide) {
+                        indicator.className = 'w-2.5 h-2.5 rounded-full transition-all duration-300 bg-gold w-6';
+                    } else {
+                        indicator.className = 'w-2.5 h-2.5 rounded-full transition-all duration-300 bg-slate-600 hover:bg-slate-400';
+                    }
+                }
+            }
+
+            // Update counter text
+            slideCounter.innerText = `Slide ${currentSlide.toString().padStart(2, '0')}/${totalSlides}`;
+        }
+
+        function nextSlide() {
+            currentSlide = currentSlide < totalSlides ? currentSlide + 1 : 1;
+            updateDeckUI();
+        }
+
+        function prevSlide() {
+            currentSlide = currentSlide > 1 ? currentSlide - 1 : totalSlides;
+            updateDeckUI();
+        }
+
+        function goToSlide(slideNum) {
+            currentSlide = slideNum;
+            updateDeckUI();
+        }
+
+        // Event listeners for Controls
+        document.getElementById('btn-next').addEventListener('click', () => {
+            nextSlide();
+            stopAutoplay();
+        });
+        document.getElementById('btn-prev').addEventListener('click', () => {
+            prevSlide();
+            stopAutoplay();
+        });
+
+        // Keybindings for remote controls and presentations
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                nextSlide();
+                stopAutoplay();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+                stopAutoplay();
+            }
+        });
+
+        // Swipe gestures for touch screens and tablets
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        document.querySelector('.presentation-canvas').addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        document.querySelector('.presentation-canvas').addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const threshold = 50;
+            if (touchStartX - touchEndX > threshold) {
+                nextSlide(); // Swiped left
+                stopAutoplay();
+            } else if (touchEndX - touchStartX > threshold) {
+                prevSlide(); // Swiped right
+                stopAutoplay();
+            }
+        }
+
+        // Autoplay controller
+        const btnPlay = document.getElementById('btn-play');
+        btnPlay.addEventListener('click', () => {
+            if (isAutoplayActive) {
+                stopAutoplay();
+            } else {
+                startAutoplay();
+            }
+        });
+
+        function startAutoplay() {
+            isAutoplayActive = true;
+            btnPlay.innerHTML = '<i class="fa-solid fa-pause text-gold"></i>';
+            autoplayInterval = setInterval(nextSlide, 7000); // 7 seconds per slide
+        }
+
+        function stopAutoplay() {
+            isAutoplayActive = false;
+            btnPlay.innerHTML = '<i class="fa-solid fa-play"></i>';
+            if (autoplayInterval) {
+                clearInterval(autoplayInterval);
+            }
+        }
+
+        // Lite mode high-contrast toggle for presentations under bad screen glare
+        const btnLite = document.getElementById('btn-lite');
+        btnLite.addEventListener('click', () => {
+            document.body.classList.toggle('lite-mode');
+            btnLite.classList.toggle('bg-gold/20');
+            btnLite.classList.toggle('text-gold');
+        });
+
+        // Initialize presentation view state
+        updateDeckUI();
+    </script>
+</body>
+</html>
