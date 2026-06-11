@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - Stronghold A3 Security Agency</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root { --gold: #FFD700; --navy: #0A1628; --blue: #3B82F6; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: radial-gradient(circle at 20% 0%, #002b5c 0%, #001b3d 45%, #000c1f 100%); background-attachment: fixed; min-height: 100vh; color: #fff; }
+        body::before { content: ''; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: min(80vw, 80vh); height: min(80vw, 80vh); background-image: url('https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png'); background-size: contain; background-repeat: no-repeat; opacity: 0.03; pointer-events: none; z-index: 0; }
+        main, header, footer, nav { position: relative; z-index: 1; }
+        h1, h2, h3 { font-family: 'Montserrat', sans-serif; }
+        .glass-strong { background: linear-gradient(135deg, rgba(0,43,92,0.55), rgba(0,12,31,0.65)); backdrop-filter: blur(28px); border: 1px solid rgba(255,215,0,0.18); box-shadow: 0 12px 40px rgba(0,0,0,0.55); border-radius: 1.5rem; padding: 3rem; margin-bottom: 2rem; }
+        .glass { background: rgba(255,255,255,0.05); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.1); border-radius: 1rem; padding: 2rem; }
+        .glass-gold { background: linear-gradient(135deg, rgba(255,215,0,0.16), rgba(255,215,0,0.04)); border: 1px solid rgba(255,215,0,0.35); border-radius: 1rem; padding: 2rem; }
+        header { background: rgba(10, 22, 40, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(59, 130, 246, 0.2); position: sticky; top: 0; z-index: 100; }
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.5rem; max-width: 1200px; margin: auto; }
+        .logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+        .logo-icon { width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--blue); overflow: hidden; }
+        .logo-icon img { width: 100%; height: 100%; object-fit: cover; }
+        .logo-text { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.4rem; color: #fff; }
+        .logo-subtext { font-size: 0.7rem; color: var(--blue); font-weight: 600; }
+        .nav-links { display: flex; gap: 0.5rem; list-style: none; }
+        .nav-links a { text-decoration: none; color: rgba(255,255,255,0.8); font-weight: 500; font-size: 0.9rem; padding: 0.5rem 1rem; border-radius: 0.5rem; transition: 0.3s; }
+        .nav-links a:hover, .nav-links a.active-page { color: var(--gold); background: rgba(255,215,0,0.1); }
+        .hero { padding: 5rem 1.5rem 3rem; text-align: center; border-bottom: 1px solid rgba(59, 130, 246, 0.2); }
+        .hero h1 { font-size: 2.75rem; margin-bottom: 1rem; }
+        .hero h1 span { color: var(--gold); }
+        .hero p { color: rgba(255,255,255,0.6); max-width: 600px; margin: auto; }
+        .container { max-width: 1200px; margin: auto; padding: 0 1.5rem; }
+        .content-wrapper { margin-top: -2rem; padding-bottom: 4rem; }
+        h2 { font-size: 1.6rem; color: var(--gold); margin: 2.5rem 0 1rem; display: flex; align-items: center; gap: 0.75rem; border-bottom: 2px solid rgba(255,215,0,0.2); padding-bottom: 0.5rem; }
+        h2 i { color: var(--blue); }
+        h3 { font-size: 1.2rem; color: #fff; margin: 1.5rem 0 0.75rem; }
+        p, li { color: rgba(255,255,255,0.8); line-height: 1.8; font-size: 0.95rem; margin-bottom: 0.75rem; }
+        ul { padding-left: 1.5rem; margin-bottom: 1rem; }
+        li::marker { color: var(--blue); }
+        strong { color: #fff; }
+        a { color: var(--blue); text-decoration: none; }
+        a:hover { color: var(--gold); }
+        .badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,215,0,0.3); border-radius: 50px; padding: 0.4rem 1rem; font-size: 0.8rem; color: var(--gold); margin: 0.25rem; }
+        footer { background: rgba(10, 22, 40, 0.95); border-top: 1px solid rgba(59, 130, 246, 0.2); padding: 2rem 1.5rem; text-align: center; color: rgba(255,255,255,0.5); font-size: 0.85rem; }
+        @media (max-width: 768px) { .hero h1 { font-size: 2rem; } .glass-strong { padding: 1.5rem; } .nav-links { display: none; } }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="https://asilvainnovations.github.io/stronghold-a3/" class="logo">
+                <div class="logo-icon"><img src="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png" alt="Logo"></div>
+                <div><div class="logo-text">STRONGHOLD A3</div><div class="logo-subtext">ZERO-LIABILITY SECURITY</div></div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="https://stronghold-a3.github,io/">Home</a></li>
+                <li><a href="https://stronghold-a3.github.io/policies.html">Policies</a></li>
+                <li><a href="terms.html" class="active-page">Terms</a></li>
+                <li><a href="https://resilient-secure-mobile.deploypad.app/">Stronghold Portal</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Terms of <span>Service</span></h1>
+        <p>Governing the provision of Zero-Liability Security Services and the use of the Stronghold A3 Digital Platforms.</p>
+        <div style="margin-top: 1.5rem;">
+            <span class="badge"><i class="fas fa-calendar"></i> Effective: June 12, 2026</span>
+        </div>
+    </section>
+
+    <main class="content-wrapper">
+        <div class="container">
+            <div class="glass-strong">
+                <h2><i class="fas fa-scroll"></i> 1. Acceptance of Terms</h2>
+                <p>Welcome to Stronghold A3 Security Agency. These Terms of Service ("Terms") govern your access to our website, digital platforms (including the Client Transparency Portal and Staff SMS App), and the physical security services we provide. By engaging our services or using our platforms, you agree to be bound by these Terms and our overarching <strong>Zero-Liability Framework</strong>.</p>
+
+                <h2><i class="fas fa-shield-alt"></i> 2. Security Services Agreement</h2>
+                <p>Our physical security operations are governed by the following core principles, which are further detailed in your specific Service Level Agreement (SLA):</p>
+                <ul>
+                    <li><strong>Zero-Liability Guarantee:</strong> Stronghold A3 operates in strict compliance with <strong>DOLE Department Order No. 174</strong>. We assume full employer responsibility for all deployed personnel. Clients are completely insulated from co-employer liability, labor disputes, and statutory contribution defaults.</li>
+                    <li><strong>Rules of Engagement (ROE):</strong> Our guards are trained to prioritize de-escalation, observation, and reporting. Physical confrontation is strictly prohibited unless in absolute defense of life. Guards act as facility first responders under <strong>RA 10121 (DRRM Act)</strong> during disasters.</li>
+                    <li><strong>Service Continuity:</strong> We guarantee operational continuity through our 3-Bridge Communication System and Typhoon Business Continuity Plan (BCP). In the event of regional climate shocks, our offline-first protocols ensure your site is never left unguarded.</li>
+                    <li><strong>Client Obligations:</strong> Clients must provide safe working conditions, access to basic amenities (e.g., shelter during typhoons), and timely payment as per the agreed contract, including predefined inflation-adjustment clauses.</li>
+                </ul>
+
+                <h2><i class="fas fa-laptop-code"></i> 3. Digital Platform Use & Staff Portal</h2>
+                <p>Access to the Stronghold A3 Staff Portal, Client Portal, and Risk Assessment tools is subject to the following:</p>
+                <ul>
+                    <li><strong>Role-Based Access Control (RBAC):</strong> Access is strictly scoped. Guards, Supervisors, Ops Managers, and Admins are granted only the permissions necessary for their specific role. Unauthorized access attempts will result in immediate termination and legal action.</li>
+                    <li><strong>Data Integrity:</strong> Users of the Staff SMS App must accurately log GPS tours, incident reports, and Daily Time Records (DTR). Falsification of digital logs is a severe breach of contract and grounds for immediate dismissal.</li>
+                    <li><strong>Prohibited Uses:</strong> You may not use our platforms to transmit malware, attempt unauthorized access to client networks, or bypass the Encrypted Document Vault security measures.</li>
+                </ul>
+
+                <h2><i class="fas fa-balance-scale"></i> 4. Limitation of Liability & Force Majeure</h2>
+                <p>While we maintain a 100% compliance rate and deploy highly trained personnel, Stronghold A3 shall not be held liable for indirect, incidental, or consequential damages arising from security breaches, except in cases of gross negligence or willful misconduct by our personnel. 
+                <br><br>
+                <strong>Force Majeure:</strong> Stronghold A3 is not liable for service interruptions caused by Acts of God (e.g., Signal No. 4+ Typhoons, severe earthquakes), provided that our BCP and offline-first communication protocols were executed in accordance with our SOPs.</p>
+
+                <h2><i class="fas fa-gavel"></i> 5. Governing Law</h2>
+                <p>These Terms shall be governed by the laws of the Republic of the Philippines. Any disputes arising from these Terms or our services shall be subject to the exclusive jurisdiction of the courts of Tacloban City, Leyte.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Stronghold A3 Security Agency. All Rights Reserved. | DOLE DO-174 Compliant | PNP-SOSIA Licensed</p>
+    </footer>
+</body>
+</html>
