@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Stronghold A3 Security Agency Policies - Comprehensive overview of our Terms of Service, Privacy Policy (RA 10173), Surveillance Ethics, and Compliance Standards (DOLE DO-174, PNP-SOSIA).">
+    <meta name="keywords" content="Stronghold A3 policies, security agency compliance, DOLE DO-174, PNP-SOSIA, RA 10173 data privacy, RA 10121 DRRM, zero liability security, Tacloban security">
+    <title>Policies & Compliance - Stronghold A3 Security Agency</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png">
+    
+    <style>
+        /* ===========================================
+           STRONGHOLD A3 DESIGN SYSTEM (Liquid Glass)
+           =========================================== */
+        :root {
+            --gold: #FFD700;
+            --navy: #0A1628;
+            --navy-light: #001b3d;
+            --blue: #3B82F6;
+            --blue-dark: #2563EB;
+            --text-light: rgba(255, 255, 255, 0.85);
+            --text-muted: rgba(255, 255, 255, 0.6);
+            
+            --card-shadow: 0 12px 40px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.15);
+            --transition: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: radial-gradient(circle at 20% 0%, #002b5c 0%, #001b3d 45%, #000c1f 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: #fff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Watermark Logo Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: min(80vw, 80vh);
+            height: min(80vw, 80vh);
+            background-image: url('https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        main, header, footer, nav, .container { position: relative; z-index: 1; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', sans-serif; letter-spacing: 0.02em; }
+
+        /* ===== GLASS EFFECTS ===== */
+        .glass {
+            background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+            backdrop-filter: blur(20px) saturate(160%);
+            -webkit-backdrop-filter: blur(20px) saturate(160%);
+            border: 1px solid rgba(255,255,255,0.12);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+        .glass-strong {
+            background: linear-gradient(135deg, rgba(0,43,92,0.55), rgba(0,12,31,0.65));
+            backdrop-filter: blur(28px) saturate(180%);
+            -webkit-backdrop-filter: blur(28px) saturate(180%);
+            border: 1px solid rgba(255,215,0,0.18);
+            box-shadow: var(--card-shadow);
+        }
+        .glass-gold {
+            background: linear-gradient(135deg, rgba(255,215,0,0.16), rgba(255,215,0,0.04));
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255,215,0,0.35);
+        }
+        .glass-blue {
+            background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(59,130,246,0.05));
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(59,130,246,0.3);
+        }
+
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.85rem 1.75rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            font-size: 1rem;
+            border: none;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+            color: white;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(59, 130, 246, 0.5); }
+        
+        .btn-gold {
+            background: linear-gradient(135deg, var(--gold), #eab308);
+            color: var(--navy);
+            font-weight: 700;
+        }
+        .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4); }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 1.5px solid rgba(255,255,255,0.3);
+        }
+        .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: var(--gold); color: var(--gold); }
+
+        /* =====================
+           Header & Navigation
+           ===================== */
+        header {
+            background: rgba(10, 22, 40, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; }
+        .logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+        .logo-icon { width: 48px; height: 48px; border-radius: 50%; overflow: hidden; border: 2px solid var(--blue); flex-shrink: 0; }
+        .logo-icon img { width: 100%; height: 100%; object-fit: cover; }
+        .logo-text { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.4rem; color: #fff; }
+        .logo-subtext { font-size: 0.7rem; color: var(--blue); font-weight: 600; letter-spacing: 0.05em; }
+
+        .nav-links { display: flex; align-items: center; gap: 0.5rem; list-style: none; }
+        .nav-links a {
+            text-decoration: none; color: var(--text-light); font-weight: 500; font-size: 0.9rem;
+            padding: 0.5rem 1rem; border-radius: 0.5rem; transition: var(--transition);
+        }
+        .nav-links a:hover { color: var(--gold); background: rgba(255,255,255,0.05); }
+        .nav-links a.active-page { color: var(--gold); background: rgba(255,215,0,0.1); }
+        .nav-links a.nav-btn-portal {
+            background: var(--gold); color: var(--navy); font-weight: 700; padding: 0.5rem 1.2rem;
+        }
+        .nav-links a.nav-btn-portal:hover { background: #fff; color: var(--navy); }
+
+        .mobile-menu-btn {
+            display: none; flex-direction: column; justify-content: center; align-items: center; gap: 5px;
+            width: 42px; height: 42px; background: none; border: 1.5px solid rgba(255,255,255,0.2);
+            border-radius: 0.5rem; cursor: pointer; padding: 8px;
+        }
+        .hamburger-bar { display: block; width: 20px; height: 2px; background-color: #fff; border-radius: 2px; transition: var(--transition); }
+        .mobile-menu-btn.is-open .hamburger-bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .mobile-menu-btn.is-open .hamburger-bar:nth-child(2) { opacity: 0; }
+        .mobile-menu-btn.is-open .hamburger-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        .mobile-nav {
+            display: none; flex-direction: column; gap: 0.25rem;
+            background: rgba(10, 22, 40, 0.95); backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(59, 130, 246, 0.2); padding: 1rem 1.5rem;
+        }
+        .mobile-nav.is-open { display: flex; }
+        .mobile-nav a {
+            text-decoration: none; color: var(--text-light); font-weight: 500; padding: 0.8rem;
+            border-radius: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .mobile-nav a.nav-btn-portal { background: var(--gold); color: var(--navy); text-align: center; font-weight: 700; margin-top: 0.5rem; border-bottom: none; }
+
+        /* =====================
+           Hero Section
+           ===================== */
+        .hero {
+            background: linear-gradient(135deg, rgba(10,22,40,0.9), rgba(0,27,61,0.9)), url('https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Security-Risk%20Self-Assessment-Banner.png');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0 3rem;
+            position: relative;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+        }
+        .hero-content { position: relative; text-align: center; max-width: 860px; margin: 0 auto; }
+        .hero h1 { font-size: 2.75rem; margin-bottom: 1rem; line-height: 1.2; }
+        .hero h1 span { color: var(--gold); }
+        .hero p { font-size: 1.1rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 1.5rem; }
+        
+        .compliance-badges { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; justify-content: center; }
+        .badge {
+            background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,215,0,0.3); border-radius: 50px;
+            padding: 0.4rem 1.2rem; font-size: 0.8rem; font-weight: 600;
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--gold);
+        }
+
+        /* =====================
+           Main Content
+           ===================== */
+        .content-wrapper { margin-top: -2rem; position: relative; z-index: 10; padding-bottom: 4rem; }
+        
+        .content-card {
+            border-radius: 1.5rem;
+            padding: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 1.8rem; color: var(--gold); margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem; border-bottom: 2px solid rgba(255,215,0,0.2);
+            display: flex; align-items: center; gap: 0.75rem;
+        }
+        h2 i { color: var(--blue); font-size: 1.5rem; }
+
+        h3 { font-size: 1.3rem; color: #fff; margin: 2rem 0 1rem; }
+        p, li { color: var(--text-light); line-height: 1.8; font-size: 0.95rem; }
+        
+        ul { list-style: none; padding-left: 0; margin: 1rem 0; }
+        li { position: relative; padding-left: 1.75rem; margin-bottom: 0.75rem; }
+        li::before {
+            content: "\f00c"; font-family: "Font Awesome 6 Free"; font-weight: 900;
+            position: absolute; left: 0; color: var(--blue); top: 2px;
+        }
+
+        strong { color: #fff; font-weight: 600; }
+        a { color: var(--blue); text-decoration: none; transition: var(--transition); }
+        a:hover { color: var(--gold); text-decoration: underline; }
+
+        /* Table */
+        table {
+            width: 100%; border-collapse: collapse; margin: 1.5rem 0;
+            border-radius: 0.75rem; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);
+        }
+        th {
+            background: rgba(59, 130, 246, 0.2); color: var(--gold);
+            padding: 1rem; text-align: left; font-weight: 600; font-family: 'Montserrat', sans-serif;
+            border-bottom: 1px solid rgba(255,215,0,0.2);
+        }
+        td { padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); color: var(--text-light); }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background: rgba(255,255,255,0.03); }
+
+        /* TOC */
+        .toc {
+            border-radius: 1rem; padding: 2rem; margin: 2rem 0;
+        }
+        .toc h3 { color: var(--gold); margin-top: 0; font-size: 1.2rem; }
+        .toc ol { padding-left: 1.5rem; list-style-position: inside; color: var(--text-light); }
+        .toc li { margin-bottom: 0.5rem; padding-left: 0; }
+        .toc li::before { display: none; }
+        .toc a { color: var(--blue); font-weight: 600; }
+        .toc a:hover { color: var(--gold); }
+
+        /* Quick Access */
+        .quick-access { border-radius: 1rem; padding: 2rem; margin: 2rem 0; }
+        .quick-access h4 { color: var(--gold); margin-bottom: 1rem; font-family: 'Montserrat', sans-serif; }
+        .quick-access-links { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1rem; }
+        .quick-access-link {
+            background: rgba(59, 130, 246, 0.15); border: 1px solid rgba(59, 130, 246, 0.3);
+            color: #fff; padding: 0.6rem 1.2rem; border-radius: 0.5rem;
+            font-weight: 600; font-size: 0.9rem; transition: var(--transition);
+            display: inline-flex; align-items: center; gap: 0.5rem;
+        }
+        .quick-access-link:hover { background: var(--blue); color: #fff; transform: translateY(-2px); text-decoration: none; }
+
+        /* Contact Box */
+        .contact-box {
+            border-radius: 1.25rem; padding: 2.5rem; margin: 2rem 0;
+        }
+        .contact-box h3 { color: var(--gold); margin-bottom: 1rem; }
+        .contact-grid { display: grid; gap: 1rem; margin-top: 1.5rem; }
+        .contact-item { display: flex; align-items: baseline; gap: 1rem; }
+        .label { font-weight: 700; color: var(--blue); min-width: 120px; font-family: 'Montserrat', sans-serif; font-size: 0.9rem; }
+        .contact-link { color: #fff; font-weight: 500; }
+        .contact-link:hover { color: var(--gold); }
+
+        /* Footer */
+        footer {
+            background: rgba(10, 22, 40, 0.95);
+            border-top: 1px solid rgba(59, 130, 246, 0.2);
+            padding: 3rem 0 2rem;
+        }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
+        .footer-col h3 { font-size: 1.1rem; margin-bottom: 1.5rem; color: var(--gold); position: relative; padding-bottom: 0.5rem; }
+        .footer-col h3::after { content: ""; position: absolute; bottom: 0; left: 0; width: 30px; height: 2px; background: var(--blue); }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 0.75rem; }
+        .footer-links li::before { display: none; }
+        .footer-links a { color: var(--text-muted); transition: var(--transition); }
+        .footer-links a:hover { color: var(--gold); padding-left: 5px; text-decoration: none; }
+        .copyright { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); color: var(--text-muted); font-size: 0.85rem; }
+
+        /* Responsive */
+        @media (max-width: 860px) {
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: flex; }
+        }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .content-card { padding: 1.5rem; }
+            h2 { font-size: 1.4rem; }
+            .contact-item { flex-direction: column; gap: 0.25rem; }
+            .label { min-width: auto; }
+        }
+    </style>
+    <base target="_blank">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="https://asilvainnovations.github.io/stronghold-a3/" class="logo">
+                    <div class="logo-icon">
+                        <img src="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png" alt="Stronghold A3 Logo">
+                    </div>
+                    <div>
+                        <div class="logo-text">STRONGHOLD A3</div>
+                        <div class="logo-subtext">ZERO-LIABILITY SECURITY</div>
+                    </div>
+                </a>
+
+                <ul class="nav-links" id="desktopNav">
+                    <li><a href="https://asilvainnovations.github.io/stronghold-a3/">Home</a></li>
+                    <li><a href="https://asilvainnovations.github.io/stronghold-a3/#services">Services</a></li>
+                    <li><a href="https://asilvainnovations.github.io/stronghold-a3/#about">About</a></li>
+                    <li><a href="https://asilvainnovations.github.io/stronghold-a3/#strategy">Strategy</a></li>
+                    <li><a href="https://asilvainnovations.github.io/stronghold-a3/policies.html" class="active-page">Policies</a></li>
+                    <li><a href="https://resilient-secure-mobile.deploypad.app/" class="nav-btn-portal">Staff Portal</a></li>
+                </ul>
+
+                <button class="mobile-menu-btn" id="hamburgerBtn" aria-label="Toggle navigation menu">
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                </button>
+            </nav>
+
+            <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+                <a href="https://asilvainnovations.github.io/stronghold-a3/">Home</a>
+                <a href="https://asilvainnovations.github.io/stronghold-a3/#services">Services</a>
+                <a href="https://asilvainnovations.github.io/stronghold-a3/#about">About</a>
+                <a href="https://asilvainnovations.github.io/stronghold-a3/#strategy">Strategy</a>
+                <a href="https://asilvainnovations.github.io/stronghold-a3/policies.html" class="active-page">Policies</a>
+                <a href="https://resilient-secure-mobile.deploypad.app/" class="nav-btn-portal">Staff Portal</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Policies & <span>Compliance Framework</span></h1>
+                <p>Transparency, Accountability, and Zero-Liability Protection. Our policies govern how we secure your assets, protect your data, and uphold the highest regulatory standards in Eastern Visayas.</p>
+                
+                <div class="compliance-badges">
+                    <span class="badge"><i class="fas fa-shield-alt"></i> DOLE DO-174 Compliant</span>
+                    <span class="badge"><i class="fas fa-id-badge"></i> PNP-SOSIA Licensed</span>
+                    <span class="badge"><i class="fas fa-lock"></i> RA 10173 (Data Privacy)</span>
+                    <span class="badge"><i class="fas fa-water"></i> RA 10121 (DRRM)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="content-wrapper">
+        <div class="container">
+            <div class="content-card glass-strong">
+                
+                <!-- Introduction -->
+                <section>
+                    <h2><i class="fas fa-handshake"></i> Our Commitment to Zero-Liability & Trust</h2>
+                    <p>At Stronghold A3 Security Agency, our policies reflect our core values of integrity, regulatory excellence, and respect for all stakeholders. These frameworks guide how we deploy security personnel, protect sensitive client data, ensure ethical surveillance, and uphold compliance with Philippine laws. We don't just supply guards; we provide <strong>zero-liability security solutions</strong> that shield our clients from operational, legal, and reputational risks.</p>
+                    
+                    <div class="quick-access glass">
+                        <h4><i class="fas fa-bolt"></i> Quick Access to All Policies</h4>
+                        <div class="quick-access-links">
+                            <a href="#terms" class="quick-access-link"><i class="fas fa-file-contract"></i> Terms of Service</a>
+                            <a href="#privacy" class="quick-access-link"><i class="fas fa-user-shield"></i> Privacy Policy (RA 10173)</a>
+                            <a href="#surveillance" class="quick-access-link"><i class="fas fa-video"></i> Surveillance Ethics</a>
+                            <a href="#accessibility" class="quick-access-link"><i class="fas fa-universal-access"></i> Accessibility & DRRM</a>
+                            <a href="#compliance" class="quick-access-link"><i class="fas fa-certificate"></i> Compliance Standards</a>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Table of Contents -->
+                <nav class="toc glass" aria-label="Table of Contents">
+                    <h3><i class="fas fa-list-ul"></i> Table of Contents</h3>
+                    <ol>
+                        <li><a href="#terms">Terms of Service & Security Contracts</a></li>
+                        <li><a href="#privacy">Privacy Policy & Data Handling (RA 10173)</a></li>
+                        <li><a href="#surveillance">Technology & Surveillance Ethics</a></li>
+                        <li><a href="#accessibility">Accessibility & DRRM Commitment (RA 10121)</a></li>
+                        <li><a href="#compliance">Regulatory Compliance Standards</a></li>
+                    </ol>
+                </nav>
+
+                <!-- Section 1: Terms of Service -->
+                <section id="terms" style="margin-top: 3rem;">
+                    <h2><i class="fas fa-file-contract"></i> 1. Terms of Service & Security Contracts</h2>
+                    <p>Stronghold A3 provides premier security services governed by transparent, legally sound contracts. By engaging our services, clients benefit from our <strong>Zero-Liability Guarantee</strong>, meaning we assume full responsibility for labor compliance, shielding you from co-employer risks.</p>
+                    <ul>
+                        <li><strong>Zero-Liability Deployment:</strong> All personnel are strictly employed under Stronghold A3, fully compliant with DOLE DO-174. Clients are insulated from labor disputes.</li>
+                        <li><strong>Rules of Engagement:</strong> Our guards operate under strict, legally defined rules of engagement, prioritizing de-escalation, observation, and reporting over physical confrontation.</li>
+                        <li><strong>Service Continuity:</strong> We guarantee operational continuity through our 3-Bridge Communication System and Typhoon BCP, ensuring your site is never left unguarded during regional disasters.</li>
+                        <li><strong>Contractual Transparency:</strong> All pricing, inflation-adjustment clauses, and service level agreements (SLAs) are clearly documented with no hidden fees.</li>
+                    </ul>
+                </section>
+
+                <!-- Section 2: Privacy Policy -->
+                <section id="privacy" style="margin-top: 3rem;">
+                    <h2><i class="fas fa-user-shield"></i> 2. Privacy Policy & Data Handling (RA 10173)</h2>
+                    <p>As a security agency, we handle sensitive data daily. Stronghold A3 strictly adheres to the <strong>Philippine Data Privacy Act of 2012 (RA 10173)</strong>. Our Encrypted Document Vault and digital systems ensure that all information is protected against unauthorized access.</p>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Data Category</th>
+                                <th>Handling & Protection Protocol</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Visitor Logs & Biometrics</strong></td>
+                                <td>Digitally encrypted, accessible only to authorized site admins. Purged after 90 days unless required by law enforcement.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>CCTV Footage</strong></td>
+                                <td>Stored on secure, localized NVRs with AES-256 encryption. Access restricted to client management and Stronghold A3 Ops.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Incident Reports</strong></td>
+                                <td>Transmitted via secure cloud channels. Redacted of personally identifiable information (PII) before archival.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Guard Personnel Data</strong></td>
+                                <td>NBI clearances, medical records, and PNP licenses are stored in a restricted Digital Vault, accessible only to HR/Admin.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="margin-top: 1rem;">We never sell, share, or exploit client or personnel data. All data breaches are reported within 72 hours to the National Privacy Commission (NPC) and affected clients.</p>
+                </section>
+
+                <!-- Section 3: Surveillance Ethics -->
+                <section id="surveillance" style="margin-top: 3rem;">
+                    <h2><i class="fas fa-video"></i> 3. Technology & Surveillance Ethics</h2>
+                    <p>As we integrate hybrid security solutions (CCTV, AI monitoring, GPS tracking), we uphold strict ethical guidelines to ensure technology empowers security without infringing on civil liberties.</p>
+                    <ul>
+                        <li><strong>Purpose Limitation:</strong> Surveillance tech is deployed strictly for asset protection, access control, and guard accountability. It is never used for unauthorized personal monitoring.</li>
+                        <li><strong>Transparency:</strong> Clients and visitors are informed of CCTV presence through clear signage. Guard GPS tracking is disclosed and used solely for dispatch optimization and safety.</li>
+                        <li><strong>Data Minimization:</strong> We only collect visual or location data that is strictly necessary for the security mandate of the specific site.</li>
+                        <li><strong>Human Oversight:</strong> AI-assisted monitoring (if deployed) always requires human verification by our Ops Center before any incident is escalated or reported to authorities.</li>
+                    </ul>
+                </section>
+
+                <!-- Section 4: Accessibility & DRRM -->
+                <section id="accessibility" style="margin-top: 3rem;">
+                    <h2><i class="fas fa-universal-access"></i> 4. Accessibility & DRRM Commitment (RA 10121)</h2>
+                    <p>Security must be inclusive and resilient. Stronghold A3 aligns with the <strong>Philippine Disaster Risk Reduction and Management Act (RA 10121)</strong> and advocates for physical and digital accessibility.</p>
+                    <ul>
+                        <li><strong>DRRM First Responders:</strong> All guards undergo mandatory disaster response training. During typhoons or emergencies, our personnel act as facility first responders, assisting in evacuations and securing perimeters.</li>
+                        <li><strong>PWD Assistance:</strong> Our access control protocols prioritize the safety and dignity of Persons with Disabilities (PWDs), ensuring guards are trained to assist without compromising site security.</li>
+                        <li><strong>Digital Accessibility:</strong> Our Client Transparency Portal and digital incident reports are designed with high-contrast, screen-reader-friendly interfaces to ensure all stakeholders can access security data.</li>
+                    </ul>
+                </section>
+
+                <!-- Section 5: Compliance Standards -->
+                <section id="compliance" style="margin-top: 3rem;">
+                    <h2><i class="fas fa-certificate"></i> 5. Regulatory Compliance Standards</h2>
+                    <p>Compliance is not an option; it is our foundation. Stronghold A3 maintains a <strong>100% compliance rate</strong> across all regulatory bodies, ensuring our clients face zero legal exposure.</p>
+                    
+                    <div class="contact-box glass-gold">
+                        <h3>Our Regulatory Moat</h3>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; margin: 1.5rem 0;">
+                            <span class="badge" style="background: rgba(10,22,40,0.6); color: var(--gold); border-color: var(--gold);">DOLE DO-174</span>
+                            <span class="badge" style="background: rgba(10,22,40,0.6); color: var(--gold); border-color: var(--gold);">PNP-SOSIA</span>
+                            <span class="badge" style="background: rgba(10,22,40,0.6); color: var(--gold); border-color: var(--gold);">PADPAO Region 8</span>
+                            <span class="badge" style="background: rgba(10,22,40,0.6); color: var(--gold); border-color: var(--gold);">RA 10173 (DPA)</span>
+                            <span class="badge" style="background: rgba(10,22,40,0.6); color: var(--gold); border-color: var(--gold);">RA 10121 (DRRM)</span>
+                            <span class="badge" style="background: rgba(10,22,40,0.6); color: var(--gold); border-color: var(--gold);">BIR Registered</span>
+                        </div>
+                        <p style="text-align: center; color: var(--text-light); font-size: 0.9rem;">All documents are digitized in our Encrypted Vault, guaranteeing <strong>15-minute audit readiness</strong> for any DOLE, PNP, or LGU inspection.</p>
+                    </div>
+
+                    <h3>Our Operational Mandates:</h3>
+                    <ul>
+                        <li><strong>Fair Wage & Welfare:</strong> We neutralize the regional labor drain by paying above-industry wages and providing typhoon relief, ensuring a stable, professional guard force.</li>
+                        <li><strong>Continuous Training:</strong> Mandatory In-Service Training (MIST) and DRRM drills are conducted regularly to maintain PNP-SOSIA standards.</li>
+                        <li><strong>Mock Audits:</strong> We conduct quarterly internal stress tests to ensure our Digital Vault and SOPs can withstand any regulatory scrutiny.</li>
+                    </ul>
+                </section>
+
+                <!-- Contact -->
+                <section style="margin-top: 3rem;">
+                    <h2><i class="fas fa-headset"></i> Questions About Our Policies?</h2>
+                    <p>If you require clarification on our compliance frameworks, data handling, or contract terms, our Compliance & Operations team is ready to assist.</p>
+                    
+                    <div class="contact-box glass-blue">
+                        <h3>Compliance & Policy Team</h3>
+                        <div class="contact-grid">
+                            <div class="contact-item">
+                                <span class="label">Email:</span>
+                                <a href="mailto:info@strongholda3.com" class="contact-link">info@strongholda3.com</a>
+                            </div>
+                            <div class="contact-item">
+                                <span class="label">Data Officer:</span>
+                                <a href="mailto:compliance@strongholda3.com" class="contact-link">compliance@strongholda3.com</a>
+                            </div>
+                            <div class="contact-item">
+                                <span class="label">Phone:</span>
+                                <a href="tel:09171370112" class="contact-link">09171370112 (24/7 Ops)</a>
+                            </div>
+                            <div class="contact-item">
+                                <span class="label">CEO Direct:</span>
+                                <a href="tel:09171350112" class="contact-link">Antonie M. Silva (09171350112)</a>
+                            </div>
+                            <div class="contact-item">
+                                <span class="label">Address:</span>
+                                <span>2nd Floor Real St., Tacloban City, Leyte, Philippines 6500</span>
+                            </div>
+                        </div>
+                        <p style="margin-top: 1.5rem; text-align: center; color: var(--text-muted); font-size: 0.9rem;">We aim to respond to policy-related inquiries within <strong>24 business hours</strong>.</p>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Stronghold A3</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://asilvainnovations.github.io/stronghold-a3/">Home</a></li>
+                        <li><a href="https://asilvainnovations.github.io/stronghold-a3/#about">About Us</a></li>
+                        <li><a href="https://asilvainnovations.github.io/stronghold-a3/#strategy">Strategy Map</a></li>
+                        <li><a href="https://asilvainnovations.github.io/stronghold-a3/#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://asilvainnovations.github.io/stronghold-a3/#services">Corporate Security</a></li>
+                        <li><a href="https://asilvainnovations.github.io/stronghold-a3/#services">Event Security</a></li>
+                        <li><a href="https://asilvainnovations.github.io/stronghold-a3/#services">Disaster Response</a></li>
+                        <li><a href="https://asilvainnovations.github.io/stronghold-a3/security-assessment.html">Risk Assessment Tool</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://resilient-secure-mobile.deploypad.app/">Staff SMS Portal</a></li>
+                        <li><a href="https://asilvainnovations.github.io/stronghold-a3/policies.html">Policies & Compliance</a></li>
+                        <li><a href="https://asilvainnovations.github.io/stronghold-a3/#contact">Client Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="#terms">Terms of Service</a></li>
+                        <li><a href="#privacy">Privacy Policy (RA 10173)</a></li>
+                        <li><a href="#surveillance">Surveillance Ethics</a></li>
+                        <li><a href="#compliance">Compliance Standards</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 Stronghold A3 Security Agency. All Rights Reserved. | DOLE DO-174 Compliant | PNP-SOSIA Licensed</p>
+                <p style="margin-top: 0.5rem; font-size: 0.8rem; color: rgba(255,255,255,0.4);">Eastern Visayas' Premier Zero-Liability Security Partner.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile hamburger toggle
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const mobileNav = document.getElementById('mobileNav');
+
+        hamburgerBtn.addEventListener('click', function () {
+            const isOpen = mobileNav.classList.toggle('is-open');
+            hamburgerBtn.classList.toggle('is-open', isOpen);
+        });
+
+        mobileNav.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', function () {
+                mobileNav.classList.remove('is-open');
+                hamburgerBtn.classList.remove('is-open');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+            anchor.addEventListener('click', function (e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Active state for navigation on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.toc a');
+            
+            let current = '';
+            sections.forEach(function(section) {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(function(link) {
+                link.style.color = '';
+                link.style.fontWeight = '';
+                if (link.getAttribute('href') === '#' + current) {
+                    link.style.color = '#FFD700';
+                    link.style.fontWeight = '700';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
