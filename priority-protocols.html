@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- SEO Meta Tags -->
+    <title>Stronghold A3 | Priority 6 Crisis Protocols - Eastern Visayas Security</title>
+    <meta name="description" content="Stronghold A3 Crisis-Proof Operational Workflows. Six priority protocols for typhoons, breaches, outages, and emergencies in Eastern Visayas.">
+    <meta name="author" content="Stronghold A3 Security Agency">
+    <meta name="theme-color" content="#0A1628">
+    
+    <!-- Canonical URL & Favicon -->
+    <link rel="icon" type="image/x-icon" href="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png">
+    
+    <!-- Preload Key Assets -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&family=Roboto+Condensed:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+    
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        montserrat: ['Montserrat', 'sans-serif'],
+                        poppins: ['Poppins', 'sans-serif'],
+                        'roboto-condensed': ['Roboto Condensed', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                },
+            },
+        }
+    </script>
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --gold: #FFD700;
+            --navy: #0A1628;
+            --blue: #3B82F6;
+            --blue-dark: #2563EB;
+            --radius: 0.5rem;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: radial-gradient(circle at 20% 0%, #002b5c 0%, #001b3d 45%, #000c1f 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        /* ===== GLOBAL WATERMARK LOGO BACKGROUND ===== */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: min(80vw, 80vh); height: min(80vw, 80vh);
+            background-image: url('https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png');
+            background-size: contain; background-repeat: no-repeat; background-position: center;
+            opacity: 0.04; border-radius: 50%; pointer-events: none; z-index: 0;
+        }
+        main, header, footer, nav { position: relative; z-index: 1; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', sans-serif; letter-spacing: 0.02em; }
+        
+        /* ===== GLASS EFFECTS ===== */
+        .glass {
+            background: linear-gradient(135deg, rgba(255,255,255,0.10), rgba(255,255,255,0.03));
+            backdrop-filter: blur(20px) saturate(160%);
+            -webkit-backdrop-filter: blur(20px) saturate(160%);
+            border: 1px solid rgba(255,255,255,0.12);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.18);
+        }
+        .glass-strong {
+            background: linear-gradient(135deg, rgba(0,43,92,0.55), rgba(0,12,31,0.65));
+            backdrop-filter: blur(28px) saturate(180%);
+            -webkit-backdrop-filter: blur(28px) saturate(180%);
+            border: 1px solid rgba(255,215,0,0.18);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.15);
+        }
+        .glass-gold {
+            background: linear-gradient(135deg, rgba(255,215,0,0.16), rgba(255,215,0,0.04));
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255,215,0,0.35);
+        }
+        .glass-red {
+            background: linear-gradient(135deg, rgba(220,20,60,0.25), rgba(220,20,60,0.08));
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(220,20,60,0.5);
+        }
+        
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(100,116,139,0.3); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(100,116,139,0.5); }
+        
+        /* ===== ANIMATIONS ===== */
+        @keyframes pulseG { 0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,.6)} 50%{box-shadow:0 0 0 6px rgba(34,197,94,0)} }
+        @keyframes spring { 0%{transform:scale(.96);opacity:0} 100%{transform:scale(1);opacity:1} }
+        @keyframes fadeInUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+        .pulse-green { animation: pulseG 2s infinite; }
+        .animate-spring { animation: spring 0.3s cubic-bezier(0.34,1.56,0.64,1); }
+        
+        /* ===== NAVIGATION & TABS ===== */
+        .nav-tab {
+            transition: all 0.3s ease; padding: 0.75rem 1.5rem; border-radius: 0.5rem; cursor: pointer;
+            font-weight: 600; background: rgba(59,130,246,0.2); color: #ffffff; border: 1px solid rgba(59,130,246,0.3);
+        }
+        .nav-tab:hover { background: rgba(59,130,246,0.4); }
+        .nav-tab.active {
+            background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%); color: #ffffff;
+            border-color: #3B82F6; box-shadow: 0 4px 12px rgba(59,130,246,0.4);
+        }
+        
+        /* ===== PAGE SECTIONS & MOBILE MENU ===== */
+        .page-section { display: none; }
+        .page-section.active { display: block; animation: fadeInUp 0.5s ease; }
+        .mobile-menu {
+            position: fixed; top: 0; right: -100%; width: 80%; max-width: 350px; height: 100vh;
+            background: #0A1628; z-index: 9999; transition: right 0.3s ease; padding: 20px;
+        }
+        .mobile-menu.open { right: 0; }
+        .overlay { position: fixed; top:0;left:0;width:100%;height:100%; background:rgba(0,0,0,.7); z-index:9998; display:none; }
+        .overlay.show { display: block; }
+        .floating-cta { position: fixed; bottom: 20px; right: 20px; z-index: 9999; }
+        
+        /* ===== PROTOCOL CARDS ===== */
+        .protocol-card {
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .protocol-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+        }
+        
+        .btn-primary { 
+            transition: all .3s ease; 
+            background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+            color: #ffffff;
+        }
+        .btn-primary:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 10px 40px rgba(59,130,246,0.5); 
+        }
+        
+        input, select, textarea { 
+            color: #ffffff !important; 
+            background: rgba(255,255,255,0.05) !important; 
+        }
+        input::placeholder, textarea::placeholder { 
+            color: #94A3B8 !important; 
+        }
+        ul li, ol li { color: #ffffff; }
+        
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .hero-image-wrap { height: 300px; }
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen relative dark">
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+    
+    <!-- Mobile Menu -->
+    <nav class="mobile-menu glass-strong" id="mobileMenu">
+        <div class="flex justify-between items-center mb-6">
+            <img src="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png" alt="Stronghold A3 Logo" class="h-16 w-16 rounded-full object-cover">
+            <button onclick="closeMobileMenu()" class="text-white hover:text-blue-400 transition"><i class="fas fa-times text-2xl"></i></button>
+        </div>
+        <ul class="space-y-4">
+            <li><a href="https://stronghold-a3.github.io/" class="text-lg block text-white hover:text-blue-400 transition">Home</a></li>
+            <li><a href="https://stronghold-a3.github.io/#services" class="text-lg block text-white hover:text-blue-400 transition">Services</a></li>
+            <li><a href="https://stronghold-a3.github.io/#about" class="text-lg block text-white hover:text-blue-400 transition">About</a></li>
+            <li><a href="https://stronghold-a3.github.io/policies.html" class="text-lg block text-white hover:text-blue-400 transition">Policies</a></li>
+            <li><a href="https://stronghold-a3.github.io/#contact" class="text-lg block text-white hover:text-blue-400 transition">Contact Us</a></li>
+            <li><a href="https://stronghold-a3.github.io/#dashboard" class="text-lg block text-yellow-400 font-bold">Stronghold Portal</a></li>
+        </ul>
+        <div class="mt-6 pt-6 border-t border-yellow-900/30">
+            <p class="text-sm text-gray-300">© 2026 Stronghold A3 Security Agency</p>
+            <p class="text-xs text-gray-400 mt-1">DOLE DO-174 Compliant</p>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 shadow-lg bg-[#0A1628]">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <a href="https://stronghold-a3.github.io/" class="flex items-center space-x-3">
+                    <img src="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png" alt="Stronghold A3 Logo" class="h-16 w-16 rounded-full object-cover border-2 border-blue-500">
+                    <div class="hidden md:block">
+                        <h1 class="text-xl font-montserrat font-bold tracking-wide text-white">STRONGHOLD A3</h1>
+                        <p class="text-sm text-blue-400">Zero-Liability Security Partner</p>
+                    </div>
+                </a>
+                <nav class="hidden md:flex items-center space-x-6">
+                    <a href="https://stronghold-a3.github.io/" class="text-white hover:text-blue-400 transition">Home</a>
+                    <a href="https://stronghold-a3.github.io/#services" class="text-white hover:text-blue-400 transition">Services</a>
+                    <a href="https://stronghold-a3.github.io/#about" class="text-white hover:text-blue-400 transition">About</a>
+                    <a href="https://asilvainnovations.github.io/stronghold-a3/policies.html" class="text-white hover:text-blue-400 transition">Policies</a>
+                    <a href="https://stronghold-a3.github.io/#contact" class="text-white hover:text-blue-400 transition">Contact Us</a>
+                    <a href="https://stronghold-a3.github.io/#dashboard" class="bg-yellow-400 text-[#0A1628] px-4 py-2 rounded-lg font-bold hover:bg-yellow-300 transition">Stronghold Portal</a>
+                </nav>
+                <button onclick="openMobileMenu()" class="md:hidden text-white hover:text-blue-400 transition"><i class="fas fa-bars text-2xl"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <main class="min-h-screen pb-20">
+        <!-- ==================== PRIORITY 6 PROTOCOLS PAGE ==================== -->
+        <section id="protocols" class="page-section active">
+            <!-- Hero Section -->
+            <div class="relative">
+                <div class="hero-image-wrap">
+                    <img src="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Crisis%20Protocols%20Hero.png" alt="Crisis Protocols" onerror="this.src='https://via.placeholder.com/1200x400/0A1628/FFD700?text=Priority+6+Crisis+Protocols'">
+                </div>
+                <div class="container mx-auto px-4 relative z-10 -mt-24">
+                    <div class="text-center space-y-6">
+                        <div class="inline-block glass-gold px-6 py-3 rounded-full animate-spring">
+                            <span class="text-[#0A1628] font-montserrat font-bold text-lg"><i class="fas fa-shield-alt mr-2"></i>CRISIS-PROOF OPERATIONAL WORKFLOW</span>
+                        </div>
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white font-montserrat">
+                            Priority 6 <span class="text-yellow-400">Crisis Protocols</span>
+                        </h1>
+                        <p class="text-lg text-white max-w-3xl mx-auto">
+                            Six battle-tested protocols to maintain uninterrupted security services during emergencies. 
+                            When the internet dies, our reporting never stops.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6 Protocol Visualizations Grid -->
+            <div class="container mx-auto px-4 py-16">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Protocol 1: Crisis Command Chain -->
+                    <div class="protocol-card glass-strong rounded-3xl p-8 shadow-2xl animate-spring">
+                        <div class="flex items-center gap-3 mb-6 border-b border-white/10 pb-4">
+                            <div class="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center shadow-lg">
+                                <i class="fas fa-sitemap text-xl text-white"></i>
+                            </div>
+                            <h2 class="text-2xl font-bold uppercase tracking-wide text-white">1. Crisis Command Chain</h2>
+                        </div>
+                        <p class="text-slate-300 mb-6">Clear hierarchy for emergency decision-making.</p>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10">
+                                <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center shadow-lg shrink-0">
+                                    <i class="fas fa-tower-broadcast text-sm"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-slate-400 uppercase tracking-widest">Commander</p>
+                                    <p class="text-base font-bold text-white">Operations Manager</p>
+                                    <p class="text-xs text-slate-300">Toggles "CRISIS MODE" & alerts clients</p>
+                                </div>
+                            </div>
+                            <div class="flex justify-center"><i class="fas fa-arrow-down text-yellow-400 text-xl"></i></div>
+                            
+                            <div class="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10">
+                                <div class="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center shadow-lg shrink-0">
+                                    <i class="fas fa-map-location-dot text-sm"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-slate-400 uppercase tracking-widest">Ground Lead</p>
+                                    <p class="text-base font-bold text-white">Supervisor / Asst. Supervisor</p>
+                                    <p class="text-xs text-slate-300">Dispatches relief & coordinates radio</p>
+                                </div>
+                            </div>
+                            <div class="flex justify-center"><i class="fas fa-arrow-down text-yellow-400 text-xl"></i></div>
+                            
+                            <div class="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-yellow-400/30">
+                                <div class="w-10 h-10 rounded-full bg-yellow-600 flex items-center justify-center shadow-lg shrink-0">
+                                    <i class="fas fa-user-shield text-sm"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-yellow-400 uppercase tracking-widest font-bold">Site Lead</p>
+                                    <p class="text-base font-bold text-white">Head Guard</p>
+                                    <p class="text-xs text-slate-300">Physical roll call & site safety</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Protocol 2: 3-Bridge Communications -->
+                    <div class="protocol-card glass-strong rounded-3xl p-8 shadow-2xl animate-spring">
+                        <div class="flex items-center gap-3 mb-6 border-b border-white/10 pb-4">
+                            <div class="w-12 h-12 rounded-full bg-green-600 flex items-center justify-center shadow-lg">
+                                <i class="fas fa-tower-cell text-xl text-white"></i>
+                            </div>
+                            <h2 class="text-2xl font-bold uppercase tracking-wide text-white">2. 3-Bridge Comms</h2>
+                        </div>
+                        <p class="text-slate-300 mb-6">Redundant communication channels ensure zero data loss.</p>
+                        
+                        <div class="space-y-5">
+                            <div class="flex items-start gap-4 p-4 rounded-xl border-l-4 border-green-500 bg-green-500/10">
+                                <div class="text-2xl text-green-400 mt-1 shrink-0"><i class="fas fa-cloud-arrow-up"></i></div>
+                                <div>
+                                    <h3 class="text-lg font-bold text-green-300">Bridge 1: Cloud SMS</h3>
+                                    <p class="text-sm text-slate-200">App logs data locally. Auto-syncs when internet returns.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start gap-4 p-4 rounded-xl border-l-4 border-yellow-500 bg-yellow-500/10">
+                                <div class="text-2xl text-yellow-400 mt-1 shrink-0"><i class="fas fa-comment-sms"></i></div>
+                                <div>
+                                    <h3 class="text-lg font-bold text-yellow-300">Bridge 2: SMS Gateway</h3>
+                                    <p class="text-sm text-slate-200">App converts report to coded SMS when no data.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start gap-4 p-4 rounded-xl border-l-4 border-red-500 bg-red-500/10">
+                                <div class="text-2xl text-red-400 mt-1 shrink-0"><i class="fas fa-walkie-talkie"></i></div>
+                                <div>
+                                    <h3 class="text-lg font-bold text-red-300">Bridge 3: Radio / Viber</h3>
+                                    <p class="text-sm text-slate-200">Total network failure? Use two-way radio.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-6 p-4 rounded-xl glass-gold text-center">
+                            <p class="text-[#0A1628] font-bold text-base uppercase tracking-wide"><i class="fas fa-shield-halved mr-2"></i>Zero Data Loss Guarantee</p>
+                        </div>
+                    </div>
+
+                    <!-- Protocol 3: Absenteeism -->
+                    <div class="protocol-card glass-strong rounded-3xl p-8 shadow-2xl animate-spring">
+                        <div class="flex items-center gap-3 mb-6 border-b border-white/10 pb-4">
+                            <div class="w-12 h-12 rounded-full bg-purple-600 flex items-center justify-center shadow-lg">
+                                <i class="fas fa-user-clock text-xl text-white"></i>
+                            </div>
+                            <h2 class="text-2xl font-bold uppercase tracking-wide text-white">3. Absenteeism</h2>
+                        </div>
+                        <p class="text-slate-300 mb-6">Rapid redeployment when guard calls in sick.</p>
+                        
+                        <div class="space-y-5">
+                            <div class="flex items-center gap-4">
+                                <div class="w-8 h-8 rounded-full bg-purple-600 flex items-center justify-center font-bold text-sm shadow-lg shrink-0 text-white">1</div>
+                                <div>
+                                    <p class="text-base font-bold text-white">REPORT ABSENCE</p>
+                                    <p class="text-sm text-slate-300">Supervisor logs absence in Cloud SMS app or via SMS.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-8 h-8 rounded-full bg-purple-600 flex items-center justify-center font-bold text-sm shadow-lg shrink-0 text-white">2</div>
+                                <div>
+                                    <p class="text-base font-bold text-white">DEPLOY RELIEF</p>
+                                    <p class="text-sm text-slate-300">Ops Manager views "Available Relief Guards" map and dispatches nearest qualified guard.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-8 h-8 rounded-full bg-purple-600 flex items-center justify-center font-bold text-sm shadow-lg shrink-0 text-white">3</div>
+                                <div>
+                                    <p class="text-base font-bold text-white">RAPID HANDOVER</p>
+                                    <p class="text-sm text-slate-300">Supervisor meets relief guard on-site for rapid handover.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-6 p-4 rounded-xl bg-purple-500/10 border border-purple-500/30 text-center">
+                            <p class="text-white font-bold text-sm"><i class="fas fa-clock mr-2"></i>Target: Relief deployed within 2 hours</p>
+                        </div>
+                    </div>
+
+                    <!-- Protocol 4: Typhoons -->
+                    <div class="protocol-card glass-red rounded-3xl p-8 shadow-2xl animate-spring pulse-red">
+                        <div class="flex items-center gap-3 mb-6 border-b border-red-400/30 pb-4">
+                            <div class="w-12 h-12 rounded-full bg-red-600 flex items-center justify-center shadow-lg">
+                                <i class="fas fa-cloud-bolt text-xl text-white"></i>
+                            </div>
+                            <h2 class="text-2xl font-bold uppercase tracking-wide text-red-200">4. Typhoons</h2>
+                        </div>
+                        <p class="text-slate-200 mb-6 text-base italic">Signal No. 2 raised. Site flooding imminent.</p>
+                        
+                        <div class="space-y-5">
+                            <div class="flex items-center gap-4">
+                                <div class="w-8 h-8 rounded-full bg-red-600 flex items-center justify-center font-bold text-sm shadow-lg shrink-0 text-white">1</div>
+                                <div>
+                                    <p class="text-base font-bold text-red-300">SECURE SITE</p>
+                                    <p class="text-sm text-slate-300">Guard moves to designated safe zone. Logs "Site Secured" via offline app.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-8 h-8 rounded-full bg-red-600 flex items-center justify-center font-bold text-sm shadow-lg shrink-0 text-white">2</div>
+                                <div>
+                                    <p class="text-base font-bold text-red-300">DISTRIBUTE RELIEF</p>
+                                    <p class="text-sm text-slate-300">Supervisor deploys pre-positioned "Bayanihan" relief packs.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-8 h-8 rounded-full bg-red-600 flex items-center justify-center font-bold text-sm shadow-lg shrink-0 text-white">3</div>
+                                <div>
+                                    <p class="text-base font-bold text-red-300">MONITOR GPS</p>
+                                    <p class="text-sm text-slate-300">Ops Manager tracks guard locations. Manual radio check-in every 2 hours if GPS dark.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-6 p-4 rounded-xl bg-black/30 border border-red-500/50 text-center">
+                            <p class="text-white font-bold text-base"><i class="fas fa-user-check text-yellow-400 mr-2"></i>Head Guard: Accountable for roll call!</p>
+                        </div>
+                    </div>
+
+                    <!-- Protocol 5: Power/Network Outages -->
+                    <div class="protocol-card glass-strong rounded-3xl p-8 shadow-2xl animate-spring">
+                        <div class="flex items-center gap-3 mb-6 border-b border-white/10 pb-4">
+                            <div class="w-12 h-12 rounded-full bg-amber-600 flex items-center justify-center shadow-lg">
+                                <i class="fas fa-plug-circle-xmark text-xl text-white"></i>
+                            </div>
+                            <h2 class="text-2xl font-bold uppercase tracking-wide text-white">5. Power/Network Outages</h2>
+                        </div>
+                        <p class="text-slate-300 mb-6">Total loss of internet and cellular data.</p>
+                        
+                        <div class="space-y-5">
+                            <div class="flex items-center gap-4">
+                                <div class="w-8 h-8 rounded-full bg-amber-600 flex items-center justify-center font-bold text-sm shadow-lg shrink-0 text-white">1</div>
+                                <div>
+                                    <p class="text-base font-bold text-white">LOG OFFLINE</p>
+                                    <p class="text-sm text-slate-300">Guard continues digital tours using offline app. Uses offline template for incidents.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-8 h-8 rounded-full bg-amber-600 flex items-center justify-center font-bold text-sm shadow-lg shrink-0 text-white">2</div>
+                                <div>
+                                    <p class="text-base font-bold text-white">SMS/RADIO FALLBACK</p>
+                                    <p class="text-sm text-slate-300">If app can't sync, send coded SMS: "STRONGHOLD TOUR COMPLETE SITE A NO ISSUES"</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-8 h-8 rounded-full bg-amber-600 flex items-center justify-center font-bold text-sm shadow-lg shrink-0 text-white">3</div>
+                                <div>
+                                    <p class="text-base font-bold text-white">MANUAL ENTRY</p>
+                                    <p class="text-sm text-slate-300">Ops Manager receives SMS/radio report, manually logs into dashboard, updates client.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-6 p-4 rounded-xl bg-amber-500/10 border border-amber-500/30 text-center">
+                            <p class="text-white font-bold text-sm"><i class="fas fa-battery-half mr-2"></i>Emergency Load SIM active</p>
+                        </div>
+                    </div>
+
+                    <!-- Protocol 6: Security Breach / Civil Unrest -->
+                    <div class="protocol-card glass-red rounded-3xl p-8 shadow-2xl animate-spring pulse-red">
+                        <div class="flex items-center gap-3 mb-6 border-b border-red-400/30 pb-4">
+                            <div class="w-12 h-12 rounded-full bg-red-700 flex items-center justify-center shadow-lg">
+                                <i class="fas fa-triangle-exclamation text-xl text-white"></i>
+                            </div>
+                            <h2 class="text-2xl font-bold uppercase tracking-wide text-red-200">6. Breach / Unrest</h2>
+                        </div>
+                        <p class="text-slate-200 mb-6 text-base italic">Armed intruders or mob violence approaching.</p>
+                        
+                        <div class="space-y-5">
+                            <div class="flex items-center gap-4">
+                                <div class="w-8 h-8 rounded-full bg-red-700 flex items-center justify-center font-bold text-sm shadow-lg shrink-0 text-white">1</div>
+                                <div>
+                                    <p class="text-base font-bold text-red-300">HIT SOS BUTTON</p>
+                                    <p class="text-sm text-slate-300">Press Panic in App OR blast Radio: "BREACH SITE A ARMED INTRUDER"</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-8 h-8 rounded-full bg-red-700 flex items-center justify-center font-bold text-sm shadow-lg shrink-0 text-white">2</div>
+                                <div>
+                                    <p class="text-base font-bold text-red-300">WAIT FOR COMMAND</p>
+                                    <p class="text-sm text-slate-300">Ops Manager issues <span class="font-bold text-yellow-400">"DEFEND"</span> or <span class="font-bold text-yellow-400">"EXTRACT"</span> order.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-8 h-8 rounded-full bg-red-700 flex items-center justify-center font-bold text-sm shadow-lg shrink-0 text-white">3</div>
+                                <div>
+                                    <p class="text-base font-bold text-red-300">FOLLOW R.O.E.</p>
+                                    <p class="text-sm text-slate-300">Never engage mob. Prioritize life. Observe & report.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-6 p-4 rounded-xl bg-black/50 border border-red-500 text-center">
+                            <p class="text-white font-bold text-base uppercase tracking-wide"><i class="fas fa-heart-pulse text-red-400 mr-2"></i>Your Life is the Priority</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Critical Success Factors -->
+            <div class="container mx-auto px-4 py-12">
+                <div class="glass-gold p-8 rounded-2xl text-center">
+                    <h2 class="text-3xl font-bold mb-6 text-[#0A1628] font-montserrat">Critical Success Factors</h2>
+                    <div class="grid md:grid-cols-3 gap-6 text-left">
+                        <div class="p-4">
+                            <div class="w-12 h-12 bg-[#0A1628] rounded-lg flex items-center justify-center mb-3 mx-auto">
+                                <i class="fas fa-sim-card text-yellow-400 text-xl"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-[#0A1628] mb-2">Emergency Load Rule</h3>
+                            <p class="text-sm text-gray-800">Every guard has a pre-loaded backup SIM card (Smart/Globe) used only for crisis communication.</p>
+                        </div>
+                        <div class="p-4">
+                            <div class="w-12 h-12 bg-[#0A1628] rounded-lg flex items-center justify-center mb-3 mx-auto">
+                                <i class="fas fa-clipboard-check text-yellow-400 text-xl"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-[#0A1628] mb-2">Quarterly Drills</h3>
+                            <p class="text-sm text-gray-800">Once per quarter, simulate total internet outage and mock breach. Practice SMS/radio fallbacks.</p>
+                        </div>
+                        <div class="p-4">
+                            <div class="w-12 h-12 bg-[#0A1628] rounded-lg flex items-center justify-center mb-3 mx-auto">
+                                <i class="fas fa-handshake text-yellow-400 text-xl"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-[#0A1628] mb-2">Client Transparency</h3>
+                            <p class="text-sm text-gray-800">During onboarding, show clients this workflow. Say: "If typhoon knocks out internet, here's our backup plan."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="container mx-auto px-4 py-12">
+                <div class="glass p-8 rounded-2xl text-center">
+                    <h2 class="text-3xl font-bold mb-4 text-white font-montserrat">Download Full Crisis Protocol PDF</h2>
+                    <p class="text-lg text-slate-300 mb-6">Access the complete Crisis-Proof Operational Workflow document with detailed procedures.</p>
+                    <a href="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/CRISIS-PROOF%20OPERATIONAL%20WORKFLOW%20-%20Stronghold%20A3.pdf" target="_blank" class="btn-primary inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-lg shadow-lg">
+                        <i class="fas fa-file-pdf"></i> Download PDF
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#0A1628] border-t border-blue-900">
+        <div class="container mx-auto px-4 py-8">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center md:text-left">
+                    <div class="flex items-center justify-center md:justify-start gap-3 mb-4">
+                        <img src="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png" alt="Stronghold A3" class="w-12 h-12 rounded-full object-cover">
+                        <div>
+                            <h3 class="font-bold font-montserrat text-white">STRONGHOLD A3</h3>
+                            <p class="text-xs text-blue-400">Zero-Liability Security</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-white/70">Eastern Visayas' premier security partner committed to zero-liability protection through compliance excellence.</p>
+                </div>
+                <div class="text-center">
+                    <h4 class="font-bold font-montserrat text-white mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="https://stronghold-a3.github.io/" class="text-white/70 hover:text-blue-400 transition">Home</a></li>
+                        <li><a href="https://stronghold-a3.github.io/#services" class="text-white/70 hover:text-blue-400 transition">Services</a></li>
+                        <li><a href="https://stronghold-a3.github.io/#about" class="text-white/70 hover:text-blue-400 transition">About</a></li>
+                        <li><a href="https://stronghold-a3.github.io/policies.html" class="text-white/70 hover:text-blue-400 transition">Policies</a></li>
+                        <li><a href="https://stronghold-a3.github.io/#contact" class="text-white/70 hover:text-blue-400 transition">Contact Us</a></li>
+                        <li><a href="https://stronghold-a3.github.io/#dashboard" class="text-yellow-400 hover:text-yellow-300 transition font-bold">Stronghold Portal</a></li>
+                    </ul>
+                </div>
+                <div class="text-center">
+                    <h4 class="font-bold font-montserrat text-white mb-4">Contact</h4>
+                    <ul class="space-y-2 text-sm text-white/70">
+                        <li><i class="fas fa-map-marker-alt mr-2 text-yellow-400"></i>2nd Floor Real St., Tacloban City</li>
+                        <li><i class="fas fa-phone mr-2 text-yellow-400"></i><a href="tel:09171370112" class="hover:text-white">09171370112</a></li>
+                        <li><i class="fas fa-envelope mr-2 text-yellow-400"></i>info@strongholda3.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-blue-900 mt-8 pt-6 text-center">
+                <p class="text-sm text-gray-500">© 2026 Stronghold A3 Security Agency. All Rights Reserved.</p>
+                <p class="text-xs text-gray-600 mt-1">DOLE DO-174 Compliant | Licensed Private Security Agency</p>
+            </div>
+        </div>
+        <div class="floating-cta">
+            <a href="tel:09171370112" class="bg-blue-500 text-white rounded-full w-16 h-16 flex items-center justify-center pulse-green shadow-lg hover:bg-blue-600 transition">
+                <i class="fas fa-phone text-2xl"></i>
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        function openMobileMenu() { 
+            document.getElementById('mobileMenu').classList.add('open'); 
+            document.getElementById('overlay').classList.add('show'); 
+        }
+        function closeMobileMenu() { 
+            document.getElementById('mobileMenu').classList.remove('open'); 
+            document.getElementById('overlay').classList.remove('show'); 
+        }
+        document.getElementById('overlay').addEventListener('click', closeMobileMenu);
+        document.addEventListener('keydown', e => { 
+            if (e.key === 'Escape') closeMobileMenu(); 
+        });
+        
+        console.log('%cStronghold A3 Priority 6 Protocols — Loaded', 'color:#3B82F6;font-size:16px;font-weight:bold;');
+    </script>
+</body>
+</html>
