@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stronghold A3 - 1-Day Disruptions BCP Manual</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Roboto+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ['Oswald', 'sans-serif'],
+                        body: ['Roboto Condensed', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        :root {
+            --background: 215 90% 8%;
+            --foreground: 210 40% 98%;
+            --card: 215 80% 12%;
+            --card-foreground: 210 40% 98%;
+            --primary: 211 100% 25%;
+            --accent: 45 100% 50%;
+            --destructive: 348 83% 47%;
+            --border: 215 40% 22%;
+        }
+
+        body {
+            color: #f8fafc;
+            font-family: 'Roboto Condensed', sans-serif;
+            background: radial-gradient(circle at 20% 0%, #002b5c 0%, #001b3d 45%, #000c1f 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: 0.02em;
+        }
+
+        /* Liquid Glass Card Styling */
+        .glass {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.03));
+            backdrop-filter: blur(20px) saturate(160%);
+            -webkit-backdrop-filter: blur(20px) saturate(160%);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.18);
+        }
+
+        .glass-strong {
+            background: linear-gradient(135deg, rgba(0, 43, 92, 0.55), rgba(0, 12, 31, 0.65));
+            backdrop-filter: blur(28px) saturate(180%);
+            -webkit-backdrop-filter: blur(28px) saturate(180%);
+            border: 1px solid rgba(255, 215, 0, 0.18);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.15);
+        }
+
+        .glass-gold {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.16), rgba(255, 215, 0, 0.04));
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 215, 0, 0.35);
+            box-shadow: 0 8px 32px rgba(255, 215, 0, 0.05);
+        }
+
+        .glass-red {
+            background: linear-gradient(135deg, rgba(220, 20, 60, 0.25), rgba(220, 20, 60, 0.08));
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(220, 20, 60, 0.5);
+            box-shadow: 0 8px 32px rgba(220, 20, 60, 0.1);
+        }
+
+        .text-gold {
+            color: #FFD700;
+        }
+
+        .border-gold {
+            border-color: rgba(255, 215, 0, 0.3);
+        }
+
+        /* Pulsing states */
+        .pulse-green {
+            animation: pulseG 2s infinite;
+        }
+
+        .pulse-red {
+            animation: pulseR 1.2s infinite;
+        }
+
+        @keyframes pulseG {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6); }
+            50% { box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+        }
+
+        @keyframes pulseR {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(220, 20, 60, 0.7); }
+            50% { box-shadow: 0 0 0 12px rgba(220, 20, 60, 0); }
+        }
+
+        .animate-spring {
+            animation: spring 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes spring {
+            0% { transform: scale(0.96); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Slide layout specs */
+        .slide-hidden {
+            display: none !important;
+        }
+
+        .lite-mode {
+            background: #001026 !important;
+        }
+        .lite-mode .glass, 
+        .lite-mode .glass-strong, 
+        .lite-mode .glass-gold, 
+        .lite-mode .glass-red {
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+            background: #021a3a !important;
+        }
+        
+        .presentation-canvas {
+            aspect-ratio: 16 / 9;
+            width: 100%;
+            max-width: 1280px;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 215, 0, 0.25);
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-between min-h-screen p-4 md:p-6 select-none">
+
+    <header class="w-full max-w-7xl flex items-center justify-between mb-3 glass px-6 py-2.5 rounded-2xl border-white/10">
+        <div class="flex items-center gap-4">
+            <div class="relative w-11 h-11 rounded-full overflow-hidden border-2 border-[#FFD700] shadow-[0_0_12px_rgba(255,215,0,0.4)]">
+                <img src="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Logo.jpg" 
+                     alt="Stronghold A3 Logo" 
+                     class="w-full h-full object-cover"
+                     onerror="this.src='https://placehold.co/100x100/002b5c/FFD700?text=A3'">
+            </div>
+            <div>
+                <span class="text-[10px] uppercase tracking-widest text-gold font-display font-medium">Business Continuity Protocols</span>
+                <h1 class="text-base md:text-lg font-bold font-display uppercase tracking-wider leading-none">1-DAY DISRUPTIONS BCPs <span class="text-gold font-semibold">v1.0</span></h1>
+            </div>
+        </div>
+        <div class="flex items-center gap-4">
+            <span class="hidden md:inline px-3 py-0.5 text-xs rounded-full bg-blue-500/20 text-sky-300 border border-blue-500/30 font-mono pulse-green">
+                <i class="fa-solid fa-clock-rotate-left mr-1 animate-pulse"></i> 1-DAY HORIZON READY
+            </span>
+            <span id="slide-index-counter" class="text-xs font-mono tracking-widest text-gold bg-black/40 px-2.5 py-1 rounded">Slide 01/12</span>
+        </div>
+    </header>
+
+    <main class="w-full flex-grow flex items-center justify-center py-1">
+        <div id="presentation-container" class="presentation-canvas w-full glass-strong rounded-3xl p-5 md:p-6 relative overflow-hidden flex flex-col justify-between border-white/10 shadow-2xl">
+            
+            <div class="absolute inset-0 bg-gradient-to-tr from-blue-950/10 via-transparent to-[#FFD700]/5 pointer-events-none z-0"></div>
+
+            <!-- ================= SLIDE 1: Title Screen ================= -->
+            <div id="slide-1" class="slide-content h-full flex flex-col justify-center items-center text-center z-10 animate-spring">
+                <div class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-[#FFD700]/10 text-gold border border-[#FFD700]/30 text-[10px] uppercase tracking-widest mb-4">
+                    <i class="fa-solid fa-shield-virus animate-pulse"></i> Tactical Contingency Blueprint
+                </div>
+                <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold uppercase tracking-wider text-white mb-2 leading-none">
+                    1-DAY DISRUPTIONS <br/><span class="text-gold">BUSINESS CONTINUITY PLANS</span>
+                </h1>
+                <p class="text-xs md:text-sm text-slate-300 max-w-2xl mb-6 leading-relaxed font-body">
+                    Five hyper-focused operational response scenarios mapped to decentralized roles. Engineered to secure clients, guarantee continuous data flow, and protect personnel in Eastern Visayas.
+                </p>
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-3 w-full max-w-5xl text-left">
+                    <div class="glass p-2.5 rounded-xl border-white/5">
+                        <span class="text-[10px] text-slate-400 block uppercase tracking-wider">Scenario 1</span>
+                        <span class="text-xs font-semibold text-white">Absenteeism</span>
+                        <span class="text-[9px] text-gold block font-mono mt-1">Redeploy &lt;2 Hours</span>
+                    </div>
+                    <div class="glass p-2.5 rounded-xl border-white/5">
+                        <span class="text-[10px] text-slate-400 block uppercase tracking-wider">Scenario 2</span>
+                        <span class="text-xs font-semibold text-white">Typhoons</span>
+                        <span class="text-[9px] text-emerald-400 block font-mono mt-1">PAGASA Aligned</span>
+                    </div>
+                    <div class="glass p-2.5 rounded-xl border-white/5">
+                        <span class="text-[10px] text-slate-400 block uppercase tracking-wider">Scenario 3</span>
+                        <span class="text-xs font-semibold text-white">Power Outages</span>
+                        <span class="text-[9px] text-sky-400 block font-mono mt-1">Offline-First App</span>
+                    </div>
+                    <div class="glass p-2.5 rounded-xl border-white/5">
+                        <span class="text-[10px] text-slate-400 block uppercase tracking-wider">Scenario 4</span>
+                        <span class="text-xs font-semibold text-white">Security Breach</span>
+                        <span class="text-[9px] text-red-400 block font-mono mt-1">Instant SOS Command</span>
+                    </div>
+                    <div class="glass p-2.5 rounded-xl border-white/5">
+                        <span class="text-[10px] text-slate-400 block uppercase tracking-wider">Scenario 5</span>
+                        <span class="text-xs font-semibold text-white">Civil Unrest</span>
+                        <span class="text-[9px] text-amber-400 block font-mono mt-1">Defend vs Extract</span>
+                    </div>
+                </div>
+                <p class="mt-4 text-[10px] text-slate-500 font-mono">
+                    Referenced File: <span class="text-gold">CRISIS-PROOF OPERATIONAL WORKFLOW - Stronghold A3.pdf</span>
+                </p>
+            </div>
+
+            <!-- ================= SLIDE 2: 3-Bridge Comms Architecture ================= -->
+            <div id="slide-2" class="slide-content h-full flex flex-col justify-between z-10 slide-hidden animate-spring">
+                <div>
+                    <h2 class="text-xl md:text-2xl font-bold uppercase text-white tracking-wide border-b border-white/10 pb-1.5 flex justify-between items-center">
+                        <span>THE 3-BRIDGE COMMUNICATION ARCHITECTURE</span>
+                        <span class="text-xs bg-gold/10 text-gold px-2 py-0.5 rounded border border-gold/20 font-mono">REDUN-NET FLOWS</span>
+                    </h2>
+                    <p class="text-xs text-slate-300 mt-1">
+                        How frontline metrics and tracking signals bypass massive climate shocks and total cellular infrastructure failures.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-2 flex-grow overflow-y-auto">
+                    <div class="glass p-3.5 rounded-xl border-emerald-500/20 bg-emerald-950/10 flex flex-col justify-between">
+                        <div>
+                            <span class="text-[10px] text-emerald-400 uppercase font-mono tracking-widest block mb-1">Bridge 1: Primary Digital</span>
+                            <h3 class="text-sm font-bold text-white uppercase"><i class="fa-solid fa-cloud-arrow-up mr-1 text-emerald-400"></i> Cloud SMS (Offline Mode)</h3>
+                            <p class="text-xs text-slate-300 mt-1.5 leading-relaxed">
+                                Security guard logs standard patrols and site logs locally inside app caches. When standard networks are restored, background caches seamlessly upload to the central operations dashboard.
+                            </p>
+                        </div>
+                        <span class="text-[9px] font-mono text-emerald-400/80 bg-emerald-500/10 px-2 py-0.5 rounded mt-3 self-start">Uptime Target: 100% (Offline-Ready)</span>
+                    </div>
+                    <div class="glass p-3.5 rounded-xl border-amber-500/20 bg-amber-950/10 flex flex-col justify-between">
+                        <div>
+                            <span class="text-[10px] text-amber-400 uppercase font-mono tracking-widest block mb-1">Bridge 2: Secondary Coded</span>
+                            <h3 class="text-sm font-bold text-white uppercase"><i class="fa-solid fa-comment-sms mr-1 text-amber-400"></i> Low-Bandwidth Gateway</h3>
+                            <p class="text-xs text-slate-300 mt-1.5 leading-relaxed">
+                                If data pipelines collapse, the local app automatically compresses incident alerts and tour milestones into low-bandwidth coded SMS arrays to transmit updates directly to the Ops Commander.
+                            </p>
+                        </div>
+                        <span class="text-[9px] font-mono text-amber-400/80 bg-amber-500/10 px-2 py-0.5 rounded mt-3 self-start">Trigger: Loss of Data Pipeline</span>
+                    </div>
+                    <div class="glass p-3.5 rounded-xl border-red-500/20 bg-red-950/10 flex flex-col justify-between">
+                        <div>
+                            <span class="text-[10px] text-red-400 uppercase font-mono tracking-widest block mb-1">Bridge 3: Tertiary Emergency</span>
+                            <h3 class="text-sm font-bold text-white uppercase"><i class="fa-solid fa-radio mr-1 text-red-400"></i> Mesh Radio / Landline</h3>
+                            <p class="text-xs text-slate-300 mt-1.5 leading-relaxed">
+                                During deep blackout disasters, guards utilize two-way UHF radios and local mesh configurations to relay coordinates and roll calls to Supervisors, who input manual updates.
+                            </p>
+                        </div>
+                        <span class="text-[9px] font-mono text-red-400/80 bg-red-500/10 px-2 py-0.5 rounded mt-3 self-start">Trigger: Complete Cellular Failure</span>
+                    </div>
+                </div>
+                <div class="glass p-2 rounded-lg border-white/5 text-center text-xs text-slate-400 font-mono">
+                    "THE GUARD NEVER STOPS LOGGING. THE SYSTEM SIMPLY CHANGES LANES."
+                </div>
+            </div>
+
+            <!-- ================= SLIDE 3: Scenario 1 Protocol ================= -->
+            <div id="slide-3" class="slide-content h-full flex flex-col justify-between z-10 slide-hidden animate-spring">
+                <div>
+                    <h2 class="text-xl md:text-2xl font-bold uppercase text-white tracking-wide border-b border-white/10 pb-1.5 flex justify-between items-center">
+                        <span>Contingency 1: ABSENTEEISM & REDEPLOYMENT</span>
+                        <span class="text-xs bg-emerald-500/10 text-emerald-400 px-2.5 py-0.5 rounded border border-emerald-500/20 font-mono">1-DAY TIMELINE</span>
+                    </h2>
+                    <p class="text-xs text-slate-300 mt-1">
+                        When a guard fails to report, the system initiates a rapid 120-minute gap containment sequence to shield client perimeters.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-2 flex-grow overflow-y-auto">
+                    <div class="glass p-3 rounded-xl border-white/5">
+                        <span class="text-xs font-mono text-gold uppercase block mb-1">Hour 0: Detection & Alert</span>
+                        <ul class="text-xs text-slate-300 space-y-1.5 mt-2">
+                            <li><strong class="text-white">T+0m:</strong> Guard/Supervisor logs absence inside Cloud SMS app.</li>
+                            <li><strong class="text-white">T+2m:</strong> Automated multi-channel broadcast triggers Red Alert.</li>
+                            <li><strong class="text-white">T+5m:</strong> Ops Manager opens "Available Relief Guards" mapping panel.</li>
+                        </ul>
+                    </div>
+                    <div class="glass p-3 rounded-xl border-white/5">
+                        <span class="text-xs font-mono text-gold uppercase block mb-1">Hour 1: Dispatch & Launch</span>
+                        <ul class="text-xs text-slate-300 space-y-1.5 mt-2">
+                            <li><strong class="text-white">T+15m:</strong> Ops Manager targets nearest guard, activates click-dispatch.</li>
+                            <li><strong class="text-white">T+17m:</strong> Relief guard gets high-priority push dispatch overlay.</li>
+                            <li><strong class="text-white">T+25m:</strong> Client portal auto-notifies: Relief en route with ETA tracking.</li>
+                        </ul>
+                    </div>
+                    <div class="glass p-3 rounded-xl border-white/5">
+                        <span class="text-xs font-mono text-gold uppercase block mb-1">Hour 2: Verification & Close</span>
+                        <ul class="text-xs text-slate-300 space-y-1.5 mt-2">
+                            <li><strong class="text-white">T+60m:</strong> Zonal Supervisor performs rapid physical site handover.</li>
+                            <li><strong class="text-white">T+75m:</strong> Guard clocks in on-site using GPS check-in & selfie.</li>
+                            <li><strong class="text-white">T+90m:</strong> Client receives automated "Post Covered" summary report.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="p-2.5 rounded-lg border border-emerald-500/20 bg-emerald-500/5 text-center text-xs text-emerald-300 flex justify-between items-center">
+                    <span><i class="fa-solid fa-triangle-exclamation mr-1.5 text-gold animate-bounce"></i> Fallback Mode: Pre-downloaded manual rosters act as local fallback channels instantly.</span>
+                    <span class="text-[10px] font-mono">KPI target: &lt;2 Hours to Full Post Coverage</span>
+                </div>
+            </div>
+
+            <!-- ================= SLIDE 4: Scenario 1 Interactive Dashboard ================= -->
+            <div id="slide-4" class="slide-content h-full flex flex-col justify-between z-10 slide-hidden animate-spring">
+                <div>
+                    <h2 class="text-xl md:text-2xl font-bold uppercase text-white tracking-wide border-b border-white/10 pb-1 flex justify-between items-center">
+                        <span>SCENARIO 1: INTERACTIVE GPS RELIEF DISPATCH</span>
+                        <span class="text-xs bg-sky-500/10 text-sky-400 px-2 py-0.5 rounded border border-sky-500/20 font-mono">SIMULATED COMMAND DESK</span>
+                    </h2>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-3 my-1.5 flex-grow overflow-hidden">
+                    <!-- Column 1: Grid Map -->
+                    <div class="md:col-span-7 glass rounded-xl border-white/10 p-2 relative overflow-hidden flex flex-col justify-between">
+                        <div class="absolute inset-0 bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
+                        <div class="flex justify-between items-center z-10">
+                            <span class="text-[10px] font-mono uppercase text-slate-400"><i class="fa-solid fa-map-location mr-1"></i> Tacloban City Sector A</span>
+                            <span class="text-[9px] font-mono px-2 py-0.5 rounded bg-red-500/20 text-red-300 border border-red-500/30 pulse-red" id="sim-status">UNRESOLVED COV GAP</span>
+                        </div>
+                        
+                        <!-- Mini Map grid with interactive pins -->
+                        <div class="h-44 w-full bg-blue-950/40 rounded-lg relative my-2 border border-white/5 flex items-center justify-center">
+                            <div class="absolute inset-x-0 h-0.5 bg-sky-500/10 top-1/2"></div>
+                            <div class="absolute inset-y-0 w-0.5 bg-sky-500/10 left-1/2"></div>
+                            
+                            <!-- Anchor Site Marker (Breached/Absent) -->
+                            <div class="absolute top-[40%] left-[48%] flex flex-col items-center">
+                                <div class="w-4 h-4 rounded-full bg-red-500 animate-ping absolute"></div>
+                                <div class="w-4 h-4 rounded-full bg-red-600 border border-white flex items-center justify-center text-[8px] font-bold z-10 text-white">X</div>
+                                <span class="text-[9px] font-mono text-red-400 mt-1 bg-black/60 px-1 rounded">Target Post</span>
+                            </div>
+
+                            <!-- Interactive Guard Pin 1 -->
+                            <button onclick="selectGuardPin('pin1', 'Guard Mark Santos', '1.8 km', 'Green', 'On-Call', '0917-882-XXXX')" 
+                                    class="absolute top-[20%] left-[25%] flex flex-col items-center cursor-pointer hover:scale-110 transition group focus:outline-none">
+                                <div class="w-5 h-5 rounded-full bg-emerald-500/20 border border-emerald-400 flex items-center justify-center text-emerald-300 text-[10px] shadow-lg group-hover:bg-emerald-400 group-hover:text-black">
+                                    <i class="fa-solid fa-user-shield"></i>
+                                </div>
+                                <span class="text-[8px] font-mono text-slate-300 mt-0.5 bg-black/40 px-1 rounded">Santos (1.8km)</span>
+                            </button>
+
+                            <!-- Interactive Guard Pin 2 -->
+                            <button onclick="selectGuardPin('pin2', 'Guard Arnel Ramos', '5.4 km', 'Yellow', 'Available', '0918-291-XXXX')" 
+                                    class="absolute top-[70%] left-[72%] flex flex-col items-center cursor-pointer hover:scale-110 transition group focus:outline-none">
+                                <div class="w-5 h-5 rounded-full bg-amber-500/20 border border-amber-400 flex items-center justify-center text-amber-300 text-[10px] shadow-lg group-hover:bg-amber-400 group-hover:text-black">
+                                    <i class="fa-solid fa-user-shield"></i>
+                                </div>
+                                <span class="text-[8px] font-mono text-slate-300 mt-0.5 bg-black/40 px-1 rounded">Ramos (5.4km)</span>
+                            </button>
+                        </div>
+                        <span class="text-[9px] text-slate-400 leading-none">Click on an available relief guard (Green/Yellow pin) on map to review dispatch options.</span>
+                    </div>
+
+                    <!-- Column 2: Dashboard Control Panel -->
+                    <div class="md:col-span-5 glass rounded-xl border-white/10 p-3 flex flex-col justify-between bg-black/40">
+                        <div>
+                            <span class="text-[10px] text-gold uppercase tracking-widest font-mono font-bold block mb-2">GPS Dispatch Details</span>
+                            <div class="space-y-2 text-xs">
+                                <div class="bg-white/5 p-2 rounded border border-white/5">
+                                    <span class="text-[10px] text-slate-400 uppercase">Selected Relief Unit</span>
+                                    <p class="font-bold text-white mt-0.5" id="relief-name">None Selected</p>
+                                </div>
+                                <div class="grid grid-cols-2 gap-2 text-[10px] font-mono">
+                                    <div class="bg-white/5 p-1.5 rounded border border-white/5">
+                                        <span class="text-slate-400 block">Proximity</span>
+                                        <span class="text-white font-bold" id="relief-distance">-</span>
+                                    </div>
+                                    <div class="bg-white/5 p-1.5 rounded border border-white/5">
+                                        <span class="text-slate-400 block">System Status</span>
+                                        <span class="text-white font-bold" id="relief-status">-</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- GAP TIMER WITH PULSATOR -->
+                        <div class="my-2 p-2 bg-red-950/20 border border-red-500/20 rounded flex items-center justify-between" id="timer-box">
+                            <div class="flex items-center gap-2">
+                                <div class="w-2.5 h-2.5 rounded-full bg-red-500 pulse-red" id="timer-pulse"></div>
+                                <span class="text-xs text-red-200" id="timer-status">Gap Active: 45m</span>
+                            </div>
+                            <span class="text-[10px] font-mono text-slate-400" id="timer-label">Est Warning at 90m</span>
+                        </div>
+
+                        <button onclick="dispatchGuard()" id="dispatch-btn" disabled 
+                                class="w-full py-2 bg-slate-700/50 text-slate-400 border border-slate-600/30 font-bold uppercase rounded-lg text-xs cursor-not-allowed transition">
+                            Confirm Dispatch Alert
+                        </button>
+                    </div>
+                </div>
+
+                <div class="glass p-2.5 rounded-xl border-white/5 text-center text-xs text-slate-400 font-mono">
+                    System logs backup SIM credentials ("Emergency Load") automatically upon target launch confirmation.
+                </div>
+            </div>
+
+            <!-- ================= SLIDE 5: Scenario 2 Protocol ================= -->
+            <div id="slide-5" class="slide-content h-full flex flex-col justify-between z-10 slide-hidden animate-spring">
+                <div>
+                    <h2 class="text-xl md:text-2xl font-bold uppercase text-white tracking-wide border-b border-white/10 pb-1.5 flex justify-between items-center">
+                        <span>Contingency 2: TYPHOON PRE-POSITIONING SOP</span>
+                        <span class="text-xs bg-emerald-500/10 text-emerald-400 px-2.5 py-0.5 rounded border border-emerald-500/20 font-mono">DISASTER DRRM</span>
+                    </h2>
+                    <p class="text-xs text-slate-300 mt-1">
+                        SOP triggers align strictly with regional environmental shocks (PAGASA Signal No. 2 or higher) to secure perimeters.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-2 flex-grow overflow-y-auto pr-1">
+                    <div class="glass p-3 rounded-xl border-white/5 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-mono text-gold uppercase block"><i class="fa-solid fa-cloud-sun-rain mr-1"></i> Phase 1: Pre-Landfall</span>
+                            <span class="text-[9px] bg-blue-500/10 text-blue-300 border border-blue-500/20 px-1.5 py-0.5 rounded inline-block mt-1 font-mono">T-24 hrs to T-0 hrs</span>
+                            <ul class="text-[11px] text-slate-300 space-y-1.5 mt-3">
+                                <li>• Ops Manager triggers "TYPHOON MODE" in Cloud SMS.</li>
+                                <li>• Admin dispatches pre-staged <strong class="text-white">Bayanihan Relief Packs</strong> to high-risk hubs.</li>
+                                <li>• Guards log safe positioning and backup SIM load checks.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="glass p-3 rounded-xl border-white/5 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-mono text-gold uppercase block"><i class="fa-solid fa-wind mr-1"></i> Phase 2: Active Typhoon</span>
+                            <span class="text-[9px] bg-amber-500/10 text-amber-300 border border-amber-500/20 px-1.5 py-0.5 rounded inline-block mt-1 font-mono">T-0 hrs to T+12 hrs</span>
+                            <ul class="text-[11px] text-slate-300 space-y-1.5 mt-3">
+                                <li>• System activates offline caching.</li>
+                                <li>• Frontline guards tap "SAFE" every <strong class="text-white">2 hours</strong> on-site.</li>
+                                <li>• Continuous check-ins run via App, low-bandwidth SMS, or Two-way Radios.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="glass p-3 rounded-xl border-white/5 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-mono text-gold uppercase block"><i class="fa-solid fa-house-medical mr-1"></i> Phase 3: Post-Storm</span>
+                            <span class="text-[9px] bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 px-1.5 py-0.5 rounded inline-block mt-1 font-mono">T+12 hrs to T+24 hrs</span>
+                            <ul class="text-[11px] text-slate-300 space-y-1.5 mt-3">
+                                <li>• Bulk background auto-sync transfers local databases.</li>
+                                <li>• Guards compile structural assessments & upload hazard logs.</li>
+                                <li>• Ops Manager delivers automated impact briefings to the clients.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass p-2.5 rounded-xl border-white/5 text-center text-xs text-slate-400">
+                    <i class="fa-solid fa-circle-check text-emerald-400 mr-1.5"></i> Integrates with <strong class="text-white">RA 10121 DRRM Guidelines</strong>, shielding clients from operational liabilities and ensuring guard accountability.
+                </div>
+            </div>
+
+            <!-- ================= SLIDE 6: Scenario 2 Weather Dashboard ================= -->
+            <div id="slide-6" class="slide-content h-full flex flex-col justify-between z-10 slide-hidden animate-spring">
+                <div>
+                    <h2 class="text-xl md:text-2xl font-bold uppercase text-white tracking-wide border-b border-white/10 pb-1 flex justify-between items-center">
+                        <span>SCENARIO 2: TYPHOON PRE-LANDFALL MATRIX</span>
+                        <span class="text-xs bg-amber-500/10 text-gold px-2 py-0.5 rounded border border-amber-500/20 font-mono">DRRM LOGISTICS</span>
+                    </h2>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-3 my-2 flex-grow overflow-hidden">
+                    <!-- Column 1: Asset Matrix -->
+                    <div class="md:col-span-8 glass rounded-xl border-white/10 p-3 flex flex-col justify-between">
+                        <span class="text-[10px] text-slate-400 uppercase font-mono tracking-widest"><i class="fa-solid fa-clipboard-list mr-1"></i> Pre-positioned Resource status</span>
+                        
+                        <div class="grid grid-cols-2 gap-3 my-2 flex-grow justify-center items-center">
+                            <div class="bg-blue-950/20 border border-white/5 rounded-lg p-2.5 flex items-center justify-between">
+                                <div>
+                                    <span class="text-[10px] text-slate-400 block">Bayanihan Food Packs</span>
+                                    <span class="text-xs font-bold text-emerald-400" id="pack-status">STAGE COMPLETE (12 Units)</span>
+                                </div>
+                                <i class="fa-solid fa-box-tissue text-emerald-400 text-lg"></i>
+                            </div>
+                            <div class="bg-blue-950/20 border border-white/5 rounded-lg p-2.5 flex items-center justify-between">
+                                <div>
+                                    <span class="text-[10px] text-slate-400 block">Backup Dual-SIM Load</span>
+                                    <span class="text-xs font-bold text-emerald-400">ACTIVE & SECURED</span>
+                                </div>
+                                <i class="fa-solid fa-sim-card text-emerald-400 text-lg"></i>
+                            </div>
+                            <div class="bg-blue-950/20 border border-white/5 rounded-lg p-2.5 flex items-center justify-between">
+                                <div>
+                                    <span class="text-[10px] text-slate-400 block">UHF Radios (Channel 1)</span>
+                                    <span class="text-xs font-bold text-emerald-400">SYNC SUCCESSFUL</span>
+                                </div>
+                                <i class="fa-solid fa-walkie-talkie text-emerald-400 text-lg"></i>
+                            </div>
+                            <div class="bg-blue-950/20 border border-white/5 rounded-lg p-2.5 flex items-center justify-between">
+                                <div>
+                                    <span class="text-[10px] text-slate-400 block">Flood Overlay status</span>
+                                    <span class="text-xs font-bold text-gold cursor-pointer hover:underline" id="overlay-status" onclick="toggleFloodOverlay()">SHOW FLOOD RISK ZONE</span>
+                                </div>
+                                <i class="fa-solid fa-circle-nodes text-gold text-lg" id="overlay-icon"></i>
+                            </div>
+                        </div>
+
+                        <!-- FLOOD ALERT WARNING BAR -->
+                        <div class="p-2 bg-slate-900/40 rounded border border-white/5 text-[11px] text-slate-300" id="flood-alert-text">
+                            <i class="fa-solid fa-info-circle text-sky-400 mr-1.5"></i> Maps trace critical low-lying client sectors. Select 'SHOW FLOOD RISK ZONE' to display potential flood areas.
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Storm Tracking Visualizer -->
+                    <div class="md:col-span-4 glass rounded-xl border-white/10 p-3 flex flex-col justify-between bg-black/40 text-center">
+                        <span class="text-[10px] text-gold uppercase tracking-widest font-mono font-bold block">PAGASA Weather Warning</span>
+                        
+                        <div class="my-3 p-4 bg-amber-950/20 border border-amber-500/20 rounded-lg relative overflow-hidden flex flex-col items-center justify-center">
+                            <div class="absolute inset-0 bg-amber-500/5 animate-pulse"></div>
+                            <span class="text-3xl font-black text-gold font-display leading-none">SIGNAL NO. 2</span>
+                            <span class="text-[10px] font-mono text-amber-300 uppercase mt-1">Typhoon mode initialized</span>
+                        </div>
+                        
+                        <p class="text-xs text-slate-300 leading-relaxed font-body">
+                            Operations control transfers data transmissions to lowest bandwidth structures to bypass anticipated regional tower grid closures.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="glass p-2 rounded-xl border-white/5 text-center text-[10px] text-slate-400 font-mono">
+                    System complies natively with standard labor laws, guaranteeing safe shelter structures during severe weather impact.
+                </div>
+            </div>
+
+            <!-- ================= SLIDE 7: Scenario 3 Protocol ================= -->
+            <div id="slide-7" class="slide-content h-full flex flex-col justify-between z-10 slide-hidden animate-spring">
+                <div>
+                    <h2 class="text-xl md:text-2xl font-bold uppercase text-white tracking-wide border-b border-white/10 pb-1.5 flex justify-between items-center">
+                        <span>Contingency 3: POWER & NETWORK BLACKOUTS</span>
+                        <span class="text-xs bg-emerald-500/10 text-emerald-400 px-2.5 py-0.5 rounded border border-emerald-500/20 font-mono">THE DEAD ZONE</span>
+                    </h2>
+                    <p class="text-xs text-slate-300 mt-1">
+                        How patrol tracking is maintained when internet connectivity is entirely lost.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-3 my-2 flex-grow overflow-hidden">
+                    <div class="md:col-span-7 space-y-2 flex flex-col justify-between">
+                        <div class="glass p-3 rounded-xl border-white/5 flex items-start gap-3">
+                            <span class="w-7 h-7 rounded-full bg-gold/10 text-gold flex items-center justify-center shrink-0 font-bold font-mono">1</span>
+                            <div>
+                                <h4 class="text-xs font-bold uppercase text-white">Continual offline Logging</h4>
+                                <p class="text-[11px] text-slate-300">Guards proceed with scheduled routes. Incident photo / voice recordings are saved securely in local device storage.</p>
+                            </div>
+                        </div>
+                        <div class="glass p-3 rounded-xl border-white/5 flex items-start gap-3">
+                            <span class="w-7 h-7 rounded-full bg-gold/10 text-gold flex items-center justify-center shrink-0 font-bold font-mono">2</span>
+                            <div>
+                                <h4 class="text-xs font-bold uppercase text-white">Coded SMS / Radio Transmissions</h4>
+                                <p class="text-[11px] text-slate-300">If cloud sync is lost, guards send low-frequency coded SMS reports or transmit patrol updates via UHF radios.</p>
+                            </div>
+                        </div>
+                        <div class="glass p-3 rounded-xl border-white/5 flex items-start gap-3">
+                            <span class="w-7 h-7 rounded-full bg-gold/10 text-gold flex items-center justify-center shrink-0 font-bold font-mono">3</span>
+                            <div>
+                                <h4 class="text-xs font-bold uppercase text-white">Manual Dashboard Entries</h4>
+                                <p class="text-[11px] text-slate-300">The Ops Manager intercepts coded notifications on their dashboard phone and updates coordinates on behalf of the site.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Side graphic illustration -->
+                    <div class="md:col-span-5 glass p-4 rounded-xl border-white/10 flex flex-col justify-between text-center bg-blue-950/20">
+                        <span class="text-[10px] text-gold uppercase tracking-widest font-mono block">Offline Sync Model</span>
+                        <div class="my-4 flex justify-around items-center">
+                            <div class="flex flex-col items-center">
+                                <i class="fa-solid fa-wifi-slash text-red-400 text-2xl animate-pulse"></i>
+                                <span class="text-[9px] text-slate-400 mt-1 font-mono">No Signal</span>
+                            </div>
+                            <i class="fa-solid fa-arrow-right text-slate-500"></i>
+                            <div class="flex flex-col items-center">
+                                <i class="fa-solid fa-floppy-disk text-amber-400 text-2xl"></i>
+                                <span class="text-[9px] text-slate-400 mt-1 font-mono font-bold">Local Cache</span>
+                            </div>
+                            <i class="fa-solid fa-arrow-right text-slate-500"></i>
+                            <div class="flex flex-col items-center">
+                                <i class="fa-solid fa-rotate text-emerald-400 text-2xl"></i>
+                                <span class="text-[9px] text-emerald-400 mt-1 font-mono">Auto-Sync</span>
+                            </div>
+                        </div>
+                        <p class="text-xs text-slate-300 leading-relaxed font-body">
+                            Once cellular service is restored, background threads sync all cached security logs instantly with no risk of data duplication.
+                        </p>
+                    </div>
+                </div>
+                <div class="glass p-2.5 rounded-xl border-white/5 text-center text-[10px] text-slate-400 font-mono">
+                    COMPLIES WITH THE DATA PRIVACY ACT -- ALL INCIDENT LOGFILES ENCRYPTED DIRECTLY IN LOCAL DEVICE MEMORY.
+                </div>
+            </div>
+
+            <!-- ================= SLIDE 8: Scenario 3 Interactive Outage Decoder ================= -->
+            <div id="slide-8" class="slide-content h-full flex flex-col justify-between z-10 slide-hidden animate-spring">
+                <div>
+                    <h2 class="text-xl md:text-2xl font-bold uppercase text-white tracking-wide border-b border-white/10 pb-1 flex justify-between items-center">
+                        <span>SCENARIO 3: CODED SMS DISPATCH DECODER</span>
+                        <span class="text-xs bg-sky-500/10 text-sky-400 px-2 py-0.5 rounded border border-sky-500/20 font-mono">MANUAL SYNCHRONIZATION</span>
+                    </h2>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-3 my-2 flex-grow overflow-hidden">
+                    <!-- Column 1: Incoming Coded Log Queue -->
+                    <div class="md:col-span-6 glass rounded-xl border-white/10 p-3 flex flex-col justify-between">
+                        <div>
+                            <span class="text-[10px] text-slate-400 uppercase font-mono tracking-widest block mb-2"><i class="fa-solid fa-mobile-screen mr-1"></i> SMS Gateway Inbox (Bridge 2)</span>
+                            <div class="space-y-2" id="sms-queue">
+                                <button onclick="selectSmsCode('TOUR_OK', 'TOUR_OK_A3_S1_YES', 'Tour 4 Completed, Site A secure')" 
+                                        class="w-full text-left p-2 rounded bg-white/5 hover:bg-white/10 border border-white/5 transition flex justify-between items-center text-xs">
+                                    <span class="font-mono text-sky-300 font-bold">SMS: TOUR_OK_A3_S1_YES</span>
+                                    <span class="text-[10px] text-slate-400 font-mono">Rec: Just Now</span>
+                                </button>
+                                <button onclick="selectSmsCode('BREACH_SOS', 'ALERT_SOS_S1_ARMED', 'ARMED BREACH DETECTED, SEEKING EMERGENCY RESPONSE')" 
+                                        class="w-full text-left p-2 rounded bg-red-950/20 hover:bg-red-900/30 border border-red-500/20 transition flex justify-between items-center text-xs">
+                                    <span class="font-mono text-red-300 font-bold">SMS: ALERT_SOS_S1_ARMED</span>
+                                    <span class="text-[10px] text-red-400 font-mono">Rec: 2m ago</span>
+                                </button>
+                            </div>
+                        </div>
+                        <span class="text-[9px] text-slate-400">Select an incoming coded SMS above to load and decode it.</span>
+                    </div>
+
+                    <!-- Column 2: Interactive Decoder Panel -->
+                    <div class="md:col-span-6 glass rounded-xl border-white/10 p-3 flex flex-col justify-between bg-black/40">
+                        <div>
+                            <span class="text-[10px] text-gold uppercase tracking-widest font-mono font-bold block mb-2">Decoded Site metrics</span>
+                            <div class="space-y-2 text-xs">
+                                <div class="bg-white/5 p-2 rounded border border-white/5">
+                                    <span class="text-[10px] text-slate-400 uppercase block font-mono">Incoming encrypted array</span>
+                                    <input type="text" id="sms-input-field" readonly placeholder="No SMS loaded" 
+                                           class="w-full bg-transparent border-none text-white focus:outline-none font-mono font-bold mt-1">
+                                </div>
+                                <div class="bg-white/5 p-2 rounded border border-white/5">
+                                    <span class="text-[10px] text-slate-400 uppercase block font-mono">System Translation</span>
+                                    <p class="font-bold text-emerald-300 font-sans mt-0.5" id="decoded-translation">-</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button onclick="syncCodedSms()" id="sync-sms-btn" disabled
+                                class="w-full py-2 bg-slate-700/50 text-slate-400 border border-slate-600/30 font-bold uppercase rounded-lg text-xs cursor-not-allowed transition">
+                            Manually Sync to Cloud Dashboard
+                        </button>
+                    </div>
+                </div>
+
+                <div class="glass p-2.5 rounded-xl border-white/5 text-center text-xs text-slate-400 font-mono">
+                    Once clicked, data propagates to Client dashboard feeds automatically as an "Offline Verified Record."
+                </div>
+            </div>
+
+            <!-- ================= SLIDE 9: Scenario 4 Protocol ================= -->
+            <div id="slide-9" class="slide-content h-full flex flex-col justify-between z-10 slide-hidden animate-spring">
+                <div>
+                    <h2 class="text-xl md:text-2xl font-bold uppercase text-white tracking-wide border-b border-white/10 pb-1.5 flex justify-between items-center">
+                        <span>Contingency 4: MAJOR BREACH ESCALATION SOP</span>
+                        <span class="text-xs bg-red-500/10 text-red-400 px-2.5 py-0.5 rounded border border-red-500/20 font-mono pulse-red">CRITICAL ESCALATION</span>
+                    </h2>
+                    <p class="text-xs text-slate-300 mt-1">
+                        Immediate operational loops activated during armed intrusions, major security compromises, or violent trespassing.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-3 my-2 flex-grow overflow-y-auto">
+                    <div class="glass p-3 rounded-xl border-red-500/20 bg-red-950/10 flex flex-col justify-between">
+                        <div>
+                            <span class="text-[10px] text-red-400 font-mono uppercase block">Phase 1: SOS Trigger</span>
+                            <span class="text-[9px] bg-red-500/20 text-red-300 px-1.5 py-0.5 rounded inline-block mt-1 font-mono">Minute 0</span>
+                            <p class="text-[11px] text-slate-300 mt-2.5 leading-relaxed">
+                                Frontline guard presses "SOS/Panic" button inside the Cloud SMS app. If cellular arrays are down, guard triggers a coded radio transmission.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="glass p-3 rounded-xl border-white/5 flex flex-col justify-between">
+                        <div>
+                            <span class="text-[10px] text-slate-400 font-mono uppercase block">Phase 2: Alert Dispatch</span>
+                            <span class="text-[9px] bg-white/10 text-slate-300 px-1.5 py-0.5 rounded inline-block mt-1 font-mono">Minute 0-2</span>
+                            <p class="text-[11px] text-slate-300 mt-2.5 leading-relaxed">
+                                Dashboard alerts system monitors, Zonal Supervisors, and PNP regional desks instantly with live GPS tracking details.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="glass p-3 rounded-xl border-[#FFD700]/20 bg-blue-950/20 flex flex-col justify-between">
+                        <div>
+                            <span class="text-[10px] text-gold font-mono uppercase block">Phase 3: Field Response</span>
+                            <span class="text-[9px] bg-gold/10 text-gold px-1.5 py-0.5 rounded inline-block mt-1 font-mono">Minute 5-10</span>
+                            <p class="text-[11px] text-slate-300 mt-2.5 leading-relaxed">
+                                Supervisor rushes to the coordinates, coordinates with responding local police units, and takes direct control of safe perimeter recovery.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="glass p-3 rounded-xl border-white/5 flex flex-col justify-between">
+                        <div>
+                            <span class="text-[10px] text-slate-400 font-mono uppercase block">Phase 4: Client Report</span>
+                            <span class="text-[9px] bg-white/10 text-slate-300 px-1.5 py-0.5 rounded inline-block mt-1 font-mono">Minute 30-60</span>
+                            <p class="text-[11px] text-slate-300 mt-2.5 leading-relaxed">
+                                Ops Manager generates a preliminary Breach incident log and transmits the report directly to client emergency contacts.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-2.5 rounded-lg border border-red-500/20 bg-red-500/5 text-center text-xs text-red-300 font-mono">
+                    GUARANTEES ABSOLUTE COMPLIANCE STANDARDS -- ALL POLICE INCIDENT RECORDS EXPORTED WITHIN 60 MINUTES OF CLOSURE.
+                </div>
+            </div>
+
+            <!-- ================= SLIDE 10: Scenario 4 Active Breach Map ================= -->
+            <div id="slide-10" class="slide-content h-full flex flex-col justify-between z-10 slide-hidden animate-spring">
+                <div>
+                    <h2 class="text-xl md:text-2xl font-bold uppercase text-white tracking-wide border-b border-white/10 pb-1 flex justify-between items-center">
+                        <span>SCENARIO 4: ACTIVE BREED/SOS EMERGENCY DESK</span>
+                        <span class="text-xs bg-red-500/10 text-red-400 px-2 py-0.5 rounded border border-red-500/20 font-mono pulse-red">COMMAND ALERTS</span>
+                    </h2>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-3 my-1.5 flex-grow overflow-hidden">
+                    <!-- Column 1: Map visualizer -->
+                    <div class="md:col-span-8 glass rounded-xl border-white/10 p-2 relative flex flex-col justify-between">
+                        <div class="absolute inset-0 bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
+                        <div class="flex justify-between items-center z-10">
+                            <span class="text-[10px] font-mono text-red-400 uppercase"><i class="fa-solid fa-map-location mr-1"></i> ACTIVE SECTOR MONITOR</span>
+                            <span class="text-[9px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-300 border border-emerald-500/20" id="sos-status-label">SYS STATUS: MONITORING</span>
+                        </div>
+                        
+                        <div class="h-40 w-full bg-slate-950/40 rounded-lg relative my-2 border border-white/5 flex items-center justify-center overflow-hidden" id="sos-map-box">
+                            <div class="absolute inset-x-0 h-0.5 bg-red-500/10 top-1/2"></div>
+                            <div class="absolute inset-y-0 w-0.5 bg-red-500/10 left-1/2"></div>
+                            
+                            <!-- Site pin -->
+                            <div class="absolute top-[35%] left-[50%] flex flex-col items-center">
+                                <div class="w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center text-white text-[10px] font-bold border border-white shadow-lg" id="sos-map-pin">
+                                    <i class="fa-solid fa-building-shield"></i>
+                                </div>
+                                <span class="text-[9px] font-mono text-slate-300 mt-1 bg-black/60 px-1 rounded">Tacloban Hub A</span>
+                            </div>
+
+                            <!-- Responding Unit -->
+                            <div class="absolute top-[65%] left-[20%] flex flex-col items-center transition-all duration-[5000ms]" id="responder-unit-pin">
+                                <div class="w-5 h-5 rounded-full bg-sky-500 flex items-center justify-center text-white text-[9px] border border-white shadow-md">
+                                    <i class="fa-solid fa-car-on"></i>
+                                </div>
+                                <span class="text-[8px] font-mono text-sky-300 mt-0.5 bg-black/40 px-1 rounded">Supervisor (4.2km)</span>
+                            </div>
+                        </div>
+                        <span class="text-[9px] text-slate-400 leading-none">Press 'ACTIVATE EMERGENCY SOS' inside control panel to simulate a live tactical alert flow.</span>
+                    </div>
+
+                    <!-- Column 2: Incident Control Desk -->
+                    <div class="md:col-span-4 glass rounded-xl border-white/10 p-3 flex flex-col justify-between bg-black/40" id="breach-desk">
+                        <div>
+                            <span class="text-[10px] text-red-400 uppercase tracking-widest font-mono font-bold block mb-1">Breach Control Panel</span>
+                            <div class="space-y-1.5 text-xs">
+                                <div class="bg-white/5 p-2 rounded border border-white/5">
+                                    <span class="text-[10px] text-slate-400 uppercase">RESPONDING COMMANDER</span>
+                                    <p class="font-bold text-white mt-0.5" id="commander-name">Supervisor Ramos</p>
+                                </div>
+                                <div class="bg-white/5 p-1.5 rounded border border-white/5">
+                                    <span class="text-[10px] text-slate-400 uppercase block">INCIDENT TIMELINE</span>
+                                    <p class="text-[11px] text-slate-300" id="breach-timeline">No active events logged.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button onclick="triggerSosBreach()" id="sos-trigger-btn"
+                                class="w-full py-2 bg-red-600 hover:bg-red-500 text-white border border-red-500 font-bold uppercase rounded-lg text-xs cursor-pointer transition pulse-red shadow-[0_0_15px_rgba(239,68,68,0.4)]">
+                            Activate Emergency SOS
+                        </button>
+                    </div>
+                </div>
+
+                <div class="glass p-2 rounded-xl border-white/5 text-center text-[10px] text-slate-400 font-mono">
+                    Systems automatically push automated alert loops to nearby on-standby reinforcement teams instantly.
+                </div>
+            </div>
+
+            <!-- ================= SLIDE 11: Scenario 5 Threat Calculator ================= -->
+            <div id="slide-11" class="slide-content h-full flex flex-col justify-between z-10 slide-hidden animate-spring">
+                <div>
+                    <h2 class="text-xl md:text-2xl font-bold uppercase text-white tracking-wide border-b border-white/10 pb-1 flex justify-between items-center">
+                        <span>SCENARIO 5: CIVIL UNREST CONTINGENCY DECISION ENGINE</span>
+                        <span class="text-xs bg-amber-500/10 text-gold px-2 py-0.5 rounded border border-amber-500/20 font-mono">REAL-TIME THREAT LOGIC</span>
+                    </h2>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-3 my-2 flex-grow overflow-hidden">
+                    <!-- Column 1: Config sliders -->
+                    <div class="md:col-span-7 glass rounded-xl border-white/10 p-3 flex flex-col justify-between">
+                        <span class="text-[10px] text-slate-400 uppercase font-mono tracking-widest"><i class="fa-solid fa-sliders mr-1"></i> Interactive Threat Parameters</span>
+                        
+                        <div class="space-y-2 my-2 text-xs">
+                            <!-- Slider 1 -->
+                            <div class="flex items-center justify-between gap-4">
+                                <span class="w-28 text-[11px] text-slate-300">Crowd Distance:</span>
+                                <input type="range" id="unrest-distance" min="10" max="1000" value="800" oninput="calculateUnrestThreat()" 
+                                       class="flex-grow accent-[#FFD700]">
+                                <span class="w-12 text-right font-mono text-white" id="dist-val">800m</span>
+                            </div>
+                            <!-- Slider 2 -->
+                            <div class="flex items-center justify-between gap-4">
+                                <span class="w-28 text-[11px] text-slate-300">Crowd Size:</span>
+                                <input type="range" id="unrest-size" min="10" max="500" value="40" oninput="calculateUnrestThreat()" 
+                                       class="flex-grow accent-[#FFD700]">
+                                <span class="w-12 text-right font-mono text-white" id="size-val">40</span>
+                            </div>
+                            <!-- Slider 3 -->
+                            <div class="flex items-center justify-between gap-4">
+                                <span class="w-28 text-[11px] text-slate-300">Weaponry Level:</span>
+                                <input type="range" id="unrest-weapons" min="0" max="2" value="0" oninput="calculateUnrestThreat()" 
+                                       class="flex-grow accent-[#FFD700]">
+                                <span class="w-12 text-right font-mono text-white" id="weapons-val">None</span>
+                            </div>
+                            <!-- Slider 4 -->
+                            <div class="flex items-center justify-between gap-4">
+                                <span class="w-28 text-[11px] text-slate-300">LGU Police Presence:</span>
+                                <input type="range" id="unrest-police" min="0" max="2" value="2" oninput="calculateUnrestThreat()" 
+                                       class="flex-grow accent-[#FFD700]">
+                                <span class="w-12 text-right font-mono text-white" id="police-val">Strong</span>
+                            </div>
+                        </div>
+
+                        <div class="p-2 bg-slate-900/40 rounded border border-white/5 text-[10px] text-slate-400">
+                            Adjust sliders to simulate live protest metrics. Decisions switch dynamically to ensure frontline survival.
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Output recommendation decision box -->
+                    <div class="md:col-span-5 glass rounded-xl border-white/10 p-3 flex flex-col justify-between bg-black/40 text-center">
+                        <div>
+                            <span class="text-[10px] text-gold uppercase tracking-widest font-mono font-bold block mb-2">Automated SOP Recommendation</span>
+                            <div class="p-4 rounded-xl border-emerald-500/20 bg-emerald-950/15" id="unrest-dec-box">
+                                <h3 class="text-xl font-bold text-emerald-400 uppercase tracking-widest" id="unrest-dec-title">DEFEND POST</h3>
+                                <p class="text-[10px] text-slate-300 font-sans mt-1 leading-relaxed" id="unrest-dec-text">
+                                    Secure perimeter, lock secondary gates, ensure full riot gear is equipped. strictly observe and report, do not engage.
+                                </p>
+                            </div>
+                        </div>
+
+                        <p class="text-[11px] text-slate-400 mt-2 leading-relaxed">
+                            If threats breach primary parameters, priority transfers to safe guard extraction, minimizing customer legal liability.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="glass p-2 rounded-xl border-white/5 text-center text-[10px] text-slate-400 font-mono">
+                    GUARANTEES COMPLIANCE WITH STRICT LABOR CODES -- PREVENTS FRONTLINE CASUALTIES AT THE SITE LEVEL.
+                </div>
+            </div>
+
+            <!-- ================= SLIDE 12: Performance Targets & KPIs ================= -->
+            <div id="slide-12" class="slide-content h-full flex flex-col justify-between z-10 slide-hidden animate-spring">
+                <div>
+                    <h2 class="text-xl md:text-2xl font-bold uppercase text-white tracking-wide border-b border-white/10 pb-1.5 flex justify-between items-center">
+                        <span>THE BCP SYSTEMIC INTEGRITY TARGETS</span>
+                        <span class="text-xs bg-[#FFD700]/15 text-gold px-2.5 py-0.5 rounded border border-[#FFD700]/25 font-mono">BCP KPIs</span>
+                    </h2>
+                    <p class="text-xs text-slate-300 mt-1">
+                        Operational compliance standards maintained across all five core disruption contingency maps.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 my-2 flex-grow">
+                    <div class="glass p-3 rounded-xl border-emerald-500/20 flex flex-col justify-between bg-emerald-500/5">
+                        <div>
+                            <div class="w-7 h-7 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-1.5"><i class="fa-solid fa-clock"></i></div>
+                            <h4 class="text-xs font-bold text-white uppercase">Response Threshold</h4>
+                            <p class="text-[10px] text-slate-300 mt-1 font-body">All guard absenteeism gaps completed and manned by qualified backup relief units in under 120 minutes from minute-zero.</p>
+                        </div>
+                        <span class="text-[9px] font-mono text-emerald-400 mt-1.5 block">Target: &lt;2 Hours</span>
+                    </div>
+
+                    <div class="glass p-3 rounded-xl border-sky-500/20 flex flex-col justify-between bg-sky-500/5">
+                        <div>
+                            <div class="w-7 h-7 rounded-full bg-sky-500/10 flex items-center justify-center text-sky-400 mb-1.5"><i class="fa-solid fa-tower-broadcast"></i></div>
+                            <h4 class="text-xs font-bold text-white uppercase">Comms Continuity</h4>
+                            <p class="text-[10px] text-slate-300 mt-1 font-body">Typhoon safety tracking loops maintain continuous communication checks every 2 hours via multi-lane fail-safe channels.</p>
+                        </div>
+                        <span class="text-[9px] font-mono text-sky-300 mt-1.5">Max gap: 2 hours</span>
+                    </div>
+
+                    <div class="glass p-3 rounded-xl border-red-500/20 flex flex-col justify-between bg-red-500/5">
+                        <div>
+                            <div class="w-7 h-7 rounded-full bg-red-500/10 flex items-center justify-center text-red-400 mb-1.5"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                            <h4 class="text-xs font-bold text-white uppercase">Breach Response SOS</h4>
+                            <p class="text-[10px] text-slate-300 mt-1 font-body">Emergency alert logs automatically routed to Zonal Supervisors within 120 seconds of physical trigger activation on-site.</p>
+                        </div>
+                        <span class="text-[9px] font-mono text-red-300 mt-1.5 block">Trigger limit: &lt;2 minutes</span>
+                    </div>
+
+                    <div class="glass p-3 rounded-xl border-amber-500/20 flex flex-col justify-between bg-amber-500/5">
+                        <div>
+                            <div class="w-7 h-7 rounded-full bg-amber-500/10 flex items-center justify-center text-amber-400 mb-1.5"><i class="fa-solid fa-database"></i></div>
+                            <h4 class="text-xs font-bold text-white uppercase">Database Restoration</h4>
+                            <p class="text-[10px] text-slate-300 mt-1 font-body">Offline-cached transaction metrics background-synced, audited, and resolved with cloud nodes within 24 hours of grid restoration.</p>
+                        </div>
+                        <span class="text-[9px] font-mono text-amber-300 mt-1.5 block">Sync latency: &lt;24 hours</span>
+                    </div>
+                </div>
+
+                <div class="glass p-3 rounded-xl border-[#FFD700]/30 bg-blue-950/20 text-center flex items-center justify-center gap-6">
+                    <span class="text-xs uppercase tracking-wider text-gold font-bold font-display">Ensure Operational Resilience Today.</span>
+                    <div class="flex gap-4 text-[10px] font-mono text-slate-300">
+                        <span><i class="fa-solid fa-globe text-[#FFD700] mr-1"></i> strong-a3-control.com</span>
+                        <span><i class="fa-solid fa-envelope text-[#FFD700] mr-1"></i> command@stronghold-a3.com</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="w-full max-w-7xl flex flex-col md:flex-row items-center justify-between gap-3 mt-3 glass px-6 py-3 rounded-2xl border-white/10">
+        <div class="flex items-center gap-3">
+            <button id="btn-prev" class="px-4 py-1.5 rounded-xl bg-white/5 border border-white/10 text-white hover:bg-[#FFD700]/20 hover:text-gold hover:border-[#FFD700]/40 transition duration-200 text-xs">
+                <i class="fa-solid fa-arrow-left"></i> Previous
+            </button>
+            <button id="btn-next" class="px-4 py-1.5 rounded-xl bg-[#FFD700]/10 border border-[#FFD700]/30 text-gold hover:bg-[#FFD700]/20 transition duration-200 text-xs">
+                Next <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+        
+        <div class="flex items-center gap-1 flex-wrap justify-center" id="carousel-indicators">
+            <!-- Indicators injected dynamically -->
+        </div>
+
+        <div class="flex items-center gap-3">
+            <button id="btn-play" class="p-2 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:text-white" title="Toggle Auto-Play">
+                <i class="fa-solid fa-play text-xs"></i>
+            </button>
+            <button id="btn-lite" class="p-2 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:text-white" title="Toggle High-Contrast Lite Mode">
+                <i class="fa-solid fa-eye text-xs"></i>
+            </button>
+        </div>
+    </footer>
+
+    <script>
+        const totalSlides = 12;
+        let currentSlide = 1;
+        let autoplayInterval = null;
+        let isAutoplayActive = false;
+
+        const slideCounter = document.getElementById('slide-index-counter');
+        const carouselIndicators = document.getElementById('carousel-indicators');
+
+        // Create Navigation Indicators
+        for (let i = 1; i <= totalSlides; i++) {
+            const indicator = document.createElement('button');
+            indicator.className = `w-2 h-2 rounded-full transition-all duration-300 ${i === 1 ? 'bg-gold w-5' : 'bg-slate-600 hover:bg-slate-400'}`;
+            indicator.id = `indicator-${i}`;
+            indicator.onclick = () => goToSlide(i);
+            carouselIndicators.appendChild(indicator);
+        }
+
+        function updateDeckUI() {
+            for (let i = 1; i <= totalSlides; i++) {
+                const slide = document.getElementById(`slide-${i}`);
+                if (slide) {
+                    if (i === currentSlide) {
+                        slide.classList.remove('slide-hidden');
+                    } else {
+                        slide.classList.add('slide-hidden');
+                    }
+                }
+
+                const indicator = document.getElementById(`indicator-${i}`);
+                if (indicator) {
+                    if (i === currentSlide) {
+                        indicator.className = 'w-2 h-2 rounded-full transition-all duration-300 bg-gold w-5';
+                    } else {
+                        indicator.className = 'w-2 h-2 rounded-full transition-all duration-300 bg-slate-600 hover:bg-slate-400';
+                    }
+                }
+            }
+
+            slideCounter.innerText = `Slide ${currentSlide.toString().padStart(2, '0')}/${totalSlides}`;
+        }
+
+        function nextSlide() {
+            currentSlide = currentSlide < totalSlides ? currentSlide + 1 : 1;
+            updateDeckUI();
+        }
+
+        function prevSlide() {
+            currentSlide = currentSlide > 1 ? currentSlide - 1 : totalSlides;
+            updateDeckUI();
+        }
+
+        function goToSlide(slideNum) {
+            currentSlide = slideNum;
+            updateDeckUI();
+        }
+
+        // ================= INTERACTIVE COMPONENT: SCENARIO 1 DISPATCH ENGINE =================
+        let selectedGuardId = '';
+        function selectGuardPin(guardId, name, dist, riskColor, status, phone) {
+            selectedGuardId = guardId;
+            document.getElementById('relief-name').innerText = name;
+            document.getElementById('relief-distance').innerText = dist;
+            document.getElementById('relief-status').innerText = status;
+            
+            const btn = document.getElementById('dispatch-btn');
+            btn.disabled = false;
+            btn.className = "w-full py-2 bg-sky-600 hover:bg-sky-500 text-white border border-sky-400 font-bold uppercase rounded-lg text-xs cursor-pointer transition shadow-[0_0_12px_rgba(59,130,246,0.3)]";
+        }
+
+        function dispatchGuard() {
+            if (!selectedGuardId) return;
+            
+            // Resolve the gap visual states
+            document.getElementById('sim-status').innerText = "DISPATCH COMPLETED";
+            document.getElementById('sim-status').className = "text-[9px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 pulse-green";
+            
+            const timerBox = document.getElementById('timer-box');
+            timerBox.className = "my-2 p-2 bg-emerald-950/20 border border-emerald-500/20 rounded flex items-center justify-between";
+            document.getElementById('timer-pulse').className = "w-2.5 h-2.5 rounded-full bg-emerald-500 pulse-green";
+            document.getElementById('timer-status').innerText = "Relief En Route (Handover Initiated)";
+            document.getElementById('timer-label').innerText = "Client notified via SMS Portal";
+            
+            const btn = document.getElementById('dispatch-btn');
+            btn.disabled = true;
+            btn.innerText = "Dispatch Active";
+            btn.className = "w-full py-2 bg-slate-700/50 text-slate-400 border border-slate-600/30 font-bold uppercase rounded-lg text-xs cursor-not-allowed transition";
+        }
+
+        // ================= INTERACTIVE COMPONENT: SCENARIO 2 TYPHOON FLOOD OVERLAY =================
+        let isOverlayActive = false;
+        function toggleFloodOverlay() {
+            isOverlayActive = !isOverlayActive;
+            const overlayStatus = document.getElementById('overlay-status');
+            const overlayIcon = document.getElementById('overlay-icon');
+            const mapBox = document.getElementById('flood-alert-text');
+            const packStatus = document.getElementById('pack-status');
+
+            if (isOverlayActive) {
+                overlayStatus.innerText = "HIDE FLOOD RISK ZONE";
+                overlayStatus.className = "text-xs font-bold text-red-400 cursor-pointer hover:underline";
+                overlayIcon.className = "fa-solid fa-triangle-exclamation text-red-400 text-lg animate-pulse";
+                mapBox.className = "p-2 bg-red-950/20 rounded border border-red-500/20 text-[11px] text-red-200 animate-pulse";
+                mapBox.innerHTML = "<i class='fa-solid fa-radiation text-red-500 mr-1.5'></i> Warning: High-risk flood areas detected at Sector B. Emergency rations pre-staged successfully.";
+                packStatus.innerText = "STAGE COMPLETE (16 Units - Heavy Storm Stage)";
+                packStatus.className = "text-xs font-bold text-red-400";
+            } else {
+                overlayStatus.innerText = "SHOW FLOOD RISK ZONE";
+                overlayStatus.className = "text-xs font-bold text-gold cursor-pointer hover:underline";
+                overlayIcon.className = "fa-solid fa-circle-nodes text-gold text-lg";
+                mapBox.className = "p-2 bg-slate-900/40 rounded border border-white/5 text-[11px] text-slate-300";
+                mapBox.innerHTML = "<i class='fa-solid fa-info-circle text-sky-400 mr-1.5'></i> Maps trace critical low-lying client sectors. Select 'SHOW FLOOD RISK ZONE' to display potential flood areas.";
+                packStatus.innerText = "STAGE COMPLETE (12 Units)";
+                packStatus.className = "text-xs font-bold text-emerald-400";
+            }
+        }
+
+        // ================= INTERACTIVE COMPONENT: SCENARIO 3 OUTAGE DECODER =================
+        let loadedSmsCode = '';
+        let loadedSmsTranslation = '';
+        function selectSmsCode(smsId, codeValue, translationText) {
+            loadedSmsCode = codeValue;
+            loadedSmsTranslation = translationText;
+            
+            document.getElementById('sms-input-field').value = codeValue;
+            document.getElementById('decoded-translation').innerText = translationText;
+            
+            const btn = document.getElementById('sync-sms-btn');
+            btn.disabled = false;
+            btn.className = "w-full py-2 bg-sky-600 hover:bg-sky-500 text-white border border-sky-400 font-bold uppercase rounded-lg text-xs cursor-pointer transition shadow-[0_0_12px_rgba(59,130,246,0.3)]";
+        }
+
+        function syncCodedSms() {
+            if (!loadedSmsCode) return;
+            alert(`Coded signal "${loadedSmsCode}" successfully synced to core cloud nodes.`);
+            
+            document.getElementById('decoded-translation').innerText = "Sync status: Complete (Source verified)";
+            document.getElementById('decoded-translation').className = "font-bold text-emerald-400 mt-0.5";
+            
+            const btn = document.getElementById('sync-sms-btn');
+            btn.disabled = true;
+            btn.className = "w-full py-2 bg-slate-700/50 text-slate-400 border border-slate-600/30 font-bold uppercase rounded-lg text-xs cursor-not-allowed transition";
+        }
+
+        // ================= INTERACTIVE COMPONENT: SCENARIO 4 ACTIVE BREED ENGINE =================
+        function triggerSosBreach() {
+            const mapBox = document.getElementById('sos-map-box');
+            const mapPin = document.getElementById('sos-map-pin');
+            const label = document.getElementById('sos-status-label');
+            const timeline = document.getElementById('breach-timeline');
+            const responder = document.getElementById('responder-unit-pin');
+
+            // Set layout into crisis red alert mode
+            mapBox.className = "h-40 w-full bg-red-950/30 rounded-lg relative my-2 border border-red-500/30 flex items-center justify-center overflow-hidden";
+            mapPin.className = "w-5 h-5 rounded-full bg-red-600 border border-white flex items-center justify-center text-[10px] font-bold z-10 text-white animate-ping";
+            label.innerText = "SYS STATUS: SOS ACTIVE BREACH";
+            label.className = "text-[9px] font-mono px-2 py-0.5 rounded bg-red-500/20 text-red-300 border border-red-500/30 pulse-red";
+            
+            timeline.innerHTML = "• T+0m: Guard triggered SOS alarm.<br/>• T+1m: Alert dispatched to Supervisor.<br/>• T+2m: PNP responders contacted.<br/>• T+3m: Client dashboard updated.";
+            
+            // Move supervisor responding unit closer on map
+            responder.style.left = "42%";
+            responder.style.top = "45%";
+
+            // Disable dispatch simulation to prevent multiple loops
+            const triggerBtn = document.getElementById('sos-trigger-btn');
+            triggerBtn.disabled = true;
+            triggerBtn.innerText = "Breach Alert Propagated";
+            triggerBtn.className = "w-full py-2 bg-slate-700/50 text-slate-400 border border-slate-600/30 font-bold uppercase rounded-lg text-xs cursor-not-allowed transition";
+        }
+
+        // ================= INTERACTIVE COMPONENT: SCENARIO 5 CIVIL UNREST CALC =================
+        function calculateUnrestThreat() {
+            const distance = parseInt(document.getElementById('unrest-distance').value);
+            const size = parseInt(document.getElementById('unrest-size').value);
+            const weapons = parseInt(document.getElementById('unrest-weapons').value);
+            const police = parseInt(document.getElementById('unrest-police').value);
+
+            // Update UI numeric readouts
+            document.getElementById('dist-val').innerText = `${distance}m`;
+            document.getElementById('size-val').innerText = size;
+            
+            let weaponLabel = "None";
+            if (weapons === 1) weaponLabel = "Blunt";
+            if (weapons === 2) weaponLabel = "Firearms";
+            document.getElementById('weapons-val').innerText = weaponLabel;
+
+            let policeLabel = "Strong";
+            if (police === 1) policeLabel = "Weak";
+            if (police === 0) policeLabel = "Absent";
+            document.getElementById('police-val').innerText = policeLabel;
+
+            const decBox = document.getElementById('unrest-dec-box');
+            const decTitle = document.getElementById('unrest-dec-title');
+            const decText = document.getElementById('unrest-dec-text');
+
+            // Threat evaluation engine
+            if (distance < 150 || (size > 150 && weapons > 0) || police === 0) {
+                // Crisis Mode: EXTRACT
+                decBox.className = "p-4 rounded-xl border-amber-500/30 bg-amber-950/20 animate-pulse";
+                decTitle.innerText = "EVACUATE / EXTRACT";
+                decTitle.className = "text-xl font-bold text-gold uppercase tracking-widest";
+                decText.innerText = "Abandon post immediately. Protect lives first. Guide guards to pre-designated safe extraction routes. Advise clients.";
+            } else {
+                // Active Defense Mode: DEFEND
+                decBox.className = "p-4 rounded-xl border-emerald-500/20 bg-emerald-950/15";
+                decTitle.innerText = "DEFEND POST";
+                decTitle.className = "text-xl font-bold text-emerald-400 uppercase tracking-widest";
+                decText.innerText = "Secure perimeter, lock secondary gates, ensure full protective gear is equipped. Strictly observe and report, do not engage mob.";
+            }
+        }
+
+        // Event listeners for Navigation Controls
+        document.getElementById('btn-next').addEventListener('click', () => {
+            nextSlide();
+            stopAutoplay();
+        });
+        document.getElementById('btn-prev').addEventListener('click', () => {
+            prevSlide();
+            stopAutoplay();
+        });
+
+        // Keybindings for remote controls and presentations
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                nextSlide();
+                stopAutoplay();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+                stopAutoplay();
+            }
+        });
+
+        // Swipe gestures for touch screens and tablets
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        document.getElementById('presentation-container').addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        document.getElementById('presentation-container').addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const threshold = 50;
+            if (touchStartX - touchEndX > threshold) {
+                nextSlide(); // Swiped left
+                stopAutoplay();
+            } else if (touchEndX - touchStartX > threshold) {
+                prevSlide(); // Swiped right
+                stopAutoplay();
+            }
+        }
+
+        // Autoplay controller
+        const btnPlay = document.getElementById('btn-play');
+        btnPlay.addEventListener('click', () => {
+            if (isAutoplayActive) {
+                stopAutoplay();
+            } else {
+                startAutoplay();
+            }
+        });
+
+        function startAutoplay() {
+            isAutoplayActive = true;
+            btnPlay.innerHTML = '<i class="fa-solid fa-pause text-gold text-xs"></i>';
+            autoplayInterval = setInterval(nextSlide, 7500); // 7.5s transitions
+        }
+
+        function stopAutoplay() {
+            isAutoplayActive = false;
+            btnPlay.innerHTML = '<i class="fa-solid fa-play text-xs"></i>';
+            if (autoplayInterval) {
+                clearInterval(autoplayInterval);
+            }
+        }
+
+        // High-contrast toggle for presentations under bad screen glare
+        const btnLite = document.getElementById('btn-lite');
+        btnLite.addEventListener('click', () => {
+            document.body.classList.toggle('lite-mode');
+            btnLite.classList.toggle('bg-gold/20');
+            btnLite.classList.toggle('text-gold');
+        });
+
+        // Initialize presentation view state
+        updateDeckUI();
+    </script>
+</body>
+</html>
