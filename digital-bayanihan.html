@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Bayanihan Change Management Hub | Stronghold A3</title>
+    <!-- SEO Optimization -->
+    <meta name="description" content="Launch resources for the Stronghold A3 Digital Bayanihan Protocol, designed to empower security guards and field supervisors in Region VIII.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Roboto+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Tailwind Configuration Customizations -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ['Oswald', 'sans-serif'],
+                        body: ['Roboto Condensed', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --background: 215 90% 8%;
+            --foreground: 210 40% 98%;
+            --card: 215 80% 12%;
+            --primary: 211 100% 25%;
+            --accent: 45 100% 50%;
+            --destructive: 348 83% 47%;
+            --border: 215 40% 22%;
+        }
+
+        body {
+            color: #f8fafc;
+            font-family: 'Roboto Condensed', sans-serif;
+            background: radial-gradient(circle at 20% 0%, #002b5c 0%, #001b3d 45%, #000c1f 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            overflow-x: hidden;
+            transition: background 0.3s ease;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: 0.02em;
+        }
+
+        /* Premium Apple Liquid Glass Styles */
+        .glass {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.03));
+            backdrop-filter: blur(20px) saturate(160%);
+            -webkit-backdrop-filter: blur(20px) saturate(160%);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+        }
+
+        .glass:hover {
+            border: 1px solid rgba(255, 255, 255, 0.20);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+        }
+
+        .glass-strong {
+            background: linear-gradient(135deg, rgba(0, 43, 92, 0.55), rgba(0, 12, 31, 0.65));
+            backdrop-filter: blur(28px) saturate(180%);
+            -webkit-backdrop-filter: blur(28px) saturate(180%);
+            border: 1px solid rgba(255, 215, 0, 0.18);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        }
+
+        .glass-gold {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.16), rgba(255, 215, 0, 0.04));
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 215, 0, 0.35);
+        }
+
+        .glass-emerald {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.16), rgba(16, 185, 129, 0.04));
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(16, 185, 129, 0.35);
+        }
+
+        /* Interactive navigation adjustments */
+        .tab-btn-active {
+            border-color: #FFD700 !important;
+            background-color: rgba(255, 215, 0, 0.15) !important;
+            color: #FFD700 !important;
+        }
+
+        .text-gold {
+            color: #FFD700;
+        }
+
+        /* Pulsing states */
+        .pulse-gold {
+            animation: goldGlow 2s infinite;
+        }
+
+        @keyframes goldGlow {
+            0%, 100% { box-shadow: 0 0 5px rgba(255, 215, 0, 0.2); }
+            50% { box-shadow: 0 0 15px rgba(255, 215, 0, 0.5); }
+        }
+
+        .pulse-emerald {
+            animation: emeraldGlow 2s infinite;
+        }
+
+        @keyframes emeraldGlow {
+            0%, 100% { box-shadow: 0 0 5px rgba(16, 185, 129, 0.2); }
+            50% { box-shadow: 0 0 15px rgba(16, 185, 129, 0.5); }
+        }
+
+        /* Transition animations */
+        .slide-hidden {
+            display: none !important;
+        }
+
+        .slide-active {
+            display: flex !important;
+            animation: slideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes slideIn {
+            0% { transform: translateY(15px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Scrollbar customization */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 215, 0, 0.25);
+            border-radius: 8px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 215, 0, 0.45);
+        }
+
+        /* Before/After Overlay Draggability simulation styles */
+        .ba-highlight-after {
+            box-shadow: inset 0 0 30px rgba(255, 215, 0, 0.15), 0 0 15px rgba(255, 215, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-between min-h-screen">
+
+    <header class="w-full max-w-7xl px-4 md:px-8 py-4 mt-2 z-30">
+        <div class="glass px-6 py-3.5 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-4 border-white/10">
+            <div class="flex items-center gap-4">
+                <!-- Circular execution of official logo with golden aura -->
+                <div class="relative w-12 h-12 rounded-full overflow-hidden border-2 border-[#FFD700] shadow-[0_0_12px_rgba(255,215,0,0.5)] bg-slate-900 shrink-0">
+                    <img src="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Logo.jpg" 
+                         alt="Stronghold A3 Logo" 
+                         class="w-full h-full object-cover"
+                         onerror="this.src='https://placehold.co/100x100/002b5c/FFD700?text=A3'">
+                </div>
+                <div>
+                    <span class="text-[10px] uppercase tracking-widest text-gold font-display font-semibold block">Change Management Strategy</span>
+                    <h1 class="text-lg md:text-xl font-bold font-display uppercase tracking-wider leading-none">DIGITAL BAYANIHAN <span class="text-gold">PROTOCOL v1.0</span></h1>
+                </div>
+            </div>
+            
+            <div class="flex flex-wrap items-center gap-3">
+                <span class="px-3 py-1 text-[11px] rounded-full bg-blue-500/20 text-sky-300 border border-blue-500/30 font-mono">
+                    <i class="fa-solid fa-users-viewfinder mr-1"></i> CORELATION TRUST DECK
+                </span>
+                <span class="text-xs text-slate-400 font-mono hidden lg:inline">
+                    Ref: <strong class="text-gold">CRISIS-PROOF OPERATIONAL WORKFLOW - Stronghold A3.pdf</strong>
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <nav class="w-full max-w-7xl px-4 md:px-8 mt-2 flex flex-wrap gap-2 z-20" aria-label="Visualizations directory">
+        <button onclick="switchModule('module-poster')" id="nav-poster" class="tab-btn-active px-4 py-2 border border-white/10 bg-white/5 text-slate-300 font-bold uppercase text-xs rounded-xl transition duration-200 hover:border-gold/50">
+            <i class="fa-solid fa-layer-group mr-1.5"></i> 1. Launch Poster (WIIFM)
+        </button>
+        <button onclick="switchModule('module-stepper')" id="nav-stepper" class="px-4 py-2 border border-white/10 bg-white/5 text-slate-300 font-bold uppercase text-xs rounded-xl transition duration-200 hover:border-gold/50">
+            <i class="fa-solid fa-diagram-next mr-1.5"></i> 2. Buddy Stepper
+        </button>
+        <button onclick="switchModule('module-gamify')" id="nav-gamify" class="px-4 py-2 border border-white/10 bg-white/5 text-slate-300 font-bold uppercase text-xs rounded-xl transition duration-200 hover:border-gold/50">
+            <i class="fa-solid fa-trophy mr-1.5"></i> 3. Wall & Phone UI
+        </button>
+        <button onclick="switchModule('module-feedback')" id="nav-feedback" class="px-4 py-2 border border-white/10 bg-white/5 text-slate-300 font-bold uppercase text-xs rounded-xl transition duration-200 hover:border-gold/50">
+            <i class="fa-solid fa-rotate-left mr-1.5"></i> 4. "Walang Hiya" Loop
+        </button>
+        <button onclick="switchModule('module-slides')" id="nav-slides" class="px-4 py-2 border border-white/10 bg-white/5 text-slate-300 font-bold uppercase text-xs rounded-xl transition duration-200 hover:border-gold/50">
+            <i class="fa-solid fa-chalkboard-user mr-1.5"></i> 5. Town Hall Slides
+        </button>
+    </nav>
+
+    <main class="w-full max-w-7xl px-4 md:px-8 py-4 flex-grow flex flex-col gap-6 z-10 justify-center">
+
+        <!-- ================= VISUALIZATION 1: WIIFM POSTER ================= -->
+        <section id="module-poster" class="module-content flex flex-col gap-6 slide-active">
+            <div class="glass-strong rounded-3xl p-6 border-white/10">
+                <h2 class="text-xl md:text-2xl font-bold uppercase text-white mb-2 flex items-center justify-between">
+                    <span>1. THE "WIIFM" (WHAT'S IN IT FOR ME?) SPLIT INFOGRAPHIC</span>
+                    <span class="text-xs bg-gold/10 text-gold px-2.5 py-0.5 rounded border border-gold/30 font-mono font-medium">Breakroom & Guardhouse Display</span>
+                </h2>
+                <p class="text-xs md:text-sm text-slate-300 leading-relaxed max-w-4xl mb-4 font-body">
+                    Empowering frontline security guards and field supervisors by reframing the Cloud SMS application from an "administrative watch tool" into an essential "guard empowerment lifeline." Written in plain, conversational Taglish & Bisaya to build immediate psychological comfort.
+                </p>
+
+                <!-- Side by Side Comparative Split Screen -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-4">
+                    
+                    <!-- LEFT SIDE: The Frustrating Old Way (Analog Muted Grayscale Theme) -->
+                    <div class="relative bg-slate-950/70 border-2 border-slate-800 rounded-2xl p-6 transition duration-300 flex flex-col justify-between">
+                        <div class="absolute top-4 right-4 text-xs font-mono font-bold text-slate-500 uppercase tracking-widest bg-slate-900 px-2 py-0.5 rounded">
+                            Ang Lumang Paraan (Muted)
+                        </div>
+                        <div>
+                            <div class="w-14 h-14 rounded-full bg-slate-900/60 border border-slate-700/50 flex items-center justify-center text-slate-500 text-2xl mb-4">
+                                <i class="fa-solid fa-file-invoice"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-slate-400 font-display uppercase tracking-wide">NAKAKAPAGOD. NAWAWALA ANG OVERTIME.</h3>
+                            <p class="text-xs text-slate-400 mt-2 font-body leading-relaxed max-w-md">
+                                "Sg. Castro, kailangan mong pumunta sa main office pagkatapos ng shift mo para pumirma sa sirang paper DTR logbook. Bawas sa pahinga mo, sayang pa sa pasahe sa jeep."
+                            </p>
+                        </div>
+
+                        <!-- Negative Impact Icons -->
+                        <div class="grid grid-cols-3 gap-3 mt-6 pt-6 border-t border-slate-800">
+                            <div class="text-center">
+                                <i class="fa-solid fa-bus text-slate-600 text-lg mb-1"></i>
+                                <span class="text-[10px] text-slate-500 block uppercase font-mono font-bold leading-tight">Gastos sa Pasahe</span>
+                                <span class="text-[9px] text-slate-500 block leading-none font-body mt-0.5">Pamamartsa sa opisina</span>
+                            </div>
+                            <div class="text-center">
+                                <i class="fa-solid fa-receipt text-slate-600 text-lg mb-1"></i>
+                                <span class="text-[10px] text-slate-500 block uppercase font-mono font-bold leading-tight">Encoding Errors</span>
+                                <span class="text-[9px] text-slate-500 block leading-none font-body mt-0.5">Nawawalang logs</span>
+                            </div>
+                            <div class="text-center">
+                                <i class="fa-solid fa-triangle-exclamation text-slate-600 text-lg mb-1"></i>
+                                <span class="text-[10px] text-slate-500 block uppercase font-mono font-bold leading-tight">Kulang sa Proteksyon</span>
+                                <span class="text-[9px] text-slate-500 block leading-none font-body mt-0.5">Walang live SOS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT SIDE: The New Way (Golden Liquid Glass Empowerment Theme) -->
+                    <div class="relative glass bg-[#FFD700]/5 border-[#FFD700]/40 rounded-2xl p-6 transition duration-300 flex flex-col justify-between ba-highlight-after">
+                        <div class="absolute top-4 right-4 text-xs font-mono font-bold text-gold uppercase tracking-widest bg-[#FFD700]/15 px-2.5 py-0.5 rounded border border-[#FFD700]/20">
+                            Ang Bagong Bayanihan (Gold Mode)
+                        </div>
+                        <div>
+                            <div class="w-14 h-14 rounded-full bg-[#FFD700]/15 border border-[#FFD700]/45 flex items-center justify-center text-gold text-2xl mb-4 pulse-gold">
+                                <i class="fa-solid fa-mobile-screen"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white font-display uppercase tracking-wide">TAP LANG. SURE ANG SWELDO. LIGTAS KA.</h3>
+                            <p class="text-xs text-slate-200 mt-2 font-body leading-relaxed max-w-md">
+                                "Sg. Castro, tap mo lang ang phone mo sa gate para sa check-in. Auto-compute agad ang overtime mo sa system. Diretso uwi, diretso pahinga, ligtas ka pa sa field."
+                            </p>
+                        </div>
+
+                        <!-- Large & Bold Key Visual Icons -->
+                        <div class="grid grid-cols-3 gap-3 mt-6 pt-6 border-t border-[#FFD700]/20">
+                            <div class="text-center">
+                                <i class="fa-solid fa-circle-minus text-gold text-xl mb-1 block"></i>
+                                <span class="text-[10px] text-white block uppercase font-mono font-bold leading-tight">No More Pamamartsa</span>
+                                <span class="text-[9px] text-slate-300 block leading-none font-body mt-0.5">Bawas pamasahe sa jeep</span>
+                            </div>
+                            <div class="text-center">
+                                <i class="fa-solid fa-sack-dollar text-emerald-400 text-xl mb-1 block"></i>
+                                <span class="text-[10px] text-white block uppercase font-mono font-bold leading-tight">Faster Payroll</span>
+                                <span class="text-[9px] text-slate-300 block leading-none font-body mt-0.5">Sure ang tamang bayad</span>
+                            </div>
+                            <div class="text-center">
+                                <i class="fa-solid fa-phone-volume text-rose-400 text-xl mb-1 block animate-bounce"></i>
+                                <span class="text-[10px] text-white block uppercase font-mono font-bold leading-tight">The Lifeline</span>
+                                <span class="text-[9px] text-slate-300 block leading-none font-body mt-0.5">Isang pindot, may tulong</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= VISUALIZATION 2: APP BUDDY DEPLOYMENT FLOWCHART ================= -->
+        <section id="module-stepper" class="module-content flex flex-col gap-6 slide-hidden">
+            <div class="glass-strong rounded-3xl p-6 border-white/10">
+                <h2 class="text-xl md:text-2xl font-bold uppercase text-white mb-2 flex items-center justify-between">
+                    <span>2. THE "APP BUDDY" SHADOWING PROTOCOL</span>
+                    <span class="text-xs bg-sky-500/10 text-sky-400 px-2.5 py-0.5 rounded border border-sky-500/30 font-mono font-medium">Mentor & Deploy Guidelines</span>
+                </h2>
+                <p class="text-xs md:text-sm text-slate-300 leading-relaxed max-w-4xl mb-4 font-body">
+                    A peer-mentorship roadmap designed to ensure seamless field training. By utilizing selected tech-savvy "Tech Champions," we bridge operational learning gaps with mutual trust and support.
+                </p>
+
+                <!-- Deployment Process flowchart stepper -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 my-4 relative">
+                    <!-- Step 1 -->
+                    <div class="glass p-4 rounded-xl border-white/10 relative flex flex-col justify-between h-56 hover:border-gold/30 transition">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <span class="text-[10px] font-mono font-bold text-slate-400">Step 01 / Pre-check</span>
+                                <span class="text-xs bg-gold/10 text-gold px-2 py-0.5 rounded font-mono font-bold">SELECT</span>
+                            </div>
+                            <h3 class="text-sm font-bold text-white uppercase mt-1"><i class="fa-solid fa-user-check text-gold mr-1.5"></i> The Champions</h3>
+                            <p class="text-[11px] text-slate-300 font-body mt-1.5 leading-relaxed">
+                                Operations Manager selects respected, tech-savvy guards across major client sectors. Issuance of custom "Tech Champion" lanyards/badges occurs to denote local functional authority.
+                            </p>
+                        </div>
+                        <span class="text-[9px] text-gold font-mono uppercase bg-gold/10 py-0.5 px-2 rounded self-start">RACI: Ops Manager [A]</span>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="glass p-4 rounded-xl border-white/10 relative flex flex-col justify-between h-56 hover:border-gold/30 transition">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <span class="text-[10px] font-mono font-bold text-slate-400">Step 02 / Mapping</span>
+                                <span class="text-xs bg-gold/10 text-gold px-2 py-0.5 rounded font-mono font-bold">PAIR</span>
+                            </div>
+                            <h3 class="text-sm font-bold text-white uppercase mt-1"><i class="fa-solid fa-people-arrows text-gold mr-1.5"></i> The Buddies</h3>
+                            <p class="text-[11px] text-slate-300 font-body mt-1.5 leading-relaxed">
+                                Match veteran, non-technical guards with Tech Champions. <strong>Golden Law:</strong> Maintain a strict ratio maximum of 1 Champion mapped to 5 Buddies to prevent mentor overload.
+                            </p>
+                        </div>
+                        <span class="text-[9px] text-gold font-mono uppercase bg-gold/10 py-0.5 px-2 rounded self-start">Rule: Max 1:5 Ratio</span>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="glass p-4 rounded-xl border-white/10 relative flex flex-col justify-between h-56 hover:border-gold/30 transition">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <span class="text-[10px] font-mono font-bold text-slate-400">Step 03 / On-Site</span>
+                                <span class="text-xs bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded font-mono font-bold">SHADOW</span>
+                            </div>
+                            <h3 class="text-sm font-bold text-white uppercase mt-1"><i class="fa-solid fa-street-view text-emerald-400 mr-1.5"></i> The 3-Shift Rule</h3>
+                            <p class="text-[11px] text-slate-300 font-body mt-1.5 leading-relaxed">
+                                Champion stands side-by-side with the buddy at the gate for three full shifts. Direct hand-holding, zero-judgment training, and physical validation on system features.
+                            </p>
+                        </div>
+                        <span class="text-[9px] text-emerald-400 font-mono uppercase bg-emerald-500/10 py-0.5 px-2 rounded self-start">Protocol: Hand-Holding</span>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="glass p-4 rounded-xl border-white/10 relative flex flex-col justify-between h-56 hover:border-gold/30 transition">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <span class="text-[10px] font-mono font-bold text-slate-400">Step 04 / Audit</span>
+                                <span class="text-xs bg-gold/10 text-gold px-2 py-0.5 rounded font-mono font-bold">GRADUATE</span>
+                            </div>
+                            <h3 class="text-sm font-bold text-white uppercase mt-1"><i class="fa-solid fa-graduation-cap text-gold mr-1.5"></i> Launch Verification</h3>
+                            <p class="text-[11px] text-slate-300 font-body mt-1.5 leading-relaxed">
+                                Buddy takes total control of their device and logs solo. Champion transitions to virtual support, reachable instantly through the mobile app's 'Ask My Buddy' message hub.
+                            </p>
+                        </div>
+                        <span class="text-[9px] text-gold font-mono uppercase bg-gold/10 py-0.5 px-2 rounded self-start">Status: Active Deploy</span>
+                    </div>
+                </div>
+
+                <!-- Highlighted psychological safety callout -->
+                <div class="glass-emerald p-4 rounded-2xl border-emerald-500/30 flex items-start gap-4 mt-6">
+                    <div class="w-10 h-10 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center shrink-0 text-emerald-400">
+                        <i class="fa-solid fa-heart-shield text-lg animate-pulse"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xs uppercase font-mono font-bold text-emerald-300 tracking-wider">The "Zero-Judgment Zone" psychological Safety Directive</h4>
+                        <p class="text-[11px] text-slate-300 leading-relaxed mt-1 font-body">
+                            Training must be a completely risk-free space. If a guard struggles to input data, presses the wrong button, or forgets their credentials, the Tech Champion must guide them with absolute patience. We make tech friendly, relational, and supportive—no guard should ever feel shamed or reprimanded for their digital learning curve.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= VISUALIZATION 3: PADER NG KARANGALAN & MOBILE APP UI ================= -->
+        <section id="module-gamify" class="module-content flex flex-col gap-6 slide-hidden">
+            <div class="glass-strong rounded-3xl p-6 border-white/10">
+                <h2 class="text-xl md:text-2xl font-bold uppercase text-white mb-2 flex items-center justify-between">
+                    <span>3. GAMIFICATION INTEGRATION: OFFICE DISPATCH WALL & APP UI</span>
+                    <span class="text-xs bg-emerald-500/10 text-emerald-400 px-2.5 py-0.5 rounded border border-emerald-500/30 font-mono font-medium">Live Rewards Mockup</span>
+                </h2>
+                <p class="text-xs md:text-sm text-slate-300 leading-relaxed max-w-4xl mb-4 font-body">
+                    Making app compliance tangible, relational, and aspirational. Below is the dual-view interface: the physical **Pader ng Karangalan** dashboard displayed in our offices, alongside the high-fidelity **Guard Smartphone UI** mockup.
+                </p>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-4 items-stretch">
+                    
+                    <!-- View A: The Office Plaque / Leaderboard (Lg: Col-Span-7) -->
+                    <div class="lg:col-span-7 glass rounded-2xl p-6 border-white/10 flex flex-col justify-between">
+                        <div>
+                            <span class="text-[10px] text-gold font-mono uppercase tracking-widest block mb-1">Visual Mockup A: Dispatch Area Display</span>
+                            <h3 class="text-lg font-bold text-white uppercase border-b border-white/10 pb-2"><i class="fa-solid fa-chalkboard text-gold mr-1.5"></i> Pader ng Karangalan (Wall of Excellence)</h3>
+                            
+                            <!-- Digital Plaque Main Feature -->
+                            <div class="mt-4 p-4 rounded-xl bg-slate-900/60 border border-gold/30 flex items-center gap-4 relative">
+                                <div class="absolute top-2 right-2 text-[8px] font-mono text-gold bg-gold/10 px-1.5 py-0.5 rounded uppercase font-bold animate-pulse">Guard of the Month</div>
+                                <div class="w-16 h-16 rounded-full border-2 border-gold flex items-center justify-center bg-blue-950 text-gold text-2xl font-bold shrink-0 shadow-[0_0_12px_rgba(255,215,0,0.4)]">
+                                    <i class="fa-solid fa-user-shield"></i>
+                                </div>
+                                <div>
+                                    <span class="text-[9px] font-mono text-gold uppercase tracking-wider">Digital Guardian Highlight</span>
+                                    <h4 class="text-base font-bold text-white uppercase leading-tight">Sg. Juan dela Cruz</h4>
+                                    <p class="text-xs text-slate-300 font-body">Tacloban Depot Sector Alpha — <strong class="text-emerald-400">100% App Compliance</strong></p>
+                                    <span class="text-[9px] text-slate-400 block font-body mt-0.5">Awarded: June 2026 — Featured across Region VIII dispatch screens</span>
+                                </div>
+                            </div>
+
+                            <!-- Plaque Leaderboard Queue -->
+                            <div class="mt-4 space-y-2">
+                                <span class="text-[10px] text-slate-400 uppercase tracking-widest font-mono block">Top Performing Guard Teams</span>
+                                
+                                <div class="flex items-center justify-between p-2 bg-white/5 rounded-lg border border-white/5 text-xs">
+                                    <span class="font-bold text-white flex items-center gap-2"><span class="w-4 h-4 rounded-full bg-gold/20 text-gold flex items-center justify-center font-mono text-[10px]">1</span> Leyte Logistics Center</span>
+                                    <span class="font-mono font-bold text-emerald-400">99.2% Sync Uptime</span>
+                                </div>
+                                <div class="flex items-center justify-between p-2 bg-white/5 rounded-lg border border-white/5 text-xs">
+                                    <span class="font-bold text-white flex items-center gap-2"><span class="w-4 h-4 rounded-full bg-slate-400/20 text-slate-300 flex items-center justify-center font-mono text-[10px]">2</span> Catbalogan Port Terminal</span>
+                                    <span class="font-mono font-bold text-emerald-400">98.5% Sync Uptime</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <span class="text-[9px] text-slate-500 font-body block mt-4 border-t border-white/5 pt-2">Laminated and posted physically in the guard breakroom, dispatch area, and supervisor command center.</span>
+                    </div>
+
+                    <!-- View B: High-Fidelity Mobile App Mockup (Lg: Col-Span-5) -->
+                    <div class="lg:col-span-5 flex justify-center">
+                        <!-- Custom styled CSS Smartphone body container -->
+                        <div class="w-72 bg-slate-950 border-4 border-slate-800 rounded-[32px] p-3 shadow-2xl relative flex flex-col justify-between h-[450px]">
+                            <!-- Speaker notch and front cam -->
+                            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-5 bg-slate-800 rounded-b-xl z-20 flex justify-center items-center">
+                                <div class="w-12 h-1 bg-black rounded-full mb-1"></div>
+                            </div>
+
+                            <!-- Screen container -->
+                            <div class="bg-gradient-to-b from-blue-950 to-slate-900 rounded-[24px] p-3 flex-grow flex flex-col justify-between overflow-hidden relative border border-white/5 pt-6">
+                                
+                                <!-- Top status metrics header -->
+                                <div class="flex justify-between items-center text-[8px] font-mono text-slate-400 mb-2">
+                                    <span>STRONGHOLD SMS App v1.0</span>
+                                    <span class="text-emerald-400"><i class="fa-solid fa-wifi animate-pulse mr-1"></i> Connected</span>
+                                </div>
+
+                                <!-- Gamification Congratulatory Header -->
+                                <div class="p-2.5 rounded-xl border border-[#FFD700]/30 bg-[#FFD700]/10 text-center relative overflow-hidden pulse-gold">
+                                    <div class="absolute inset-0 bg-[#FFD700]/5 animate-pulse"></div>
+                                    <div class="w-7 h-7 rounded-full bg-[#FFD700]/25 text-gold flex items-center justify-center mx-auto mb-1"><i class="fa-solid fa-medal"></i></div>
+                                    <span class="text-[8px] text-gold font-mono block uppercase">Congratulations, Kuya Juan!</span>
+                                    <h4 class="text-[11px] font-bold text-white uppercase leading-none mt-0.5">Digital Guardian of the Week!</h4>
+                                </div>
+
+                                <!-- Compliance metrics progress display -->
+                                <div class="my-3 bg-white/5 p-2 rounded-xl border border-white/5">
+                                    <div class="flex justify-between items-center text-[9px] font-mono text-slate-300 mb-1">
+                                        <span>Tour Sync Compliance</span>
+                                        <span class="text-gold font-bold">95% Complete</span>
+                                    </div>
+                                    <div class="w-full bg-slate-900 h-1.5 rounded-full overflow-hidden">
+                                        <div class="bg-emerald-400 h-full rounded-full" style="width: 95%;"></div>
+                                    </div>
+                                    <span class="text-[8px] text-slate-400 font-body mt-1 block">5% to earn next weekly milestone bonus!</span>
+                                </div>
+
+                                <!-- Reward Button claim emulator and interactive actions -->
+                                <div class="bg-emerald-950/20 border border-emerald-500/20 p-2.5 rounded-xl flex flex-col justify-between text-center relative" id="reward-box">
+                                    <div class="flex items-center gap-2 mb-1.5 justify-center">
+                                        <i class="fa-solid fa-ticket text-emerald-400 text-sm"></i>
+                                        <span class="text-[9px] text-white font-mono uppercase tracking-wider block">Gantimpala / Reward Available</span>
+                                    </div>
+                                    <p class="text-[9px] text-emerald-300 leading-none mb-2 font-body">Earned PHP 500 Grocery Voucher via high-fidelity app logs</p>
+                                    
+                                    <button onclick="claimGroceryVoucher()" id="claim-btn" 
+                                            class="w-full py-1.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold uppercase rounded-lg text-[9px] transition tracking-wider flex items-center justify-center gap-1">
+                                        <i class="fa-solid fa-gift"></i> Redeem Coupon
+                                    </button>
+                                </div>
+
+                                <!-- Bottom status home bar indicators -->
+                                <div class="mt-2 text-center">
+                                    <div class="w-16 h-1 bg-slate-700 rounded-full mx-auto"></div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= VISUALIZATION 4: WALANG HIYA FEEDBACK LOOP ================= -->
+        <section id="module-feedback" class="module-content flex flex-col gap-6 slide-hidden">
+            <div class="glass-strong rounded-3xl p-6 border-white/10">
+                <h2 class="text-xl md:text-2xl font-bold uppercase text-white mb-2 flex items-center justify-between">
+                    <span>4. THE "WALANG HIYA" ANONYMOUS FEEDBACK LOOP</span>
+                    <span class="text-xs bg-blue-500/10 text-sky-400 px-2.5 py-0.5 rounded border border-blue-500/30 font-mono font-medium">Continuous Improvement Matrix</span>
+                </h2>
+                <p class="text-xs md:text-sm text-slate-300 leading-relaxed max-w-4xl mb-4 font-body">
+                    A continuous feedback loop showing how raw, anonymous, and frictionless field comments and bugs go straight to system developers to make app interfaces easier. Ensuring psychological safety for the field team.
+                </p>
+
+                <!-- Interactive flow map columns with active state descriptions -->
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-3 mt-4 items-stretch">
+                    <!-- Node 1 -->
+                    <button onclick="selectLoopNode(1, 'The Guard (Input)', 'Nahirapan ako sa pag-pin ng lokasyon dito — text size is too small.', 'Guards use the single-tap feedback button on the phone app interface. There is zero threat of backlash.', 'fa-solid fa-user-pen', 'text-sky-400')" 
+                            class="text-left glass p-3 rounded-xl border-white/5 bg-slate-900/40 hover:border-sky-400/50 transition duration-200 flex flex-col justify-between h-52 group">
+                        <div>
+                            <div class="w-8 h-8 rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/20 flex items-center justify-center mb-2 group-hover:bg-sky-500 group-hover:text-black transition">
+                                <i class="fa-solid fa-user-pen"></i>
+                            </div>
+                            <span class="text-[9px] text-slate-400 uppercase tracking-widest font-mono">Node 01</span>
+                            <h4 class="text-xs font-bold text-white uppercase mt-1">Guard Submission</h4>
+                            <p class="text-[10px] text-slate-400 font-body leading-relaxed mt-1">Guards report bugs or issues anonymously.</p>
+                        </div>
+                        <span class="text-[8px] text-sky-400 font-mono">Select to trace →</span>
+                    </button>
+
+                    <!-- Node 2 -->
+                    <button onclick="selectLoopNode(2, 'Anonymization Server', 'Data encrypted. Guard identities scrubbed instantly.', 'All comments are passed through metadata scrubbers. Only the site code and feedback text is recorded.', 'fa-solid fa-vault', 'text-amber-400')" 
+                            class="text-left glass p-3 rounded-xl border-white/5 bg-slate-900/40 hover:border-amber-400/50 transition duration-200 flex flex-col justify-between h-52 group">
+                        <div>
+                            <div class="w-8 h-8 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20 flex items-center justify-center mb-2 group-hover:bg-amber-500 group-hover:text-black transition">
+                                <i class="fa-solid fa-vault"></i>
+                            </div>
+                            <span class="text-[9px] text-slate-400 uppercase tracking-widest font-mono">Node 02</span>
+                            <h4 class="text-xs font-bold text-white uppercase mt-1">Anonymization</h4>
+                            <p class="text-[10px] text-slate-400 font-body leading-relaxed mt-1">Names scrubbed to protect guard safety.</p>
+                        </div>
+                        <span class="text-[8px] text-amber-400 font-mono">Select to trace →</span>
+                    </button>
+
+                    <!-- Node 3 -->
+                    <button onclick="selectLoopNode(3, 'Ops Manager Review', 'Aggregating similar reports to spot friction points.', 'Operations Manager reviews the anonymized data logs monthly to locate system blocks.', 'fa-solid fa-desktop', 'text-purple-400')" 
+                            class="text-left glass p-3 rounded-xl border-white/5 bg-slate-900/40 hover:border-purple-400/50 transition duration-200 flex flex-col justify-between h-52 group">
+                        <div>
+                            <div class="w-8 h-8 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/20 flex items-center justify-center mb-2 group-hover:bg-purple-500 group-hover:text-black transition">
+                                <i class="fa-solid fa-desktop"></i>
+                            </div>
+                            <span class="text-[9px] text-slate-400 uppercase tracking-widest font-mono">Node 03</span>
+                            <h4 class="text-xs font-bold text-white uppercase mt-1">Ops Management</h4>
+                            <p class="text-[10px] text-slate-400 font-body leading-relaxed mt-1">Issues compiled by team commanders.</p>
+                        </div>
+                        <span class="text-[8px] text-purple-400 font-mono">Select to trace →</span>
+                    </button>
+
+                    <!-- Node 4 -->
+                    <button onclick="selectLoopNode(4, 'Vendor Software Adjustment', 'Fix coded & pushed to beta servers.', 'The software development vendor updates UI/UX elements based on compiled real feedback.', 'fa-solid fa-code-commit', 'text-emerald-400')" 
+                            class="text-left glass p-3 rounded-xl border-white/5 bg-slate-900/40 hover:border-emerald-400/50 transition duration-200 flex flex-col justify-between h-52 group">
+                        <div>
+                            <div class="w-8 h-8 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center justify-center mb-2 group-hover:bg-emerald-400 group-hover:text-black transition">
+                                <i class="fa-solid fa-code-commit"></i>
+                            </div>
+                            <span class="text-[9px] text-slate-400 uppercase tracking-widest font-mono">Node 04</span>
+                            <h4 class="text-xs font-bold text-white uppercase mt-1">Vendor Adjustment</h4>
+                            <p class="text-[10px] text-slate-400 font-body leading-relaxed mt-1">Programmers design adjustments.</p>
+                        </div>
+                        <span class="text-[8px] text-emerald-400 font-mono">Select to trace →</span>
+                    </button>
+
+                    <!-- Node 5 -->
+                    <button onclick="selectLoopNode(5, 'The Guard Update', 'Receive App notification: Font size upgraded!', 'The system update is deployed to phones, resolving the issue for guards in the field.', 'fa-solid fa-circle-check', 'text-sky-400')" 
+                            class="text-left glass p-3 rounded-xl border-white/5 bg-slate-900/40 hover:border-sky-400/50 transition duration-200 flex flex-col justify-between h-52 group">
+                        <div>
+                            <div class="w-8 h-8 rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/20 flex items-center justify-center mb-2 group-hover:bg-sky-500 group-hover:text-black transition">
+                                <i class="fa-solid fa-circle-check"></i>
+                            </div>
+                            <span class="text-[9px] text-slate-400 uppercase tracking-widest font-mono">Node 05</span>
+                            <h4 class="text-xs font-bold text-white uppercase mt-1">Guard Update</h4>
+                            <p class="text-[10px] text-slate-400 font-body leading-relaxed mt-1">Field teams receive updates.</p>
+                        </div>
+                        <span class="text-[8px] text-sky-400 font-mono">Select to trace →</span>
+                    </button>
+                </div>
+
+                <!-- Live Trace Description Box -->
+                <div class="mt-4 p-4 rounded-xl bg-slate-900/80 border border-white/10" id="trace-box">
+                    <span class="text-[9px] text-gold uppercase tracking-widest font-mono block mb-1">Feedback Loop Node Information</span>
+                    <h4 class="text-sm font-bold text-white uppercase flex items-center gap-2" id="trace-title">
+                        <i class="fa-solid fa-circle-nodes text-gold"></i> Dynamic System Evaluation Hub
+                    </h4>
+                    <p class="text-xs text-slate-300 font-body leading-relaxed mt-1" id="trace-desc">
+                        Select any of the five continuous feedback nodes above to trace how direct observations from our ground forces result in real system adjustments.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= VISUALIZATION 5: SLIDE PRESENTATION DECK ================= -->
+        <section id="module-slides" class="module-content flex flex-col gap-6 slide-hidden">
+            <div class="glass-strong rounded-3xl p-6 border-white/10 relative overflow-hidden flex flex-col justify-between h-[420px]" id="slide-canvas">
+                <div class="absolute inset-0 bg-gradient-to-tr from-blue-950/20 via-transparent to-[#FFD700]/5 pointer-events-none"></div>
+                
+                <!-- Slide content blocks -->
+                <!-- Slide 1 -->
+                <div id="slide-item-1" class="slide-item slide-active flex-col justify-center items-center text-center h-full max-w-4xl mx-auto">
+                    <span class="text-[10px] uppercase font-mono tracking-widest text-gold bg-[#FFD700]/10 px-2.5 py-0.5 rounded border border-[#FFD700]/20 mb-3"><i class="fa-solid fa-circle-check"></i> Slide 1 / Baseline Check</span>
+                    <h3 class="text-2xl md:text-3xl lg:text-4xl font-bold uppercase text-white tracking-wide mt-2">1. THE REALITY CHECK: BRIDGING THE TRANSITION</h3>
+                    <p class="text-xs md:text-sm text-slate-300 font-body leading-relaxed max-w-2xl mt-3">
+                        Let's address the elephant in the room: paper logbooks are slow, but they are comfortable. New technology often brings fear of surveillance. Stronghold A3 resolves this friction not by introducing sterile tracking metrics, but by building direct relational trust and local supportive programs.
+                    </p>
+                    <span class="text-[9px] text-slate-500 font-mono uppercase block mt-6">Acknowledge pain. Build trust. Eliminate paper logs safely.</span>
+                </div>
+
+                <!-- Slide 2 -->
+                <div id="slide-item-2" class="slide-item slide-hidden flex-col justify-center items-center text-center h-full max-w-4xl mx-auto">
+                    <span class="text-[10px] uppercase font-mono tracking-widest text-gold bg-[#FFD700]/10 px-2.5 py-0.5 rounded border border-[#FFD700]/20 mb-3"><i class="fa-solid fa-circle-check"></i> Slide 2 / Value Prop</span>
+                    <h3 class="text-2xl md:text-3xl lg:text-4xl font-bold uppercase text-white tracking-wide mt-2">2. THE "WIIFM" REVEAL: GUARD EMPOWERMENT FIRST</h3>
+                    <p class="text-xs md:text-sm text-slate-300 font-body leading-relaxed max-w-2xl mt-3">
+                        Why are we upgrading? Because we protect our own. This change saves your transit fare, ensures automatic, error-free overtime calculations, and links you to an active 24/7 rescue and dispatch system via the SOS command channel.
+                    </p>
+                    <span class="text-[9px] text-slate-500 font-mono uppercase block mt-6">Bawas Pamasahe. Sigurado ang Payroll. Live SOS Emergency Button.</span>
+                </div>
+
+                <!-- Slide 3 -->
+                <div id="slide-item-3" class="slide-item slide-hidden flex-col justify-center items-center text-center h-full max-w-4xl mx-auto">
+                    <span class="text-[10px] uppercase font-mono tracking-widest text-gold bg-[#FFD700]/10 px-2.5 py-0.5 rounded border border-[#FFD700]/20 mb-3"><i class="fa-solid fa-circle-check"></i> Slide 3 / Mentors</span>
+                    <h3 class="text-2xl md:text-3xl lg:text-4xl font-bold uppercase text-white tracking-wide mt-2">3. MEET YOUR TECH CHAMPIONS</h3>
+                    <p class="text-xs md:text-sm text-slate-300 font-body leading-relaxed max-w-2xl mt-3">
+                        Introducing your local "Kuya and Ate" champions. These tech-support leaders have been selected directly from your facility sectors to provide peer-to-peer technical guidance with zero operational judgment.
+                    </p>
+                    <span class="text-[9px] text-slate-500 font-mono uppercase block mt-6">Peer mentorship built on relational respect and support.</span>
+                </div>
+
+                <!-- Slide 4 -->
+                <div id="slide-item-4" class="slide-item slide-hidden flex-col justify-center items-center text-center h-full max-w-4xl mx-auto">
+                    <span class="text-[10px] uppercase font-mono tracking-widest text-gold bg-[#FFD700]/10 px-2.5 py-0.5 rounded border border-[#FFD700]/20 mb-3"><i class="fa-solid fa-circle-check"></i> Slide 4 / Stepper</span>
+                    <h3 class="text-2xl md:text-3xl lg:text-4xl font-bold uppercase text-white tracking-wide mt-2">4. THE "APP BUDDY" SHADOWING METHOD</h3>
+                    <p class="text-xs md:text-sm text-slate-300 font-body leading-relaxed max-w-2xl mt-3">
+                        We don't leave anyone behind. Tech Champions stand side-by-side with their buddy for three consecutive shifts to answer questions and validate app controls before solo launch.
+                    </p>
+                    <span class="text-[9px] text-slate-500 font-mono uppercase block mt-6">Zero-judgment zone shadowing over three full shifts.</span>
+                </div>
+
+                <!-- Slide 5 -->
+                <div id="slide-item-5" class="slide-item slide-hidden flex-col justify-center items-center text-center h-full max-w-4xl mx-auto">
+                    <span class="text-[10px] uppercase font-mono tracking-widest text-gold bg-[#FFD700]/10 px-2.5 py-0.5 rounded border border-[#FFD700]/20 mb-3"><i class="fa-solid fa-circle-check"></i> Slide 5 / Gamify</span>
+                    <h3 class="text-2xl md:text-3xl lg:text-4xl font-bold uppercase text-white tracking-wide mt-2">5. REWARDS & "PADER NG KARANGALAN"</h3>
+                    <p class="text-xs md:text-sm text-slate-300 font-body leading-relaxed max-w-2xl mt-3">
+                        Operational excellence deserves tangible visibility. Earn the "Digital Guardian" badge on your app to win weekly grocery vouchers and feature your team's photo on the main office wall.
+                    </p>
+                    <span class="text-[9px] text-slate-500 font-mono uppercase block mt-6">Weekly rewards for team compliance.</span>
+                </div>
+
+                <!-- Slide 6 -->
+                <div id="slide-item-6" class="slide-item slide-hidden flex-col justify-center items-center text-center h-full max-w-4xl mx-auto">
+                    <span class="text-[10px] uppercase font-mono tracking-widest text-gold bg-[#FFD700]/10 px-2.5 py-0.5 rounded border border-[#FFD700]/20 mb-3"><i class="fa-solid fa-circle-check"></i> Slide 6 / Safe Feedback</span>
+                    <h3 class="text-2xl md:text-3xl lg:text-4xl font-bold uppercase text-white tracking-wide mt-2">6. THE "WALANG HIYA" PROMISE</h3>
+                    <p class="text-xs md:text-sm text-slate-300 font-body leading-relaxed max-w-2xl mt-3">
+                        We are in this together. Submit anonymous app bugs and comments anytime without fear of backlash. We aggregate comments to deploy upgrades and make buttons easier.
+                    </p>
+                    <span class="text-[9px] text-slate-500 font-mono uppercase block mt-6">No shame. No judgment. Anonymous, secure feedback loop.</span>
+                </div>
+
+                <!-- Slide 7 -->
+                <div id="slide-item-7" class="slide-item slide-hidden flex-col justify-center items-center text-center h-full max-w-4xl mx-auto">
+                    <span class="text-[10px] uppercase font-mono tracking-widest text-gold bg-[#FFD700]/10 px-2.5 py-0.5 rounded border border-[#FFD700]/20 mb-3"><i class="fa-solid fa-circle-check"></i> Slide 7 / Launch</span>
+                    <h3 class="text-2xl md:text-3xl lg:text-4xl font-bold uppercase text-white tracking-wide mt-2">7. THE CALL TO ACTION: BAYANIHAN IN MOTION</h3>
+                    <p class="text-xs md:text-sm text-slate-300 font-body leading-relaxed max-w-2xl mt-3">
+                        Today, we launch the protocol across Region VIII. Collect your pre-loaded "Emergency Load" dual-SIM card, get your pocket-sized WIIFM handbook, and meet your paired Tech Champion.
+                    </p>
+                    <span class="text-[9px] text-slate-500 font-mono uppercase block mt-6">Collect resources and start shadowing during next shift.</span>
+                </div>
+
+                <!-- Slide presentation controls footer -->
+                <div class="flex items-center justify-between border-t border-white/10 pt-4 mt-auto">
+                    <div class="flex gap-2">
+                        <button onclick="prevSlide()" class="py-1.5 px-3 bg-white/5 border border-white/10 rounded-lg hover:border-gold/50 text-xs transition uppercase font-bold">
+                            <i class="fa-solid fa-arrow-left"></i> Prev
+                        </button>
+                        <button onclick="nextSlide()" class="py-1.5 px-3 bg-white/5 border border-white/10 rounded-lg hover:border-gold/50 text-xs transition uppercase font-bold">
+                            Next <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <span class="text-[10px] font-mono tracking-wider text-slate-400" id="slide-counter-txt">Slide 1/7</span>
+
+                    <button onclick="toggleSlideAutoplay()" id="slide-play-btn" class="p-2 bg-[#FFD700]/15 text-gold border border-[#FFD700]/20 rounded-lg hover:scale-105 transition">
+                        <i class="fa-solid fa-play text-xs"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ================= FLOATING GLASS CLAIM MODAL (Replacing non-permitted alert blocks) ================= -->
+    <div id="claim-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center z-50 hidden opacity-0 transition-opacity duration-200">
+        <div class="glass-strong rounded-3xl p-6 max-w-md w-full border-[#FFD700]/30 mx-4 text-center relative overflow-hidden pulse-gold">
+            <div class="absolute inset-0 bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
+            
+            <div class="w-14 h-14 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center mx-auto mb-4 text-2xl">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gold uppercase mb-1">Gantimpala Approved!</h3>
+            <span class="text-[10px] font-mono uppercase text-slate-400">Weekly Digital Guardian Reward</span>
+            
+            <!-- Virtual voucher code representation -->
+            <div class="my-4 p-4 rounded-xl border border-dashed border-emerald-500/30 bg-emerald-950/15 relative">
+                <span class="text-[9px] text-slate-400 block font-mono">Grocery Coupon Code</span>
+                <span class="text-lg font-mono font-bold text-emerald-400 tracking-widest">SH-A3-77291-JV</span>
+                <p class="text-xs text-white font-body mt-2">Valued at <strong class="text-gold">PHP 500</strong> — redeemable at partner Region VIII supermarkets.</p>
+            </div>
+
+            <p class="text-[10px] text-slate-400 font-body leading-normal mb-5">
+                Voucher processed under compliance metrics. No duplicate claims permitted. Secure cache logged.
+            </p>
+
+            <button onclick="hideClaimModal()" class="w-full py-2 bg-[#FFD700]/10 border border-[#FFD700]/30 text-gold hover:bg-[#FFD700]/20 transition rounded-xl uppercase font-bold text-xs tracking-wider">
+                Close Voucher View
+            </button>
+        </div>
+    </div>
+
+    <!-- ================= CAPABILITY REGULATORY DOCUMENT FOOTER ================= -->
+    <footer class="w-full max-w-7xl px-4 md:px-8 py-5 mb-2 mt-4 z-30">
+        <div class="glass px-6 py-4 rounded-2xl border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
+            <p class="text-xs text-slate-400 font-body leading-relaxed text-center md:text-left">
+                © 2026 <span class="text-white font-semibold">Stronghold A3 Security Agency</span>. All rights reserved. <br/>
+                Digital Bayanihan changes deployed under standard DOLE DO-174 and PNP-SOSIA workforce directives.
+            </p>
+            
+            <div class="flex items-center gap-4 text-xs font-mono">
+                <span class="text-slate-400">Doc Reference: <strong class="text-gold uppercase">A3-DBM-2026</strong></span>
+                <span class="text-slate-400">Region: <strong class="text-gold uppercase">VIII (Eastern Visayas)</strong></span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================= INTERACTIVE JAVASCRIPT LOGIC ================= -->
+    <script>
+        // Module directories toggling logic
+        function switchModule(targetId) {
+            const modules = ['module-poster', 'module-stepper', 'module-gamify', 'module-feedback', 'module-slides'];
+            const navIds = ['nav-poster', 'nav-stepper', 'nav-gamify', 'nav-feedback', 'nav-slides'];
+
+            // Clear nav button active states
+            navIds.forEach(id => {
+                document.getElementById(id).classList.remove('tab-btn-active');
+            });
+
+            // Hide modules
+            modules.forEach(modId => {
+                const element = document.getElementById(modId);
+                if (element) {
+                    element.classList.remove('slide-active');
+                    element.classList.add('slide-hidden');
+                }
+            });
+
+            // Show selected module
+            const targetMod = document.getElementById(targetId);
+            if (targetMod) {
+                targetMod.classList.remove('slide-hidden');
+                targetMod.classList.add('slide-active');
+            }
+
+            // Assign active class to the button
+            let activeNavBtn = '';
+            switch(targetId) {
+                case 'module-poster': activeNavBtn = 'nav-poster'; break;
+                case 'module-stepper': activeNavBtn = 'nav-stepper'; break;
+                case 'module-gamify': activeNavBtn = 'nav-gamify'; break;
+                case 'module-feedback': activeNavBtn = 'nav-feedback'; break;
+                case 'module-slides': activeNavBtn = 'nav-slides'; break;
+            }
+            document.getElementById(activeNavBtn).className += ' tab-btn-active';
+        }
+
+        // Stepper: Gamification Virtual Claim logic
+        function claimGroceryVoucher() {
+            const modal = document.getElementById('claim-modal');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+            }, 50);
+
+            // Change App container to show claimed status
+            const claimBtn = document.getElementById('claim-btn');
+            claimBtn.disabled = true;
+            claimBtn.innerHTML = '<i class="fa-solid fa-lock"></i> Voucher Claimed';
+            claimBtn.className = "w-full py-1.5 bg-slate-800 text-slate-500 border border-slate-700/50 font-bold uppercase rounded-lg text-[9px] cursor-not-allowed flex items-center justify-center gap-1";
+        }
+
+        function hideClaimModal() {
+            const modal = document.getElementById('claim-modal');
+            modal.classList.add('opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 200);
+        }
+
+        // Loop: interactive trace update
+        function selectLoopNode(nodeNum, title, commentSample, technicalDesc, iconClass, colorClass) {
+            const traceTitle = document.getElementById('trace-title');
+            const traceDesc = document.getElementById('trace-desc');
+
+            traceTitle.innerHTML = `<i class="${iconClass} ${colorClass}"></i> Node 0${nodeNum}: ${title}`;
+            traceDesc.innerHTML = `<strong class="text-white">Sample Comment:</strong> "${commentSample}" <br/><br/> ${technicalDesc}`;
+        }
+
+        // Slide controller variables
+        const totalSlides = 7;
+        let activeSlideNum = 1;
+        let slideInterval = null;
+        let isSlidePlaying = false;
+
+        function updateSlideUI() {
+            // Hide all slides
+            for(let i = 1; i <= totalSlides; i++) {
+                const slide = document.getElementById(`slide-item-${i}`);
+                if (slide) {
+                    slide.classList.remove('slide-active');
+                    slide.classList.add('slide-hidden');
+                }
+            }
+
+            // Show active slide
+            const activeSlide = document.getElementById(`slide-item-${activeSlideNum}`);
+            if (activeSlide) {
+                activeSlide.classList.remove('slide-hidden');
+                activeSlide.classList.add('slide-active');
+            }
+
+            // Update footer metrics
+            document.getElementById('slide-counter-txt').innerText = `Slide ${activeSlideNum}/${totalSlides}`;
+        }
+
+        function nextSlide() {
+            activeSlideNum = activeSlideNum < totalSlides ? activeSlideNum + 1 : 1;
+            updateSlideUI();
+        }
+
+        function prevSlide() {
+            activeSlideNum = activeSlideNum > 1 ? activeSlideNum - 1 : totalSlides;
+            updateSlideUI();
+        }
+
+        // Slide presentation deck autoplay
+        function toggleSlideAutoplay() {
+            const playBtn = document.getElementById('slide-play-btn');
+            isSlidePlaying = !isSlidePlaying;
+
+            if (isSlidePlaying) {
+                playBtn.innerHTML = '<i class="fa-solid fa-pause text-xs text-gold"></i>';
+                slideInterval = setInterval(nextSlide, 7000); // 7s transitions
+            } else {
+                playBtn.innerHTML = '<i class="fa-solid fa-play text-xs"></i>';
+                if (slideInterval) {
+                    clearInterval(slideInterval);
+                }
+            }
+        }
+    </script>
+</body>
+</html>
