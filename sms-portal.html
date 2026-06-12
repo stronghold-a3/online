@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- SEO Optimization Meta Tags -->
+    <title>SMS Command Portal & Core Protocols | Stronghold A3 Security Agency Eastern Visayas</title>
+    <meta name="description" content="Access the Stronghold A3 SMS Command Portal. Explore our premium Zero-Liability Priority Protocols, Crisis-Proof Operational Workflows, RACI Matrices, and 1-Day BCP networks across Region VIII.">
+    <meta name="keywords" content="Stronghold A3 SMS, security command portal Tacloban, crisis communications Leyte, DOLE DO-174 security, DRRM RA 10121 Eastern Visayas, offline security app">
+    <meta name="author" content="Antonie M. Silva, CEO Stronghold A3">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0A1628">
+    
+    <!-- Open Graph / Social Media Vitals -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Stronghold A3 | SMS Command Portal & Core Protocols">
+    <meta property="og:description" content="Zero-Liability security operations powered by low-bandwidth SMS encryption. Access crisis-proof B2B documentation instantly.">
+    <meta property="og:image" content="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png">
+    <meta property="og:url" content="https://stronghold-a3.github.io/online/">
+    
+    <!-- Preload Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Tailwind CSS Engine -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        montserrat: ['Montserrat', 'sans-serif'],
+                        poppins: ['Poppins', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                },
+            },
+        }
+    </script>
+    
+    <!-- Premium Apple Liquid Glass Styles -->
+    <style>
+        :root {
+            --gold: #FFD700;
+            --gold-glow: rgba(255, 215, 0, 0.45);
+            --navy: #0A1628;
+            --slate-blue: #1E293B;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: radial-gradient(circle at 50% 0%, #002b5c 0%, #001b3d 50%, #000c1f 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        /* Ambient subtle logo background overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: min(70vw, 70vh); height: min(70vw, 70vh);
+            background-image: url('https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png');
+            background-size: contain; background-repeat: no-repeat; background-position: center;
+            opacity: 0.03; pointer-events: none; z-index: 0;
+        }
+
+        .glass {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+        }
+
+        .glass-strong {
+            background: linear-gradient(135deg, rgba(0, 43, 92, 0.55), rgba(0, 12, 31, 0.75));
+            backdrop-filter: blur(28px) saturate(200%);
+            -webkit-backdrop-filter: blur(28px) saturate(200%);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        }
+
+        .glass-gold {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.14), rgba(255, 215, 0, 0.03));
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 0 8px 32px rgba(255, 215, 0, 0.05);
+        }
+
+        .glass-emerald {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.14), rgba(16, 185, 129, 0.03));
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        /* Pulsing states */
+        .glow-gold {
+            animation: goldPulse 2s infinite;
+        }
+
+        @keyframes goldPulse {
+            0%, 100% { box-shadow: 0 0 5px rgba(255, 215, 0, 0.2); border-color: rgba(255, 215, 0, 0.2); }
+            50% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.5); border-color: rgba(255, 215, 0, 0.45); }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 215, 0, 0.25);
+            border-radius: 8px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 215, 0, 0.5);
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen justify-between relative">
+
+    <!-- Header Command Bar -->
+    <header class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 mt-2 z-10">
+        <div class="glass px-6 py-4 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-4">
+                <!-- Circular High-Fidelity Logo -->
+                <div class="relative w-14 h-14 rounded-full overflow-hidden border-2 border-[#FFD700] shadow-[0_0_15px_rgba(255,215,0,0.5)] bg-slate-950 shrink-0">
+                    <img src="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Logo.jpg" 
+                         alt="Stronghold A3 Logo" 
+                         class="w-full h-full object-cover"
+                         onerror="this.src='https://placehold.co/150x150/002b5c/FFD700?text=A3'">
+                </div>
+                <div>
+                    <span class="text-[10px] uppercase tracking-widest text-[#FFD700] font-mono font-bold block">LOW-BANDWIDTH FAIL-SAFE NET</span>
+                    <h1 class="text-xl md:text-2xl font-black font-montserrat tracking-wider uppercase text-white leading-none">
+                        SMS COMMAND <span class="text-[#FFD700]">GATEWAY</span>
+                    </h1>
+                </div>
+            </div>
+            
+            <div class="flex flex-wrap items-center gap-3">
+                <span class="px-3 py-1 text-[11px] rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 font-mono flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> Bridge 2 Active
+                </span>
+                <span class="px-3 py-1 text-[11px] rounded-full bg-[#FFD700]/10 text-yellow-300 border border-[#FFD700]/20 font-mono">
+                    System Reference: <strong class="text-[#FFD700]">A3-SMS-2026</strong>
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Operational Workspace Grid -->
+    <main class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex-grow grid grid-cols-1 lg:grid-cols-12 gap-6 z-10 items-stretch">
+        
+        <!-- COLUMN A: THE SMS TRANSMISSION SIMULATOR & FAIL-SAFE ROUTING (Col-span 7) -->
+        <section class="lg:col-span-7 flex flex-col gap-6 h-full">
+            <div class="glass-strong rounded-3xl p-6 border-white/10 flex flex-col justify-between h-full relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-tr from-blue-950/20 via-transparent to-[#FFD700]/5 pointer-events-none"></div>
+                
+                <div class="relative z-10">
+                    <div class="flex justify-between items-start border-b border-white/10 pb-4 mb-4">
+                        <div>
+                            <span class="text-[10px] text-[#FFD700] uppercase font-mono tracking-widest block">Simulation Desk</span>
+                            <h2 class="text-xl font-bold font-montserrat uppercase text-white">Live Low-Bandwidth Compressor</h2>
+                        </div>
+                        <span class="text-[11px] bg-sky-500/10 text-sky-300 border border-sky-500/20 px-2 py-0.5 rounded font-mono">Bridge 2 Gateway</span>
+                    </div>
+                    
+                    <p class="text-xs text-slate-300 mb-4 leading-relaxed font-poppins">
+                        In Eastern Visayas, physical storms or network crashes disrupt cloud systems. Stronghold's 3-Bridge system automatically compresses complex security/operational metrics into <strong>coded, lightweight SMS arrays</strong> to maintain dashboard integrity without data pipelines.
+                    </p>
+
+                    <!-- STEP 1: SELECT CODENAME TEMPLATE -->
+                    <div class="mb-4">
+                        <label class="block text-[10px] font-mono uppercase text-slate-400 mb-1.5 font-bold">Select Scenario Metric Template</label>
+                        <div class="grid grid-cols-2 sm:grid-cols-5 gap-2">
+                            <button onclick="loadSmsTemplate('ABSENT', 'A3_SG_ABS_921_REC', 'Absenteeism: Sg. Garcia absent at Tacloban Depot Post. Dispatching nearby relief unit SG-4.')" 
+                                    class="p-2 text-center rounded-xl bg-white/5 border border-white/10 text-[10px] uppercase font-bold hover:border-yellow-400 transition">
+                                <i class="fa-solid fa-user-xmark mb-1 block text-red-400"></i> Absentee
+                            </button>
+                            <button onclick="loadSmsTemplate('TYPHOON', 'A3_DRRM_W1_PAG_S2', 'Typhoon Signal No.2 Raised: Evacuation safe post activated. staging Bayanihan kits.')" 
+                                    class="p-2 text-center rounded-xl bg-white/5 border border-white/10 text-[10px] uppercase font-bold hover:border-yellow-400 transition">
+                                <i class="fa-solid fa-cloud-bolt mb-1 block text-amber-400 animate-pulse"></i> Storm S2
+                            </button>
+                            <button onclick="loadSmsTemplate('POWER', 'A3_OFFLINE_CACHE_GRID_FAIL', 'Grid Outage: Main grid collapse. Caching logs offline. Switched to Bridge 3 Mesh.')" 
+                                    class="p-2 text-center rounded-xl bg-white/5 border border-white/10 text-[10px] uppercase font-bold hover:border-yellow-400 transition">
+                                <i class="fa-solid fa-plug-circle-xmark mb-1 block text-yellow-400"></i> Outage
+                            </button>
+                            <button onclick="loadSmsTemplate('BREACH', 'A3_SOS_BREACH_ZONE_ALPH', 'BREACH SOS ACTIVE: Armed intrusion reported. Initiated local zone lock, PNP alerted.')" 
+                                    class="p-2 text-center rounded-xl bg-white/5 border border-white/10 text-[10px] uppercase font-bold hover:border-yellow-400 transition">
+                                <i class="fa-solid fa-triangle-exclamation mb-1 block text-rose-500 animate-bounce"></i> Breach SOS
+                            </button>
+                            <button onclick="loadSmsTemplate('UNREST', 'A3_S5_UNREST_DEFEND_CONF', 'Protest Crowd Approaching: Crowd distance 300m, size 80. Orders: Lock doors, Defend.')" 
+                                    class="p-2 text-center rounded-xl bg-white/5 border border-white/10 text-[10px] uppercase font-bold hover:border-yellow-400 transition">
+                                <i class="fa-solid fa-people-group mb-1 block text-purple-400"></i> Unrest
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- STEP 2: SIMULATE THE COMPRESSION ENGINE -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
+                        <div class="bg-slate-950/40 border border-white/5 p-3 rounded-xl flex flex-col justify-between">
+                            <span class="text-[9px] font-mono uppercase text-slate-400 block mb-1">Standard Text Payload (Input)</span>
+                            <textarea id="raw-sms-input" readonly placeholder="Select a scenario template above to generate a raw text package..." 
+                                      class="w-full bg-transparent border-none text-[11px] text-slate-300 focus:outline-none resize-none h-16 font-poppins"></textarea>
+                            <div class="text-[9px] font-mono text-slate-500 text-right mt-1" id="raw-char-counter">Characters: 0</div>
+                        </div>
+
+                        <div class="bg-slate-950 border border-[#FFD700]/30 p-3 rounded-xl flex flex-col justify-between shadow-[0_0_15px_rgba(255,215,0,0.05)]">
+                            <span class="text-[9px] font-mono text-yellow-400 uppercase block mb-1">Coded Array Compression (Transmit)</span>
+                            <input type="text" id="compressed-sms-output" readonly placeholder="Encrypted coded payload..." 
+                                   class="w-full bg-transparent border-none text-xs font-mono font-bold text-emerald-400 focus:outline-none mt-1">
+                            <div class="text-[9px] font-mono text-emerald-500 text-right mt-1" id="comp-char-counter">Coded characters: 0 (Save: 0%)</div>
+                        </div>
+                    </div>
+
+                    <!-- SMS ROUTING SIMULATOR ACTIONS -->
+                    <div class="my-4 flex flex-col sm:flex-row gap-3">
+                        <button onclick="transmitSimulatedSms()" id="transmit-btn" disabled 
+                                class="flex-grow py-3 bg-slate-800 text-slate-400 border border-slate-700 font-bold uppercase rounded-xl text-xs transition tracking-wider flex items-center justify-center gap-2 cursor-not-allowed">
+                            <i class="fa-solid fa-satellite-dish"></i> Transmit Packet via SMS Gateway
+                        </button>
+                        <button onclick="toggleCommsSimulation()" id="simulate-shocks-btn" 
+                                class="py-3 px-4 bg-yellow-400 text-slate-950 font-bold uppercase rounded-xl text-xs transition hover:scale-105 active:scale-95 flex items-center justify-center gap-1">
+                            <i class="fa-solid fa-wind text-xs"></i> Simulate Network Shock
+                        </button>
+                    </div>
+
+                    <!-- ACTIVE TRANSITION ROUTING SIMULATION PANEL -->
+                    <div class="glass p-4 rounded-xl border-white/5 my-4" id="sim-routing-box">
+                        <div class="flex items-center justify-between text-[10px] font-mono text-slate-400 mb-2">
+                            <span>REDUNDANT 3-BRIDGE PATH MAP</span>
+                            <span class="text-emerald-400 font-bold" id="comms-status-label">SYSTEM ONLINE</span>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2 text-center text-[10px] font-mono font-bold">
+                            <div class="p-2 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 flex flex-col items-center justify-center gap-1" id="path-bridge-1">
+                                <i class="fa-solid fa-cloud"></i>
+                                <span>Bridge 1: Cloud SMS</span>
+                            </div>
+                            <div class="p-2 rounded bg-white/5 text-slate-500 border border-white/5 flex flex-col items-center justify-center gap-1" id="path-bridge-2">
+                                <i class="fa-solid fa-comment-dots"></i>
+                                <span>Bridge 2: SMS Gate</span>
+                            </div>
+                            <div class="p-2 rounded bg-white/5 text-slate-500 border border-white/5 flex flex-col items-center justify-center gap-1" id="path-bridge-3">
+                                <i class="fa-solid fa-walkie-talkie"></i>
+                                <span>Bridge 3: Radio Mesh</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="border-t border-white/10 pt-3 mt-4 text-[10px] text-slate-400 font-mono flex items-center gap-2">
+                    <i class="fa-solid fa-circle-info text-[#FFD700]"></i> All transactions execute in alignment with PNP-SOSIA operational regulations and data privacy rules.
+                </div>
+            </div>
+        </section>
+
+        <!-- COLUMN B: THE OFFICIAL PRIORITY RESOURCE DIRECTORY (Col-span 5) -->
+        <section class="lg:col-span-5 flex flex-col gap-4 h-full">
+            <div class="glass p-6 rounded-3xl border-white/10 flex flex-col justify-between h-full">
+                
+                <div>
+                    <span class="text-[10px] text-[#FFD700] uppercase font-mono tracking-widest block mb-1">Corporate Directory</span>
+                    <h2 class="text-lg font-bold font-montserrat uppercase text-white mb-2"><i class="fa-solid fa-shield-halved text-[#FFD700] mr-1"></i> Core Strategy Deck</h2>
+                    <p class="text-xs text-slate-400 leading-normal mb-4 font-poppins">
+                        Access our strategic resources and frameworks optimized for Eastern Visayas operations. Click any platform resource to navigate directly to the verified deployment nodes.
+                    </p>
+
+                    <!-- RESOURCE CARDS LIST -->
+                    <div class="space-y-3 max-h-[380px] overflow-y-auto pr-1">
+                        
+                        <!-- CARD 1: PRIORITY PROTOCOLS -->
+                        <div class="p-3 bg-white/5 hover:bg-white/10 border border-white/5 rounded-2xl transition group flex items-start justify-between gap-3">
+                            <div class="flex items-start gap-2.5">
+                                <div class="w-8 h-8 rounded-full bg-yellow-400/15 text-[#FFD700] border border-[#FFD700]/30 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-gavel text-xs"></i>
+                                </div>
+                                <div class="overflow-hidden">
+                                    <h4 class="text-xs font-bold text-white uppercase group-hover:text-yellow-400 transition">1. Priority Protocols</h4>
+                                    <p class="text-[10px] text-slate-400 leading-normal mt-0.5">Corporate legal shielding & standard DOLE DO-174 procedures.</p>
+                                </div>
+                            </div>
+                            <a href="https://stronghold-a3.github.io/online/priority-protocols.html" target="_blank" 
+                               class="py-1 px-2.5 bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-bold uppercase rounded-lg text-[9px] transition shrink-0 flex items-center gap-1">
+                                View <i class="fa-solid fa-arrow-up-right-from-square text-[8px]"></i>
+                            </a>
+                        </div>
+
+                        <!-- CARD 2: CRISIS-PROOF WORKFLOWS -->
+                        <div class="p-3 bg-white/5 hover:bg-white/10 border border-white/5 rounded-2xl transition group flex items-start justify-between gap-3">
+                            <div class="flex items-start gap-2.5">
+                                <div class="w-8 h-8 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-wind text-xs"></i>
+                                </div>
+                                <div class="overflow-hidden">
+                                    <h4 class="text-xs font-bold text-white uppercase group-hover:text-emerald-400 transition">2. Crisis Workflows</h4>
+                                    <p class="text-[10px] text-slate-400 leading-normal mt-0.5">3-Bridge coms map & on-site environmental emergency routing.</p>
+                                </div>
+                            </div>
+                            <a href="https://stronghold-a3.github.io/online/operational-workflows.html" target="_blank" 
+                               class="py-1 px-2.5 bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-bold uppercase rounded-lg text-[9px] transition shrink-0 flex items-center gap-1">
+                                View <i class="fa-solid fa-arrow-up-right-from-square text-[8px]"></i>
+                            </a>
+                        </div>
+
+                        <!-- CARD 3: RACI PROTOCOLS -->
+                        <div class="p-3 bg-white/5 hover:bg-white/10 border border-white/5 rounded-2xl transition group flex items-start justify-between gap-3">
+                            <div class="flex items-start gap-2.5">
+                                <div class="w-8 h-8 rounded-full bg-sky-500/15 text-sky-400 border border-sky-500/30 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-circle-nodes text-xs"></i>
+                                </div>
+                                <div class="overflow-hidden">
+                                    <h4 class="text-xs font-bold text-white uppercase group-hover:text-sky-400 transition">3. RACI Protocols</h4>
+                                    <p class="text-[10px] text-slate-400 leading-normal mt-0.5">Operational accountability logic built to kill bypass delays.</p>
+                                </div>
+                            </div>
+                            <a href="https://stronghold-a3.github.io/online/raci-protocol.html" target="_blank" 
+                               class="py-1 px-2.5 bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-bold uppercase rounded-lg text-[9px] transition shrink-0 flex items-center gap-1">
+                                View <i class="fa-solid fa-arrow-up-right-from-square text-[8px]"></i>
+                            </a>
+                        </div>
+
+                        <!-- CARD 4: 1-DAY EMERGENCY BCPs -->
+                        <div class="p-3 bg-white/5 hover:bg-white/10 border border-white/5 rounded-2xl transition group flex items-start justify-between gap-3">
+                            <div class="flex items-start gap-2.5">
+                                <div class="w-8 h-8 rounded-full bg-rose-500/15 text-rose-400 border border-rose-500/30 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-calendar-day text-xs"></i>
+                                </div>
+                                <div class="overflow-hidden">
+                                    <h4 class="text-xs font-bold text-white uppercase group-hover:text-rose-400 transition">4. 1-Day BCP Blueprint</h4>
+                                    <p class="text-[10px] text-slate-400 leading-normal mt-0.5">Rapid 120-minute gap containment sequence parameters.</p>
+                                </div>
+                            </div>
+                            <a href="https://stronghold-a3.github.io/online/bcp.html" target="_blank" 
+                               class="py-1 px-2.5 bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-bold uppercase rounded-lg text-[9px] transition shrink-0 flex items-center gap-1">
+                                View <i class="fa-solid fa-arrow-up-right-from-square text-[8px]"></i>
+                            </a>
+                        </div>
+
+                        <!-- CARD 5: DIGITAL BAYANIHAN -->
+                        <div class="p-3 bg-white/5 hover:bg-white/10 border border-white/5 rounded-2xl transition group flex items-start justify-between gap-3">
+                            <div class="flex items-start gap-2.5">
+                                <div class="w-8 h-8 rounded-full bg-indigo-500/15 text-indigo-400 border border-indigo-500/30 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-people-carry-box text-xs"></i>
+                                </div>
+                                <div class="overflow-hidden">
+                                    <h4 class="text-xs font-bold text-white uppercase group-hover:text-indigo-400 transition">5. Digital Bayanihan</h4>
+                                    <p class="text-[10px] text-slate-400 leading-normal mt-0.5">Frontline "Kuya/Ate" buddy training models & safe learning matrices.</p>
+                                </div>
+                            </div>
+                            <a href="https://stronghold-a3.github.io/online/digital-bayanihan.html" target="_blank" 
+                               class="py-1 px-2.5 bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-bold uppercase rounded-lg text-[9px] transition shrink-0 flex items-center gap-1">
+                                View <i class="fa-solid fa-arrow-up-right-from-square text-[8px]"></i>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- DIRECT ACCESS: SMS PORTAL APP -->
+                <div class="mt-4 p-4 rounded-2xl border border-emerald-500/30 bg-emerald-950/20 flex flex-col justify-between gap-3">
+                    <div>
+                        <div class="flex justify-between items-center mb-1">
+                            <h4 class="text-xs font-bold text-white uppercase"><i class="fa-solid fa-mobile-screen text-emerald-400 mr-1.5 animate-pulse"></i> Online-First Portal Platform</h4>
+                            <span class="text-[9px] font-mono text-emerald-400">APP DEPLOYED</span>
+                        </div>
+                        <p class="text-[10px] text-slate-300 leading-normal font-poppins">
+                            Unlock real-time operational transparency. Open the robust offline-first command node dashboard for managing field deployments.
+                        </p>
+                    </div>
+                    <a href="https://sms.stronghold-a3.com" target="_blank" 
+                       class="w-full py-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold uppercase rounded-xl text-xs transition text-center tracking-wider block">
+                        Open sms.stronghold-a3.com <i class="fa-solid fa-paper-plane text-[9px] ml-1"></i>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FLOATING INTERACTIVE TOAST BAR -->
+    <div id="status-toast" class="fixed bottom-6 right-6 glass-strong border-[#FFD700]/40 px-5 py-3 rounded-xl shadow-2xl max-w-sm z-50 transform translate-y-28 transition-transform duration-300 ease-in-out flex items-center gap-3 select-none">
+        <i class="fa-solid fa-satellite-dish text-[#FFD700] text-lg animate-pulse" id="toast-icon"></i>
+        <div class="text-xs">
+            <span class="font-bold text-white uppercase block leading-none mb-0.5" id="toast-title">Transmission Status</span>
+            <span class="text-slate-300 font-poppins text-[11px]" id="toast-desc">Waiting for input packet.</span>
+        </div>
+    </div>
+
+    <!-- Strategic Regulatory Footer -->
+    <footer class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 mb-2 mt-4 z-10">
+        <div class="glass px-6 py-4 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-4">
+            <p class="text-xs text-slate-400 font-poppins leading-normal text-center md:text-left">
+                © 2026 <strong class="text-white">Stronghold A3 Security Agency</strong>. All rights reserved. <br/>
+                Crisis infrastructure compliant with LGU, PAGASA, and DOLE DO-174 business continuity requirements.
+            </p>
+            
+            <div class="flex items-center gap-4 text-xs font-mono text-slate-400">
+                <span>Scope: <strong class="text-yellow-400 font-bold">Region VIII (Eastern Visayas)</strong></span>
+                <span>Ref: <strong class="text-yellow-400 font-bold">A3-PORTAL-v1</strong></span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE SCRIPTS -->
+    <script>
+        // Global simulation states
+        let selectedTemplateCode = '';
+        let selectedTemplateFullText = '';
+        let isSimNetworkShock = false;
+
+        // Load targeted SMS templates
+        function loadSmsTemplate(templateId, codedText, rawText) {
+            selectedTemplateCode = codedText;
+            selectedTemplateFullText = rawText;
+
+            // Load data into textareas and fields
+            document.getElementById('raw-sms-input').value = rawText;
+            document.getElementById('compressed-sms-output').value = codedText;
+
+            // Update local character counters
+            document.getElementById('raw-char-counter').innerText = `Characters: ${rawText.length}`;
+            document.getElementById('comp-char-counter').innerText = `Coded characters: ${codedText.length} (Save: ${Math.round((1 - (codedText.length / rawText.length)) * 100)}%)`;
+
+            // Enable Transmit button
+            const txBtn = document.getElementById('transmit-btn');
+            txBtn.disabled = false;
+            txBtn.className = "flex-grow py-3 bg-[#FFD700] hover:bg-yellow-300 text-slate-950 font-bold uppercase rounded-xl text-xs transition tracking-wider flex items-center justify-center gap-2 hover:scale-105 active:scale-95 shadow-[0_0_15px_rgba(255,215,0,0.25)] cursor-pointer";
+
+            triggerNotification('Template Loaded', 'Coded SMS parameters compiled. Ready for gateway delivery.');
+        }
+
+        // Simulate transmit pipeline
+        function transmitSimulatedSms() {
+            if (!selectedTemplateCode) return;
+
+            // Disable button temporarily to show simulation timeline
+            const txBtn = document.getElementById('transmit-btn');
+            const originalText = txBtn.innerHTML;
+            txBtn.disabled = true;
+            txBtn.innerHTML = '<i class="fa-solid fa-spinner animate-spin"></i> Compressing & Pushing Packet...';
+            txBtn.className = "flex-grow py-3 bg-slate-800 text-slate-400 border border-slate-700 font-bold uppercase rounded-xl text-xs transition tracking-wider flex items-center justify-center gap-2 cursor-not-allowed";
+
+            setTimeout(() => {
+                // Re-enable interface after simulated transmission lag
+                txBtn.disabled = false;
+                txBtn.innerHTML = originalText;
+                txBtn.className = "flex-grow py-3 bg-[#FFD700] hover:bg-yellow-300 text-slate-950 font-bold uppercase rounded-xl text-xs transition tracking-wider flex items-center justify-center gap-2 hover:scale-105 active:scale-95 shadow-[0_0_15px_rgba(255,215,0,0.25)] cursor-pointer";
+
+                // Push visual feedback success status toast
+                triggerNotification(
+                    'Transmission Complete', 
+                    `Payload array [${selectedTemplateCode}] successfully pushed to core system.`
+                );
+            }, 1500);
+        }
+
+        // Simulate environmental/telecom network shocks
+        function toggleCommsSimulation() {
+            isSimNetworkShock = !isSimNetworkShock;
+            
+            const btn = document.getElementById('simulate-shocks-btn');
+            const mapStatus = document.getElementById('comms-status-label');
+            const bridge1 = document.getElementById('path-bridge-1');
+            const bridge2 = document.getElementById('path-bridge-2');
+            const bridge3 = document.getElementById('path-bridge-3');
+
+            if (isSimNetworkShock) {
+                // Network outage mode: Shift lanes from Bridge 1 to Bridge 2
+                btn.innerHTML = '<i class="fa-solid fa-tower-broadcast animate-pulse text-xs"></i> Restore Network';
+                btn.className = "py-3 px-4 bg-rose-600 hover:bg-rose-500 text-white font-bold uppercase rounded-xl text-xs transition hover:scale-105 active:scale-95 flex items-center justify-center gap-1";
+                
+                mapStatus.innerText = "GRID OUTAGE: FALLBACK ACTIVE";
+                mapStatus.className = "text-amber-400 font-bold animate-pulse";
+
+                // Update visual path structures
+                bridge1.className = "p-2 rounded bg-white/5 text-slate-600 border border-white/5 flex flex-col items-center justify-center gap-1";
+                bridge2.className = "p-2 rounded bg-amber-500/20 text-amber-300 border border-amber-500/40 flex flex-col items-center justify-center gap-1 animate-pulse";
+                bridge3.className = "p-2 rounded bg-white/5 text-slate-500 border border-white/5 flex flex-col items-center justify-center gap-1";
+
+                triggerNotification('Grid Blackout Detected', 'Bridge 1 Cloud Sync severed. Commencing automated low-bandwidth SMS Gateway protocols.');
+            } else {
+                // Standard mode
+                btn.innerHTML = '<i class="fa-solid fa-wind text-xs"></i> Simulate Network Shock';
+                btn.className = "py-3 px-4 bg-yellow-400 text-slate-950 font-bold uppercase rounded-xl text-xs transition hover:scale-105 active:scale-95 flex items-center justify-center gap-1";
+
+                mapStatus.innerText = "SYSTEM ONLINE";
+                mapStatus.className = "text-emerald-400 font-bold";
+
+                // Reset bridges
+                bridge1.className = "p-2 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 flex flex-col items-center justify-center gap-1";
+                bridge2.className = "p-2 rounded bg-white/5 text-slate-500 border border-white/5 flex flex-col items-center justify-center gap-1";
+                bridge3.className = "p-2 rounded bg-white/5 text-slate-500 border border-white/5 flex flex-col items-center justify-center gap-1";
+
+                triggerNotification('Network Pipelines Restored', 'Bridge 1 Cloud connections normalized. Commencing background cache syncs.');
+            }
+        }
+
+        // Floating status toast engine
+        let toastTimeout = null;
+        function triggerNotification(title, description) {
+            const toast = document.getElementById('status-toast');
+            document.getElementById('toast-title').innerText = title;
+            document.getElementById('toast-desc').innerText = description;
+
+            // Slide up toast
+            toast.classList.remove('translate-y-28');
+
+            if (toastTimeout) {
+                clearTimeout(toastTimeout);
+            }
+
+            // Hide after 4 seconds
+            toastTimeout = setTimeout(() => {
+                toast.classList.add('translate-y-2
