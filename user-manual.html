@@ -1,0 +1,1492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Stronghold A3 Security Management System - User Manual</title>
+    <meta name="description" content="Complete user guide for the Stronghold A3 Security Management System. Learn how to use all features from patrol tracking to payroll management.">
+    <meta name="author" content="Stronghold A3 Security Agency">
+    <meta name="theme-color" content="#0A1628">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png">
+    
+    <!-- Preload Key Assets -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&family=Roboto+Condensed:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&family=Roboto+Condensed:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+    
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        montserrat: ['Montserrat', 'sans-serif'],
+                        poppins: ['Poppins', 'sans-serif'],
+                        'roboto-condensed': ['Roboto Condensed', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                },
+            },
+        }
+    </script>
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&family=Roboto+Condensed:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+        :root {
+            --gold: #FFD700;
+            --navy: #0A1628;
+            --blue: #3B82F6;
+            --blue-dark: #2563EB;
+            --radius: 0.5rem;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: radial-gradient(circle at 20% 0%, #002b5c 0%, #001b3d 45%, #000c1f 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        /* ===== GLOBAL WATERMARK LOGO BACKGROUND ===== */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: min(80vw, 80vh);
+            height: min(80vw, 80vh);
+            background-image: url('https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.04;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        main, header, footer, nav { position: relative; z-index: 1; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', sans-serif; letter-spacing: 0.02em; }
+        
+        /* ===== GLASS EFFECTS ===== */
+        .glass {
+            background: linear-gradient(135deg, rgba(255,255,255,0.10), rgba(255,255,255,0.03));
+            backdrop-filter: blur(20px) saturate(160%);
+            -webkit-backdrop-filter: blur(20px) saturate(160%);
+            border: 1px solid rgba(255,255,255,0.12);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.18);
+        }
+        .glass-strong {
+            background: linear-gradient(135deg, rgba(0,43,92,0.55), rgba(0,12,31,0.65));
+            backdrop-filter: blur(28px) saturate(180%);
+            -webkit-backdrop-filter: blur(28px) saturate(180%);
+            border: 1px solid rgba(255,215,0,0.18);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.15);
+        }
+        .glass-gold {
+            background: linear-gradient(135deg, rgba(255,215,0,0.16), rgba(255,215,0,0.04));
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255,215,0,0.35);
+        }
+        .glass-blue {
+            background: linear-gradient(135deg, rgba(59,130,246,0.16), rgba(59,130,246,0.04));
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(59,130,246,0.35);
+        }
+        
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(100,116,139,0.3); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(100,116,139,0.5); }
+        
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+        @keyframes slideInLeft { from{opacity:0;transform:translateX(-30px)} to{opacity:1;transform:translateX(0)} }
+        .animate-fadeInUp { animation: fadeInUp 0.5s ease; }
+        .animate-slideInLeft { animation: slideInLeft 0.4s ease; }
+        
+        /* ===== NAVIGATION ===== */
+        .nav-tab {
+            transition: all 0.3s ease;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            background: rgba(59,130,246,0.2);
+            color: #fff;
+            border: 1px solid rgba(59,130,246,0.3);
+        }
+        .nav-tab:hover { background: rgba(59,130,246,0.4); }
+        .nav-tab.active {
+            background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+            color: #fff;
+            border-color: #3B82F6;
+            box-shadow: 0 4px 12px rgba(59,130,246,0.4);
+        }
+        
+        /* ===== TABLE OF CONTENTS ===== */
+        .toc-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.1);
+            cursor: pointer;
+            text-decoration: none;
+            color: #fff;
+        }
+        .toc-item:hover {
+            background: rgba(59,130,246,0.15);
+            border-color: rgba(59,130,246,0.4);
+            transform: translateX(5px);
+        }
+        .toc-item i {
+            color: var(--gold);
+            font-size: 1rem;
+            width: 24px;
+            text-align: center;
+        }
+        
+        /* ===== SECTION CARDS ===== */
+        .manual-section {
+            margin-bottom: 3rem;
+            scroll-margin-top: 100px;
+        }
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid rgba(255,215,0,0.3);
+        }
+        .section-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        .section-icon-blue {
+            background: rgba(59,130,246,0.2);
+            border: 1px solid rgba(59,130,246,0.4);
+            color: #60A5FA;
+        }
+        .section-icon-gold {
+            background: rgba(255,215,0,0.2);
+            border: 1px solid rgba(255,215,0,0.4);
+            color: #FFD700;
+        }
+        .section-icon-green {
+            background: rgba(34,197,94,0.2);
+            border: 1px solid rgba(34,197,94,0.4);
+            color: #34D399;
+        }
+        .section-icon-red {
+            background: rgba(220,38,38,0.2);
+            border: 1px solid rgba(220,38,38,0.4);
+            color: #F87171;
+        }
+        
+        /* ===== STEP CARDS ===== */
+        .step-card {
+            display: flex;
+            gap: 1rem;
+            padding: 1.25rem;
+            background: rgba(255,255,255,0.04);
+            border-radius: 0.75rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+        .step-card:hover {
+            background: rgba(255,255,255,0.08);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        }
+        .step-number {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3B82F6, #2563EB);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(59,130,246,0.4);
+        }
+        .step-content {
+            flex: 1;
+        }
+        .step-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+        .step-description {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.6;
+        }
+        
+        /* ===== TIP BOXES ===== */
+        .tip-box {
+            padding: 1rem 1.25rem;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+        }
+        .tip-box i {
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .tip-info {
+            background: rgba(59,130,246,0.1);
+            border: 1px solid rgba(59,130,246,0.3);
+            color: #60A5FA;
+        }
+        .tip-warning {
+            background: rgba(245,158,11,0.1);
+            border: 1px solid rgba(245,158,11,0.3);
+            color: #FCD34D;
+        }
+        .tip-success {
+            background: rgba(34,197,94,0.1);
+            border: 1px solid rgba(34,197,94,0.3);
+            color: #34D399;
+        }
+        .tip-danger {
+            background: rgba(220,38,38,0.1);
+            border: 1px solid rgba(220,38,38,0.3);
+            color: #F87171;
+        }
+        
+        /* ===== FEATURE LIST ===== */
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        .feature-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+        .feature-list i {
+            color: var(--gold);
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+        
+        /* ===== MOBILE MENU ===== */
+        .mobile-menu {
+            position: fixed; top: 0; right: -100%;
+            width: 80%; max-width: 350px; height: 100vh;
+            background: #0A1628; z-index: 9999;
+            transition: right 0.3s ease; padding: 20px;
+            overflow-y: auto;
+        }
+        .mobile-menu.open { right: 0; }
+        .overlay { position: fixed; top:0;left:0;width:100%;height:100%; background:rgba(0,0,0,.7); z-index:9998; display:none; }
+        .overlay.show { display: block; }
+        
+        /* ===== BUTTON ===== */
+        .btn-primary { transition: all .3s ease; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 40px rgba(59,130,246,.5); }
+        
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
+            .step-card {
+                flex-direction: column;
+            }
+            .step-number {
+                align-self: flex-start;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen relative dark">
+<!-- Overlay -->
+<div class="overlay" id="overlay"></div>
+
+<!-- Mobile Menu -->
+<nav class="mobile-menu glass-strong" id="mobileMenu">
+    <div class="flex justify-between items-center mb-6">
+        <img src="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png"
+             alt="Stronghold A3 Logo" class="h-16 w-16 rounded-full object-cover">
+        <button onclick="closeMobileMenu()" class="text-white hover:text-blue-400 transition">
+            <i class="fas fa-times text-2xl"></i>
+        </button>
+    </div>
+    <ul class="space-y-4">
+        <li><a href="#getting-started" onclick="closeMobileMenu()" class="text-lg block text-white hover:text-blue-400 transition">
+            <i class="fas fa-play-circle mr-2 text-yellow-400"></i>Getting Started
+        </a></li>
+        <li><a href="#dashboard" onclick="closeMobileMenu()" class="text-lg block text-white hover:text-blue-400 transition">
+            <i class="fas fa-tachometer-alt mr-2 text-yellow-400"></i>The Dashboard
+        </a></li>
+        <li><a href="#ops-command" onclick="closeMobileMenu()" class="text-lg block text-white hover:text-blue-400 transition">
+            <i class="fas fa-broadcast-tower mr-2 text-yellow-400"></i>Ops Command Center
+        </a></li>
+        <li><a href="#field-patrol" onclick="closeMobileMenu()" class="text-lg block text-white hover:text-blue-400 transition">
+            <i class="fas fa-walking mr-2 text-yellow-400"></i>Field Patrol
+        </a></li>
+        <li><a href="#dtr-payroll" onclick="closeMobileMenu()" class="text-lg block text-white hover:text-blue-400 transition">
+            <i class="fas fa-calculator mr-2 text-yellow-400"></i>DTR & Payroll
+        </a></li>
+        <li><a href="#compliance-vault" onclick="closeMobileMenu()" class="text-lg block text-white hover:text-blue-400 transition">
+            <i class="fas fa-shield-alt mr-2 text-yellow-400"></i>Compliance Vault
+        </a></li>
+        <li><a href="#client-portal" onclick="closeMobileMenu()" class="text-lg block text-white hover:text-blue-400 transition">
+            <i class="fas fa-user-tie mr-2 text-yellow-400"></i>Client Portal
+        </a></li>
+        <li><a href="#settings" onclick="closeMobileMenu()" class="text-lg block text-white hover:text-blue-400 transition">
+            <i class="fas fa-cog mr-2 text-yellow-400"></i>Settings & Resources
+        </a></li>
+        <li><a href="#help" onclick="closeMobileMenu()" class="text-lg block text-white hover:text-blue-400 transition">
+            <i class="fas fa-question-circle mr-2 text-yellow-400"></i>Need Help?
+        </a></li>
+    </ul>
+    <div class="mt-6 pt-6 border-t border-yellow-900/30">
+        <p class="text-sm text-gray-300">© 2026 Stronghold A3 Security Agency</p>
+        <p class="text-xs text-gray-400 mt-1">User Manual v1.0</p>
+    </div>
+</nav>
+
+<!-- Header -->
+<header class="sticky top-0 z-50 shadow-lg bg-[#0A1628]/90 backdrop-blur-md border-b border-blue-900/50">
+    <div class="container mx-auto px-4 py-4">
+        <div class="flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-3">
+                <img src="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png"
+                     alt="Stronghold A3 Logo"
+                     class="h-12 w-12 rounded-full object-cover border-2 border-blue-500">
+                <div class="hidden md:block">
+                    <h1 class="text-xl font-montserrat font-bold tracking-wide text-white">STRONGHOLD A3</h1>
+                    <p class="text-sm text-blue-400">Security Management System</p>
+                </div>
+            </a>
+            
+            <div class="hidden md:flex items-center gap-4">
+                <a href="index.html" class="text-white hover:text-blue-400 transition font-semibold">
+                    <i class="fas fa-home mr-2"></i>Home
+                </a>
+                <a href="#getting-started" class="bg-yellow-400 text-[#0A1628] px-4 py-2 rounded-lg font-bold hover:bg-yellow-300 transition">
+                    <i class="fas fa-book mr-2"></i>User Manual
+                </a>
+            </div>
+
+            <button onclick="openMobileMenu()" class="md:hidden text-white hover:text-blue-400 transition">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content Area -->
+<main class="min-h-screen pb-20">
+    
+    <!-- Hero Section -->
+    <section class="py-16 container mx-auto px-4">
+        <div class="text-center mb-12 animate-fadeInUp">
+            <div class="inline-flex items-center gap-2 glass-gold px-4 py-2 rounded-full mb-6">
+                <i class="fas fa-book-open text-[#0A1628]"></i>
+                <span class="text-[#0A1628] font-montserrat font-bold text-sm">USER MANUAL</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold text-yellow-400 font-montserrat mb-4">
+                Security Management System
+            </h1>
+            <p class="text-xl text-white max-w-2xl mx-auto">
+                Your complete guide to using the Stronghold A3 Security Management System
+            </p>
+        </div>
+
+        <!-- Quick Start Box -->
+        <div class="glass-strong p-6 rounded-xl mb-12 max-w-3xl mx-auto animate-fadeInUp">
+            <h2 class="text-2xl font-bold text-blue-400 mb-4 font-montserrat flex items-center">
+                <i class="fas fa-rocket mr-3"></i>Quick Start
+            </h2>
+            <p class="text-white mb-4">New to the system? Start here:</p>
+            <ol class="space-y-3">
+                <li class="flex items-start gap-3">
+                    <span class="bg-blue-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">1</span>
+                    <span class="text-white">Open the app and tap <strong>"Sign In"</strong> or <strong>"Register"</strong></span>
+                </li>
+                <li class="flex items-start gap-3">
+                    <span class="bg-blue-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">2</span>
+                    <span class="text-white">Choose your role and assigned site(s)</span>
+                </li>
+                <li class="flex items-start gap-3">
+                    <span class="bg-blue-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">3</span>
+                    <span class="text-white">Tap <strong>"Access Dashboard"</strong> to enter the command center</span>
+                </li>
+            </ol>
+        </div>
+
+        <!-- Table of Contents -->
+        <div class="glass-strong p-6 rounded-xl max-w-3xl mx-auto">
+            <h2 class="text-2xl font-bold text-yellow-400 mb-6 font-montserrat flex items-center">
+                <i class="fas fa-list-ul mr-3"></i>Table of Contents
+            </h2>
+            <div class="space-y-3">
+                <a href="#getting-started" class="toc-item">
+                    <i class="fas fa-play-circle"></i>
+                    <span>1. Getting Started</span>
+                </a>
+                <a href="#dashboard" class="toc-item">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>2. The Dashboard</span>
+                </a>
+                <a href="#ops-command" class="toc-item">
+                    <i class="fas fa-broadcast-tower"></i>
+                    <span>3. Ops Command Center</span>
+                </a>
+                <a href="#field-patrol" class="toc-item">
+                    <i class="fas fa-walking"></i>
+                    <span>4. Field Patrol (Offline-First)</span>
+                </a>
+                <a href="#dtr-payroll" class="toc-item">
+                    <i class="fas fa-calculator"></i>
+                    <span>5. DTR & Payroll</span>
+                </a>
+                <a href="#compliance-vault" class="toc-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>6. Compliance Vault</span>
+                </a>
+                <a href="#client-portal" class="toc-item">
+                    <i class="fas fa-user-tie"></i>
+                    <span>7. Client Portal</span>
+                </a>
+                <a href="#settings" class="toc-item">
+                    <i class="fas fa-cog"></i>
+                    <span>8. Settings & Resources</span>
+                </a>
+                <a href="#help" class="toc-item">
+                    <i class="fas fa-question-circle"></i>
+                    <span>9. Need Help?</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SECTION 1: GETTING STARTED ==================== -->
+    <section id="getting-started" class="manual-section container mx-auto px-4">
+        <div class="glass-strong p-8 rounded-xl">
+            <div class="section-header">
+                <div class="section-icon section-icon-blue">
+                    <i class="fas fa-play-circle"></i>
+                </div>
+                <div>
+                    <h2 class="text-3xl font-bold text-yellow-400 font-montserrat">1. Getting Started</h2>
+                    <p class="text-white/70">Sign in, register, and choose your role</p>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <div class="step-title">Open the App</div>
+                    <div class="step-description">
+                        Launch the Stronghold A3 Security Management System app on your device. You'll see the welcome screen with two options at the top.
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <div class="step-title">Sign In or Register</div>
+                    <div class="step-description">
+                        <ul class="feature-list">
+                            <li>
+                                <i class="fas fa-sign-in-alt"></i>
+                                <span><strong>Sign In:</strong> If you already have an account, tap "Sign In" and enter your credentials</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-user-plus"></i>
+                                <span><strong>Register:</strong> If you're new, tap "Register" to create a new account</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <div class="step-title">Choose Your Role</div>
+                    <div class="step-description">
+                        Select your role from the list. Your role determines which screens and features you can access:
+                        <ul class="feature-list mt-3">
+                            <li>
+                                <i class="fas fa-user-shield"></i>
+                                <span><strong>Guard:</strong> Field operations, patrol tracking, incident reporting</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-user-tie"></i>
+                                <span><strong>Supervisor:</strong> Oversee guards, review incidents, manage sites</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-user-cog"></i>
+                                <span><strong>Ops Manager:</strong> Full operational control, crisis management</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-user-lock"></i>
+                                <span><strong>Administrator:</strong> System configuration, user management, compliance</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <div class="step-title">Select Your Site(s)</div>
+                    <div class="step-description">
+                        <strong>For Guards & Supervisors:</strong> Choose the site(s) you're assigned to from the list. This ensures you only see relevant information for your location.
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-box tip-info">
+                <i class="fas fa-info-circle"></i>
+                <div>
+                    <strong>Tip:</strong> If you're unsure which role to choose, ask your supervisor or administrator. You can always change your role later in Settings.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SECTION 2: THE DASHBOARD ==================== -->
+    <section id="dashboard" class="manual-section container mx-auto px-4">
+        <div class="glass-strong p-8 rounded-xl">
+            <div class="section-header">
+                <div class="section-icon section-icon-gold">
+                    <i class="fas fa-tachometer-alt"></i>
+                </div>
+                <div>
+                    <h2 class="text-3xl font-bold text-yellow-400 font-montserrat">2. The Dashboard</h2>
+                    <p class="text-white/70">Your command center for all operations</p>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <div class="step-title">Access the Dashboard</div>
+                    <div class="step-description">
+                        After signing in, tap the <strong>"Access Dashboard"</strong> button to enter the main command center. This is your home base for all operations.
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <div class="step-title">Navigate Using the Sidebar</div>
+                    <div class="step-description">
+                        The left sidebar contains all available modules. Tap any module to switch to it. The current module title displays at the top of the screen so you always know where you are.
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <div class="step-title">Mobile Navigation</div>
+                    <div class="step-description">
+                        On phones and tablets, the sidebar is hidden by default to save screen space. Tap the <strong>menu icon</strong> (☰) in the top-left corner to open the sidebar and access all modules.
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-box tip-success">
+                <i class="fas fa-lightbulb"></i>
+                <div>
+                    <strong>Pro Tip:</strong> The dashboard shows real-time data. Refresh the page or pull down to update information with the latest status from all guards and sites.
+                </div>
+            </div>
+
+            <div class="tip-box tip-info">
+                <i class="fas fa-mobile-alt"></i>
+                <div>
+                    <strong>Mobile Users:</strong> The sidebar automatically closes after you select a module, giving you more screen space to work with.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SECTION 3: OPS COMMAND CENTER ==================== -->
+    <section id="ops-command" class="manual-section container mx-auto px-4">
+        <div class="glass-strong p-8 rounded-xl">
+            <div class="section-header">
+                <div class="section-icon section-icon-red">
+                    <i class="fas fa-broadcast-tower"></i>
+                </div>
+                <div>
+                    <h2 class="text-3xl font-bold text-yellow-400 font-montserrat">3. Ops Command Center</h2>
+                    <p class="text-white/70">Monitor all guards and manage incidents in real-time</p>
+                </div>
+            </div>
+
+            <h3 class="text-xl font-bold text-blue-400 mb-4 font-montserrat">Live Guard Monitoring</h3>
+            <p class="text-white mb-4">See every guard's current status at a glance:</p>
+            <ul class="feature-list mb-6">
+                <li>
+                    <i class="fas fa-check-circle text-green-400"></i>
+                    <span><strong>Active Status:</strong> See which guards are on duty, on break, or offline</span>
+                </li>
+                <li>
+                    <i class="fas fa-battery-three-quarters text-yellow-400"></i>
+                    <span><strong>Battery Level:</strong> Monitor device battery to ensure guards stay connected</span>
+                </li>
+                <li>
+                    <i class="fas fa-sync-alt text-blue-400"></i>
+                    <span><strong>Last Sync Time:</strong> Know when each guard's device last connected to the server</span>
+                </li>
+            </ul>
+
+            <h3 class="text-xl font-bold text-blue-400 mb-4 font-montserrat">Incident Review</h3>
+            <p class="text-white mb-4">Review the latest incidents reported by guards:</p>
+            <ul class="feature-list mb-6">
+                <li>
+                    <i class="fas fa-exclamation-triangle text-red-400"></i>
+                    <span><strong>Severity Levels:</strong> Incidents are color-coded by severity (Low, Medium, High, Critical)</span>
+                </li>
+                <li>
+                    <i class="fas fa-clock text-yellow-400"></i>
+                    <span><strong>Timestamp:</strong> See exactly when each incident was reported</span>
+                </li>
+                <li>
+                    <i class="fas fa-map-marker-alt text-green-400"></i>
+                    <span><strong>Location:</strong> View the exact location where the incident occurred</span>
+                </li>
+            </ul>
+
+            <h3 class="text-xl font-bold text-blue-400 mb-4 font-montserrat">Crisis Broadcast</h3>
+            <div class="step-card">
+                <div class="step-number">
+                    <i class="fas fa-bullhorn"></i>
+                </div>
+                <div class="step-content">
+                    <div class="step-title">Send Emergency Broadcast</div>
+                    <div class="step-description">
+                        <strong>Available to:</strong> Ops Managers, Administrators, and Supervisors
+                        <br><br>
+                        In emergency situations, you can send a crisis broadcast to all guards simultaneously:
+                        <ol class="mt-3 space-y-2">
+                            <li>1. Tap the <strong>"Broadcast"</strong> button in the Ops Command Center</li>
+                            <li>2. Type your emergency message</li>
+                            <li>3. Select the severity level</li>
+                            <li>4. Tap <strong>"Send to All Guards"</strong></li>
+                        </ol>
+                        <br>
+                        All guards will receive an immediate alert on their devices, even if the app is in the background.
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-box tip-danger">
+                <i class="fas fa-exclamation-circle"></i>
+                <div>
+                    <strong>Important:</strong> Use crisis broadcasts only for genuine emergencies. Overuse may cause guards to ignore important alerts.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SECTION 4: FIELD PATROL ==================== -->
+    <section id="field-patrol" class="manual-section container mx-auto px-4">
+        <div class="glass-strong p-8 rounded-xl">
+            <div class="section-header">
+                <div class="section-icon section-icon-green">
+                    <i class="fas fa-walking"></i>
+                </div>
+                <div>
+                    <h2 class="text-3xl font-bold text-yellow-400 font-montserrat">4. Field Patrol (Offline-First)</h2>
+                    <p class="text-white/70">Log patrols and file reports even without internet</p>
+                </div>
+            </div>
+
+            <div class="tip-box tip-success mb-6">
+                <i class="fas fa-wifi"></i>
+                <div>
+                    <strong>Offline-First Design:</strong> The Field Patrol module works even when you have no internet connection. All data is stored locally and syncs automatically when you're back online.
+                </div>
+            </div>
+
+            <h3 class="text-xl font-bold text-blue-400 mb-4 font-montserrat">Scanning Checkpoints</h3>
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <div class="step-title">Locate QR Code or NFC Tag</div>
+                    <div class="step-description">
+                        Find the QR code or NFC checkpoint tag at your patrol location. These are placed at key points around your assigned site.
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <div class="step-title">Scan the Checkpoint</div>
+                    <div class="step-description">
+                        <ul class="feature-list">
+                            <li>
+                                <i class="fas fa-qrcode"></i>
+                                <span><strong>QR Code:</strong> Tap "Scan QR" and point your camera at the code</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-mobile-alt"></i>
+                                <span><strong>NFC Tag:</strong> Tap "Scan NFC" and hold your phone near the tag</span>
+                            </li>
+                        </ul>
+                        <br>
+                        The app will automatically log your patrol with the exact time and location.
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="text-xl font-bold text-blue-400 mb-4 font-montserrat mt-6">Filing Incident Reports</h3>
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <div class="step-title">Tap "Report Incident"</div>
+                    <div class="step-description">
+                        When you observe an incident, tap the "Report Incident" button in the Field Patrol module.
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <div class="step-title">Fill in the Details</div>
+                    <div class="step-description">
+                        Provide the following information:
+                        <ul class="feature-list mt-2">
+                            <li>
+                                <i class="fas fa-heading"></i>
+                                <span><strong>Title:</strong> Brief description of the incident</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-align-left"></i>
+                                <span><strong>Description:</strong> Detailed account of what happened</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-exclamation-circle"></i>
+                                <span><strong>Severity:</strong> Choose Low, Medium, High, or Critical</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-camera"></i>
+                                <span><strong>Photos:</strong> Attach photos if available (optional but recommended)</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <div class="step-title">Submit the Report</div>
+                    <div class="step-description">
+                        Tap "Submit" to save the incident report. If you're offline, the report is saved locally and will sync automatically when you reconnect to the internet.
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="text-xl font-bold text-red-400 mb-4 font-montserrat mt-6">SOS Emergency Button</h3>
+            <div class="step-card">
+                <div class="step-number" style="background: linear-gradient(135deg, #DC2626, #991B1B);">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <div class="step-content">
+                    <div class="step-title">Emergency SOS</div>
+                    <div class="step-description">
+                        The <strong>SOS button</strong> is located at the bottom-right of the screen at all times.
+                        <br><br>
+                        <strong>When to use:</strong>
+                        <ul class="feature-list mt-2">
+                            <li>
+                                <i class="fas fa-user-injured text-red-400"></i>
+                                <span>You or someone else is in immediate danger</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-fire text-red-400"></i>
+                                <span>There's a fire, medical emergency, or security breach</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-car-crash text-red-400"></i>
+                                <span>Any life-threatening situation</span>
+                            </li>
+                        </ul>
+                        <br>
+                        <strong>What happens:</strong> Tapping SOS sends an immediate emergency alert to all supervisors and ops managers with your exact location.
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-box tip-warning">
+                <i class="fas fa-exclamation-triangle"></i>
+                <div>
+                    <strong>Warning:</strong> Only use the SOS button for genuine emergencies. False alarms may result in disciplinary action.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SECTION 5: DTR & PAYROLL ==================== -->
+    <section id="dtr-payroll" class="manual-section container mx-auto px-4">
+        <div class="glass-strong p-8 rounded-xl">
+            <div class="section-header">
+                <div class="section-icon section-icon-gold">
+                    <i class="fas fa-calculator"></i>
+                </div>
+                <div>
+                    <h2 class="text-3xl font-bold text-yellow-400 font-montserrat">5. DTR & Payroll</h2>
+                    <p class="text-white/70">Automatic time tracking and payroll computation</p>
+                </div>
+            </div>
+
+            <h3 class="text-xl font-bold text-blue-400 mb-4 font-montserrat">Daily Time Records (DTR)</h3>
+            <p class="text-white mb-4">Your Daily Time Records are automatically consolidated for you. No more manual timekeeping!</p>
+            
+            <ul class="feature-list mb-6">
+                <li>
+                    <i class="fas fa-clock text-green-400"></i>
+                    <span><strong>Automatic Logging:</strong> Your check-in and check-out times are recorded when you scan checkpoints</span>
+                </li>
+                <li>
+                    <i class="fas fa-calendar-check text-blue-400"></i>
+                    <span><strong>Daily Summary:</strong> View your total hours worked each day</span>
+                </li>
+                <li>
+                    <i class="fas fa-history text-yellow-400"></i>
+                    <span><strong>Historical Records:</strong> Access your complete work history for any date range</span>
+                </li>
+            </ul>
+
+            <h3 class="text-xl font-bold text-blue-400 mb-4 font-montserrat">Automatic Payroll Computation</h3>
+            <p class="text-white mb-4">The system automatically calculates your pay, including:</p>
+            
+            <ul class="feature-list mb-6">
+                <li>
+                    <i class="fas fa-plus-circle text-green-400"></i>
+                    <span><strong>Overtime Pay:</strong> Extra hours beyond your regular shift</span>
+                </li>
+                <li>
+                    <i class="fas fa-minus-circle text-yellow-400"></i>
+                    <span><strong>Undertime Deductions:</strong> Hours less than your required shift</span>
+                </li>
+                <li>
+                    <i class="fas fa-file-invoice-dollar text-blue-400"></i>
+                    <span><strong>DOLE-Compliant Deductions:</strong>
+                        <ul class="mt-2 ml-6 space-y-1">
+                            <li>• SSS (Social Security System)</li>
+                            <li>• PhilHealth</li>
+                            <li>• Pag-IBIG</li>
+                            <li>• BIR (Bureau of Internal Revenue)</li>
+                        </ul>
+                    </span>
+                </li>
+            </ul>
+
+            <div class="tip-box tip-info">
+                <i class="fas fa-info-circle"></i>
+                <div>
+                    <strong>Note:</strong> All computations follow DOLE regulations. If you notice any discrepancies, contact your supervisor or the HR department immediately.
+                </div>
+            </div>
+
+            <div class="tip-box tip-success">
+                <i class="fas fa-check-circle"></i>
+                <div>
+                    <strong>Benefits:</strong> No more manual computation errors. Your pay is calculated accurately and transparently every pay period.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SECTION 6: COMPLIANCE VAULT ==================== -->
+    <section id="compliance-vault" class="manual-section container mx-auto px-4">
+        <div class="glass-strong p-8 rounded-xl">
+            <div class="section-header">
+                <div class="section-icon section-icon-blue">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div>
+                    <h2 class="text-3xl font-bold text-yellow-400 font-montserrat">6. Compliance Vault</h2>
+                    <p class="text-white/70">All your licenses and permits in one secure place</p>
+                </div>
+            </div>
+
+            <p class="text-white mb-6">The Compliance Vault is your digital filing cabinet for all important documents. Everything you need for audits and inspections is stored here.</p>
+
+            <h3 class="text-xl font-bold text-blue-400 mb-4 font-montserrat">What's Stored in the Vault?</h3>
+            <ul class="feature-list mb-6">
+                <li>
+                    <i class="fas fa-id-card text-yellow-400"></i>
+                    <span><strong>PNP-SOSIA Licenses:</strong> Private security agency licenses and guard certifications</span>
+                </li>
+                <li>
+                    <i class="fas fa-building text-blue-400"></i>
+                    <span><strong>LGU Permits:</strong> Local government unit business permits and clearances</span>
+                </li>
+                <li>
+                    <i class="fas fa-file-contract text-green-400"></i>
+                    <span><strong>Clearances:</strong> Barangay clearances, police clearances, and other certifications</span>
+                </li>
+                <li>
+                    <i class="fas fa-users text-purple-400"></i>
+                    <span><strong>Guard Documents:</strong> Training certificates, medical clearances, and employment records</span>
+                </li>
+            </ul>
+
+            <h3 class="text-xl font-bold text-blue-400 mb-4 font-montserrat">Expiry Reminders</h3>
+            <div class="step-card">
+                <div class="step-number">
+                    <i class="fas fa-bell"></i>
+                </div>
+                <div class="step-content">
+                    <div class="step-title">Stay Audit-Ready</div>
+                    <div class="step-description">
+                        The system automatically tracks expiry dates for all documents and sends you reminders before they expire:
+                        <ul class="feature-list mt-3">
+                            <li>
+                                <i class="fas fa-calendar-alt text-yellow-400"></i>
+                                <span><strong>30-Day Warning:</strong> Initial reminder when a document is 30 days from expiry</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-calendar-times text-orange-400"></i>
+                                <span><strong>7-Day Warning:</strong> Urgent reminder when only 7 days remain</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-exclamation-circle text-red-400"></i>
+                                <span><strong>Expired Alert:</strong> Immediate notification when a document has expired</span>
+                            </li>
+                        </ul>
+                        <br>
+                        This ensures you're always audit-ready and never caught with expired documents.
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-box tip-info">
+                <i class="fas fa-search"></i>
+                <div>
+                    <strong>Quick Access:</strong> Use the search function in the Compliance Vault to quickly find any document by name, type, or date.
+                </div>
+            </div>
+
+            <div class="tip-box tip-success">
+                <i class="fas fa-cloud-download-alt"></i>
+                <div>
+                    <strong>Audit Support:</strong> During audits, you can instantly retrieve any document in under 15 minutes, as guaranteed by Stronghold A3.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SECTION 7: CLIENT PORTAL ==================== -->
+    <section id="client-portal" class="manual-section container mx-auto px-4">
+        <div class="glass-strong p-8 rounded-xl">
+            <div class="section-header">
+                <div class="section-icon section-icon-gold">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <div>
+                    <h2 class="text-3xl font-bold text-yellow-400 font-montserrat">7. Client Portal</h2>
+                    <p class="text-white/70">View-only access for clients and automated reporting</p>
+                </div>
+            </div>
+
+            <p class="text-white mb-6">The Client Portal provides your clients with a secure, view-only window into their security operations. Clients can monitor their sites without being able to make changes.</p>
+
+            <h3 class="text-xl font-bold text-blue-400 mb-4 font-montserrat">What Clients Can See</h3>
+            <ul class="feature-list mb-6">
+                <li>
+                    <i class="fas fa-eye text-green-400"></i>
+                    <span><strong>Site Overview:</strong> Real-time status of all guards assigned to their site</span>
+                </li>
+                <li>
+                    <i class="fas fa-chart-line text-blue-400"></i>
+                    <span><strong>Patrol Reports:</strong> View completed patrol logs and checkpoint scans</span>
+                </li>
+                <li>
+                    <i class="fas fa-exclamation-triangle text-yellow-400"></i>
+                    <span><strong>Incident Reports:</strong> Review all incidents reported at their location</span>
+                </li>
+                <li>
+                    <i class="fas fa-file-alt text-purple-400"></i>
+                    <span><strong>Automated Reports:</strong> Receive daily, weekly, and monthly summary reports automatically</span>
+                </li>
+            </ul>
+
+            <h3 class="text-xl font-bold text-blue-400 mb-4 font-montserrat">Automated Reporting</h3>
+            <div class="step-card">
+                <div class="step-number">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="step-content">
+                    <div class="step-title">Hands-Free Reporting</div>
+                    <div class="step-description">
+                        The system automatically generates and sends reports to clients:
+                        <ul class="feature-list mt-3">
+                            <li>
+                                <i class="fas fa-calendar-day text-blue-400"></i>
+                                <span><strong>Daily Reports:</strong> Summary of all activities from the past 24 hours</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-calendar-week text-green-400"></i>
+                                <span><strong>Weekly Reports:</strong> Comprehensive weekly overview with trends and analytics</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-calendar-alt text-yellow-400"></i>
+                                <span><strong>Monthly Reports:</strong> Detailed monthly analysis with recommendations</span>
+                            </li>
+                        </ul>
+                        <br>
+                        Reports are delivered via email and are also available for download in the Client Portal.
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-box tip-info">
+                <i class="fas fa-lock"></i>
+                <div>
+                    <strong>Security:</strong> Clients have view-only access. They cannot modify any data, add or remove guards, or change settings. All changes must be made by Stronghold A3 staff.
+                </div>
+            </div>
+
+            <div class="tip-box tip-success">
+                <i class="fas fa-handshake"></i>
+                <div>
+                    <strong>Transparency:</strong> The Client Portal builds trust by giving clients complete visibility into their security operations without compromising data integrity.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SECTION 8: SETTINGS & RESOURCES ==================== -->
+    <section id="settings" class="manual-section container mx-auto px-4">
+        <div class="glass-strong p-8 rounded-xl">
+            <div class="section-header">
+                <div class="section-icon section-icon-green">
+                    <i class="fas fa-cog"></i>
+                </div>
+                <div>
+                    <h2 class="text-3xl font-bold text-yellow-400 font-montserrat">8. Settings & Resources</h2>
+                    <p class="text-white/70">Customize your experience and access important documents</p>
+                </div>
+            </div>
+
+            <h3 class="text-xl font-bold text-blue-400 mb-4 font-montserrat">Settings Menu</h3>
+            <p class="text-white mb-4">Open Settings to manage your account and app preferences:</p>
+            
+            <ul class="feature-list mb-6">
+                <li>
+                    <i class="fas fa-user-circle text-blue-400"></i>
+                    <span><strong>Profile:</strong> Update your personal information, contact details, and profile photo</span>
+                </li>
+                <li>
+                    <i class="fas fa-lock text-yellow-400"></i>
+                    <span><strong>Security:</strong> Change your password, enable two-factor authentication, and manage login sessions</span>
+                </li>
+                <li>
+                    <i class="fas fa-bell text-green-400"></i>
+                    <span><strong>Notifications:</strong> Customize which alerts and notifications you receive</span>
+                </li>
+                <li>
+                    <i class="fas fa-download text-purple-400"></i>
+                    <span><strong>Updates:</strong> Check for app updates and manage automatic updates</span>
+                </li>
+                <li>
+                    <i class="fas fa-plug text-red-400"></i>
+                    <span><strong>Integrations:</strong> Connect with third-party services (for administrators)</span>
+                </li>
+            </ul>
+
+            <h3 class="text-xl font-bold text-blue-400 mb-4 font-montserrat">Resources Section</h3>
+            <p class="text-white mb-4">Access official documents and protocols from the Resources section in the sidebar:</p>
+            
+            <ul class="feature-list mb-6">
+                <li>
+                    <i class="fas fa-book text-yellow-400"></i>
+                    <span><strong>Policies:</strong> Company policies, code of conduct, and operational guidelines</span>
+                </li>
+                <li>
+                    <i class="fas fa-clipboard-list text-blue-400"></i>
+                    <span><strong>Protocols:</strong> Standard operating procedures (SOPs) for various scenarios</span>
+                </li>
+                <li>
+                    <i class="fas fa-file-pdf text-red-400"></i>
+                    <span><strong>Official Documents:</strong> Forms, templates, and official company documents</span>
+                </li>
+            </ul>
+
+            <h3 class="text-xl font-bold text-blue-400 mb-4 font-montserrat">Theme Toggle</h3>
+            <div class="step-card">
+                <div class="step-number">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="step-content">
+                    <div class="step-title">Switch Between Dark and Light Mode</div>
+                    <div class="step-description">
+                        Located in the top bar, the theme toggle lets you switch between:
+                        <ul class="feature-list mt-3">
+                            <li>
+                                <i class="fas fa-moon text-blue-400"></i>
+                                <span><strong>Dark Mode:</strong> Easier on the eyes in low-light conditions (default)</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-sun text-yellow-400"></i>
+                                <span><strong>Light Mode:</strong> Better visibility in bright environments</span>
+                            </li>
+                        </ul>
+                        <br>
+                        Your theme preference is saved and will be remembered the next time you open the app.
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-box tip-info">
+                <i class="fas fa-info-circle"></i>
+                <div>
+                    <strong>Note:</strong> Some settings (like Integrations) are only available to Administrators. If you don't see certain options, they may be restricted based on your role.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SECTION 9: NEED HELP? ==================== -->
+    <section id="help" class="manual-section container mx-auto px-4">
+        <div class="glass-strong p-8 rounded-xl">
+            <div class="section-header">
+                <div class="section-icon section-icon-red">
+                    <i class="fas fa-question-circle"></i>
+                </div>
+                <div>
+                    <h2 class="text-3xl font-bold text-yellow-400 font-montserrat">9. Need Help?</h2>
+                    <p class="text-white/70">We're here to support you</p>
+                </div>
+            </div>
+
+            <h3 class="text-xl font-bold text-blue-400 mb-4 font-montserrat">Regional Support</h3>
+            <div class="step-card">
+                <div class="step-number">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <div class="step-content">
+                    <div class="step-title">Contact Support Team</div>
+                    <div class="step-description">
+                        Our Regional Support team is available to help you with any questions or issues:
+                        <br><br>
+                        <strong>Available:</strong> Monday – Saturday, 8:00 AM – 6:00 PM (PHT)
+                        <br><br>
+                        <strong>Contact Methods:</strong>
+                        <ul class="feature-list mt-3">
+                            <li>
+                                <i class="fas fa-comment-dots text-green-400"></i>
+                                <span><strong>Viber:</strong> Message us on Viber for quick responses</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-phone text-blue-400"></i>
+                                <span><strong>Phone:</strong> Call our support hotline for immediate assistance</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="text-xl font-bold text-blue-400 mb-4 font-montserrat mt-6">Navigation Tutorial</h3>
+            <div class="step-card">
+                <div class="step-number">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="step-content">
+                    <div class="step-title">Interactive Tutorial</div>
+                    <div class="step-description">
+                        New to the app or need a refresher? Run the Navigation Tutorial anytime:
+                        <br><br>
+                        <ol class="mt-3 space-y-2">
+                            <li>1. Go to the <strong>hero section</strong> (main landing page)</li>
+                            <li>2. Tap the <strong>"Navigation Tutorial"</strong> button</li>
+                            <li>3. Follow the interactive guide that walks you through all major features</li>
+                        </ol>
+                        <br>
+                        The tutorial is interactive and shows you exactly where to tap and what to expect.
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="text-xl font-bold text-blue-400 mb-4 font-montserrat mt-6">Emergency Support</h3>
+            <div class="glass-red p-6 rounded-xl">
+                <h4 class="text-xl font-bold text-yellow-400 mb-3 flex items-center">
+                    <i class="fas fa-exclamation-triangle mr-2"></i>24/7 Emergency Contact
+                </h4>
+                <p class="text-white mb-4">For urgent security matters outside of regular support hours:</p>
+                <a href="tel:09171370112" class="text-3xl font-bold text-white hover:text-yellow-400 transition block mb-2">
+                    <i class="fas fa-phone mr-2"></i>09171370112
+                </a>
+                <p class="text-sm text-white/70">Available 24 hours a day, 7 days a week</p>
+            </div>
+
+            <div class="tip-box tip-success mt-6">
+                <i class="fas fa-lightbulb"></i>
+                <div>
+                    <strong>Pro Tip:</strong> Before contacting support, check the Resources section for answers to common questions. Many issues can be resolved quickly by reviewing the official protocols and policies.
+                </div>
+            </div>
+
+            <div class="tip-box tip-info">
+                <i class="fas fa-bug"></i>
+                <div>
+                    <strong>Report Issues:</strong> If you encounter a bug or technical problem, please provide as much detail as possible when contacting support, including:
+                    <ul class="mt-2 ml-6 space-y-1">
+                        <li>• What you were trying to do</li>
+                        <li>• What happened instead</li>
+                        <li>• Your device type and app version</li>
+                        <li>• Screenshots if possible</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== QUICK REFERENCE ==================== -->
+    <section class="py-16 container mx-auto px-4">
+        <div class="glass-strong p-8 rounded-xl max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-yellow-400 mb-6 font-montserrat text-center">
+                <i class="fas fa-bolt mr-3"></i>Quick Reference Guide
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="glass p-6 rounded-xl">
+                    <h3 class="text-xl font-bold text-blue-400 mb-4 font-montserrat">
+                        <i class="fas fa-user-shield mr-2"></i>For Guards
+                    </h3>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-check text-green-400 mt-1"></i>
+                            <span>Scan QR/NFC checkpoints for patrol logs</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-check text-green-400 mt-1"></i>
+                            <span>File incident reports with photos</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-check text-green-400 mt-1"></i>
+                            <span>Use SOS button for emergencies</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-check text-green-400 mt-1"></i>
+                            <span>View your DTR and payroll info</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="glass p-6 rounded-xl">
+                    <h3 class="text-xl font-bold text-yellow-400 mb-4 font-montserrat">
+                        <i class="fas fa-user-tie mr-2"></i>For Supervisors
+                    </h3>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-check text-green-400 mt-1"></i>
+                            <span>Monitor guard status in real-time</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-check text-green-400 mt-1"></i>
+                            <span>Review and approve incident reports</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-check text-green-400 mt-1"></i>
+                            <span>Send crisis broadcasts</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-check text-green-400 mt-1"></i>
+                            <span>Manage assigned sites</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="glass p-6 rounded-xl">
+                    <h3 class="text-xl font-bold text-red-400 mb-4 font-montserrat">
+                        <i class="fas fa-user-cog mr-2"></i>For Ops Managers
+                    </h3>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-check text-green-400 mt-1"></i>
+                            <span>Full operational control</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-check text-green-400 mt-1"></i>
+                            <span>Emergency broadcast capabilities</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-check text-green-400 mt-1"></i>
+                            <span>Access all sites and guard data</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-check text-green-400 mt-1"></i>
+                            <span>Generate comprehensive reports</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="glass p-6 rounded-xl">
+                    <h3 class="text-xl font-bold text-green-400 mb-4 font-montserrat">
+                        <i class="fas fa-user-lock mr-2"></i>For Administrators
+                    </h3>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-check text-green-400 mt-1"></i>
+                            <span>System configuration</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-check text-green-400 mt-1"></i>
+                            <span>User management</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-check text-green-400 mt-1"></i>
+                            <span>Compliance vault access</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-check text-green-400 mt-1"></i>
+                            <span>Integration settings</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== BACK TO TOP ==================== -->
+    <section class="py-8 container mx-auto px-4 text-center">
+        <a href="#top" class="inline-flex items-center gap-2 glass px-6 py-3 rounded-full hover:bg-blue-500/20 transition">
+            <i class="fas fa-arrow-up text-yellow-400"></i>
+            <span class="text-white font-semibold">Back to Top</span>
+        </a>
+    </section>
+
+</main>
+
+<!-- Footer -->
+<footer>
+    <div class="bg-[#0A1628] border-t border-blue-900">
+        <div class="container mx-auto px-4 py-8">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center md:text-left">
+                    <div class="flex items-center justify-center md:justify-start gap-3 mb-4">
+                        <img src="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png"
+                             alt="Stronghold A3" class="w-12 h-12 rounded-full object-cover">
+                        <div>
+                            <h3 class="font-bold font-montserrat text-white">STRONGHOLD A3</h3>
+                            <p class="text-xs text-blue-400">Security Management System</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-white/70">Your complete guide to using the Stronghold A3 Security Management System.</p>
+                </div>
+                <div class="text-center">
+                    <h4 class="font-bold font-montserrat text-white mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-white/70 hover:text-blue-400 transition">Home</a></li>
+                        <li><a href="#getting-started" class="text-white/70 hover:text-blue-400 transition">Getting Started</a></li>
+                        <li><a href="#dashboard" class="text-white/70 hover:text-blue-400 transition">Dashboard</a></li>
+                        <li><a href="#field-patrol" class="text-white/70 hover:text-blue-400 transition">Field Patrol</a></li>
+                        <li><a href="#help" class="text-white/70 hover:text-blue-400 transition">Need Help?</a></li>
+                    </ul>
+                </div>
+                <div class="text-center">
+                    <h4 class="font-bold font-montserrat text-white mb-4">Support</h4>
+                    <ul class="space-y-2 text-sm text-white/70">
+                        <li><i class="fas fa-phone mr-2 text-yellow-400"></i><a href="tel:09171370112" class="hover:text-white">09171370112</a></li>
+                        <li><i class="fas fa-envelope mr-2 text-yellow-400"></i>support@strongholda3.com</li>
+                        <li><i class="fas fa-clock mr-2 text-yellow-400"></i>Mon-Sat, 8AM-6PM PHT</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-blue-900 mt-8 pt-6 text-center">
+                <p class="text-sm text-gray-500">© 2026 Stronghold A3 Security Agency. All Rights Reserved.</p>
+                <p class="text-xs text-gray-600 mt-1">User Manual v1.0 | DOLE DO-174 Compliant</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // ==================== MOBILE MENU ====================
+    function openMobileMenu() {
+        document.getElementById('mobileMenu').classList.add('open');
+        document.getElementById('overlay').classList.add('show');
+    }
+    
+    function closeMobileMenu() {
+        document.getElementById('mobileMenu').classList.remove('open');
+        document.getElementById('overlay').classList.remove('show');
+    }
+    
+    document.getElementById('overlay').addEventListener('click', closeMobileMenu);
+    
+    // ==================== KEYBOARD ====================
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') closeMobileMenu();
+    });
+    
+    // ==================== SMOOTH SCROLL ====================
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+    
+    // ==================== INIT ====================
+    console.log('%cStronghold A3 User Manual v1.0 — Loaded', 'color:#3B82F6;font-size:16px;font-weight:bold;');
+</script>
+</body>
+</html>
