@@ -1,1222 +1,858 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
+    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stronghold A3 - Comprehensive RACI Protocol v2.0</title>
+    <title>Security Risk Assessment | Stronghold A3 Security Agency</title>
+    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Roboto+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
-                        display: ['Oswald', 'sans-serif'],
-                        body: ['Roboto Condensed', 'sans-serif'],
+                        montserrat: ['Montserrat', 'sans-serif'],
+                        poppins: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: '#0A1628',
+                        'navy-light': '#001b3d',
+                        'brand-blue': '#3B82F6',
+                        'brand-gold': '#FFD700',
                     }
-                }
-            }
+                },
+            },
         }
     </script>
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
+    <!-- Chart.js & jsPDF -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    
+    <!-- Supabase JS Client -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
     <style>
         :root {
-            --background: 215 90% 8%;
-            --foreground: 210 40% 98%;
-            --card: 215 80% 12%;
-            --card-foreground: 210 40% 98%;
-            --primary: 211 100% 25%;
-            --accent: 45 100% 50%;
-            --destructive: 348 83% 47%;
-            --border: 215 40% 22%;
+            --gold: #FFD700;
+            --navy: #0A1628;
+            --blue: #3B82F6;
         }
 
         body {
-            color: #f8fafc;
-            font-family: 'Roboto Condensed', sans-serif;
+            font-family: 'Poppins', sans-serif;
             background: radial-gradient(circle at 20% 0%, #002b5c 0%, #001b3d 45%, #000c1f 100%);
             background-attachment: fixed;
             min-height: 100vh;
+            color: #fff;
             overflow-x: hidden;
         }
 
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Oswald', sans-serif;
-            letter-spacing: 0.02em;
+        /* Watermark Logo Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: min(80vw, 80vh);
+            height: min(80vw, 80vh);
+            background-image: url('https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 0;
         }
 
-        /* Liquid Glass Card Styling */
+        main, header, footer, nav, .container { position: relative; z-index: 1; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', sans-serif; letter-spacing: 0.02em; }
+
+        /* ===== LIQUID GLASS EFFECTS ===== */
         .glass {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.03));
+            background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
             backdrop-filter: blur(20px) saturate(160%);
             -webkit-backdrop-filter: blur(20px) saturate(160%);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.18);
+            border: 1px solid rgba(255,255,255,0.12);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1);
         }
-
         .glass-strong {
-            background: linear-gradient(135deg, rgba(0, 43, 92, 0.55), rgba(0, 12, 31, 0.65));
+            background: linear-gradient(135deg, rgba(10,22,40,0.85), rgba(0,12,31,0.92));
             backdrop-filter: blur(28px) saturate(180%);
             -webkit-backdrop-filter: blur(28px) saturate(180%);
-            border: 1px solid rgba(255, 215, 0, 0.18);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.15);
+            border: 1px solid rgba(59,130,246,0.2);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
         }
-
         .glass-gold {
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.16), rgba(255, 215, 0, 0.04));
+            background: linear-gradient(135deg, rgba(255,215,0,0.15), rgba(255,215,0,0.05));
             backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 215, 0, 0.35);
-            box-shadow: 0 8px 32px rgba(255, 215, 0, 0.05);
+            border: 1px solid rgba(255,215,0,0.4);
         }
 
-        .glass-red {
-            background: linear-gradient(135deg, rgba(220, 20, 60, 0.25), rgba(220, 20, 60, 0.08));
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(220, 20, 60, 0.5);
-            box-shadow: 0 8px 32px rgba(220, 20, 60, 0.1);
-        }
-
-        .text-gold {
-            color: #FFD700;
-        }
-
-        .border-gold {
-            border-color: rgba(255, 215, 0, 0.3);
-        }
-
-        /* Pulsing states */
-        .pulse-green {
-            animation: pulseG 2s infinite;
-        }
-
-        .pulse-red {
-            animation: pulseR 1.2s infinite;
-        }
-
-        @keyframes pulseG {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6); }
-            50% { box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
-        }
-
-        @keyframes pulseR {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(220, 20, 60, 0.7); }
-            50% { box-shadow: 0 0 0 12px rgba(220, 20, 60, 0); }
-        }
-
-        .animate-spring {
-            animation: spring 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        @keyframes spring {
-            0% { transform: scale(0.96); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        /* Presentation Canvas */
-        .slide-hidden {
-            display: none !important;
-        }
-
-        .lite-mode {
-            background: #001026 !important;
-        }
-        .lite-mode .glass, 
-        .lite-mode .glass-strong, 
-        .lite-mode .glass-gold, 
-        .lite-mode .glass-red {
-            backdrop-filter: none !important;
-            -webkit-backdrop-filter: none !important;
-            background: #021a3a !important;
-        }
-        
-        .presentation-canvas {
-            aspect-ratio: 16 / 9;
+        /* ===== HERO BANNER STYLES ===== */
+        .hero-banner-wrap {
             width: 100%;
-            max-width: 1280px;
+            height: 400px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+        }
+        .hero-banner-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            filter: brightness(0.55);
+        }
+        .hero-banner-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(to top, rgba(10,22,40,0.95) 0%, rgba(10,22,40,0.4) 50%, rgba(10,22,40,0.1) 100%);
         }
 
-        /* RACI Role Highlight Transitions */
-        .highlight-col {
-            background-color: rgba(255, 215, 0, 0.12) !important;
-            border-left: 1px solid rgba(255, 215, 0, 0.4) !important;
-            border-right: 1px solid rgba(255, 215, 0, 0.4) !important;
-            transition: all 0.2s ease-in-out;
+        /* ===== ANIMATIONS ===== */
+        @keyframes pulseG { 0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,.6)} 50%{box-shadow:0 0 0 12px rgba(34,197,94,0)} }
+        @keyframes fadeInUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+        .pulse-green { animation: pulseG 2.5s infinite; }
+        .animate-fade-in { animation: fadeInUp 0.5s ease forwards; }
+
+        /* ===== FORM ELEMENTS ===== */
+        input, select, textarea { 
+            color: #fff !important; 
+            background: rgba(255,255,255,0.05) !important; 
+            border: 1px solid rgba(255,255,255,0.15);
+            transition: all 0.3s;
         }
+        input::placeholder, textarea::placeholder { color: #94A3B8 !important; }
+        input:focus, select:focus, textarea:focus { 
+            outline: none; 
+            border-color: var(--blue); 
+            box-shadow: 0 0 0 3px rgba(59,130,246,0.2);
+            background: rgba(255,255,255,0.08) !important;
+        }
+        select option { background: var(--navy); color: #fff; }
+
+        /* ===== ASSESSMENT SPECIFIC ===== */
+        .option-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+        .option-card:hover {
+            background: rgba(59,130,246,0.1);
+            border-color: rgba(59,130,246,0.5);
+            transform: translateX(5px);
+        }
+        .option-card.selected {
+            background: linear-gradient(135deg, rgba(59,130,246,0.25), rgba(59,130,246,0.1));
+            border-color: var(--blue);
+            box-shadow: 0 0 20px rgba(59,130,246,0.3), inset 0 1px 0 rgba(255,255,255,0.2);
+        }
+        .option-card.selected .option-radio {
+            background: var(--blue);
+            border-color: var(--blue);
+            box-shadow: 0 0 10px rgba(59,130,246,0.8);
+        }
+        .option-card.selected .option-radio::after {
+            transform: scale(1);
+        }
+        .option-radio {
+            width: 20px; height: 20px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.3);
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s;
+            flex-shrink: 0;
+        }
+        .option-radio::after {
+            content: '';
+            width: 8px; height: 8px;
+            background: #fff;
+            border-radius: 50%;
+            transform: scale(0);
+            transition: transform 0.2s;
+        }
+
+        .progress-track {
+            height: 8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 99px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #3B82F6, #60A5FA);
+            border-radius: 99px;
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 0 10px rgba(59,130,246,0.5);
+        }
+
+        .hidden { display: none !important; }
+        
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(59,130,246,0.3); border-radius: 4px; }
     </style>
 </head>
-<body class="flex flex-col items-center justify-between min-h-screen p-4 md:p-6 select-none">
+<body class="antialiased">
 
-    <header class="w-full max-w-7xl flex items-center justify-between mb-4 glass px-6 py-3 rounded-2xl border-white/10">
-        <div class="flex items-center gap-4">
-            <!-- Circular Implementation of the Logo with Golden Glow -->
-            <div class="relative w-12 h-12 rounded-full overflow-hidden border-2 border-[#FFD700] shadow-[0_0_15px_rgba(255,215,0,0.4)]">
-                <img src="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Logo.jpg" 
-                     alt="Stronghold A3 Logo" 
-                     class="w-full h-full object-cover"
-                     onerror="this.src='https://placehold.co/100x100/002b5c/FFD700?text=A3'">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 shadow-lg bg-[#0A1628]/90 backdrop-blur-md border-b border-blue-900/50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <img src="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png" alt="Logo" class="h-12 w-12 rounded-full object-cover border border-blue-500/50">
+                <div class="hidden sm:block">
+                    <h1 class="text-lg font-montserrat font-bold tracking-wide text-white">STRONGHOLD A3</h1>
+                    <p class="text-xs text-brand-blue">Zero-Liability Security Partner</p>
+                </div>
             </div>
-            <div>
-                <span class="text-xs uppercase tracking-widest text-gold font-display">Organizational Governance</span>
-                <h1 class="text-lg md:text-xl font-bold font-display uppercase tracking-wider leading-none">COMPREHENSIVE RACI PROTOCOL <span class="text-gold font-semibold">v2.0</span></h1>
+            <div class="glass-gold px-3 py-1.5 rounded-full flex items-center gap-2">
+                <i class="fas fa-shield-alt text-[#0A1628] text-xs"></i>
+                <span class="text-[#0A1628] font-montserrat font-bold text-xs">DOLE DO-174 COMPLIANT</span>
             </div>
-        </div>
-        <div class="flex items-center gap-4">
-            <span class="hidden md:inline px-3 py-1 text-xs rounded-full bg-blue-500/20 text-sky-300 border border-blue-500/30 font-mono pulse-green">
-                <i class="fa-solid fa-people-group mr-1"></i> BYSTANDER KILL-LOOP
-            </span>
-            <span id="slide-index-counter" class="text-sm font-mono tracking-widest text-gold">Slide 01/12</span>
         </div>
     </header>
 
-    <main class="w-full flex-grow flex items-center justify-center py-2">
-        <div class="presentation-canvas w-full glass-strong rounded-3xl p-6 md:p-8 relative overflow-hidden flex flex-col justify-between border-white/10 shadow-2xl">
-            
-            <!-- Dynamic Background Grid Elements for Depth -->
-            <div class="absolute inset-0 bg-gradient-to-tr from-blue-950/10 via-transparent to-[#FFD700]/5 pointer-events-none z-0"></div>
-
-            <!-- ================= SLIDE 1: Title & Operational Intent ================= -->
-            <div id="slide-1" class="slide-content h-full flex flex-col justify-center items-center text-center z-10 animate-spring">
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FFD700]/10 text-gold border border-[#FFD700]/30 text-xs uppercase tracking-widest mb-6">
-                    <i class="fa-solid fa-clipboard-check animate-pulse"></i> SOP Accountability Framework
-                </div>
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold uppercase tracking-wider text-white mb-4 leading-none">
-                    COMPREHENSIVE <span class="text-gold">RACI PROTOCOL</span>
-                </h1>
-                <p class="text-base md:text-lg text-slate-300 max-w-3xl mb-8 leading-relaxed font-body">
-                    Eliminating the "bystander effect" and operational fragmentation across Eastern Visayas. This matrix enforces strict, decentralized ownership where every task has exactly one accountable strategic leader.
-                </p>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-4xl text-left">
-                    <div class="glass p-3 rounded-xl border-white/5">
-                        <span class="text-xs text-slate-400 block uppercase tracking-wider">Primary Objective</span>
-                        <span class="text-sm font-semibold text-white">Kill Bystander Delays</span>
-                    </div>
-                    <div class="glass p-3 rounded-xl border-white/5">
-                        <span class="text-xs text-slate-400 block uppercase tracking-wider">The Golden Rule</span>
-                        <span class="text-sm font-semibold text-white text-gold">Exactly One "A" Per Task</span>
-                    </div>
-                    <div class="glass p-3 rounded-xl border-white/5">
-                        <span class="text-xs text-slate-400 block uppercase tracking-wider">Structure Nodes</span>
-                        <span class="text-sm font-semibold text-white">7 Roles + Tech Champion Overlay</span>
-                    </div>
-                    <div class="glass p-3 rounded-xl border-white/5">
-                        <span class="text-xs text-slate-400 block uppercase tracking-wider">Reference Document</span>
-                        <span class="text-sm font-semibold text-white">CRISIS-PROOF OPERATIONAL WORKFLOW - Stronghold A3.pdf</span>
-                    </div>
-                </div>
+    <!-- ==================== HERO BANNER ==================== -->
+    <section class="hero-banner-wrap">
+        <img src="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Security-Risk%20Self-Assessment-Banner.png" alt="Security Risk Self-Assessment">
+        <div class="hero-banner-overlay">
+            <div class="glass-gold px-4 py-2 rounded-full mb-4 animate-fade-in">
+                <span class="text-[#0A1628] font-montserrat font-bold text-sm"><i class="fas fa-clipboard-check mr-2"></i>FREE SECURITY RISK ASSESSMENT</span>
             </div>
-
-            <!-- ================= SLIDE 2: Rules of Engagement ================= -->
-            <div id="slide-2" class="slide-content h-full flex flex-col justify-between z-10 slide-hidden animate-spring">
-                <div>
-                    <h2 class="text-2xl md:text-3xl font-bold uppercase text-white tracking-wide border-b border-white/10 pb-2 flex justify-between items-center">
-                        <span>RULES OF ENGAGEMENT: HOW TO KILL THE BYSTANDER EFFECT</span>
-                        <span class="text-xs bg-gold/10 text-gold px-3 py-1 rounded border border-gold/20 font-mono">OPERATIONAL MANDATES</span>
-                    </h2>
-                    <p class="text-sm text-slate-300 mt-2">
-                        To ensure this matrix drives immediate behavioral change, leadership must strictly enforce the four operational laws below.
-                    </p>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-2 flex-grow overflow-y-auto">
-                    <div class="glass p-4 rounded-xl border-white/10 relative">
-                        <span class="absolute top-2 right-4 text-3xl font-bold text-white/5 font-mono">01</span>
-                        <h3 class="text-base font-bold text-gold uppercase flex items-center gap-2"><i class="fa-solid fa-user-shield"></i> The "One A" Rule is Absolute</h3>
-                        <p class="text-xs text-slate-300 mt-2 leading-relaxed">
-                            If a task fails, the person designated with the <strong>Accountable (A)</strong> badge takes sole ownership of the impact. Responsibility (R) can be shared, but Accountability remains localized to one unique decision node.
-                        </p>
-                    </div>
-                    <div class="glass p-4 rounded-xl border-white/10 relative">
-                        <span class="absolute top-2 right-4 text-3xl font-bold text-white/5 font-mono">02</span>
-                        <h3 class="text-base font-bold text-gold uppercase flex items-center gap-2"><i class="fa-solid fa-comments"></i> Consultation is Mandatory</h3>
-                        <p class="text-xs text-slate-300 mt-2 leading-relaxed">
-                            The "A" node must actively consult the <strong>C (Consulted)</strong> subject matter expert before executing any process. An Ops Manager cannot change site rules without consulting the Zonal Supervisors and Head Guards who live the ground reality.
-                        </p>
-                    </div>
-                    <div class="glass p-4 rounded-xl border-white/10 relative">
-                        <span class="absolute top-2 right-4 text-3xl font-bold text-white/5 font-mono">03</span>
-                        <h3 class="text-base font-bold text-gold uppercase flex items-center gap-2"><i class="fa-solid fa-share-nodes"></i> Information is Pushed, Not Pulled</h3>
-                        <p class="text-xs text-slate-300 mt-2 leading-relaxed">
-                            If you hold an <strong>Informed (I)</strong> status, you are never required to search for status reports. The operational "A" or "R" is hardcoded to automatically push updates via the Cloud SMS dashboard or localized Viber feeds.
-                        </p>
-                    </div>
-                    <div class="glass p-4 rounded-xl border-white/10 relative">
-                        <span class="absolute top-2 right-4 text-3xl font-bold text-white/5 font-mono">04</span>
-                        <h3 class="text-base font-bold text-gold uppercase flex items-center gap-2"><i class="fa-solid fa-split"></i> No "Double Dipping" on 'R'</h3>
-                        <p class="text-xs text-slate-300 mt-2 leading-relaxed">
-                            Where multiple roles share the <strong>R (Responsible)</strong> tag, team leaders must define explicit split-roles to prevent overlapping efforts, structural gaps, or execution blindness.
-                        </p>
-                    </div>
-                </div>
-                <div class="glass p-3 rounded-xl border-[#FFD700]/30 bg-blue-950/20 text-center">
-                    <span class="text-xs text-slate-300 font-bold uppercase"><i class="fa-solid fa-triangle-exclamation mr-1.5 text-gold animate-pulse"></i> Golden Law:</span>
-                    <span class="text-xs text-slate-400 ml-1">If everybody is responsible, nobody is. The single "A" guarantees unambiguous systemic velocity.</span>
-                </div>
-            </div>
-
-            <!-- ================= SLIDE 3: Roles Defined (The Stronghold A3 Hierarchy) ================= -->
-            <div id="slide-3" class="slide-content h-full flex flex-col justify-between z-10 slide-hidden animate-spring">
-                <div>
-                    <h2 class="text-2xl md:text-3xl font-bold uppercase text-white tracking-wide border-b border-white/10 pb-2 flex justify-between items-center">
-                        <span>THE DECENTRALIZED STRUCTURE (8-NODE CRISIS HIERARCHY)</span>
-                        <span class="text-xs bg-sky-500/10 text-sky-400 px-3 py-1 rounded border border-sky-500/20 font-mono">ROLE ARSENAL</span>
-                    </h2>
-                    <p class="text-sm text-slate-300 mt-1">
-                        Meet the tactical hierarchy engineered to secure perimeters and maintain absolute reporting continuity.
-                    </p>
-                </div>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 my-2 flex-grow overflow-y-auto pr-1">
-                    <div class="glass p-3 rounded-xl border-white/5 flex flex-col justify-between">
-                        <div>
-                            <span class="text-xs text-white uppercase tracking-wider font-bold block"><i class="fa-solid fa-crown text-slate-400 mr-1"></i> GM / Leadership</span>
-                            <p class="text-[11px] text-slate-400 mt-1">Strategic oversight, emergency funds, high-level PNP liaison.</p>
-                        </div>
-                    </div>
-                    <div class="glass p-3 rounded-xl border-white/5 flex flex-col justify-between">
-                        <div>
-                            <span class="text-xs text-white uppercase tracking-wider font-bold block"><i class="fa-solid fa-desktop text-slate-400 mr-1"></i> Ops Manager</span>
-                            <p class="text-[11px] text-slate-400 mt-1">Daily operations hub, client manager, central crisis commander.</p>
-                        </div>
-                    </div>
-                    <div class="glass p-3 rounded-xl border-white/5 flex flex-col justify-between">
-                        <div>
-                            <span class="text-xs text-white uppercase tracking-wider font-bold block"><i class="fa-solid fa-building-user text-slate-400 mr-1"></i> Admin</span>
-                            <p class="text-[11px] text-slate-400 mt-1">Document controller, compliance vault keeper, logistics organizer.</p>
-                        </div>
-                    </div>
-                    <div class="glass p-3 rounded-xl border-white/5 flex flex-col justify-between">
-                        <div>
-                            <span class="text-xs text-white uppercase tracking-wider font-bold block"><i class="fa-solid fa-map-location text-slate-400 mr-1"></i> Supervisor</span>
-                            <p class="text-[11px] text-slate-400 mt-1">Zonal Ground Commander. Field discipline, on-site audits, immediate response.</p>
-                        </div>
-                    </div>
-                    
-                    <!-- NEW ROLES HIGHLIGHTED WITH BRIGHT BLUE AND PULSE -->
-                    <div class="glass p-3 rounded-xl border-sky-500/35 bg-sky-950/20 flex flex-col justify-between">
-                        <div>
-                            <span class="text-xs text-sky-400 uppercase tracking-wider font-bold block"><i class="fa-solid fa-shield-halved mr-1 animate-pulse"></i> Asst. Supervisor <span class="text-[10px] bg-sky-500/20 px-1 py-0.5 rounded text-white font-mono ml-1">NEW</span></span>
-                            <p class="text-[11px] text-slate-300 mt-1">Tactical dispatcher, comms relay bridge, digital champion supervisor.</p>
-                        </div>
-                    </div>
-                    <div class="glass p-3 rounded-xl border-sky-500/35 bg-sky-950/20 flex flex-col justify-between">
-                        <div>
-                            <span class="text-xs text-sky-400 uppercase tracking-wider font-bold block"><i class="fa-solid fa-ranking-star mr-1 animate-pulse"></i> Head Guard <span class="text-[10px] bg-sky-500/20 px-1 py-0.5 rounded text-white font-mono ml-1">NEW</span></span>
-                            <p class="text-[11px] text-slate-300 mt-1">On-site tactical leader (for sites >5 guards). Perimeter defense, local rosters.</p>
-                        </div>
-                    </div>
-                    <div class="glass p-3 rounded-xl border-white/5 flex flex-col justify-between">
-                        <div>
-                            <span class="text-xs text-white uppercase tracking-wider font-bold block"><i class="fa-solid fa-person-military-pointing text-slate-400 mr-1"></i> Security Guard</span>
-                            <p class="text-[11px] text-slate-400 mt-1">Frontline execution, offline logs, secure post maintenance.</p>
-                        </div>
-                    </div>
-                    <div class="glass p-3 rounded-xl border-[#FFD700]/30 bg-amber-950/15 flex flex-col justify-between">
-                        <div>
-                            <span class="text-xs text-gold uppercase tracking-wider font-bold block"><i class="fa-solid fa-rocket mr-1"></i> Tech Champion <span class="text-[10px] bg-[#FFD700]/20 px-1 py-0.5 rounded text-white font-mono ml-1">NEW</span></span>
-                            <p class="text-[11px] text-slate-300 mt-1">Functional overlay. Tech-savvy guards conducting the "Digital Bayanihan" program.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="glass p-3 rounded-xl border-white/10 flex items-center justify-between text-xs text-slate-400">
-                    <span><i class="fa-solid fa-link text-sky-400"></i> Interactive Column Highlights: Inside matrices, select roles inside table headers to highlight their custom track.</span>
-                    <span class="font-mono text-[10px]">ORGANIZATIONAL STANDARDS v2.0</span>
-                </div>
-            </div>
-
-            <!-- ================= SLIDE 4: Priority 1 Matrix ================= -->
-            <div id="slide-4" class="slide-content h-full flex flex-col justify-between z-10 slide-hidden animate-spring">
-                <div>
-                    <h2 class="text-2xl md:text-3xl font-bold uppercase text-white tracking-wide border-b border-white/10 pb-2 flex justify-between items-center">
-                        <span>PRIORITY 1: CLIENT LEAD & 72-HOUR ONBOARDING</span>
-                        <span class="text-xs bg-amber-500/10 text-gold px-3 py-1 rounded border border-amber-500/20 font-mono">SEAMLESS ONBOARDING</span>
-                    </h2>
-                </div>
-                
-                <div class="flex-grow overflow-x-auto my-2">
-                    <table class="w-full text-left text-xs border-collapse">
-                        <thead>
-                            <tr class="border-b border-white/10 text-slate-400 font-display uppercase tracking-wider bg-white/5">
-                                <th class="p-2.5">Task / Workflow</th>
-                                <th class="p-2.5 text-center cursor-pointer hover:bg-white/10 rounded" onclick="highlightRaciCol(1)">Admin</th>
-                                <th class="p-2.5 text-center cursor-pointer hover:bg-white/10 rounded" onclick="highlightRaciCol(2)">Ops Mgr</th>
-                                <th class="p-2.5 text-center cursor-pointer hover:bg-white/10 rounded" onclick="highlightRaciCol(3)">Supervisor</th>
-                                <th class="p-2.5 text-center cursor-pointer hover:bg-white/10 rounded" onclick="highlightRaciCol(4)">Asst. Sup</th>
-                                <th class="p-2.5 text-center cursor-pointer hover:bg-white/10 rounded" onclick="highlightRaciCol(5)">Head Guard</th>
-                                <th class="p-2.5 text-center cursor-pointer hover:bg-white/10 rounded" onclick="highlightRaciCol(6)">Guard</th>
-                                <th class="p-2.5 text-center cursor-pointer hover:bg-white/10 rounded" onclick="highlightRaciCol(7)">GM</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-white/5 font-mono text-[11px]">
-                            <tr>
-                                <td class="p-2 font-sans font-semibold text-white">1.1 Log inquiries & initial acknowledgment</td>
-                                <td class="p-2 text-center col-1 text-sky-400 font-bold">R</td>
-                                <td class="p-2 text-center col-2 text-gold font-black">A</td>
-                                <td class="p-2 text-center col-3 text-purple-300">I</td>
-                                <td class="p-2 text-center col-4 text-purple-300">I</td>
-                                <td class="p-2 text-center col-5 text-slate-600">-</td>
-                                <td class="p-2 text-center col-6 text-slate-600">-</td>
-                                <td class="p-2 text-center col-7 text-purple-300">I</td>
-                            </tr>
-                            <tr>
-                                <td class="p-2 font-sans font-semibold text-white">1.2 Site survey & risk assessment</td>
-                                <td class="p-2 text-center col-1 text-purple-300">I</td>
-                                <td class="p-2 text-center col-2 text-gold font-black">A</td>
-                                <td class="p-2 text-center col-3 text-sky-400 font-bold">R</td>
-                                <td class="p-2 text-center col-4 text-purple-300">I</td>
-                                <td class="p-2 text-center col-5 text-slate-600">-</td>
-                                <td class="p-2 text-center col-6 text-slate-600">-</td>
-                                <td class="p-2 text-center col-7 text-purple-300">I</td>
-                            </tr>
-                            <tr>
-                                <td class="p-2 font-sans font-semibold text-white">1.3 Proposal draft & negotiation</td>
-                                <td class="p-2 text-center col-1 text-sky-400 font-bold">R</td>
-                                <td class="p-2 text-center col-2 text-gold font-black">A</td>
-                                <td class="p-2 text-center col-3 text-emerald-400">C</td>
-                                <td class="p-2 text-center col-4 text-purple-300">I</td>
-                                <td class="p-2 text-center col-5 text-slate-600">-</td>
-                                <td class="p-2 text-center col-6 text-slate-600">-</td>
-                                <td class="p-2 text-center col-7 text-purple-300">I</td>
-                            </tr>
-                            <tr>
-                                <td class="p-2 font-sans font-semibold text-white">1.4 Final contract signing & billing setup</td>
-                                <td class="p-2 text-center col-1 text-sky-400 font-bold">R</td>
-                                <td class="p-2 text-center col-2 text-sky-400 font-bold">R</td>
-                                <td class="p-2 text-center col-3 text-purple-300">I</td>
-                                <td class="p-2 text-center col-4 text-purple-300">I</td>
-                                <td class="p-2 text-center col-5 text-slate-600">-</td>
-                                <td class="p-2 text-center col-6 text-slate-600">-</td>
-                                <td class="p-2 text-center col-7 text-gold font-black">A</td>
-                            </tr>
-                            <tr>
-                                <td class="p-2 font-sans font-semibold text-white">1.5 Guard sourcing & digital vetting</td>
-                                <td class="p-2 text-center col-1 text-sky-400 font-bold">R</td>
-                                <td class="p-2 text-center col-2 text-gold font-black">A</td>
-                                <td class="p-2 text-center col-3 text-purple-300">I</td>
-                                <td class="p-2 text-center col-4 text-purple-300">I</td>
-                                <td class="p-2 text-center col-5 text-slate-600">-</td>
-                                <td class="p-2 text-center col-6 text-slate-600">-</td>
-                                <td class="p-2 text-center col-7 text-purple-300">I</td>
-                            </tr>
-                            <tr>
-                                <td class="p-2 font-sans font-semibold text-white">1.6 Post orders & DRRM planning</td>
-                                <td class="p-2 text-center col-1 text-purple-300">I</td>
-                                <td class="p-2 text-center col-2 text-gold font-black">A</td>
-                                <td class="p-2 text-center col-3 text-sky-400 font-bold">R</td>
-                                <td class="p-2 text-center col-4 text-purple-300">I</td>
-                                <td class="p-2 text-center col-5 text-emerald-400">C</td>
-                                <td class="p-2 text-center col-6 text-slate-600">-</td>
-                                <td class="p-2 text-center col-7 text-purple-300">I</td>
-                            </tr>
-                            <tr>
-                                <td class="p-2 font-sans font-semibold text-white">1.7 Guard briefing & gear issuance</td>
-                                <td class="p-2 text-center col-1 text-sky-400 font-bold">R</td>
-                                <td class="p-2 text-center col-2 text-gold font-black">A</td>
-                                <td class="p-2 text-center col-3 text-sky-400 font-bold">R</td>
-                                <td class="p-2 text-center col-4 text-sky-400 font-bold">R</td>
-                                <td class="p-2 text-center col-5 text-purple-300">I</td>
-                                <td class="p-2 text-center col-6 text-sky-400 font-bold">R</td>
-                                <td class="p-2 text-center col-7 text-purple-300">I</td>
-                            </tr>
-                            <tr>
-                                <td class="p-2 font-sans font-semibold text-white">1.8 Shift deployment & SMS validation</td>
-                                <td class="p-2 text-center col-1 text-purple-300">I</td>
-                                <td class="p-2 text-center col-2 text-gold font-black">A</td>
-                                <td class="p-2 text-center col-3 text-sky-400 font-bold">R</td>
-                                <td class="p-2 text-center col-4 text-sky-400 font-bold">R</td>
-                                <td class="p-2 text-center col-5 text-sky-400 font-bold">R</td>
-                                <td class="p-2 text-center col-6 text-sky-400 font-bold">R</td>
-                                <td class="p-2 text-center col-7 text-purple-300">I</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="glass p-3 rounded-xl border-white/5 text-center text-xs text-slate-400">
-                    <span><i class="fa-solid fa-clock text-gold"></i> Fast-Track: Operations Manager maintains absolute accountability over 72-hour pipeline velocity to ensure zero gap closures.</span>
-                </div>
-            </div>
-
-            <!-- ================= SLIDE 5: Priority 2 Matrix ================= -->
-            <div id="slide-5" class="slide-content h-full flex flex-col justify-between z-10 slide-hidden animate-spring">
-                <div>
-                    <h2 class="text-2xl md:text-3xl font-bold uppercase text-white tracking-wide border-b border-white/10 pb-2 flex justify-between items-center">
-                        <span>PRIORITY 2: DAILY GUARD DEPLOYMENT & OPERATIONS</span>
-                        <span class="text-xs bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded border border-emerald-500/20 font-mono">FIELD ALIGNMENT</span>
-                    </h2>
-                </div>
-                
-                <div class="flex-grow overflow-x-auto my-2">
-                    <table class="w-full text-left text-xs border-collapse">
-                        <thead>
-                            <tr class="border-b border-white/10 text-slate-400 font-display uppercase tracking-wider bg-white/5">
-                                <th class="p-2.5">Task / Workflow</th>
-                                <th class="p-2.5 text-center cursor-pointer hover:bg-white/10 rounded" onclick="highlightRaciCol(1)">Admin</th>
-                                <th class="p-2.5 text-center cursor-pointer hover:bg-white/10 rounded" onclick="highlightRaciCol(2)">Ops Mgr</th>
-                                <th class="p-2.5 text-center cursor-pointer hover:bg-white/10 rounded" onclick="highlightRaciCol(3)">Supervisor</th>
-                                <th class="p-2.5 text-center cursor-pointer hover:bg-white/10 rounded" onclick="highlightRaciCol(4)">Asst. Sup</th>
-                                <th class="p-2.5 text-center cursor-pointer hover:bg-white/10 rounded" onclick="highlightRaciCol(5)">Head Guard</th>
-                                <th class="p-2.5 text-center cursor-pointer hover:bg-white/10 rounded" onclick="highlightRaciCol(6)">Guard</th>
-                                <th class="p-2.5 text-center cursor-pointer hover:bg-white/10 rounded" onclick="highlightRaciCol(7)">GM</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-white/5 font-mono text-[11px]">
-                            <tr>
-                                <td class="p-2.5 font-sans font-semibold text-white">2.1 Daily site roll call & briefings</td>
-                                <td class="p-2.5 text-center col-1 text-purple-300">I</td>
-                                <td class="p-2.5 text-center col-2 text-purple-300">I</td>
-                                <td class="p-2.5 text-center col-3 text-gold font-black">A</td>
-                                <td class="p-2.5 text-center col-4 text-purple-300">I</td>
-                                <td class="p-2.5 text-center col-5 text-sky-400 font-bold">R</td>
-                                <td class="p-2.5 text-center col-6 text-sky-400 font-bold">R</td>
-                                <td class="p-2.5 text-center col-7 text-purple-300">I</td>
-                            </tr>
-                            <tr>
-                                <td class="p-2.5 font-sans font-semibold text-white">2.2 Execute post orders & digital tours</td>
-                                <td class="p-2.5 text-center col-1 text-purple-300">I</td>
-                                <td class="p-2.5 text-center col-2 text-purple-300">I</td>
-                                <td class="p-2.5 text-center col-3 text-purple-300">I</td>
-                                <td class="p-2.5 text-center col-4 text-purple-300">I</td>
-                                <td class="p-2.5 text-center col-5 text-gold font-black">A</td>
-                                <td class="p-2.5 text-center col-6 text-sky-400 font-bold">R</td>
-                                <td class="p-2.5 text-center col-7 text-purple-300">I</td>
-                            </tr>
-                            <tr>
-                                <td class="p-2.5 font-sans font-semibold text-white">2.3 Monitor absences & manage relief</td>
-                                <td class="p-2.5 text-center col-1 text-sky-400 font-bold">R</td>
-                                <td class="p-2.5 text-center col-2 text-purple-300">I</td>
-                                <td class="p-2.5 text-center col-3 text-gold font-black">A</td>
-                                <td class="p-2.5 text-center col-4 text-sky-400 font-bold">R</td>
-                                <td class="p-2.5 text-center col-5 text-purple-300">I</td>
-                                <td class="p-2.5 text-center col-6 text-slate-600">-</td>
-                                <td class="p-2.5 text-center col-7 text-purple-300">I</td>
-                            </tr>
-                            <tr>
-                                <td class="p-2.5 font-sans font-semibold text-white">2.4 Unannounced field inspections</td>
-                                <td class="p-2.5 text-center col-1 text-purple-300">I</td>
-                                <td class="p-2.5 text-center col-2 text-gold font-black">A</td>
-                                <td class="p-2.5 text-center col-3 text-sky-400 font-bold">R</td>
-                                <td class="p-2.5 text-center col-4 text-sky-400 font-bold">R</td>
-                                <td class="p-2.5 text-center col-5 text-purple-300">I</td>
-                                <td class="p-2.5 text-center col-6 text-slate-600">-</td>
-                                <td class="p-2.5 text-center col-7 text-purple-300">I</td>
-                            </tr>
-                            <tr>
-                                <td class="p-2.5 font-sans font-semibold text-white">2.5 Digital Bayanihan Tech Mentorship</td>
-                                <td class="p-2.5 text-center col-1 text-purple-300">I</td>
-                                <td class="p-2.5 text-center col-2 text-gold font-black">A</td>
-                                <td class="p-2.5 text-center col-3 text-purple-300">I</td>
-                                <td class="p-2.5 text-center col-4 text-sky-400 font-bold">R (Champ)</td>
-                                <td class="p-2.5 text-center col-5 text-emerald-400">C</td>
-                                <td class="p-2.5 text-center col-6 text-sky-400 font-bold">R</td>
-                                <td class="p-2.5 text-center col-7 text-purple-300">I</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="glass p-3 rounded-xl border-white/5 text-center text-xs text-slate-400">
-                    <span><i class="fa-solid fa-mobile-screen text-sky-400"></i> Local Empowerment: The <strong>Head Guard</strong> holds direct Accountability for execution on site (Task 2.2), reducing ground execution lag.</span>
-                </div>
-            </div>
-
-            <!-- ================= SLIDE 6: Priority 3 Matrix ================= -->
-            <div id="slide-6" class="slide-content h-full flex flex-col justify-between z-10 slide-hidden animate-spring">
-                <div>
-                    <h2 class="text-2xl md:text-3xl font-bold uppercase text-white tracking-wide border-b border-white/10 pb-2 flex justify-between items-center">
-                        <span>PRIORITY 3: INCIDENT REPORTING & COMMS</span>
-                        <span class="text-xs bg-red-500/10 text-red-400 px-3 py-1 rounded border border-red-500/20 font-mono pulse-red">CRITICAL FLOW</span>
-                    </h2>
-                </div>
-                
-                <div class="flex-grow overflow-x-auto my-2">
-                    <table class="w-full text-left text-xs border-collapse">
-                        <thead>
-                            <tr class="border-b border-white/10 text-slate-400 font-display uppercase tracking-wider bg-white/5">
-                                <th class="p-2.5">Task / Workflow</th>
-                                <th class="p-2.5 text-center cursor-pointer hover:bg-white/10 rounded" onclick="highlightRaciCol(1)">Admin</th>
-                                <th class="p-2.5 text-center cursor-pointer hover:bg-white/10 rounded" onclick="highlightRaciCol(2)">Ops Mgr</th>
-                                <th class="p-2.5 text-center cursor-pointer hover:bg-white/10 rounded" onclick="highlightRaciCol(3)">Supervisor</th>
-                                <th class="p-2.5 text-center cursor-pointer hover:bg-white/10 rounded" onclick="highlightRaciCol(4)">Asst. Sup</th>
-                                <th class="p-2.5 text-center cursor-pointer hover:bg-white/10 rounded" onclick="highlightRaciCol(5)">Head Guard</th>
-                                <th class="p-2.5 text-center cursor-pointer hover:bg-white/10 rounded" onclick="highlightRaciCol(6)">Guard</th>
-                                <th class="p-2.5 text-center cursor-pointer hover:bg-white/10 rounded" onclick="highlightRaciCol(7)">GM</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-white/5 font-mono text-[11px]">
-                            <tr>
-                                <td class="p-2.5 font-sans font-semibold text-white">3.1 Immediate on-site containment</td>
-                                <td class="p-2.5 text-center col-1 text-purple-300">I</td>
-                                <td class="p-2.5 text-center col-2 text-purple-300">I</td>
-                                <td class="p-2.5 text-center col-3 text-purple-300">I</td>
-                                <td class="p-2.5 text-center col-4 text-purple-300">I</td>
-                                <td class="p-2.5 text-center col-5 text-gold font-black">A</td>
-                                <td class="p-2.5 text-center col-6 text-sky-400 font-bold">R</td>
-                                <td class="p-2.5 text-center col-7 text-purple-300">I</td>
-                            </tr>
-                            <tr>
-                                <td class="p-2.5 font-sans font-semibold text-white">3.2 Draft initial Incident Report (IR)</td>
-                                <td class="p-2.5 text-center col-1 text-purple-300">I</td>
-                                <td class="p-2.5 text-center col-2 text-purple-300">I</td>
-                                <td class="p-2.5 text-center col-3 text-sky-400 font-bold">R</td>
-                                <td class="p-2.5 text-center col-4 text-purple-300">I</td>
-                                <td class="p-2.5 text-center col-5 text-sky-400 font-bold">R</td>
-                                <td class="p-2.5 text-center col-6 text-sky-400 font-bold">R</td>
-                                <td class="p-2.5 text-center col-7 text-purple-300">I</td>
-                            </tr>
-                            <tr>
-                                <td class="p-2.5 font-sans font-semibold text-white">3.3 Review, finalize & approve the IR</td>
-                                <td class="p-2.5 text-center col-1 text-purple-300">I</td>
-                                <td class="p-2.5 text-center col-2 text-gold font-black">A</td>
-                                <td class="p-2.5 text-center col-3 text-sky-400 font-bold">R</td>
-                                <td class="p-2.5 text-center col-4 text-purple-300">I</td>
-                                <td class="p-2.5 text-center col-5 text-purple-300">I</td>
-                                <td class="p-2.5 text-center col-6 text-slate-600">-</td>
-                                <td class="p-2.5 text-center col-7 text-purple-300">I</td>
-                            </tr>
-                            <tr>
-                                <td class="p-2.5 font-sans font-semibold text-white">3.4 Formal transmission of IR to Client</td>
-                                <td class="p-2.5 text-center col-1 text-sky-400 font-bold">R</td>
-                                <td class="p-2.5 text-center col-2 text-gold font-black">A</td>
-                                <td class="p-2.5 text-center col-3 text-purple-300">I</td>
-                                <td class="p-2.5 text-center col-4 text-purple-300">I</td>
-                                <td class="p-2.5 text-center col-5 text-purple-300">I</td>
-                                <td class="p-2.5 text-center col-6 text-slate-600">-</td>
-                                <td class="p-2.5 text-center col-7 text-purple-300">I</td>
-                            </tr>
-                            <tr>
-                                <td class="p-2.5 font-sans font-semibold text-white">3.5 Internal debrief & corrective actions</td>
-                                <td class="p-2.5 text-center col-1 text-purple-300">I</td>
-                                <td class="p-2.5 text-center col-2 text-gold font-black">A</td>
-                                <td class="p-2.5 text-center col-3 text-sky-400 font-bold">R</td>
-                                <td class="p-2.5 text-center col-4 text-sky-400 font-bold">R</td>
-                                <td class="p-2.5 text-center col-5 text-sky-400 font-bold">R</td>
-                                <td class="p-2.5 text-center col-6 text-purple-300">I</td>
-                                <td class="p-2.5 text-center col-7 text-purple-300">I</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="glass p-3 rounded-xl border-white/5 text-center text-xs text-slate-400">
-                    <span><i class="fa-solid fa-lock-open text-red-400"></i> Shield Compliance: Head Guard handles immediate tactical defense on ground (A), Ops Manager assumes final ownership of client report delivery (A).</span>
-                </div>
-            </div>
-
-            <!-- ================= SLIDE 7: Priority 4 Matrix ================= -->
-            <div id="slide-7" class="slide-content h-full flex flex-col justify-between z-10 slide-hidden animate-spring">
-                <div>
-                    <h2 class="text-2xl md:text-3xl font-bold uppercase text-white tracking-wide border-b border-white/10 pb-2 flex justify-between items-center">
-                        <span>PRIORITY 4: PAYROLL, TIMEKEEPING & WELFARE</span>
-                        <span class="text-xs bg-[#FFD700]/15 text-gold px-3 py-1 rounded border border-[#FFD700]/25 font-mono">FINANCIAL SUSTAINABILITY</span>
-                    </h2>
-                </div>
-                
-                <div class="flex-grow overflow-x-auto my-2">
-                    <table class="w-full text-left text-xs border-collapse">
-                        <thead>
-                            <tr class="border-b border-white/10 text-slate-400 font-display uppercase tracking-wider bg-white/5">
-                                <th class="p-2.5">Task / Workflow</th>
-                                <th class="p-2.5 text-center cursor-pointer hover:bg-white/10 rounded" onclick="highlightRaciCol(1)">Admin</th>
-                                <th class="p-2.5 text-center cursor-pointer hover:bg-white/10 rounded" onclick="highlightRaciCol(2)">Ops Mgr</th>
-                                <th class="p-2.5 text-center cursor-pointer hover:bg-white/10 rounded" onclick="highlightRaciCol(3)">Supervisor</th>
-                                <th class="p-2.5 text-center cursor-pointer hover:bg-white/10 rounded" onclick="highlightRaciCol(4)">Asst. Sup</th>
-                                <th class="p-2.5 text-center cursor-pointer hover:bg-white/10 rounded" onclick="highlightRaciCol(5)">Head Guard</th>
-                                <th class="p-2.5 text-center cursor-pointer hover:bg-white/10 rounded" onclick="highlightRaciCol(6)">Guard</th>
-                                <th class="p-2.5 text-center cursor-pointer hover:bg-white/10 rounded" onclick="highlightRaciCol(7)">GM</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-white/5 font-mono text-[11px]">
-                            <tr>
-                                <td class="p-2.5 font-sans font-semibold text-white">4.1 Consolidate & verify site-level DTRs</td>
-                                <td class="p-2.5 text-center col-1 text-sky-400 font-bold">R</td>
-                                <td class="p-2.5 text-center col-2 text-purple-300">I</td>
-                                <td class="p-2.5 text-center col-3 text-gold font-black">A</td>
-                                <td class="p-2.5 text-center col-4 text-purple-300">I</td>
-                                <td class="p-2.5 text-center col-5 text-sky-400 font-bold">R</td>
-                                <td class="p-2.5 text-center col-6 text-sky-400 font-bold">R</td>
-                                <td class="p-2.5 text-center col-7 text-purple-300">I</td>
-                            </tr>
-                            <tr>
-                                <td class="p-2.5 font-sans font-semibold text-white">4.2 Compute payroll, OT & contributions</td>
-                                <td class="p-2.5 text-center col-1 text-sky-400 font-bold">R</td>
-                                <td class="p-2.5 text-center col-2 text-gold font-black">A</td>
-                                <td class="p-2.5 text-center col-3 text-purple-300">I</td>
-                                <td class="p-2.5 text-center col-4 text-purple-300">I</td>
-                                <td class="p-2.5 text-center col-5 text-slate-600">-</td>
-                                <td class="p-2.5 text-center col-6 text-slate-600">-</td>
-                                <td class="p-2.5 text-center col-7 text-purple-300">I</td>
-                            </tr>
-                            <tr>
-                                <td class="p-2.5 font-sans font-semibold text-white">4.3 Final payroll approval & fund release</td>
-                                <td class="p-2.5 text-center col-1 text-purple-300">I</td>
-                                <td class="p-2.5 text-center col-2 text-sky-400 font-bold">R</td>
-                                <td class="p-2.5 text-center col-3 text-purple-300">I</td>
-                                <td class="p-2.5 text-center col-4 text-purple-300">I</td>
-                                <td class="p-2.5 text-center col-5 text-slate-600">-</td>
-                                <td class="p-2.5 text-center col-6 text-slate-600">-</td>
-                                <td class="p-2.5 text-center col-7 text-gold font-black">A</td>
-                            </tr>
-                            <tr>
-                                <td class="p-2.5 font-sans font-semibold text-white">4.4 Pay distribution & inquiries</td>
-                                <td class="p-2.5 text-center col-1 text-sky-400 font-bold">R</td>
-                                <td class="p-2.5 text-center col-2 text-purple-300">I</td>
-                                <td class="p-2.5 text-center col-3 text-purple-300">I</td>
-                                <td class="p-2.5 text-center col-4 text-purple-300">I</td>
-                                <td class="p-2.5 text-center col-5 text-purple-300">I</td>
-                                <td class="p-2.5 text-center col-6 text-purple-300">I</td>
-                                <td class="p-2.5 text-center col-7 text-purple-300">I</td>
-                            </tr>
-                            <tr>
-                                <td class="p-2.5 font-sans font-semibold text-white">4.5 Guard welfare & typhoon relief</td>
-                                <td class="p-2.5 text-center col-1 text-sky-400 font-bold">R</td>
-                                <td class="p-2.5 text-center col-2 text-gold font-black">A</td>
-                                <td class="p-2.5 text-center col-3 text-sky-400 font-bold">R</td>
-                                <td class="p-2.5 text-center col-4 text-sky-400 font-bold">R</td>
-                                <td class="p-2.5 text-center col-5 text-purple-300">I</td>
-                                <td class="p-2.5 text-center col-6 text-purple-300">I</td>
-                                <td class="p-2.5 text-center col-7 text-purple-300">I</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="glass p-3 rounded-xl border-white/5 text-center text-xs text-slate-400">
-                    <span><i class="fa-solid fa-hand-holding-dollar text-emerald-300"></i> Guard Protection: Zonal Supervisor is Accountable for DTR integrity (Task 4.1), preventing compliance slips.</span>
-                </div>
-            </div>
-
-            <!-- ================= SLIDE 8: Priority 5 Matrix ================= -->
-            <div id="slide-8" class="slide-content h-full flex flex-col justify-between z-10 slide-hidden animate-spring">
-                <div>
-                    <h2 class="text-2xl md:text-3xl font-bold uppercase text-white tracking-wide border-b border-white/10 pb-2 flex justify-between items-center">
-                        <span>PRIORITY 5: COMPLIANCE, TRAINING & QUALITY ASSURANCE</span>
-                        <span class="text-xs bg-sky-500/10 text-sky-400 px-3 py-1 rounded border border-sky-500/20 font-mono">PNP-SOSIA READY</span>
-                    </h2>
-                </div>
-                
-                <div class="flex-grow overflow-x-auto my-2">
-                    <table class="w-full text-left text-xs border-collapse">
-                        <thead>
-                            <tr class="border-b border-white/10 text-slate-400 font-display uppercase tracking-wider bg-white/5">
-                                <th class="p-2.5">Task / Workflow</th>
-                                <th class="p-2.5 text-center cursor-pointer hover:bg-white/10 rounded" onclick="highlightRaciCol(1)">Admin</th>
-                                <th class="p-2.5 text-center cursor-pointer hover:bg-white/10 rounded" onclick="highlightRaciCol(2)">Ops Mgr</th>
-                                <th class="p-2.5 text-center cursor-pointer hover:bg-white/10 rounded" onclick="highlightRaciCol(3)">Supervisor</th>
-                                <th class="p-2.5 text-center cursor-pointer hover:bg-white/10 rounded" onclick="highlightRaciCol(4)">Asst. Sup</th>
-                                <th class="p-2.5 text-center cursor-pointer hover:bg-white/10 rounded" onclick="highlightRaciCol(5)">Head Guard</th>
-                                <th class="p-2.5 text-center cursor-pointer hover:bg-white/10 rounded" onclick="highlightRaciCol(6)">Guard</th>
-                                <th class="p-2.5 text-center cursor-pointer hover:bg-white/10 rounded" onclick="highlightRaciCol(7)">GM</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-white/5 font-mono text-[11px]">
-                            <tr>
-                                <td class="p-2 font-sans font-semibold text-white">5.1 Maintain Digital Document Vault</td>
-                                <td class="p-2 text-center col-1 text-sky-400 font-bold">R</td>
-                                <td class="p-2 text-center col-2 text-gold font-black">A</td>
-                                <td class="p-2 text-center col-3 text-purple-300">I</td>
-                                <td class="p-2 text-center col-4 text-purple-300">I</td>
-                                <td class="p-2 text-center col-5 text-purple-300">I</td>
-                                <td class="p-2 text-center col-6 text-slate-600">-</td>
-                                <td class="p-2 text-center col-7 text-purple-300">I</td>
-                            </tr>
-                            <tr>
-                                <td class="p-2 font-sans font-semibold text-white">5.2 Organize Mandatory In-Service Training</td>
-                                <td class="p-2 text-center col-1 text-sky-400 font-bold">R</td>
-                                <td class="p-2 text-center col-2 text-gold font-black">A</td>
-                                <td class="p-2 text-center col-3 text-sky-400 font-bold">R</td>
-                                <td class="p-2 text-center col-4 text-purple-300">I</td>
-                                <td class="p-2 text-center col-5 text-sky-400 font-bold">R</td>
-                                <td class="p-2 text-center col-6 text-sky-400 font-bold">R</td>
-                                <td class="p-2 text-center col-7 text-purple-300">I</td>
-                            </tr>
-                            <tr>
-                                <td class="p-2 font-sans font-semibold text-white">5.3 Process guard licensing & clearances</td>
-                                <td class="p-2 text-center col-1 text-sky-400 font-bold">R</td>
-                                <td class="p-2 text-center col-2 text-gold font-black">A</td>
-                                <td class="p-2 text-center col-3 text-purple-300">I</td>
-                                <td class="p-2 text-center col-4 text-purple-300">I</td>
-                                <td class="p-2 text-center col-5 text-purple-300">I</td>
-                                <td class="p-2 text-center col-6 text-purple-300">I</td>
-                                <td class="p-2 text-center col-7 text-purple-300">I</td>
-                            </tr>
-                            <tr>
-                                <td class="p-2 font-sans font-semibold text-white">5.4 Monthly client satisfaction surveys</td>
-                                <td class="p-2 text-center col-1 text-sky-400 font-bold">R</td>
-                                <td class="p-2 text-center col-2 text-gold font-black">A</td>
-                                <td class="p-2 text-center col-3 text-purple-300">I</td>
-                                <td class="p-2 text-center col-4 text-purple-300">I</td>
-                                <td class="p-2 text-center col-5 text-purple-300">I</td>
-                                <td class="p-2 text-center col-6 text-slate-600">-</td>
-                                <td class="p-2 text-center col-7 text-purple-300">I</td>
-                            </tr>
-                            <tr>
-                                <td class="p-2 font-sans font-semibold text-white">5.5 Internal mock-audit (Quarterly stress test)</td>
-                                <td class="p-2 text-center col-1 text-sky-400 font-bold">R</td>
-                                <td class="p-2 text-center col-2 text-gold font-black">A</td>
-                                <td class="p-2 text-center col-3 text-sky-400 font-bold">R</td>
-                                <td class="p-2 text-center col-4 text-purple-300">I</td>
-                                <td class="p-2 text-center col-5 text-purple-300">I</td>
-                                <td class="p-2 text-center col-6 text-slate-600">-</td>
-                                <td class="p-2 text-center col-7 text-purple-300">I</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="glass p-3 rounded-xl border-white/5 text-center text-xs text-slate-400">
-                    <span><i class="fa-solid fa-stamp text-sky-400"></i> Audit Armor: Cloud-based Document Vault simplifies sudden external audits to within 15 minutes of PNP request.</span>
-                </div>
-            </div>
-
-            <!-- ================= SLIDE 9: Priority 6 Matrix ================= -->
-            <div id="slide-9" class="slide-content h-full flex flex-col justify-between z-10 slide-hidden animate-spring">
-                <div>
-                    <h2 class="text-2xl md:text-3xl font-bold uppercase text-white tracking-wide border-b border-white/10 pb-2 flex justify-between items-center">
-                        <span>PRIORITY 6: CRISIS MANAGEMENT & BCP</span>
-                        <span class="text-xs bg-red-500/10 text-red-400 px-3 py-1 rounded border border-red-500/20 font-mono pulse-red">CRISIS RESPONSE SOP</span>
-                    </h2>
-                </div>
-                
-                <div class="flex-grow overflow-x-auto my-2">
-                    <table class="w-full text-left text-xs border-collapse">
-                        <thead>
-                            <tr class="border-b border-white/10 text-slate-400 font-display uppercase tracking-wider bg-white/5">
-                                <th class="p-2.5">Task / Workflow</th>
-                                <th class="p-2.5 text-center cursor-pointer hover:bg-white/10 rounded" onclick="highlightRaciCol(1)">Admin</th>
-                                <th class="p-2.5 text-center cursor-pointer hover:bg-white/10 rounded" onclick="highlightRaciCol(2)">Ops Mgr</th>
-                                <th class="p-2.5 text-center cursor-pointer hover:bg-white/10 rounded" onclick="highlightRaciCol(3)">Supervisor</th>
-                                <th class="p-2.5 text-center cursor-pointer hover:bg-white/10 rounded" onclick="highlightRaciCol(4)">Asst. Sup</th>
-                                <th class="p-2.5 text-center cursor-pointer hover:bg-white/10 rounded" onclick="highlightRaciCol(5)">Head Guard</th>
-                                <th class="p-2.5 text-center cursor-pointer hover:bg-white/10 rounded" onclick="highlightRaciCol(6)">Guard</th>
-                                <th class="p-2.5 text-center cursor-pointer hover:bg-white/10 rounded" onclick="highlightRaciCol(7)">GM</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-white/5 font-mono text-[11px]">
-                            <tr>
-                                <td class="p-2 font-sans font-semibold text-white">6.1 Central Crisis Activation & Client Alerts</td>
-                                <td class="p-2 text-center col-1 text-purple-300">I</td>
-                                <td class="p-2 text-center col-2 text-gold font-black">A</td>
-                                <td class="p-2 text-center col-3 text-purple-300">I</td>
-                                <td class="p-2 text-center col-4 text-purple-300">I</td>
-                                <td class="p-2 text-center col-5 text-purple-300">I</td>
-                                <td class="p-2 text-center col-6 text-slate-600">-</td>
-                                <td class="p-2 text-center col-7 text-purple-300">I</td>
-                            </tr>
-                            <tr>
-                                <td class="p-2 font-sans font-semibold text-white">6.2 Local post secure & physical roll calls</td>
-                                <td class="p-2 text-center col-1 text-purple-300">I</td>
-                                <td class="p-2 text-center col-2 text-purple-300">I</td>
-                                <td class="p-2 text-center col-3 text-gold font-black">A</td>
-                                <td class="p-2 text-center col-4 text-purple-300">I</td>
-                                <td class="p-2 text-center col-5 text-sky-400 font-bold">R</td>
-                                <td class="p-2 text-center col-6 text-sky-400 font-bold">R</td>
-                                <td class="p-2 text-center col-7 text-purple-300">I</td>
-                            </tr>
-                            <tr>
-                                <td class="p-2 font-sans font-semibold text-white">6.3 Dispatch relief & emergency packs</td>
-                                <td class="p-2 text-center col-1 text-sky-400 font-bold">R</td>
-                                <td class="p-2 text-center col-2 text-purple-300">I</td>
-                                <td class="p-2 text-center col-3 text-gold font-black">A</td>
-                                <td class="p-2 text-center col-4 text-sky-400 font-bold">R</td>
-                                <td class="p-2 text-center col-5 text-purple-300">I</td>
-                                <td class="p-2 text-center col-6 text-slate-600">-</td>
-                                <td class="p-2 text-center col-7 text-purple-300">I</td>
-                            </tr>
-                            <tr>
-                                <td class="p-2 font-sans font-semibold text-white">6.4 DEFEND / EXTRACT orders (Civil Unrest)</td>
-                                <td class="p-2 text-center col-1 text-purple-300">I</td>
-                                <td class="p-2 text-center col-2 text-gold font-black">A</td>
-                                <td class="p-2 text-center col-3 text-sky-400 font-bold">R</td>
-                                <td class="p-2 text-center col-4 text-sky-400 font-bold">R</td>
-                                <td class="p-2 text-center col-5 text-sky-400 font-bold">R</td>
-                                <td class="p-2 text-center col-6 text-sky-400 font-bold">R</td>
-                                <td class="p-2 text-center col-7 text-purple-300">I</td>
-                            </tr>
-                            <tr>
-                                <td class="p-2 font-sans font-semibold text-white">6.5 Post-crisis welfare & data reconciliation</td>
-                                <td class="p-2 text-center col-1 text-purple-300">I</td>
-                                <td class="p-2 text-center col-2 text-gold font-black">A</td>
-                                <td class="p-2 text-center col-3 text-sky-400 font-bold">R</td>
-                                <td class="p-2 text-center col-4 text-sky-400 font-bold">R</td>
-                                <td class="p-2 text-center col-5 text-sky-400 font-bold">R</td>
-                                <td class="p-2 text-center col-6 text-purple-300">I</td>
-                                <td class="p-2 text-center col-7 text-purple-300">I</td>
-                            </tr>
-                            <tr>
-                                <td class="p-2 font-sans font-semibold text-white">6.6 Post-incident Client Report delivery</td>
-                                <td class="p-2 text-center col-1 text-sky-400 font-bold">R</td>
-                                <td class="p-2 text-center col-2 text-gold font-black">A</td>
-                                <td class="p-2 text-center col-3 text-purple-300">I</td>
-                                <td class="p-2 text-center col-4 text-purple-300">I</td>
-                                <td class="p-2 text-center col-5 text-purple-300">I</td>
-                                <td class="p-2 text-center col-6 text-slate-600">-</td>
-                                <td class="p-2 text-center col-7 text-purple-300">I</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="glass p-3 rounded-xl border-white/5 text-center text-xs text-slate-400">
-                    <span><i class="fa-solid fa-cloud-sun text-gold"></i> Dynamic Response: Core systems comply directly with <strong>RA 10121 DRRM Guidelines</strong>, shielding clients from liabilities.</span>
-                </div>
-            </div>
-
-            <!-- ================= SLIDE 10: Structural Visualization - RACI Command Loops ================= -->
-            <div id="slide-10" class="slide-content h-full flex flex-col justify-between z-10 slide-hidden animate-spring">
-                <div>
-                    <h2 class="text-2xl md:text-3xl font-bold uppercase text-white tracking-wide border-b border-white/10 pb-2 flex justify-between items-center">
-                        <span>THE RACI COMMAND LOOP VISUALIZATION</span>
-                        <span class="text-xs bg-gold/10 text-gold px-3 py-1 rounded border border-gold/20 font-mono">NON-LINEAR COMMUNICATIONS FLOW</span>
-                    </h2>
-                    <p class="text-sm text-slate-300 mt-2">
-                        How our decentralized architecture drives feedback loops to eliminate double execution or information drops.
-                    </p>
-                </div>
-                
-                <div class="flex-grow flex items-center justify-center my-3">
-                    <div class="w-full max-w-4xl grid grid-cols-4 gap-4 relative">
-                        <div class="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-sky-500/20 via-gold/40 to-sky-500/20 z-0"></div>
-
-                        <!-- Strategic Command -->
-                        <div class="glass p-4 rounded-xl border-emerald-500/30 z-10 text-center flex flex-col justify-between h-48 bg-emerald-950/10">
-                            <div class="w-10 h-10 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center mx-auto text-emerald-400 mb-2">
-                                <i class="fa-solid fa-crown"></i>
-                            </div>
-                            <h3 class="text-xs font-bold text-white uppercase">A (Accountable)</h3>
-                            <p class="text-[10px] text-slate-400 mt-1">One clear owner per task. Authorizes, owns success, and answers for ground performance.</p>
-                            <span class="text-[9px] uppercase font-mono text-emerald-400 mt-2 block bg-emerald-500/5 py-0.5 rounded">Owner of Task</span>
-                        </div>
-
-                        <!-- Local Site Execution -->
-                        <div class="glass p-4 rounded-xl border-[#FFD700]/30 z-10 text-center flex flex-col justify-between h-48 bg-blue-950/35">
-                            <div class="w-10 h-10 rounded-full bg-[#FFD700]/10 border border-[#FFD700]/30 flex items-center justify-center mx-auto text-gold mb-2">
-                                <i class="fa-solid fa-person-military-pointing"></i>
-                            </div>
-                            <h3 class="text-xs font-bold text-white uppercase">R (Responsible)</h3>
-                            <p class="text-[10px] text-slate-400 mt-1">Ground forces executing tours and secure guard perimeters. Works directly to achieve task parameters.</p>
-                            <span class="text-[9px] uppercase font-mono text-gold mt-2 block bg-[#FFD700]/5 py-0.5 rounded">Doer of Task</span>
-                        </div>
-
-                        <!-- Subject Matter Experts -->
-                        <div class="glass p-4 rounded-xl border-sky-500/30 z-10 text-center flex flex-col justify-between h-48 bg-sky-950/10">
-                            <div class="w-10 h-10 rounded-full bg-sky-500/10 border border-sky-500/30 flex items-center justify-center mx-auto text-sky-400 mb-2">
-                                <i class="fa-solid fa-user-tie"></i>
-                            </div>
-                            <h3 class="text-xs font-bold text-white uppercase">C (Consulted)</h3>
-                            <p class="text-[10px] text-slate-400 mt-1">Local expert feedback loops. Guides the "A" node with regional weather or physical threat data before changes.</p>
-                            <span class="text-[9px] uppercase font-mono text-sky-400 mt-2 block bg-sky-500/5 py-0.5 rounded">Ground Reality Feedback</span>
-                        </div>
-
-                        <!-- Stakeholders -->
-                        <div class="glass p-4 rounded-xl border-white/10 z-10 text-center flex flex-col justify-between h-48">
-                            <div class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mx-auto text-slate-300 mb-2">
-                                <i class="fa-solid fa-bell"></i>
-                            </div>
-                            <h3 class="text-xs font-bold text-white uppercase">I (Informed)</h3>
-                            <p class="text-[10px] text-slate-400 mt-1">One-click push notifications to leadership and clients. Receives automated metrics instantaneously.</p>
-                            <span class="text-[9px] uppercase font-mono text-slate-400 mt-2 block bg-white/5 py-0.5 rounded">Data Recipient</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="glass p-3 rounded-xl border-white/5 text-center text-xs text-slate-400">
-                    <span><i class="fa-solid fa-gears text-sky-400"></i> Seamless loop routing bypasses structural barriers during severe cellular network degradation.</span>
-                </div>
-            </div>
-
-            <!-- ================= SLIDE 11: Implementation Directive ================= -->
-            <div id="slide-11" class="slide-content h-full flex flex-col justify-between z-10 slide-hidden animate-spring">
-                <div>
-                    <h2 class="text-2xl md:text-3xl font-bold uppercase text-white tracking-wide border-b border-white/10 pb-2 flex justify-between items-center">
-                        <span>LEADERSHIP IMPLEMENTATION DIRECTIVE</span>
-                        <span class="text-xs bg-sky-500/10 text-sky-400 px-3 py-1 rounded border border-sky-500/20 font-mono">ACTION STEPS</span>
-                    </h2>
-                    <p class="text-sm text-slate-300 mt-1">
-                        Actions required immediately by leaders to integrate this RACI v2.0 framework into standard team workflows.
-                    </p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-4">
-                    <div class="glass p-5 rounded-2xl border-white/10 relative">
-                        <span class="absolute top-4 right-4 text-3xl font-bold text-white/5">01</span>
-                        <h3 class="text-lg font-bold text-gold uppercase mb-2"><i class="fa-solid fa-street-view mr-1.5"></i> Span of Control Briefing</h3>
-                        <p class="text-sm text-slate-300">
-                            Hold target briefings with the newly designated <strong>Assistant Supervisors</strong> and <strong>Head Guards</strong>. Re-condition them to understand they are Site and Tactical Commanders holding strict Accountabilities.
-                        </p>
-                    </div>
-
-                    <div class="glass p-5 rounded-2xl border-white/10 relative">
-                        <span class="absolute top-4 right-4 text-3xl font-bold text-white/5">02</span>
-                        <h3 class="text-lg font-bold text-gold uppercase mb-2"><i class="fa-solid fa-eye mr-1.5"></i> Visual Management</h3>
-                        <p class="text-sm text-slate-300">
-                            Ensure the RACI matrix is printed and physically posted. Highlight Assistant Supervisor and Head Guard tracks in high-visibility sky blue color to reinforce tactical authority to the entire ground security force.
-                        </p>
-                    </div>
-
-                    <div class="glass p-5 rounded-2xl border-white/10 relative">
-                        <span class="absolute top-4 right-4 text-3xl font-bold text-white/5">03</span>
-                        <h3 class="text-lg font-bold text-gold uppercase mb-2"><i class="fa-solid fa-circle-nodes mr-1.5"></i> 30-Day "Friction" Audit</h3>
-                        <p class="text-sm text-slate-300">
-                            The Operations Manager will conduct a performance audit after 30 days. Investigate any unfulfilled tasks to verify if a role mapping issue occurred or if a disciplinary follow-up is necessary.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="p-4 rounded-xl border border-gold/20 bg-gold/5 flex items-start gap-4">
-                    <i class="fa-solid fa-lightbulb text-gold text-lg mt-0.5"></i>
-                    <div>
-                        <span class="text-xs uppercase font-bold text-gold tracking-wider">Golden Rule of Action:</span>
-                        <p class="text-xs text-slate-300">When authority is local and clear, ground velocity spikes, entirely shielding clients from regional climate shocks or security incidents.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ================= SLIDE 12: Summary & Client Advantage ================= -->
-            <div id="slide-12" class="slide-content h-full flex flex-col justify-between z-10 slide-hidden animate-spring">
-                <div>
-                    <h2 class="text-2xl md:text-3xl font-bold uppercase text-white tracking-wide border-b border-white/10 pb-2 flex justify-between items-center">
-                        <span>THE SYSTEMIC ADVANTAGE</span>
-                        <span class="text-xs bg-[#FFD700]/15 text-gold px-3 py-1 rounded border border-[#FFD700]/25 font-mono">BUSINESS CONTINUITY</span>
-                    </h2>
-                    <p class="text-sm text-slate-300 mt-1">
-                        Clear process protocols protect client assets and provide complete legal insulation.
-                    </p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 my-3 flex-grow">
-                    <div class="glass p-4 rounded-xl border-[#FFD700]/20 flex flex-col justify-between bg-[#FFD700]/5">
-                        <div>
-                            <div class="w-8 h-8 rounded-full bg-[#FFD700]/10 flex items-center justify-center text-gold mb-2"><i class="fa-solid fa-building-shield"></i></div>
-                            <h4 class="text-xs font-bold text-white uppercase">Eliminates Post Vagueness</h4>
-                            <p class="text-[10px] text-slate-300 mt-2 font-body">Decentralized Head Guards serve as localized site commanders, preventing on-site confusion and providing clear operational continuity.</p>
-                        </div>
-                        <span class="text-[9px] font-mono text-gold mt-2">Ground Security</span>
-                    </div>
-
-                    <div class="glass p-4 rounded-xl border-sky-500/20 flex flex-col justify-between bg-sky-500/5">
-                        <div>
-                            <div class="w-8 h-8 rounded-full bg-sky-500/10 flex items-center justify-center text-sky-400 mb-2"><i class="fa-solid fa-database"></i></div>
-                            <h4 class="text-xs font-bold text-white uppercase">Instant Compliance Access</h4>
-                            <p class="text-[10px] text-slate-300 mt-2 font-body">All documents, licenses, and permits are permanently archived within the digital Document Vault, satisfying PNP-SOSIA audit requests within minutes.</p>
-                        </div>
-                        <span class="text-[9px] font-mono text-sky-300 mt-2">Audit Ready</span>
-                    </div>
-
-                    <div class="glass p-4 rounded-xl border-emerald-500/20 flex flex-col justify-between bg-emerald-500/5">
-                        <div>
-                            <div class="w-8 h-8 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-2"><i class="fa-solid fa-bolt"></i></div>
-                            <h4 class="text-xs font-bold text-white uppercase">Zero Transmission Delay</h4>
-                            <p class="text-[10px] text-slate-300 mt-2 font-body">Coded emergency SMS fallback paths protect client data lines even during regional power grid or telecommunication failures.</p>
-                        </div>
-                        <span class="text-[9px] font-mono text-emerald-300 mt-2">Climate Resilient</span>
-                    </div>
-
-                    <div class="glass p-4 rounded-xl border-indigo-500/20 flex flex-col justify-between bg-indigo-500/5">
-                        <div>
-                            <div class="w-8 h-8 rounded-full bg-indigo-500/10 flex items-center justify-center text-indigo-400 mb-2"><i class="fa-solid fa-gavel"></i></div>
-                            <h4 class="text-xs font-bold text-white uppercase">Total Legal Insulation</h4>
-                            <p class="text-[10px] text-slate-300 mt-2 font-body">Strict DOLE DO-174 and labor compliance checks are designed directly within payroll processes, mitigating secondary client liability.</p>
-                        </div>
-                        <span class="text-[9px] font-mono text-indigo-300 mt-2">Zero Liability Guarantee</span>
-                    </div>
-                </div>
-
-                <div class="glass p-4 rounded-xl border-[#FFD700]/30 bg-blue-950/20 text-center flex items-center justify-center gap-6">
-                    <span class="text-sm uppercase tracking-wider text-gold font-bold font-display">Ensure Operational Resilience Today.</span>
-                    <div class="flex gap-4 text-xs font-mono">
-                        <span><i class="fa-solid fa-globe text-[#FFD700] mr-1"></i> strong-a3-control.com</span>
-                        <span><i class="fa-solid fa-envelope text-[#FFD700] mr-1"></i> command@stronghold-a3.com</span>
-                    </div>
-                </div>
-            </div>
-
+            <h2 class="text-3xl md:text-5xl font-bold font-montserrat text-white mb-4 animate-fade-in">
+                Discover Your Facility's <span class="text-brand-gold">Vulnerabilities</span>
+            </h2>
+            <p class="text-gray-200 text-lg max-w-2xl mx-auto animate-fade-in">
+                Get instant, personalized recommendations across 7 critical security domains in just 5 minutes.
+            </p>
         </div>
+    </section>
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <main class="container mx-auto px-4 py-8 max-w-4xl">
+        
+        <!-- ==================== INTRO SECTION (Overlaps Banner) ==================== -->
+        <section id="introSection" class="animate-fade-in -mt-20 relative z-10">
+            <div class="glass-strong rounded-3xl p-8 md:p-12 text-center mb-8 shadow-2xl">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+                    <div class="glass p-4 rounded-xl"><i class="fas fa-clock text-brand-blue text-xl mb-2"></i><p class="text-xs text-gray-300">5-Minute Assessment</p></div>
+                    <div class="glass p-4 rounded-xl"><i class="fas fa-chart-radar text-brand-blue text-xl mb-2"></i><p class="text-xs text-gray-300">7-Domain Analysis</p></div>
+                    <div class="glass p-4 rounded-xl"><i class="fas fa-bullseye text-brand-blue text-xl mb-2"></i><p class="text-xs text-gray-300">Tailored Plan</p></div>
+                    <div class="glass p-4 rounded-xl"><i class="fas fa-lock text-brand-blue text-xl mb-2"></i><p class="text-xs text-gray-300">100% Confidential</p></div>
+                </div>
+
+                <button onclick="startAssessment()" class="btn-primary bg-brand-blue text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-blue-600 transition shadow-lg shadow-blue-500/30 pulse-green">
+                    <i class="fas fa-shield-alt mr-2"></i>Start Assessment Now
+                </button>
+                <p class="text-gray-400 text-sm mt-6">No obligation • Free consultation included • Trusted by 80+ clients</p>
+            </div>
+        </section>
+
+        <!-- ==================== ASSESSMENT FORM ==================== -->
+        <section id="assessmentSection" class="hidden animate-fade-in">
+            <div class="glass-strong rounded-3xl p-6 md:p-10">
+                <!-- Progress -->
+                <div class="mb-6">
+                    <div class="flex justify-between text-sm text-gray-400 mb-2 font-montserrat">
+                        <span>Question <span id="currentQuestion" class="text-white font-bold">1</span> of <span id="totalQuestions">28</span></span>
+                        <span id="progressPercent" class="text-brand-blue font-bold">0%</span>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-fill" id="progressBar" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <!-- Question Area -->
+                <div id="questionArea" class="mb-8 min-h-[300px]">
+                    <!-- Dynamically populated -->
+                </div>
+
+                <!-- Navigation -->
+                <div class="flex justify-between items-center pt-6 border-t border-white/10">
+                    <button id="prevBtn" onclick="previousQuestion()" class="glass text-white px-6 py-3 rounded-xl font-semibold hover:bg-white/10 transition hidden">
+                        <i class="fas fa-arrow-left mr-2"></i> Previous
+                    </button>
+                    <div class="flex-1"></div>
+                    <button id="nextBtn" onclick="nextQuestion()" class="bg-brand-blue text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-600 transition shadow-lg shadow-blue-500/20">
+                        Next <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== LEAD CAPTURE ==================== -->
+        <section id="leadCaptureSection" class="hidden animate-fade-in">
+            <div class="glass-strong rounded-3xl p-8 md:p-12 max-w-2xl mx-auto">
+                <div class="text-center mb-8">
+                    <div class="w-16 h-16 bg-brand-blue/20 border border-brand-blue rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-file-pdf text-brand-blue text-2xl"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold font-montserrat text-white mb-2">Get Your Detailed Report</h2>
+                    <p class="text-gray-400">Enter your details to generate your personalized PDF risk assessment.</p>
+                </div>
+                <form id="leadForm" onsubmit="submitLead(event)" class="space-y-5">
+                    <div>
+                        <label class="block text-sm font-semibold mb-2 text-gray-300">Full Name *</label>
+                        <input type="text" id="fullName" required class="w-full rounded-lg px-4 py-3" placeholder="John Doe">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold mb-2 text-gray-300">Email Address *</label>
+                        <input type="email" id="email" required class="w-full rounded-lg px-4 py-3" placeholder="john@company.com">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold mb-2 text-gray-300">Company / Organization *</label>
+                        <input type="text" id="company" required class="w-full rounded-lg px-4 py-3" placeholder="Company Name">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold mb-2 text-gray-300">Facility Type *</label>
+                        <select id="facilityType" required class="w-full rounded-lg px-4 py-3">
+                            <option value="">Select Facility Type...</option>
+                            <option value="Corporate/BPO">Corporate Office / BPO</option>
+                            <option value="Warehouse/Logistics">Warehouse / Logistics</option>
+                            <option value="Retail/Commercial">Retail / Commercial</option>
+                            <option value="Healthcare">Hospital / Healthcare</option>
+                            <option value="Education">Educational Institution</option>
+                            <option value="Government/LGU">Government / LGU</option>
+                            <option value="NGO/Development">NGO / Development</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="w-full bg-brand-gold text-[#0A1628] px-8 py-4 rounded-xl font-bold text-lg hover:bg-yellow-400 transition shadow-lg shadow-yellow-500/20 mt-6">
+                        <i class="fas fa-download mr-2"></i>Generate My PDF Report
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- ==================== RESULTS DASHBOARD ==================== -->
+        <section id="resultsSection" class="hidden animate-fade-in space-y-8">
+            
+            <!-- Score Overview -->
+            <div class="glass-strong rounded-3xl p-8 text-center">
+                <h2 class="text-xl font-montserrat text-gray-400 mb-4">Overall Security Risk Index (OSRI)</h2>
+                <div class="relative w-48 h-48 mx-auto mb-6 flex items-center justify-center">
+                    <div class="absolute inset-0 rounded-full border-8 border-white/5"></div>
+                    <div id="scoreRing" class="absolute inset-0 rounded-full border-8 border-brand-blue transition-all duration-1000" style="clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);"></div>
+                    <div class="text-center z-10">
+                        <div id="overallScore" class="text-5xl font-bold font-montserrat text-white">0</div>
+                        <div id="riskLevel" class="text-sm font-bold text-brand-blue uppercase tracking-wider">Calculating</div>
+                    </div>
+                </div>
+                <p id="riskSummary" class="text-gray-300 max-w-lg mx-auto"></p>
+            </div>
+
+            <!-- Radar Chart -->
+            <div class="glass-strong rounded-3xl p-8">
+                <h3 class="text-xl font-bold font-montserrat text-white mb-6 text-center">7-Domain Risk Analysis</h3>
+                <div class="max-w-md mx-auto">
+                    <canvas id="radarChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Recommendations -->
+            <div class="glass-strong rounded-3xl p-8">
+                <h3 class="text-2xl font-bold font-montserrat text-white mb-2 text-center">Priority Action Plan</h3>
+                <p class="text-gray-400 text-center mb-8">Address these critical areas to achieve "Zero-Liability" status.</p>
+                <div id="recommendationsContainer" class="space-y-6">
+                    <!-- Dynamically populated -->
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="glass-gold rounded-3xl p-8 text-center">
+                <h3 class="text-2xl font-bold font-montserrat text-[#0A1628] mb-3">Ready to Eliminate Your Risk?</h3>
+                <p class="text-[#0A1628]/80 mb-6 max-w-lg mx-auto">Schedule a free 30-minute consultation with our security experts to review your results.</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button onclick="downloadPDF()" class="bg-[#0A1628] text-white px-8 py-4 rounded-xl font-bold hover:bg-navy-light transition shadow-lg">
+                        <i class="fas fa-file-pdf mr-2"></i>Download Full PDF Report
+                    </button>
+                    <a href="tel:09975744047" class="bg-brand-blue text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-600 transition shadow-lg shadow-blue-500/30">
+                        <i class="fas fa-phone-alt mr-2"></i>Call 0997-574-4047
+                    </a>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <footer class="w-full max-w-7xl flex flex-col md:flex-row items-center justify-between gap-4 mt-4 glass px-6 py-4 rounded-2xl border-white/10">
-        <div class="flex items-center gap-3">
-            <button id="btn-prev" class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white hover:bg-[#FFD700]/20 hover:text-gold hover:border-[#FFD700]/40 transition duration-200">
-                <i class="fa-solid fa-arrow-left"></i> Previous
-            </button>
-            <button id="btn-next" class="px-4 py-2 rounded-xl bg-[#FFD700]/10 border border-[#FFD700]/30 text-gold hover:bg-[#FFD700]/20 transition duration-200">
-                Next <i class="fa-solid fa-arrow-right"></i>
-            </button>
-        </div>
-        
-        <!-- Navigation Indicator list index -->
-        <div class="flex items-center gap-1.5 flex-wrap justify-center" id="carousel-indicators">
-            <!-- Programmatically loaded -->
-        </div>
-
-        <div class="flex items-center gap-3">
-            <button id="btn-play" class="p-2.5 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:text-white" title="Toggle Auto-Play">
-                <i class="fa-solid fa-play"></i>
-            </button>
-            <button id="btn-lite" class="p-2.5 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:text-white" title="Toggle High-Contrast Lite Mode">
-                <i class="fa-solid fa-eye"></i>
-            </button>
-        </div>
+    <footer class="text-center py-8 text-gray-500 text-sm border-t border-white/5 mt-12">
+        <p>© 2026 Stronghold A3 Security Agency. Eastern Visayas' Premier Zero-Liability Security Partner.</p>
     </footer>
 
     <script>
-        const totalSlides = 12;
-        let currentSlide = 1;
-        let autoplayInterval = null;
-        let isAutoplayActive = false;
+        // ==========================================
+        // DATA & STATE
+        // ==========================================
+        let currentQuestion = 0;
+        let answers = [];
+        let categoryScores = {};
+        let leadData = {};
+        let radarChartInstance = null;
 
-        const slideCounter = document.getElementById('slide-index-counter');
-        const carouselIndicators = document.getElementById('carousel-indicators');
+        // ==========================================
+        // 1. INITIALIZE SUPABASE CLIENT
+        // ==========================================
+        const { createClient } = supabase;
+        const supabaseUrl = 'https://zpahlcmuowwwiauffrby.supabase.co';
+        const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpwYWhsY211b3d3d2lhdWZmcmJ5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEwMjc5MjAsImV4cCI6MjA5NjYwMzkyMH0.nqX53srwL36lEzVPbEPC0x7TJmL6YZ2lhmQrDNtVKJw';
+        const sb = createClient(supabaseUrl, supabaseAnonKey);
 
-        // Create Indicators
-        for (let i = 1; i <= totalSlides; i++) {
-            const indicator = document.createElement('button');
-            indicator.className = `w-2.5 h-2.5 rounded-full transition-all duration-300 ${i === 1 ? 'bg-gold w-6' : 'bg-slate-600 hover:bg-slate-400'}`;
-            indicator.id = `indicator-${i}`;
-            indicator.onclick = () => goToSlide(i);
-            carouselIndicators.appendChild(indicator);
+        const categoryWeights = {
+            "Perimeter & Access": 0.18,
+            "Surveillance & Monitoring": 0.16,
+            "Personnel Security": 0.16,
+            "Lighting & CPTED": 0.12,
+            "Emergency Preparedness": 0.15,
+            "Asset Protection": 0.13,
+            "Threat Landscape": 0.10
+        };
+
+        const questions = [
+            // Domain 1: Physical Perimeter & Access Control (4 questions)
+            { category: "Perimeter & Access", weight: 4, question: "How would you rate your facility's perimeter security (fencing, walls, barriers)?", options: [{ text: "Excellent - Comprehensive coverage with multiple layers", score: 0 }, { text: "Good - Minor gaps in coverage", score: 3 }, { text: "Fair - Several vulnerabilities identified", score: 6 }, { text: "Poor - Inadequate or non-existent", score: 9 }] },
+            { category: "Perimeter & Access", weight: 5, question: "Are entry/exit points controlled and monitored (guards, turnstiles, access cards)?", options: [{ text: "Fully automated with biometric/card access", score: 0 }, { text: "Guard-controlled with manual verification", score: 3 }, { text: "Partially controlled, inconsistent enforcement", score: 6 }, { text: "Minimal or no access control", score: 9 }] },
+            { category: "Perimeter & Access", weight: 4, question: "Is visitor management formalized (logbooks, ID verification, escorts)?", options: [{ text: "Digital system with photo ID and escort protocol", score: 0 }, { text: "Manual logbook with ID check", score: 3 }, { text: "Inconsistent visitor tracking", score: 6 }, { text: "No formal visitor management", score: 9 }] },
+            { category: "Perimeter & Access", weight: 3, question: "Are loading docks and service entrances secured separately from main entrances?", options: [{ text: "Fully separated with dedicated access control", score: 0 }, { text: "Separated but limited monitoring", score: 3 }, { text: "Shared access with basic controls", score: 6 }, { text: "No separation or controls", score: 9 }] },
+
+            // Domain 2: Surveillance & Monitoring (4 questions)
+            { category: "Surveillance & Monitoring", weight: 5, question: "Is CCTV coverage comprehensive (entrances, lobbies, parking, critical areas)?", options: [{ text: "90%+ coverage with HD cameras", score: 0 }, { text: "60-90% coverage", score: 3 }, { text: "30-60% coverage", score: 6 }, { text: "Less than 30% or no CCTV", score: 9 }] },
+            { category: "Surveillance & Monitoring", weight: 4, question: "Are cameras functional, recorded, and retained for an adequate period (30+ days)?", options: [{ text: "Fully functional with 30+ day retention", score: 0 }, { text: "Functional with 7-30 day retention", score: 3 }, { text: "Partial functionality or limited retention", score: 6 }, { text: "Non-functional or no recording", score: 9 }] },
+            { category: "Surveillance & Monitoring", weight: 4, question: "Is there a manned command/monitoring station with 24/7 coverage?", options: [{ text: "24/7 manned station with real-time monitoring", score: 0 }, { text: "Manned during business hours only", score: 3 }, { text: "Remote monitoring with periodic checks", score: 6 }, { text: "No dedicated monitoring", score: 9 }] },
+            { category: "Surveillance & Monitoring", weight: 4, question: "Are alarm systems (intrusion, fire, panic) integrated and tested regularly?", options: [{ text: "Fully integrated with monthly testing", score: 0 }, { text: "Integrated but irregular testing", score: 3 }, { text: "Standalone systems with basic testing", score: 6 }, { text: "No alarm systems or untested", score: 9 }] },
+
+            // Domain 3: Personnel Security (4 questions)
+            { category: "Personnel Security", weight: 5, question: "Are security personnel licensed, trained, and properly supervised?", options: [{ text: "100% licensed with continuous training", score: 0 }, { text: "Mostly licensed with basic training", score: 3 }, { text: "Partial licensing or minimal training", score: 6 }, { text: "Unlicensed or untrained personnel", score: 9 }] },
+            { category: "Personnel Security", weight: 4, question: "Are background checks conducted on all staff and contractors?", options: [{ text: "Comprehensive checks for all personnel", score: 0 }, { text: "Basic checks for security staff only", score: 3 }, { text: "Limited or inconsistent checks", score: 6 }, { text: "No background checks", score: 9 }] },
+            { category: "Personnel Security", weight: 4, question: "Is there an adequate guard-to-floor ratio for the facility size?", options: [{ text: "Optimal ratio with 24/7 coverage", score: 0 }, { text: "Adequate for business hours", score: 3 }, { text: "Understaffed during peak times", score: 6 }, { text: "Severely understaffed", score: 9 }] },
+            { category: "Personnel Security", weight: 3, question: "Are post orders and standard operating procedures (SOPs) current and accessible?", options: [{ text: "Updated SOPs accessible to all guards", score: 0 }, { text: "SOPs exist but not regularly updated", score: 3 }, { text: "Outdated or incomplete SOPs", score: 6 }, { text: "No written SOPs", score: 9 }] },
+
+            // Domain 4: Lighting, CPTED & Environmental Design (4 questions)
+            { category: "Lighting & CPTED", weight: 4, question: "Is exterior and interior lighting adequate (especially at night)?", options: [{ text: "Comprehensive lighting with no dark areas", score: 0 }, { text: "Good coverage with minor dark spots", score: 3 }, { text: "Inadequate lighting in several areas", score: 6 }, { text: "Poor or no lighting", score: 9 }] },
+            { category: "Lighting & CPTED", weight: 4, question: "Are landscaping and layout designed to eliminate hiding spots (CPTED principles)?", options: [{ text: "Fully designed with CPTED principles", score: 0 }, { text: "Partially implemented", score: 3 }, { text: "Minimal consideration", score: 6 }, { text: "No CPTED considerations", score: 9 }] },
+            { category: "Lighting & CPTED", weight: 3, question: "Are signage, wayfinding, and restricted-area markings clear?", options: [{ text: "Clear signage throughout facility", score: 0 }, { text: "Adequate signage in key areas", score: 3 }, { text: "Limited or confusing signage", score: 6 }, { text: "No signage or markings", score: 9 }] },
+            { category: "Lighting & CPTED", weight: 3, question: "Are natural surveillance opportunities maximized (visibility from public areas)?", options: [{ text: "Excellent natural surveillance", score: 0 }, { text: "Good visibility in most areas", score: 3 }, { text: "Limited natural surveillance", score: 6 }, { text: "Poor visibility and isolation", score: 9 }] },
+
+            // Domain 5: Emergency Preparedness & Response (4 questions)
+            { category: "Emergency Preparedness", weight: 5, question: "Are emergency evacuation plans posted and regularly drilled?", options: [{ text: "Posted with quarterly drills", score: 0 }, { text: "Posted with annual drills", score: 3 }, { text: "Plans exist but rarely drilled", score: 6 }, { text: "No evacuation plans", score: 9 }] },
+            { category: "Emergency Preparedness", weight: 5, question: "Is there a crisis management / incident response plan?", options: [{ text: "Comprehensive plan with assigned roles", score: 0 }, { text: "Basic plan with key contacts", score: 3 }, { text: "Informal or unwritten plan", score: 6 }, { text: "No crisis management plan", score: 9 }] },
+            { category: "Emergency Preparedness", weight: 4, question: "Are first-aid kits, AEDs, and fire extinguishers accessible and inspected?", options: [{ text: "Fully equipped with monthly inspections", score: 0 }, { text: "Equipped with quarterly inspections", score: 3 }, { text: "Partially equipped or irregular inspections", score: 6 }, { text: "Inadequate or uninspected equipment", score: 9 }] },
+            { category: "Emergency Preparedness", weight: 4, question: "Are emergency contacts (police, fire, medical) posted at guard posts?", options: [{ text: "Posted and tested regularly", score: 0 }, { text: "Posted but not regularly tested", score: 3 }, { text: "Available but not posted", score: 6 }, { text: "No emergency contacts available", score: 9 }] },
+
+            // Domain 6: Asset & Information Protection (4 questions)
+            { category: "Asset Protection", weight: 4, question: "Are high-value assets (servers, cash, sensitive files) in secured areas?", options: [{ text: "Dedicated secured areas with access control", score: 0 }, { text: "Locked rooms with limited access", score: 3 }, { text: "Basic locks but inadequate protection", score: 6 }, { text: "No special protection for assets", score: 9 }] },
+            { category: "Asset Protection", weight: 4, question: "Is there a clean-desk and data-handling policy?", options: [{ text: "Fully implemented and enforced", score: 0 }, { text: "Policy exists with partial enforcement", score: 3 }, { text: "Informal policy with inconsistent compliance", score: 6 }, { text: "No data handling policy", score: 9 }] },
+            { category: "Asset Protection", weight: 4, question: "Are keys, access cards, and credentials tracked and audited?", options: [{ text: "Digital tracking with regular audits", score: 0 }, { text: "Manual tracking with periodic audits", score: 3 }, { text: "Basic tracking without audits", score: 6 }, { text: "No tracking or auditing", score: 9 }] },
+            { category: "Asset Protection", weight: 3, question: "Is there inventory control for sensitive materials and equipment?", options: [{ text: "Comprehensive inventory system", score: 0 }, { text: "Basic inventory with regular checks", score: 3 }, { text: "Limited inventory tracking", score: 6 }, { text: "No inventory control", score: 9 }] },
+
+            // Domain 7: Threat Landscape & Local Context (4 questions)
+            { category: "Threat Landscape", weight: 4, question: "What is the local crime rate and threat profile (theft, civil unrest, terrorism)?", options: [{ text: "Very low crime, minimal threats", score: 0 }, { text: "Low to moderate crime", score: 3 }, { text: "High crime or periodic unrest", score: 6 }, { text: "Very high crime or active threats", score: 9 }] },
+            { category: "Threat Landscape", weight: 4, question: "Has the facility experienced any security incidents in the past 12 months?", options: [{ text: "No incidents", score: 0 }, { text: "1-2 minor incidents", score: 3 }, { text: "3-5 incidents or 1 major incident", score: 6 }, { text: "6+ incidents or recurring major incidents", score: 9 }] },
+            { category: "Threat Landscape", weight: 3, question: "Are there upcoming events, construction, or changes that alter the risk profile?", options: [{ text: "No changes or well-managed transitions", score: 0 }, { text: "Minor changes with mitigation plans", score: 3 }, { text: "Significant changes without full mitigation", score: 6 }, { text: "Major changes with no security planning", score: 9 }] },
+            { category: "Threat Landscape", weight: 3, question: "Is there coordination with local law enforcement and neighboring facilities?", options: [{ text: "Active coordination and information sharing", score: 0 }, { text: "Basic contact with local authorities", score: 3 }, { text: "Limited or no coordination", score: 6 }, { text: "No external coordination", score: 9 }] }
+        ];
+
+        // ==========================================
+        // UI FUNCTIONS
+        // ==========================================
+        function startAssessment() {
+            document.getElementById('introSection').classList.add('hidden');
+            document.getElementById('assessmentSection').classList.remove('hidden');
+            document.getElementById('totalQuestions').textContent = questions.length;
+            renderQuestion();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function updateDeckUI() {
-            // Hide all slides
-            for (let i = 1; i <= totalSlides; i++) {
-                const slide = document.getElementById(`slide-${i}`);
-                if (slide) {
-                    if (i === currentSlide) {
-                        slide.classList.remove('slide-hidden');
-                    } else {
-                        slide.classList.add('slide-hidden');
-                    }
-                }
+        function renderQuestion() {
+            const q = questions[currentQuestion];
+            const area = document.getElementById('questionArea');
+            
+            let optionsHTML = q.options.map((opt, idx) => `
+                <div class="option-card p-4 rounded-xl flex items-center gap-4 ${answers[currentQuestion] === idx ? 'selected' : ''}" onclick="selectOption(${idx})">
+                    <div class="option-radio"></div>
+                    <span class="text-white font-medium">${opt.text}</span>
+                </div>
+            `).join('');
 
-                // Update indicators
-                const indicator = document.getElementById(`indicator-${i}`);
-                if (indicator) {
-                    if (i === currentSlide) {
-                        indicator.className = 'w-2.5 h-2.5 rounded-full transition-all duration-300 bg-gold w-6';
-                    } else {
-                        indicator.className = 'w-2.5 h-2.5 rounded-full transition-all duration-300 bg-slate-600 hover:bg-slate-400';
-                    }
-                }
-            }
+            area.innerHTML = `
+                <div class="mb-6">
+                    <span class="inline-block glass px-3 py-1 rounded-full text-xs font-bold text-brand-blue uppercase tracking-wider mb-3">${q.category}</span>
+                    <h3 class="text-xl md:text-2xl font-bold font-montserrat text-white leading-relaxed">${q.question}</h3>
+                </div>
+                <div class="space-y-3">
+                    ${optionsHTML}
+                </div>
+            `;
 
-            // Update counter text
-            slideCounter.innerText = `Slide ${currentSlide.toString().padStart(2, '0')}/${totalSlides}`;
+            // Update Progress
+            const progress = ((currentQuestion + 1) / questions.length) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+            document.getElementById('progressPercent').textContent = Math.round(progress) + '%';
+            document.getElementById('currentQuestion').textContent = currentQuestion + 1;
+
+            // Update Buttons
+            document.getElementById('prevBtn').classList.toggle('hidden', currentQuestion === 0);
+            document.getElementById('nextBtn').innerHTML = currentQuestion === questions.length - 1 
+                ? 'Finish <i class="fas fa-check ml-2"></i>' 
+                : 'Next <i class="fas fa-arrow-right ml-2"></i>';
         }
 
-        function nextSlide() {
-            currentSlide = currentSlide < totalSlides ? currentSlide + 1 : 1;
-            updateDeckUI();
-        }
-
-        function prevSlide() {
-            currentSlide = currentSlide > 1 ? currentSlide - 1 : totalSlides;
-            updateDeckUI();
-        }
-
-        function goToSlide(slideNum) {
-            currentSlide = slideNum;
-            updateDeckUI();
-        }
-
-        // Column Trace Highlight mechanics for Interactive RACI
-        function highlightRaciCol(colNum) {
-            // Reset existing highlights
-            const allCells = document.querySelectorAll('.slide-content td, .slide-content th');
-            allCells.forEach(cell => {
-                cell.classList.remove('highlight-col');
+        function selectOption(index) {
+            answers[currentQuestion] = index;
+            document.querySelectorAll('.option-card').forEach((el, i) => {
+                el.classList.toggle('selected', i === index);
             });
-
-            // If selected, highlight cells in the matching column
-            const targets = document.querySelectorAll(`.col-${colNum}`);
-            targets.forEach(target => {
-                target.classList.add('highlight-col');
-            });
         }
 
-        // Event listeners for Controls
-        document.getElementById('btn-next').addEventListener('click', () => {
-            nextSlide();
-            stopAutoplay();
-        });
-        document.getElementById('btn-prev').addEventListener('click', () => {
-            prevSlide();
-            stopAutoplay();
-        });
-
-        // Keybindings for remote controls and presentations
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight' || e.key === ' ') {
-                nextSlide();
-                stopAutoplay();
-            } else if (e.key === 'ArrowLeft') {
-                prevSlide();
-                stopAutoplay();
+        function nextQuestion() {
+            if (answers[currentQuestion] === undefined) {
+                alert('Please select an answer to continue.');
+                return;
             }
-        });
-
-        // Swipe gestures for touch screens and tablets
-        let touchStartX = 0;
-        let touchEndX = 0;
-        
-        document.querySelector('.presentation-canvas').addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-        }, { passive: true });
-
-        document.querySelector('.presentation-canvas').addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-        }, { passive: true });
-
-        function handleSwipe() {
-            const threshold = 50;
-            if (touchStartX - touchEndX > threshold) {
-                nextSlide(); // Swiped left
-                stopAutoplay();
-            } else if (touchEndX - touchStartX > threshold) {
-                prevSlide(); // Swiped right
-                stopAutoplay();
-            }
-        }
-
-        // Autoplay controller
-        const btnPlay = document.getElementById('btn-play');
-        btnPlay.addEventListener('click', () => {
-            if (isAutoplayActive) {
-                stopAutoplay();
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                renderQuestion();
             } else {
-                startAutoplay();
-            }
-        });
-
-        function startAutoplay() {
-            isAutoplayActive = true;
-            btnPlay.innerHTML = '<i class="fa-solid fa-pause text-gold"></i>';
-            autoplayInterval = setInterval(nextSlide, 7000); // 7 seconds per slide
-        }
-
-        function stopAutoplay() {
-            isAutoplayActive = false;
-            btnPlay.innerHTML = '<i class="fa-solid fa-play"></i>';
-            if (autoplayInterval) {
-                clearInterval(autoplayInterval);
+                document.getElementById('assessmentSection').classList.add('hidden');
+                document.getElementById('leadCaptureSection').classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
         }
 
-        // Lite mode high-contrast toggle for presentations under bad screen glare
-        const btnLite = document.getElementById('btn-lite');
-        btnLite.addEventListener('click', () => {
-            document.body.classList.toggle('lite-mode');
-            btnLite.classList.toggle('bg-gold/20');
-            btnLite.classList.toggle('text-gold');
-        });
+        function previousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                renderQuestion();
+            }
+        }
 
-        // Initialize presentation view state
-        updateDeckUI();
+        // ==========================================
+        // 2. UPDATED LEAD SUBMISSION (ROUTED TO SUPABASE)
+        // ==========================================
+        async function submitLead(event) {
+            event.preventDefault();
+            
+            // 1. Gather Data
+            leadData = {
+                fullName: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                company: document.getElementById('company').value,
+                facilityType: document.getElementById('facilityType').value,
+                timestamp: new Date().toLocaleDateString('en-PH', { year: 'numeric', month: 'long', day: 'numeric' })
+            };
+
+            // 2. Calculate Results (Updates the UI with OSRI Score)
+            calculateResults(); 
+            
+            // 3. Show Results UI immediately for good UX
+            document.getElementById('leadCaptureSection').classList.add('hidden');
+            document.getElementById('resultsSection').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // 4. 🚀 ROUTE LEAD TO STRONGHOLD A3 SUPABASE DATABASE
+            setTimeout(async () => {
+                const osriScore = parseInt(document.getElementById('overallScore').textContent) || 0;
+                const riskLevel = document.getElementById('riskLevel').textContent || 'Unknown';
+
+                const { data, error } = await sb
+                    .from('security_assessment_leads')
+                    .insert([{
+                        full_name: leadData.fullName,
+                        email: leadData.email,
+                        company: leadData.company,
+                        facility_type: leadData.facilityType,
+                        osri_score: osriScore,
+                        risk_level: riskLevel,
+                        status: 'New'
+                    }]);
+
+                if (error) {
+                    console.error('⚠️ Lead routing failed:', error);
+                } else {
+                    console.log('✅ LEAD SUCCESSFULLY ROUTED TO STRONGHOLD A3 OPS DASHBOARD!', data);
+                }
+            }, 500); 
+        }
+
+        // ==========================================
+        // CALCULATION ENGINE
+        // ==========================================
+        function calculateResults() {
+            Object.keys(categoryWeights).forEach(cat => { categoryScores[cat] = { totalScore: 0, maxScore: 0 }; });
+            
+            questions.forEach((q, idx) => {
+                const selectedOption = q.options[answers[idx]];
+                categoryScores[q.category].totalScore += q.weight * selectedOption.score;
+                categoryScores[q.category].maxScore += q.weight * 9;
+            });
+
+            const normalizedScores = {};
+            Object.keys(categoryScores).forEach(cat => {
+                normalizedScores[cat] = Math.round((categoryScores[cat].totalScore / categoryScores[cat].maxScore) * 100);
+            });
+
+            let osri = 0;
+            Object.keys(normalizedScores).forEach(cat => { osri += normalizedScores[cat] * categoryWeights[cat]; });
+            
+            displayResults(Math.round(osri), normalizedScores);
+        }
+
+        function displayResults(osri, scores) {
+            document.getElementById('overallScore').textContent = osri;
+            
+            let riskLevel, riskColor, summary;
+            if (osri <= 25) { riskLevel = 'LOW RISK'; riskColor = '#10B981'; summary = "Your facility demonstrates strong security fundamentals across all 7 domains. Maintain your current protocols and consider advanced tech integrations."; } 
+            else if (osri <= 50) { riskLevel = 'MODERATE RISK'; riskColor = '#F59E0B'; summary = "Your security posture is adequate but has gaps in critical areas. Address the recommended domains to prevent potential liabilities."; } 
+            else if (osri <= 75) { riskLevel = 'HIGH RISK'; riskColor = '#F97316'; summary = "Critical vulnerabilities detected across multiple domains. Immediate action is required to protect your assets and ensure regulatory compliance."; } 
+            else { riskLevel = 'CRITICAL RISK'; riskColor = '#EF4444'; summary = "Severe security and compliance failures detected. Your facility is highly exposed to legal, financial, and operational disasters."; }
+            
+            document.getElementById('riskLevel').textContent = riskLevel;
+            document.getElementById('riskLevel').style.color = riskColor;
+            document.getElementById('overallScore').style.color = riskColor;
+            document.getElementById('riskSummary').textContent = summary;
+
+            createRadarChart(scores);
+            generateRecommendations(scores);
+        }
+
+        function createRadarChart(scores) {
+            const ctx = document.getElementById('radarChart').getContext('2d');
+            radarChartInstance = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: Object.keys(scores),
+                    datasets: [{
+                        label: 'Risk Score',
+                        data: Object.values(scores),
+                        backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                        borderColor: '#3B82F6',
+                        borderWidth: 2,
+                        pointBackgroundColor: '#FFD700',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: '#3B82F6',
+                        pointRadius: 5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        r: {
+                            angleLines: { color: 'rgba(255,255,255,0.1)' },
+                            grid: { color: 'rgba(255,255,255,0.1)' },
+                            pointLabels: { font: { size: 10, weight: '600', family: 'Montserrat' }, color: '#FFD700' },
+                            ticks: { stepSize: 25, max: 100, color: '#fff', backdropColor: 'transparent', font: { size: 9 } }
+                        }
+                    },
+                    plugins: { legend: { display: false } }
+                }
+            });
+        }
+
+        function generateRecommendations(scores) {
+            const container = document.getElementById('recommendationsContainer');
+            const sortedCategories = Object.entries(scores).sort((a, b) => b[1] - a[1]).slice(0, 3);
+            
+            const recs = {
+                "Perimeter & Access": { icon: 'fa-door-closed', title: "Perimeter & Access Control Enhancement", solution: "Integrated Access Management System", features: ["Automated entry/exit control with biometric verification", "Digital visitor management with photo ID and escort protocol", "Dedicated loading dock security with separate access control"] },
+                "Surveillance & Monitoring": { icon: 'fa-video', title: "Surveillance & Monitoring Upgrade", solution: "Comprehensive CCTV & Command Center", features: ["HD CCTV coverage with 30+ day retention", "24/7 manned monitoring station with real-time alerts", "Integrated alarm systems with monthly testing protocols"] },
+                "Personnel Security": { icon: 'fa-user-shield', title: "Personnel Security Excellence", solution: "Professional Guard Force Development", features: ["100% PNP-SOSIA licensed personnel", "Continuous MIST training program (40+ hours annually)", "Comprehensive background checks for all staff"] },
+                "Lighting & CPTED": { icon: 'fa-lightbulb', title: "Environmental Design & Lighting", solution: "CPTED-Compliant Facility Design", features: ["Comprehensive lighting elimination of dark areas", "Landscaping designed to eliminate hiding spots", "Clear signage and restricted-area markings throughout"] },
+                "Emergency Preparedness": { icon: 'fa-kit-medical', title: "Emergency Preparedness & Response", solution: "DRRM-Integrated Emergency Protocol", features: ["Quarterly evacuation drills with documented procedures", "Comprehensive crisis management plan with assigned roles", "Fully equipped first-aid stations with monthly inspections"] },
+                "Asset Protection": { icon: 'fa-vault', title: "Asset & Information Protection", solution: "Multi-Layer Asset Security System", features: ["Dedicated secured areas for high-value assets", "Digital credential tracking with regular audits", "Clean-desk policy with comprehensive data handling protocols"] },
+                "Threat Landscape": { icon: 'fa-map-location-dot', title: "Threat Intelligence & Coordination", solution: "Proactive Threat Management Program", features: ["Regular threat assessment and risk profiling", "Active coordination with local law enforcement", "Security information sharing with neighboring facilities"] }
+            };
+
+            container.innerHTML = sortedCategories.map(([cat, score], i) => {
+                const rec = recs[cat];
+                const priority = score >= 75 ? 'URGENT' : score >= 50 ? 'HIGH' : 'MEDIUM';
+                const pColor = score >= 75 ? 'bg-red-500/20 text-red-400 border-red-500/50' : score >= 50 ? 'bg-yellow-500/20 text-yellow-400 border-yellow-500/50' : 'bg-blue-500/20 text-blue-400 border-blue-500/50';
+                
+                return `
+                    <div class="glass p-6 rounded-xl border-l-4 ${score >= 75 ? 'border-red-500' : score >= 50 ? 'border-yellow-500' : 'border-brand-blue'}">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-lg bg-brand-blue/20 flex items-center justify-center text-brand-blue">
+                                    <i class="fas ${rec.icon}"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold font-montserrat text-white text-lg">${rec.title}</h4>
+                                    <p class="text-sm text-gray-400">${rec.solution}</p>
+                                </div>
+                            </div>
+                            <span class="px-3 py-1 rounded-full text-xs font-bold border ${pColor}">${priority} (${score}/100)</span>
+                        </div>
+                        <ul class="space-y-2 text-sm text-gray-300">
+                            ${rec.features.map(f => `<li><i class="fas fa-check-circle text-brand-blue mr-2"></i>${f}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // ==========================================
+        // PDF GENERATION (BRANDED)
+        // ==========================================
+        function downloadPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            // Brand Colors
+            const navy = [10, 22, 40];
+            const blue = [59, 130, 246];
+            const gold = [255, 215, 0];
+            const textDark = [31, 41, 55];
+            const textGray = [107, 114, 128];
+
+            // --- PAGE 1: COVER & OVERVIEW ---
+            // Header
+            doc.setFillColor(...navy);
+            doc.rect(0, 0, 210, 40, 'F');
+            
+            doc.setTextColor(...gold);
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(24);
+            doc.text("STRONGHOLD A3", 14, 20);
+            
+            doc.setTextColor(255, 255, 255);
+            doc.setFontSize(10);
+            doc.setFont("helvetica", "normal");
+            doc.text("Eastern Visayas' Premier Zero-Liability Security Partner", 14, 28);
+            doc.text("DOLE DO-174 COMPLIANT", 14, 34);
+
+            // Client Info
+            doc.setTextColor(...textDark);
+            doc.setFontSize(11);
+            doc.setFont("helvetica", "bold");
+            doc.text("7-DOMAIN SECURITY RISK ASSESSMENT REPORT", 14, 55);
+            
+            doc.setFont("helvetica", "normal");
+            doc.setFontSize(10);
+            doc.text(`Prepared For: ${leadData.fullName} (${leadData.company})`, 14, 65);
+            doc.text(`Facility Type: ${leadData.facilityType}`, 14, 72);
+            doc.text(`Date: ${leadData.timestamp}`, 14, 79);
+
+            // OSRI Score
+            const osriScore = document.getElementById('overallScore').textContent;
+            const riskLevel = document.getElementById('riskLevel').textContent;
+            
+            doc.setDrawColor(...blue);
+            doc.setLineWidth(0.5);
+            doc.line(14, 88, 196, 88);
+
+            doc.setFontSize(14);
+            doc.setTextColor(...blue);
+            doc.setFont("helvetica", "bold");
+            doc.text("Overall Security Risk Index (OSRI)", 14, 100);
+
+            doc.setFontSize(36);
+            doc.setTextColor(...navy);
+            doc.text(`${osriScore}/100`, 14, 118);
+            
+            doc.setFontSize(14);
+            doc.setTextColor(...gold);
+            doc.text(`Status: ${riskLevel}`, 75, 118);
+
+            // Radar Chart
+            if (radarChartInstance) {
+                const chartImg = radarChartInstance.toBase64Image();
+                doc.setFillColor(245, 247, 250);
+                doc.rect(14, 130, 182, 100, 'F');
+                doc.addImage(chartImg, 'PNG', 35, 135, 140, 90);
+            }
+
+            // --- PAGE 2: RECOMMENDATIONS ---
+            doc.addPage();
+            doc.setFillColor(...navy);
+            doc.rect(0, 0, 210, 20, 'F');
+            doc.setTextColor(255, 255, 255);
+            doc.setFontSize(12);
+            doc.setFont("helvetica", "bold");
+            doc.text("Priority Action Plan & Recommendations", 105, 13, { align: 'center' });
+
+            let yPos = 35;
+            const recCards = document.querySelectorAll('#recommendationsContainer > div');
+
+            recCards.forEach((card, index) => {
+                if (yPos > 240) { doc.addPage(); yPos = 20; }
+
+                const title = card.querySelector('h4').textContent;
+                const solution = card.querySelector('p').textContent;
+                const features = Array.from(card.querySelectorAll('ul li')).map(li => li.textContent.replace(/^[\s\u2713]+/, ''));
+                const scoreText = card.querySelector('span').textContent;
+
+                // Title
+                doc.setFontSize(12);
+                doc.setTextColor(...navy);
+                doc.setFont("helvetica", "bold");
+                doc.text(`${index + 1}. ${title}`, 14, yPos);
+                
+                doc.setFontSize(9);
+                doc.setTextColor(...textGray);
+                doc.setFont("helvetica", "normal");
+                doc.text(scoreText, 196, yPos, { align: 'right' });
+                yPos += 7;
+
+                // Solution
+                doc.setFontSize(10);
+                doc.setTextColor(...blue);
+                doc.text(`Recommended Solution: ${solution}`, 14, yPos);
+                yPos += 6;
+
+                // Features
+                doc.setTextColor(...textDark);
+                doc.setFont("helvetica", "bold");
+                doc.text("Key Features:", 14, yPos);
+                doc.setFont("helvetica", "normal");
+                yPos += 5;
+                
+                features.forEach(feature => {
+                    const splitFeature = doc.splitTextToSize(`• ${feature}`, 180);
+                    doc.text(splitFeature, 18, yPos);
+                    yPos += (splitFeature.length * 4) + 2;
+                });
+
+                yPos += 8;
+                if (index < recCards.length - 1) {
+                    doc.setDrawColor(229, 231, 235);
+                    doc.line(14, yPos - 4, 196, yPos - 4);
+                    yPos += 6;
+                }
+            });
+
+            // Footer CTA
+            yPos += 10;
+            if (yPos > 230) { doc.addPage(); yPos = 20; }
+
+            doc.setFillColor(...navy);
+            doc.rect(14, yPos, 182, 30, 'F');
+            doc.setTextColor(255, 255, 255);
+            doc.setFontSize(12);
+            doc.setFont("helvetica", "bold");
+            doc.text("Ready to Eliminate Your Risk?", 105, yPos + 12, { align: 'center' });
+            doc.setFontSize(10);
+            doc.setFont("helvetica", "normal");
+            doc.text("Schedule a free consultation: Call 0997-574-4047 | Email info@strongholda3.com", 105, yPos + 20, { align: 'center' });
+
+            doc.save(`StrongholdA3_7Domain_Risk_Assessment_${leadData.company.replace(/\s+/g, '_')}.pdf`);
+        }
     </script>
 </body>
 </html>
