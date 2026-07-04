@@ -1,0 +1,528 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Tech Shield | Stronghold A3 - Non-Linear Digital Defense</title>
+    <meta name="description" content="Stronghold A3's Tech Shield ensures zero downtime security via 3-Bridge Architecture (Offline SMS, Gateway, Radio). Protects against analog paralysis during typhoons.">
+    <meta name="keywords" content="tech shield security, offline first cloud sms, 3-bridge architecture, digital security resilience, Eastern Visayas disaster response, cyber secure security agency">
+    <meta name="author" content="Antonie M. Silva, CEO Stronghold A3 Security Agency">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Tech Shield | Stronghold A3 - Redundant Digital Defense">
+    <meta property="og:description" content="Our Tech Shield replaces fragile infrastructure with non-linear redundancy. Operational continuity guaranteed even during blackouts.">
+    <meta property="og:image" content="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png">
+    <meta property="og:url" content="https://strongholda3.com/tech-shield.html">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Tech Shield Protection",
+        "provider": {
+            "@type": "Organization",
+            "name": "Stronghold A3 Security Agency"
+        },
+        "areaServed": "Eastern Visayas",
+        "serviceType": "Resilient Digital Security Architecture",
+        "offers": {
+            "@type": "Offer",
+            "price": "Custom",
+            "priceCurrency": "PHP"
+        }
+    }
+    </script>
+    
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        montserrat: ['Montserrat', 'sans-serif'],
+                        poppins: ['Poppins', sans-serif],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                },
+            },
+        }
+    </script>
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Custom Styles -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+        
+        :root {
+            --gold: #FFD700;
+            --navy: #0A1628;
+            --blue: #3B82F6;
+            --red: #DC2626;
+            --green: #22C55E;
+            --cyan: #06b6d4; /* Added cyan for tech feel */
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: radial-gradient(circle at 20% 0%, #002b5c 0%, #001b3d 45%, #000c1f 100%);
+            min-height: 100vh;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        /* Watermark */
+        body::before {
+            content: '';
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: min(80vw, 80vh); height: min(80vw, 80vh);
+            background-image: url('https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png');
+            background-size: contain; opacity: 0.03; pointer-events: none; z-index: 0;
+        }
+        main { position: relative; z-index: 1; }
+        
+        /* Glass Effects */
+        .glass {
+            background: linear-gradient(135deg, rgba(255,255,255,0.10), rgba(255,255,255,0.03));
+            backdrop-filter: blur(20px) saturate(160%); border: 1px solid rgba(255,255,255,0.12);
+        }
+        .glass-strong {
+            background: linear-gradient(135deg, rgba(0,43,92,0.55), rgba(0,12,31,0.65));
+            backdrop-filter: blur(28px) saturate(180%); border: 1px solid rgba(255,215,0,0.18); box-shadow: 0 8px 32px rgba(0,0,0,0.45);
+        }
+        .glass-tech { 
+            background: linear-gradient(135deg, rgba(6,182,212,0.15), rgba(6,182,212,0.02)); 
+            border: 1px solid rgba(6,182,212,0.4); 
+            box-shadow: 0 0 20px rgba(6,182,212,0.1);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+        .animate-fade-in-up { animation: fadeInUp 0.6s ease; }
+        @keyframes pulseGlow { 0%,100%{box-shadow:0 0 20px rgba(255,215,0,0.4)} 50%{box-shadow:0 0 40px rgba(255,215,0,0.8)} }
+        .btn-pulse { animation: pulseGlow 2s infinite; }
+        @keyframes scanline { 0% { transform: translateY(-100%); } 100% { transform: translateY(100%); } }
+        .scan-line { 
+            position: absolute; left: 0; right: 0; height: 2px; 
+            background: var(--cyan); opacity: 0.5; pointer-events: none; 
+            animation: scanline 3s linear infinite;
+        }
+        
+        /* Navigation Tabs */
+        .tab-btn { transition: all 0.3s ease; padding: 0.75rem 1.5rem; border-radius: 0.5rem; cursor: pointer; font-weight: 600; background: rgba(6,182,212,0.2); color: #fff; border: 1px solid rgba(6,182,212,0.3); }
+        .tab-btn:hover { background: rgba(6,182,212,0.4); }
+        .tab-btn.active { background: linear-gradient(135deg, #06b6d4 0%, #2563EB 100%); border-color: #06b6d4; box-shadow: 0 4px 12px rgba(6,182,212,0.4); }
+        .tab-content { display: none; } .tab-content.active { display: block; animation: fadeInUp 0.5s ease; }
+        
+        /* Roadmap Steps */
+        .roadmap-step {
+            position: relative;
+            padding-left: 60px;
+            margin-bottom: 2rem;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+        .roadmap-step:hover { opacity: 1; transform: translateX(5px); }
+        .roadmap-marker {
+            position: absolute;
+            left: 0; top: 0;
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: bold; font-size: 0.9rem;
+            box-shadow: 0 0 16px rgba(6,182,212,0.4);
+        }
+        .step-1 .roadmap-marker { background: var(--cyan); color: white; }
+        .step-2 .roadmap-marker { background: var(--blue); color: white; }
+        .step-3 .roadmap-marker { background: var(--red); color: white; }
+        .step-4 .roadmap-marker { background: var(--gold); color: black; }
+        .roadmap-line {
+            position: absolute;
+            left: 20px; top: 40px;
+            width: 2px; height: calc(100% + 2rem);
+            background: rgba(6,182,212,0.2);
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu { position: fixed; top: 0; right: -100%; width: 80%; max-width: 350px; height: 100vh; background: #0A1628; z-index: 9999; transition: right 0.3s ease; padding: 20px; }
+        .mobile-menu.open { right: 0; }
+        .overlay { position: fixed; inset: 0; background: rgba(0,0,0,.7); z-index: 9998; display: none; }
+        .overlay.show { display: block; }
+        
+        /* Floating CTA */
+        .floating-cta { position: fixed; bottom: 20px; right: 20px; z-index: 9999; }
+        
+        /* Badge */
+        .badge { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.3rem 0.8rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 700; font-family: 'Montserrat', sans-serif; }
+        .badge-compliant { background: rgba(34,197,94,0.2); color: #34D399; border: 1px solid rgba(34,197,94,0.4); }
+        .badge-tech { background: rgba(6,182,212,0.2); color: #67e8f9; border: 1px solid rgba(6,182,212,0.4); }
+        .badge-critical { background: rgba(220,38,38,0.2); color: #FCA5A5; border: 1px solid rgba(220,38,38,0.4); }
+        
+        /* Stats */
+        .stat-counter { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 2rem; line-height: 1.2; }
+        .stat-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.7); }
+        
+        /* Feature Card Hover */
+        .feature-card { transition: all 0.3s ease; border: 1px solid rgba(6,182,212,0.2); }
+        .feature-card:hover { transform: translateY(-5px); border-color: var(--cyan); box-shadow: 0 10px 30px rgba(6,182,212,0.2); }
+    </style>
+</head>
+<body class="antialiased min-h-screen relative">
+
+<!-- Overlay -->
+<div class="overlay" id="overlay"></div>
+
+<!-- Mobile Menu -->
+<nav class="mobile-menu glass-strong" id="mobileMenu">
+    <div class="flex justify-between items-center mb-6">
+        <img src="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png"
+             alt="Stronghold A3 Logo" class="h-16 w-16 rounded-full object-cover">
+        <button onclick="closeMobileMenu()" class="text-white hover:text-blue-400 transition">
+            <i class="fas fa-times text-2xl"></i>
+        </button>
+    </div>
+    <ul class="space-y-4">
+        <li><a href="#home" onclick="closeMobileMenu()" class="block text-white">Home</a></li>
+        <li><a href="#features" onclick="closeMobileMenu()" class="block text-white">Solutions</a></li>
+        <li><a href="#roadmap" onclick="closeMobileMenu()" class="block text-white">Implementation Roadmap</a></li>
+        <li><a href="#benefits" onclick="closeMobileMenu()" class="block text-white">Operational Benefits</a></li>
+        <li><a href="#contact" class="block text-yellow-400 font-bold"><i class="fas fa-phone mr-2"></i>Contact Us</a></li>
+    </ul>
+</nav>
+
+<!-- Header -->
+<header class="sticky top-0 z-50 shadow-lg bg-[#0A1628]/90 backdrop-blur-md border-b border-cyan-900/50">
+    <div class="container mx-auto px-4 py-4">
+        <div class="flex justify-between items-center">
+            <a href="#home" class="flex items-center space-x-3">
+                <img src="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png"
+                     alt="Stronghold A3 Logo" class="h-12 w-12 rounded-full object-cover border-2 border-cyan-500">
+                <div>
+                    <h1 class="text-xl font-montserrat font-bold tracking-wide text-white">STRONGHOLD A3</h1>
+                    <p class="text-sm text-cyan-400">Tech Shield Architecture</p>
+                </div>
+            </a>
+            
+            <nav class="hidden md:flex items-center space-x-2">
+                <button onclick="switchSection('home')" class="tab-btn active" id="tab-home">Architecture</button>
+                <button onclick="switchSection('features')" class="tab-btn" id="tab-features">Solutions</button>
+                <button onclick="switchSection('roadmap')" class="tab-btn" id="tab-roadmap">Roadmap</button>
+                <button onclick="switchSection('benefits')" class="tab-btn" id="tab-benefits">Benefits</button>
+            </nav>
+            
+            <button onclick="openMobileMenu()" class="md:hidden text-white">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main class="min-h-screen pb-20">
+    
+    <!-- HERO SECTION -->
+    <section id="home" class="py-16 container mx-auto px-4 animate-fade-in-up relative overflow-hidden">
+        <div class="scan-line absolute top-0 left-0"></div>
+        <div class="text-center mb-12">
+            <div class="inline-flex items-center gap-2 glass-gold px-6 py-3 rounded-full mb-6 border-cyan-500/30">
+                <i class="fas fa-network-wired text-[#0A1628]"></i>
+                <span class="text-[#0A1628] font-montserrat font-bold">Armored Domain • Redundant Systems</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold text-cyan-400 font-montserrat mb-4">
+                The Tech <span class="text-white">Shield</span>
+            </h1>
+            <p class="text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
+                We replace single-thread communication with a <strong class="text-cyan-400">Non-Linear Resilience Hub</strong>. 
+                Our redundant digital architecture ensures your site remains monitored—even during total network blackouts.
+            </p>
+        </div>
+        
+        <!-- KPI Dashboard -->
+        <div class="grid md:grid-cols-4 gap-4 mb-8">
+            <div class="glass p-4 rounded-xl text-center">
+                <div class="stat-counter text-cyan-400">100%</div>
+                <p class="stat-label mt-2">Failover Rate</p>
+            </div>
+            <div class="glass p-4 rounded-xl text-center">
+                <div class="stat-counter text-blue-400">∞</div>
+                <p class="stat-label mt-2">Uptime Guarantee</p>
+            </div>
+            <div class="glass p-4 rounded-xl text-center">
+                <div class="stat-counter text-green-400">&lt;1s</div>
+                <p class="stat-label mt-2">Auto-Sync Time</p>
+            </div>
+            <div class="glass p-4 rounded-xl text-center">
+                <div class="stat-counter text-white">RA 10121</div>
+                <p class="stat-label mt-2">Compliance Validated</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES SECTION -->
+    <section id="features" class="py-12 container mx-auto px-4 tab-content">
+        <h2 class="text-3xl md:text-4xl font-bold text-cyan-400 font-montserrat mb-8">Redundant Solutions Stack</h2>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- 3-Bridge -->
+            <div class="glass-tech feature-card p-6 rounded-xl">
+                <div class="w-14 h-14 rounded-lg bg-cyan-500 flex items-center justify-center mb-4">
+                    <i class="fas fa-layer-group text-2xl text-black"></i>
+                </div>
+                <h3 class="font-bold text-white text-xl mb-2">3-Bridge System</h3>
+                <p class="text-white/70 text-sm mb-3">Automatically changes lanes based on bandwidth. Bridge 1 (Cloud), Bridge 2 (SMS), Bridge 3 (Radio).</p>
+                <a href="./operational-continuity.html" class="text-cyan-400 hover:text-cyan-300 text-sm font-semibold"><i class="fas fa-arrow-right"></i> View Architecture</a>
+            </div>
+            
+            <!-- SOS Button -->
+            <div class="glass feature-card p-6 rounded-xl">
+                <div class="w-14 h-14 rounded-lg bg-red-500 flex items-center justify-center mb-4">
+                    <i class="fas fa-siren text-2xl text-white"></i>
+                </div>
+                <h3 class="font-bold text-white text-xl mb-2">SOS Lifeline</h3>
+                <p class="text-white/70 text-sm mb-3">One-tap GPS location routing to Command Center during breaches or medical emergencies.</p>
+                <a href="./guard-empowerment.html" class="text-red-400 hover:text-red-300 text-sm font-semibold"><i class="fas fa-arrow-right"></i> Guard Safety</a>
+            </div>
+            
+            <!-- Digital Bayanihan -->
+            <div class="glass feature-card p-6 rounded-xl">
+                <div class="w-14 h-14 rounded-lg bg-green-500 flex items-center justify-center mb-4">
+                    <i class="fas fa-users text-2xl text-white"></i>
+                </div>
+                <h3 class="font-bold text-white text-xl mb-2">Digital Bayanihan</h3>
+                <p class="text-white/70 text-sm mb-3">Zero-judgment peer mentorship ("App Buddies") and gamified vouchers for 100% adoption.</p>
+                <a href="./guard-empowerment.html" class="text-green-400 hover:text-green-300 text-sm font-semibold"><i class="fas fa-arrow-right"></i> Talent Program</a>
+            </div>
+            
+            <!-- Hybrid Leapfrog -->
+            <div class="glass feature-card p-6 rounded-xl">
+                <div class="w-14 h-14 rounded-lg bg-yellow-500 flex items-center justify-center mb-4">
+                    <i class="fas fa-video text-2xl text-black"></i>
+                </div>
+                <h3 class="font-bold text-white text-xl mb-2">Hybrid Leapfrog</h3>
+                <p class="text-white/70 text-sm mb-3">Guards + Remote Monitoring bundles via exclusive local IT/CCTV alliances.</p>
+                <a href="./capability.html" class="text-yellow-400 hover:text-yellow-300 text-sm font-semibold"><i class="fas fa-arrow-right"></i> View Capabilities</a>
+            </div>
+            
+            <!-- Emergency Load -->
+            <div class="glass feature-card p-6 rounded-xl">
+                <div class="w-14 h-14 rounded-lg bg-blue-500 flex items-center justify-center mb-4">
+                    <i class="fas fa-sim-card text-2xl text-white"></i>
+                </div>
+                <h3 class="font-bold text-white text-xl mb-2">Emergency Load Rule</h3>
+                <p class="text-white/70 text-sm mb-3">Mandatory pre-loaded backup SIMs for crisis communication when personal credit fails.</p>
+                <a href="./bcp.html" class="text-blue-400 hover:text-blue-300 text-sm font-semibold"><i class="fas fa-arrow-right"></i> Crisis Protocols</a>
+            </div>
+            
+            <!-- Cloud Vault -->
+            <div class="glass feature-card p-6 rounded-xl">
+                <div class="w-14 h-14 rounded-lg bg-purple-500 flex items-center justify-center mb-4">
+                    <i class="fas fa-database text-2xl text-white"></i>
+                </div>
+                <h3 class="font-bold text-white text-xl mb-2">Document Vault</h3>
+                <p class="text-white/70 text-sm mb-3">Encrypted cloud repository ensuring 15-min document retrieval during audits.</p>
+                <a href="./audit-readiness.html" class="text-purple-400 hover:text-purple-300 text-sm font-semibold"><i class="fas fa-arrow-right"></i> Audit Readiness</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROADMAP SECTION -->
+    <section id="roadmap" class="py-12 container mx-auto px-4 tab-content hidden">
+        <h2 class="text-3xl md:text-4xl font-bold text-cyan-400 font-montserrat mb-8">Strategic Implementation Roadmap</h2>
+        
+        <div class="glass-strong p-8 rounded-xl">
+            <p class="text-white/80 mb-8">A strictly sequenced 12-month path from survival mode to offensive growth tool.</p>
+            
+            <div class="relative pl-4">
+                <!-- Phase 1 -->
+                <div class="roadmap-step step-1">
+                    <div class="roadmap-marker">01</div>
+                    <div class="roadmap-line"></div>
+                    <div class="bg-cyan-900/20 p-6 rounded-lg border-l-4 border-cyan-500">
+                        <h3 class="text-xl font-bold text-white mb-2">Phase 1: Immediate Actions (Days 1–30)</h3>
+                        <p class="text-white/70 mb-4 font-mono text-xs">Goal: Survival & Validation</p>
+                        <ul class="list-disc list-inside text-sm text-white/80 space-y-1">
+                            <li>Finalize Cloud Document Vault (Week 1)</li>
+                            <li>Issue "Emergency Load" Backup SIMs (Week 2)</li>
+                            <li>Draft Scenario-Based BCP Activation Protocols (Week 2)</li>
+                            <li>Execute 3-Day Pilot Test (Airplane Mode & SMS Fallback) (Week 4)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Phase 2 & 3 -->
+                <div class="roadmap-step step-2">
+                    <div class="roadmap-marker">02</div>
+                    <div class="roadmap-line"></div>
+                    <div class="bg-blue-900/20 p-6 rounded-lg border-l-4 border-blue-500">
+                        <h3 class="text-xl font-bold text-white mb-2">Phase 2–3: Short-to-Mid-Term Integration (Months 2–7)</h3>
+                        <p class="text-white/70 mb-4 font-mono text-xs">Goal: Fix the Engine & Protect Talent</p>
+                        <ul class="list-disc list-inside text-sm text-white/80 space-y-1">
+                            <li>Deploy Full 3-Bridge Architecture (Months 2–4)</li>
+                            <li>Activate "Digital Bayanihan" Playbook (Month 2)</li>
+                            <li>Automate HR & Payroll Software (Month 2)</li>
+                            <li>Pre-Position Emergency Kits & Relief Packs (Months 5–7)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Phase 4 -->
+                <div class="roadmap-step step-4">
+                    <div class="roadmap-marker">04</div>
+                    <div class="bg-yellow-500/10 p-6 rounded-lg border-l-4 border-yellow-500">
+                        <h3 class="text-xl font-bold text-yellow-400 mb-2">Phase 4: Strategic Scaling (Months 8–12)</h3>
+                        <p class="text-white/70 mb-4 font-mono text-xs">Goal: Market Capture</p>
+                        <ul class="list-disc list-inside text-sm text-white/80 space-y-1">
+                            <li>Launch Hybrid Security Leapfrog Services (CCTV Bundles)</li>
+                            <li>B2B Capability Marketing ("Liability Shield" Pitch)</li>
+                            <li><span class="text-red-400 font-bold">⚠️ Note:</span> No aggressive scaling until Phase 2 is ≥50% complete.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFITS SECTION -->
+    <section id="benefits" class="py-12 container mx-auto px-4 tab-content hidden">
+        <h2 class="text-3xl md:text-4xl font-bold text-cyan-400 font-montserrat mb-8">Operational Benefits</h2>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="glass p-6 rounded-xl">
+                <div class="flex items-start gap-4 mb-4">
+                    <div class="w-12 h-12 rounded-lg bg-cyan-500 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-link text-xl text-black"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white">Eliminates Single Points of Failure</h3>
+                        <p class="text-white/70 text-sm">Non-linear Resilience Hub prevents any blackout from severing the connection.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="glass p-6 rounded-xl">
+                <div class="flex items-start gap-4 mb-4">
+                    <div class="w-12 h-12 rounded-lg bg-green-500 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-cloud-rain text-xl text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white">Neutralizes Climate Risks</h3>
+                        <p class="text-white/70 text-sm">Prevents contract terminations by maintaining documented security logs during typhoon outages.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="glass p-6 rounded-xl">
+                <div class="flex items-start gap-4 mb-4">
+                    <div class="w-12 h-12 rounded-lg bg-blue-500 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-file-contract text-xl text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white">Validates RA 10121 Compliance</h3>
+                        <p class="text-white/70 text-sm">Digital proof of business continuity and emergency response readiness for institutional clients.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="glass p-6 rounded-xl">
+                <div class="flex items-start gap-4 mb-4">
+                    <div class="w-12 h-12 rounded-lg bg-red-500 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-shield-virus text-xl text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white">Validates "Zero-Liability"</h3>
+                        <p class="text-white/70 text-sm">Verified through Quarterly "Blackout & Breach" Drills proving functional reality over marketing claims.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="py-16 container mx-auto px-4">
+        <div class="glass-strong p-8 rounded-xl text-center relative overflow-hidden">
+            <div class="scan-line absolute top-0 left-0"></div>
+            <div class="inline-flex items-center gap-2 glass-gold px-6 py-3 rounded-full mb-6 border-cyan-500/30">
+                <i class="fas fa-shield-alt text-[#0A1628]"></i>
+                <span class="text-[#0A1628] font-montserrat font-bold">Zero-Liability Assurance</span>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-yellow-400 font-montserrat mb-4">Is Your Current Provider Analog?**</h2>
+            <p class="text-xl text-white/80 max-w-3xl mx-auto mb-8">
+                Don't rely on a single thread of communication. Get evaluated on our Tech Shield standards today.
+            </p>
+            
+            <div class="grid md:grid-cols-3 gap-4 max-w-4xl mx-auto">
+                <a href="./security-assessment.html" class="btn-pulse glass p-6 rounded-lg text-center border-2 border-cyan-500 hover:bg-cyan-900 transition relative z-10">
+                    <i class="fas fa-clipboard-check text-3xl text-cyan-400 mb-3"></i>
+                    <h4 class="font-bold text-white">Free Assessment</h4>
+                    <p class="text-sm text-white/70">Evaluate Resilience Gaps</p>
+                </a>
+                <a href="./sms-portal.html" class="glass p-6 rounded-lg text-center border-2 border-blue-500 hover:bg-blue-900 transition relative z-10">
+                    <i class="fas fa-mobile-alt text-3xl text-blue-400 mb-3"></i>
+                    <h4 class="font-bold text-white">Access Portal</h4>
+                    <p class="text-sm text-white/70">View Demo</p>
+                </a>
+                <a href="#" class="glass p-6 rounded-lg text-center border-2 border-yellow-500 hover:bg-yellow-900 transition relative z-10">
+                    <i class="fas fa-phone text-3xl text-yellow-400 mb-3"></i>
+                    <h4 class="font-bold text-white">Contact Support</h4>
+                    <p class="text-sm text-white/70">0917 137 0112</p>
+                </a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="bg-[#0A1628] border-t border-cyan-900/50 py-8">
+    <div class="container mx-auto px-4 text-center">
+        <p class="text-sm text-gray-500">© 2026 Stronghold A3 Security Agency. All Rights Reserved.</p>
+        <p class="text-xs text-gray-600 mt-1">DOLE DO-174 Compliant | Licensed Private Security Agency</p>
+    </div>
+</footer>
+
+<!-- Floating CTA -->
+<div class="floating-cta">
+    <a href="#contact" class="btn-pulse bg-cyan-500 text-white rounded-full w-16 h-16 flex items-center justify-center shadow-lg">
+        <i class="fas fa-phone text-2xl"></i>
+    </a>
+</div>
+
+<script>
+    // ===== NAVIGATION =====
+    function openMobileMenu() { document.getElementById('mobileMenu').classList.add('open'); document.getElementById('overlay').classList.add('show'); }
+    function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); document.getElementById('overlay').classList.remove('show'); }
+    document.getElementById('overlay').addEventListener('click', closeMobileMenu);
+    
+    // ===== TAB SWITCHING =====
+    function switchSection(id) {
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        
+        const target = document.getElementById(id);
+        if(target) target.classList.remove('hidden');
+        
+        const btn = document.getElementById(`tab-${id}`);
+        if(btn) btn.classList.add('active');
+        
+        window.location.hash = id;
+        closeMobileMenu();
+    }
+    
+    // ===== URL HASH HANDLING =====
+    window.addEventListener('hashchange', () => {
+        const hash = window.location.hash.substring(1);
+        if(hash) switchSection(hash);
+    });
+
+    console.log('%cTech Shield v1.0 — Loaded', 'color:#06b6d4;font-size:16px;font-weight:bold;');
+</script>
+</body>
+</html>
+```
