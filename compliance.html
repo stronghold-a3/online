@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Compliance Hub | Stronghold A3 Security Agency - Zero-Liability Partner</title>
+    <meta name="description" content="Stronghold A3 compliance resources hub. DOLE DO-174, PNP-SOSIA, DRRM, and Data Privacy Act compliant security services in Eastern Visayas.">
+    
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        montserrat: ['Montserrat', 'sans-serif'],
+                        poppins: ['Poppins', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Custom Styles -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --gold: #FFD700;
+            --navy: #0A1628;
+            --blue: #3B82F6;
+            --green: #22C55E;
+            --red: #DC2626;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: radial-gradient(circle at 20% 0%, #002b5c 0%, #001b3d 45%, #000c1f 100%);
+            min-height: 100vh;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        /* Watermark */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: min(80vw, 80vh);
+            height: min(80vw, 80vh);
+            background-image: url('https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png');
+            background-size: contain;
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        main { position: relative; z-index: 1; }
+        
+        /* Glass Effects */
+        .glass {
+            background: linear-gradient(135deg, rgba(255,255,255,0.10), rgba(255,255,255,0.03));
+            backdrop-filter: blur(20px) saturate(160%);
+            border: 1px solid rgba(255,255,255,0.12);
+        }
+        .glass-strong {
+            background: linear-gradient(135deg, rgba(0,43,92,0.55), rgba(0,12,31,0.65));
+            backdrop-filter: blur(28px) saturate(180%);
+            border: 1px solid rgba(255,215,0,0.18);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.45);
+        }
+        .glass-gold {
+            background: linear-gradient(135deg, rgba(255,215,0,0.16), rgba(255,215,0,0.04));
+            border: 1px solid rgba(255,215,0,0.35);
+        }
+        .glass-blue {
+            background: linear-gradient(135deg, rgba(59,130,246,0.25), rgba(29,78,216,0.08));
+            border: 1px solid rgba(59,130,246,0.5);
+        }
+        .glass-red {
+            background: linear-gradient(135deg, rgba(220,38,38,0.25), rgba(153,27,27,0.08));
+            border: 1px solid rgba(220,38,38,0.5);
+        }
+        .glass-green {
+            background: linear-gradient(135deg, rgba(34,197,94,0.25), rgba(21,128,61,0.08));
+            border: 1px solid rgba(34,197,94,0.5);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp { 
+            from { opacity: 0; transform: translateY(24px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
+        .animate-fade-in-up { animation: fadeInUp 0.6s ease; }
+        
+        @keyframes pulseGlow { 
+            0%, 100% { box-shadow: 0 0 20px rgba(59,130,246,0.4); } 
+            50% { box-shadow: 0 0 40px rgba(59,130,246,0.8); } 
+        }
+        .pulse-glow { animation: pulseGlow 3s infinite; }
+        
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        .slide-in-right { animation: slideInRight 0.5s ease; }
+        
+        /* Collapsible Sections */
+        .collapsible-header {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .collapsible-header:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+        }
+        .collapsible-content.active {
+            max-height: 2000px;
+        }
+        .chevron {
+            transition: transform 0.3s ease;
+        }
+        .chevron.rotate {
+            transform: rotate(180deg);
+        }
+        
+        /* Cards */
+        .resource-card {
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+        }
+        
+        /* Carousel */
+        .carousel-container {
+            overflow: hidden;
+            position: relative;
+        }
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .carousel-dot {
+            cursor: pointer;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.4);
+            margin: 0 8px;
+            transition: all 0.3s ease;
+        }
+        .carousel-dot.active {
+            background: var(--gold);
+            width: 25px;
+            border-radius: 5px;
+        }
+        
+        /* Tooltip */
+        [data-tooltip] {
+            position: relative;
+            cursor: help;
+        }
+        [data-tooltip]:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #0A1628;
+            padding: 8px 12px;
+            border-radius: 6px;
+            white-space: nowrap;
+            font-size: 0.75rem;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        }
+        
+        /* Navigation Tabs */
+        .tab-btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            background: rgba(59,130,246,0.2);
+            color: #fff;
+            border: 1px solid rgba(59,130,246,0.3);
+            transition: all 0.3s ease;
+        }
+        .tab-btn:hover { background: rgba(59,130,246,0.4); }
+        .tab-btn.active {
+            background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+            border-color: #3B82F6;
+            box-shadow: 0 4px 12px rgba(59,130,246,0.4);
+        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeInUp 0.5s ease; }
+        
+        /* Stats Counter */
+        .stat-counter {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 2rem;
+            line-height: 1.2;
+        }
+        .stat-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        /* Progress Bars */
+        .progress-bar-wrap {
+            width: 100%;
+            height: 8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 9999px;
+            overflow: hidden;
+        }
+        .progress-bar {
+            height: 100%;
+            border-radius: 9999px;
+            transition: width 1s ease;
+        }
+        
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.8);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .modal-overlay.open { display: flex; }
+        .modal-content {
+            background: linear-gradient(135deg, #0A1628, #001b3d);
+            border-radius: 16px;
+            padding: 2rem;
+            max-width: 600px;
+            width: 100%;
+            border: 1px solid rgba(255,215,0,0.3);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        /* Badges */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .badge-compliant { background: rgba(34,197,94,0.2); color: #34D399; border: 1px solid rgba(34,197,94,0.4); }
+        .badge-audit-ready { background: rgba(59,130,246,0.2); color: #60A5FA; border: 1px solid rgba(59,130,246,0.4); }
+        .badge-critical { background: rgba(220,38,38,0.2); color: #FCA5A5; border: 1px solid rgba(220,38,38,0.4); }
+        
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0; right: -100%;
+            width: 80%; max-width: 350px;
+            height: 100vh;
+            background: #0A1628;
+            z-index: 9999;
+            transition: right 0.3s ease;
+            padding: 20px;
+        }
+        .mobile-menu.open { right: 0; }
+        .overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,.7);
+            z-index: 9998;
+            display: none;
+        }
+        .overlay.show { display: block; }
+        
+        /* Floating CTA */
+        .floating-cta {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+        }
+        .btn-pulse {
+            animation: pulseGlow 2s infinite;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen relative">
+
+<!-- Overlay -->
+<div class="overlay" id="overlay"></div>
+
+<!-- Mobile Menu -->
+<nav class="mobile-menu glass-strong" id="mobileMenu">
+    <div class="flex justify-between items-center mb-6">
+        <img src="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png"
+             alt="Stronghold A3 Logo" class="h-16 w-16 rounded-full object-cover">
+        <button onclick="closeMobileMenu()" class="text-white hover:text-blue-400 transition">
+            <i class="fas fa-times text-2xl"></i>
+        </button>
+    </div>
+    <ul class="space-y-4">
+        <li><a href="#" onclick="navigateTo('#home')" class="block text-white">Home</a></li>
+        <li><a href="#" onclick="switchTab('regulatory')" class="block text-white">Regulatory Frameworks</a></li>
+        <li><a href="#" onclick="switchTab('compliance-firewall')" class="block text-white">Compliance Firewall</a></li>
+        <li><a href="#" onclick="switchTab('resources')" class="block text-white">Resources Hub</a></li>
+        <li><a href="#" onclick="switchTab('roi')" class="block text-white">Financial ROI</a></li>
+        <li><a href="#contact" class="block text-yellow-400 font-bold"><i class="fas fa-phone mr-2"></i>Contact Us</a></li>
+    </ul>
+</nav>
+
+<!-- Header -->
+<header class="sticky top-0 z-50 shadow-lg bg-[#0A1628]/90 backdrop-blur-md border-b border-blue-900/50">
+    <div class="container mx-auto px-4 py-4">
+        <div class="flex justify-between items-center">
+            <a href="#home" class="flex items-center space-x-3">
+                <img src="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png"
+                     alt="Stronghold A3 Logo" class="h-12 w-12 rounded-full object-cover border-2 border-blue-500">
+                <div>
+                    <h1 class="text-xl font-montserrat font-bold tracking-wide text-white">STRONGHOLD A3</h1>
+                    <p class="text-sm text-blue-400">Compliance Hub</p>
+                </div>
+            </a>
+            
+            <nav class="hidden md:flex items-center space-x-2">
+                <button onclick="switchTab('regulatory')" class="tab-btn" id="tab-regulatory">Regulatory</button>
+                <button onclick="switchTab('compliance-firewall')" class="tab-btn" id="tab-compliance-firewall">Firewall</button>
+                <button onclick="switchTab('resources')" class="tab-btn active" id="tab-resources">Resources</button>
+                <button onclick="switchTab('roi')" class="tab-btn" id="tab-roi">ROI Analysis</button>
+            </nav>
+            
+            <button onclick="openMobileMenu()" class="md:hidden text-white">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main class="min-h-screen pb-20">
+    
+    <!-- HERO SECTION -->
+    <section id="home" class="py-12 container mx-auto px-4">
+        <div class="text-center mb-12 animate-fade-in-up">
+            <div class="inline-flex items-center gap-2 glass-gold px-6 py-3 rounded-full mb-6">
+                <i class="fas fa-shield-alt text-[#0A1628]"></i>
+                <span class="text-[#0A1628] font-montserrat font-bold">Zero-Liability Assurance</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold text-yellow-400 font-montserrat mb-4">
+                The Compliance <span class="text-blue-400">Firewall</span> Protocol
+            </h1>
+            <p class="text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
+                Where legal compliance becomes your strongest competitive advantage. 
+                We don't just follow regulations—we leverage them to protect our clients' interests.
+            </p>
+        </div>
+        
+        <!-- Quick Stats Carousel -->
+        <div class="carousel-container glass p-6 rounded-xl mb-8">
+            <div class="carousel-track" id="carouselTrack">
+                <div class="carousel-item min-w-full text-center">
+                    <div class="grid md:grid-cols-4 gap-4">
+                        <div class="glass p-4 rounded-lg">
+                            <div class="stat-counter text-blue-400"><span data-count="100">%</span></div>
+                            <div class="stat-label mt-2">DOLE DO-174 Compliant</div>
+                        </div>
+                        <div class="glass p-4 rounded-lg">
+                            <div class="stat-counter text-green-400"><span data-count="15">min</span></div>
+                            <div class="stat-label mt-2">Document Retrieval Time</div>
+                        </div>
+                        <div class="glass p-4 rounded-lg">
+                            <div class="stat-counter text-yellow-400"><span data-count="4">Frameworks</span></div>
+                            <div class="stat-label mt-2">Regulatory Standards</div>
+                        </div>
+                        <div class="glass p-4 rounded-lg">
+                            <div class="stat-counter text-red-400"><span data-count="100%">Liability-Free</span></div>
+                            <div class="stat-label mt-2">Client Protection</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REGULATORY FRAMEWORKS TAB -->
+    <section id="regulatory" class="tab-content py-8">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-yellow-400 font-montserrat mb-8">Core Regulatory Frameworks</h2>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- DOLE DO-174 -->
+                <div class="resource-card glass-blue p-6 border-l-4 border-[#3B82F6]">
+                    <div class="flex items-start gap-4 mb-4">
+                        <div class="w-16 h-16 rounded-lg bg-blue-900 flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-scale-balanced text-2xl text-blue-400"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white font-montserrat">DOLE Department Order No. 174</h3>
+                            <div class="mt-2"><span class="badge badge-compliant"><i class="fas fa-check-circle"></i> Fully Compliant</span></div>
+                        </div>
+                    </div>
+                    
+                    <p class="text-white/80 mb-4">We strictly adhere to DOLE DO-174, which prohibits illegal "labor-only" contracting. By demonstrating substantial capital and direct control over personnel, we shield clients from co-employer liabilities.</p>
+                    
+                    <!-- Collapsible Details -->
+                    <div class="collapsible-header" onclick="toggleCollapsible('do174-details')">
+                        <span class="font-semibold text-white"><i class="fas fa-chevron-down chevron"></i> Key Protections</span>
+                    </div>
+                    <div id="do174-details" class="collapsible-content">
+                        <ul class="list-disc list-inside text-white/70 ml-4 space-y-2 mt-2">
+                            <li>Prevents co-employer liability risks</li>
+                            <li>Validates legitimate contractor status</li>
+                            <li>Maintains proper licensing documentation</li>
+                            <li>Ensures proper worker benefits compliance</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- PNP-SOSIA -->
+                <div class="resource-card glass p-6 border-l-4 border-[#DC2626]">
+                    <div class="flex items-start gap-4 mb-4">
+                        <div class="w-16 h-16 rounded-lg bg-red-900 flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-id-card text-2xl text-red-400"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white font-montserrat">PNP-SOSIA Regulations</h3>
+                            <div class="mt-2"><span class="badge badge-audit-ready"><i class="fas fa-clipboard-check"></i> Audit Ready</span></div>
+                        </div>
+                    </div>
+                    
+                    <p class="text-white/80 mb-4">100% compliance with all licensing and mandatory training requirements. Established rapport with PNP guarantees protection from sudden shutdowns or blacklisting.</p>
+                    
+                    <div class="collapsible-header" onclick="toggleCollapsible('sasia-details')">
+                        <span class="font-semibold text-white"><i class="fas fa-chevron-down chevron"></i> Training Requirements</span>
+                    </div>
+                    <div id="sasia-details" class="collapsible-content">
+                        <ul class="list-disc list-inside text-white/70 ml-4 space-y-2 mt-2">
+                            <li>Mandatory Basic Training for Private Security Guards</li>
+                            <li>Advanced Weapons Handling Certification</li>
+                            <li>Emergency Response Protocols</li>
+                            <li>First Aid & CPR Certification</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- DRRM RA 10121 -->
+                <div class="resource-card glass p-6 border-l-4 border-[#22C55E]">
+                    <div class="flex items-start gap-4 mb-4">
+                        <div class="w-16 h-16 rounded-lg bg-green-900 flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-exclamation-triangle text-2xl text-green-400"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white font-montserrat">RA 10121 (DRRM Act)</h3>
+                            <div class="mt-2"><span class="badge badge-critical"><i class="fas fa-bolt"></i> Disaster Prepared</span></div>
+                        </div>
+                    </div>
+                    
+                    <p class="text-white/80 mb-4">Legal compliance in Eastern Visayas includes recognized disaster preparedness. Our guards are trained as first responders during regional climate shocks.</p>
+                    
+                    <!-- Progress Indicators -->
+                    <div class="mt-4 space-y-2">
+                        <div class="flex justify-between text-sm text-white/70">
+                            <span>Emergency Response Readiness</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="progress-bar-wrap">
+                            <div class="progress-bar bg-green-500" style="width: 95%"></div>
+                        </div>
+                        
+                        <div class="flex justify-between text-sm text-white/70">
+                            <span>Incident Reporting Systems</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="progress-bar-wrap">
+                            <div class="progress-bar bg-green-500" style="width: 90%"></div>
+                        </div>
+                        
+                        <div class="flex justify-between text-sm text-white/70">
+                            <span>Community Drills Conducted</span>
+                            <span>100%</span>
+                        </div>
+                        <div class="progress-bar-wrap">
+                            <div class="progress-bar bg-green-500" style="width: 100%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DATA PRIVACY RA 10173 -->
+                <div class="resource-card glass p-6 border-l-4 border-[#FCD34D]">
+                    <div class="flex items-start gap-4 mb-4">
+                        <div class="w-16 h-16 rounded-lg bg-yellow-900 flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-lock text-2xl text-yellow-400"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white font-montserrat">RA 10173 (Data Privacy Act)</h3>
+                            <div class="mt-2"><span class="badge badge-compliant"><i class="fas fa-shield-alt"></i> Encrypted Systems</span></div>
+                        </div>
+                    </div>
+                    
+                    <p class="text-white/80 mb-4">Transitioned to encrypted digital systems for managing visitor logs, biometrics, and incident data. Mitigates risks of insecure physical record-keeping.</p>
+                    
+                    <div class="grid grid-cols-2 gap-3 mt-4">
+                        <div class="glass p-3 rounded text-center">
+                            <i class="fas fa-database text-2xl text-blue-400 mb-2"></i>
+                            <p class="text-xs text-white/70">Encrypted Storage</p>
+                        </div>
+                        <div class="glass p-3 rounded text-center">
+                            <i class="fas fa-user-shield text-2xl text-green-400 mb-2"></i>
+                            <p class="text-xs text-white/70">Access Controls</p>
+                        </div>
+                        <div class="glass p-3 rounded text-center">
+                            <i class="fas fa-file-contract text-2xl text-yellow-400 mb-2"></i>
+                            <p class="text-xs text-white/70">Consent Management</p>
+                        </div>
+                        <div class="glass p-3 rounded text-center">
+                            <i class="fas fa-key text-2xl text-red-400 mb-2"></i>
+                            <p class="text-xs text-white/70">Data Breach Plan</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPLIANCE FIREWALL TAB -->
+    <section id="compliance-firewall" class="tab-content py-8">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-yellow-400 font-montserrat mb-8">Compliance Firewall Protocol</h2>
+            
+            <div class="glass-strong p-8 rounded-xl mb-8">
+                <div class="flex items-start gap-4 mb-6">
+                    <div class="w-20 h-20 rounded-xl bg-yellow-500 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-shield-virus text-4xl text-black"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-white font-montserrat mb-2">Strategic Option 4</h3>
+                        <p class="text-white/80">Focuses on business continuity and risk mitigation—foundation of our Zero-Liability status</p>
+                    </div>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-bold text-blue-400 mb-4 flex items-center gap-2">
+                            <i class="fas fa-folder-open"></i> Digital Document Vault
+                        </h4>
+                        <p class="text-white/80 mb-4">Secure, cloud-based repository for all PNP-SOSIA and DOLE DO-174 files. Ensures "Audit Readiness" with retrieval under 15 minutes.</p>
+                        
+                        <div class="space-y-3">
+                            <div class="glass p-3 rounded flex items-center gap-3">
+                                <i class="fas fa-cloud-upload-alt text-blue-400"></i>
+                                <span class="text-white/90">Cloud Storage (AES-256 Encryption)</span>
+                            </div>
+                            <div class="glass p-3 rounded flex items-center gap-3">
+                                <i class="fas fa-clock text-green-400"></i>
+                                <span class="text-white/90">< 15 Min Document Retrieval Target</span>
+                            </div>
+                            <div class="glass p-3 rounded flex items-center gap-3">
+                                <i class="fas fa-backup text-yellow-400"></i>
+                                <span class="text-white/90">Automated Backup Schedules</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-bold text-red-400 mb-4 flex items-center gap-2">
+                            <i class="fas fa-flask"></i> Mock Audits
+                        </h4>
+                        <p class="text-white/80 mb-4">Quarterly internal "stress tests" simulating official regulatory audits. Ensures documentation integrity and prevents license suspension risk.</p>
+                        
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="glass p-4 rounded text-center">
+                                <div class="stat-counter text-blue-400">4<span class="text-lg">x/year</span></div>
+                                <p class="text-xs text-white/70 mt-2">Audit Frequency</p>
+                            </div>
+                            <div class="glass p-4 rounded text-center">
+                                <div class="stat-counter text-green-400">100%</div>
+                                <p class="text-xs text-white/70 mt-2">Pass Rate Target</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Workflow Timeline -->
+            <div class="glass p-6 rounded-xl">
+                <h3 class="text-2xl font-bold text-white font-montserrat mb-6 text-center">Compliance Workflow</h3>
+                <div class="relative">
+                    <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-blue-500 via-yellow-500 to-green-500"></div>
+                    
+                    <div class="relative flex justify-center items-center mb-8">
+                        <div class="bg-[#0A1628] rounded-xl p-6 w-full md:w-1/3 text-center">
+                            <div class="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center mx-auto mb-3">
+                                <i class="fas fa-file-upload text-white"></i>
+                            </div>
+                            <h4 class="font-bold text-white">Document Upload</h4>
+                            <p class="text-sm text-white/70 mt-2">All compliance docs uploaded to vault within 24 hours</p>
+                        </div>
+                    </div>
+                    
+                    <div class="relative flex justify-center items-center mb-8">
+                        <div class="bg-[#0A1628] rounded-xl p-6 w-full md:w-1/3 text-center">
+                            <div class="w-12 h-12 rounded-full bg-yellow-500 flex items-center justify-center mx-auto mb-3">
+                                <i class="fas fa-search text-black"></i>
+                            </div>
+                            <h4 class="font-bold text-white">Verification Check</h4>
+                            <p class="text-sm text-white/70 mt-2">Internal compliance officer review process</p>
+                        </div>
+                    </div>
+                    
+                    <div class="relative flex justify-center items-center mb-8">
+                        <div class="bg-[#0A1628] rounded-xl p-6 w-full md:w-1/3 text-center">
+                            <div class="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center mx-auto mb-3">
+                                <i class="fas fa-check-double text-white"></i>
+                            </div>
+                            <h4 class="font-bold text-white">Certification Complete</h4>
+                            <p class="text-sm text-white/70 mt-2">Digital badge issued for client transparency</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESOURCES HUB TAB -->
+    <section id="resources" class="tab-content py-8 active">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-yellow-400 font-montserrat mb-8">Resource Access Hub</h2>
+            
+            <!-- Categories Tabs -->
+            <div class="flex flex-wrap gap-3 mb-6">
+                <button onclick="filterResources('all')" class="tab-btn active" id="res-all">All Resources</button>
+                <button onclick="filterResources('anchored')" class="tab-btn" id="res-anchored">Anchored</button>
+                <button onclick="filterResources('armored')" class="tab-btn" id="res-armored">Armored</button>
+                <button onclick="filterResources('assured')" class="tab-btn" id="res-assured">Assured</button>
+            </div>
+            
+            <!-- Resource Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="resourceGrid">
+                <!-- Anchored Resources -->
+                <div class="resource-card glass p-6 anchored">
+                    <div class="flex items-center gap-3 mb-3">
+                        <i class="fas fa-anchor text-blue-400"></i>
+                        <span class="text-sm font-bold text-blue-400">ANCHORED</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-white mb-2">Company Policies</h4>
+                    <p class="text-white/70 text-sm mb-4">Official policy documents and procedures</p>
+                    <a href="./policies.html" class="block text-center glass p-3 rounded-lg text-blue-400 font-semibold hover:bg-blue-900 transition">View Documents</a>
+                </div>
+                
+                <div class="resource-card glass p-6 anchored">
+                    <div class="flex items-center gap-3 mb-3">
+                        <i class="fas fa-scroll text-blue-400"></i>
+                        <span class="text-sm font-bold text-blue-400">ANCHORED</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-white mb-2">Terms of Service</h4>
+                    <p class="text-white/70 text-sm mb-4">Service agreements and terms</p>
+                    <a href="./terms.html" class="block text-center glass p-3 rounded-lg text-blue-400 font-semibold hover:bg-blue-900 transition">View Documents</a>
+                </div>
+                
+                <div class="resource-card glass p-6 armored">
+                    <div class="flex items-center gap-3 mb-3">
+                        <i class="fas fa-shield-alt text-red-400"></i>
+                        <span class="text-sm font-bold text-red-400">ARMORED</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-white mb-2">Free Security Assessment</h4>
+                    <p class="text-white/70 text-sm mb-4">Request your complimentary security evaluation</p>
+                    <a href="./security-assessment.html" class="block text-center glass p-3 rounded-lg text-red-400 font-semibold hover:bg-red-900 transition">Request Now</a>
+                </div>
+                
+                <div class="resource-card glass p-6 armored">
+                    <div class="flex items-center gap-3 mb-3">
+                        <i class="fas fa-tools text-red-400"></i>
+                        <span class="text-sm font-bold text-red-400">ARMORED</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-white mb-2">Security Capabilities</h4>
+                    <p class="text-white/70 text-sm mb-4">Detailed service capability documentation</p>
+                    <a href="./capability.html" class="block text-center glass p-3 rounded-lg text-red-400 font-semibold hover:bg-red-900 transition">View Capabilities</a>
+                </div>
+                
+                <div class="resource-card glass p-6 armored">
+                    <div class="flex items-center gap-3 mb-3">
+                        <i class="fas fa-cogs text-red-400"></i>
+                        <span class="text-sm font-bold text-red-400">ARMORED</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-white mb-2">Operational Workflows</h4>
+                    <p class="text-white/70 text-sm mb-4">Crisis-proof operational procedures</p>
+                    <a href="./operational-workflows.html" class="block text-center glass p-3 rounded-lg text-red-400 font-semibold hover:bg-red-900 transition">View Workflows</a>
+                </div>
+                
+                <div class="resource-card glass p-6 assured">
+                    <div class="flex items-center gap-3 mb-3">
+                        <i class="fas fa-users text-green-400"></i>
+                        <span class="text-sm font-bold text-green-400">ASSURED</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-white mb-2">Digital Bayanihan Program</h4>
+                    <p class="text-white/70 text-sm mb-4">Community protection initiatives</p>
+                    <a href="./digital-bayanihan.html" class="block text-center glass p-3 rounded-lg text-green-400 font-semibold hover:bg-green-900 transition">Learn More</a>
+                </div>
+                
+                <div class="resource-card glass p-6">
+                    <div class="flex items-center gap-3 mb-3">
+                        <i class="fas fa-mobile-alt text-yellow-400"></i>
+                        <span class="text-sm font-bold text-yellow-400">SMS TOOLS</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-white mb-2">SMS Portal Login</h4>
+                    <p class="text-white/70 text-sm mb-4">Access the Secure Management System portal</p>
+                    <a href="./sms-portal.html" class="block text-center glass p-3 rounded-lg text-yellow-400 font-semibold hover:bg-yellow-900 transition">Login Now</a>
+                </div>
+                
+                <div class="resource-card glass p-6">
+                    <div class="flex items-center gap-3 mb-3">
+                        <i class="fas fa-book text-yellow-400"></i>
+                        <span class="text-sm font-bold text-yellow-400">SMS MANUAL</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-white mb-2">User Manual</h4>
+                    <p class="text-white/70 text-sm mb-4">Complete guide to SMS system usage</p>
+                    <a href="./sms-user-manual.html" class="block text-center glass p-3 rounded-lg text-yellow-400 font-semibold hover:bg-yellow-900 transition">Read Guide</a>
+                </div>
+                
+                <div class="resource-card glass p-6">
+                    <div class="flex items-center gap-3 mb-3">
+                        <i class="fas fa-envelope text-gray-400"></i>
+                        <span class="text-sm font-bold text-gray-400">CONTACT</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-white mb-2">Support Request</h4>
+                    <p class="text-white/70 text-sm mb-4">Submit a support inquiry or document request</p>
+                    <a href="#contact" class="block text-center glass p-3 rounded-lg text-gray-400 font-semibold hover:bg-gray-900 transition">Contact Support</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINANCIAL ROI TAB -->
+    <section id="roi" class="tab-content py-8">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-yellow-400 font-montserrat mb-8">Compliance Tipping Point • Financial ROI</h2>
+            
+            <div class="glass-strong p-8 rounded-xl mb-8">
+                <h3 class="text-2xl font-bold text-white font-montserrat mb-6">The Compliance Advantage</h3>
+                <p class="text-white/80 mb-6">We strategically leverage compliance to capture market share through regulatory crackdowns on non-compliant agencies.</p>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="glass p-6 rounded-lg text-center">
+                        <div class="w-16 h-16 rounded-full bg-blue-500 flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-chart-line text-3xl text-white"></i>
+                        </div>
+                        <div class="stat-counter text-blue-400">15–20%</div>
+                        <p class="text-white/70 mt-2">Growth Target from Premium Sectors</p>
+                    </div>
+                    
+                    <div class="glass p-6 rounded-lg text-center">
+                        <div class="w-16 h-16 rounded-full bg-green-500 flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-percentage text-3xl text-white"></i>
+                        </div>
+                        <div class="stat-counter text-green-400">54.5%</div>
+                        <p class="text-white/70 mt-2">Projected Year 1 ROI</p>
+                    </div>
+                    
+                    <div class="glass p-6 rounded-lg text-center">
+                        <div class="w-16 h-16 rounded-full bg-red-500 flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-money-bill-wave text-3xl text-white"></i>
+                        </div>
+                        <div class="stat-counter text-red-400">Self-Funding</div>
+                        <p class="text-white/70 mt-2">Transformation Investment Model</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="glass p-6 rounded-xl">
+                    <h4 class="font-bold text-white text-xl mb-4 flex items-center gap-2">
+                        <i class="fas fa-trending-up text-green-400"></i> Strategic Advantages
+                    </h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-arrow-right text-blue-400 mt-1"></i>
+                            <div>
+                                <strong class="text-white">Rapid Market Migration:</strong>
+                                <span class="text-white/70"> Inherit clients when competitors face failures</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-arrow-right text-blue-400 mt-1"></i>
+                            <div>
+                                <strong class="text-white">High-Value Access:</strong>
+                                <span class="text-white/70"> BPOs, NGOs, LGUs prioritizing risk elimination</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-arrow-right text-blue-400 mt-1"></i>
+                            <div>
+                                <strong class="text-white">Defensive Moat:</strong>
+                                <span class="text-white/70"> Non-compliant agencies can't compete</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-arrow-right text-blue-400 mt-1"></i>
+                            <div>
+                                <strong class="text-white">Positive Growth Loops:</strong>
+                                <span class="text-white/70"> Revenue funds upgrades and guard welfare</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="glass p-6 rounded-xl">
+                    <h4 class="font-bold text-white text-xl mb-4 flex items-center gap-2">
+                        <i class="fas fa-lightbulb text-yellow-400"></i> Compliance as Offensive Tool
+                    </h4>
+                    <div class="space-y-4">
+                        <div class="glass p-4 rounded-lg">
+                            <div class="flex items-center gap-3 mb-2">
+                                <i class="fas fa-file-contract text-blue-400"></i>
+                                <span class="text-white font-semibold">Compliance Documentation</span>
+                            </div>
+                            <p class="text-white/70 text-sm">Available instantly for client due diligence</p>
+                        </div>
+                        <div class="glass p-4 rounded-lg">
+                            <div class="flex items-center gap-3 mb-2">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <span class="text-white font-semibold">Trust Signals</span>
+                            </div>
+                            <p class="text-white/70 text-sm">Visual badges across all client materials</p>
+                        </div>
+                        <div class="glass p-4 rounded-lg">
+                            <div class="flex items-center gap-3 mb-2">
+                                <i class="fas fa-handshake text-green-400"></i>
+                                <span class="text-white font-semibold">Partnership Trust</span>
+                            </div>
+                            <p class="text-white/70 text-sm">Verified partners prefer compliance leaders</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section id="contact" class="py-16 container mx-auto px-4 mt-12">
+        <div class="glass-strong p-8 rounded-xl text-center">
+            <div class="inline-flex items-center gap-2 glass-gold px-6 py-3 rounded-full mb-6">
+                <i class="fas fa-shield-alt text-[#0A1628]"></i>
+                <span class="text-[#0A1628] font-montserrat font-bold">Zero-Liability Promise</span>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-yellow-400 font-montserrat mb-4">Choose Your Compliance Partner</h2>
+            <p class="text-xl text-white/80 max-w-3xl mx-auto mb-8">
+                At Stronghold A3, the Compliance Firewall Protocol isn't merely an IT project—it's <strong>existential risk management</strong>. Choose us where compliance is our promise, not just a checkbox.
+            </p>
+            
+            <div class="grid md:grid-cols-3 gap-4 max-w-4xl mx-auto">
+                <a href="./security-assessment.html" class="btn-pulse glass p-6 rounded-lg text-center border-2 border-blue-500 hover:bg-blue-900 transition">
+                    <i class="fas fa-clipboard-check text-3xl text-blue-400 mb-3"></i>
+                    <h4 class="font-bold text-white">Free Assessment</h4>
+                    <p class="text-sm text-white/70">Get your security evaluation</p>
+                </a>
+                <a href="./capability.html" class="glass p-6 rounded-lg text-center border-2 border-green-500 hover:bg-green-900 transition">
+                    <i class="fas fa-tools text-3xl text-green-400 mb-3"></i>
+                    <h4 class="font-bold text-white">Our Capabilities</h4>
+                    <p class="text-sm text-white/70">Explore full service range</p>
+                </a>
+                <a href="#" class="glass p-6 rounded-lg text-center border-2 border-yellow-500 hover:bg-yellow-900 transition">
+                    <i class="fas fa-phone text-3xl text-yellow-400 mb-3"></i>
+                    <h4 class="font-bold text-white">Contact Us</h4>
+                    <p class="text-sm text-white/70">0917 137 0112</p>
+                </a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="bg-[#0A1628] border-t border-blue-900 py-8">
+    <div class="container mx-auto px-4 text-center">
+        <p class="text-sm text-gray-500">© 2026 Stronghold A3 Security Agency. All Rights Reserved.</p>
+        <p class="text-xs text-gray-600 mt-1">DOLE DO-174 Compliant | Licensed Private Security Agency</p>
+    </div>
+</footer>
+
+<!-- Floating CTA -->
+<div class="floating-cta">
+    <a href="#contact" class="btn-pulse bg-blue-500 text-white rounded-full w-16 h-16 flex items-center justify-center shadow-lg">
+        <i class="fas fa-phone text-2xl"></i>
+    </a>
+</div>
+
+<script>
+    // ===== NAVIGATION =====
+    function openMobileMenu() {
+        document.getElementById('mobileMenu').classList.add('open');
+        document.getElementById('overlay').classList.add('show');
+    }
+    
+    function closeMobileMenu() {
+        document.getElementById('mobileMenu').classList.remove('open');
+        document.getElementById('overlay').classList.remove('show');
+    }
+    
+    document.getElementById('overlay').addEventListener('click', closeMobileMenu);
+    
+    function navigateTo(hash) {
+        window.location.href = hash;
+        closeMobileMenu();
+    }
+    
+    // ===== TAB SYSTEM =====
+    function switchTab(tabId) {
+        // Update nav tabs
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        const activeBtn = document.getElementById(`tab-${tabId}`);
+        if(activeBtn) activeBtn.classList.add('active');
+        
+        // Show tab content
+        document.querySelectorAll('.tab-content').forEach(content => {
+            content.classList.remove('active');
+            content.parentElement.scrollIntoView({behavior: 'smooth'});
+        });
+        
+        const targetContent = document.getElementById(tabId);
+        if(targetContent) targetContent.classList.add('active');
+    }
+    
+    // ===== COLLAPSIBLE SECTIONS =====
+    function toggleCollapsible(id) {
+        const content = document.getElementById(id);
+        const chevron = content.previousElementSibling.querySelector('.chevron');
+        
+        content.classList.toggle('active');
+        chevron.classList.toggle('rotate');
+    }
+    
+    // ===== RESOURCE FILTERING =====
+    function filterResources(category) {
+        // Update filter buttons
+        document.querySelectorAll('#res-all, #res-anchored, #res-armored, #res-assured').forEach(btn => btn.classList.remove('active'));
+        document.getElementById(`res-${category}`).classList.add('active');
+        
+        // Filter cards
+        document.querySelectorAll('.resource-card').forEach(card => {
+            if(category === 'all') {
+                card.style.display = 'block';
+            } else {
+                if(card.classList.contains(category)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            }
+        });
+    }
+    
+    // ===== ANIMATIONS =====
+    function animateCounters() {
+        const counters = document.querySelectorAll('.stat-counter span[data-count]');
+        counters.forEach(counter => {
+            const target = counter.getAttribute('data-count');
+            if(!target.includes('%')) {
+                counter.animate([
+                    { innerText: 0 },
+                    { innerText: parseInt(target) }
+                ], {
+                    duration: 1500,
+                    easing: 'ease-out'
+                });
+            }
+        });
+    }
+    
+    // Scroll trigger for animations
+    let animated = false;
+    window.addEventListener('scroll', () => {
+        const section = document.querySelector('#home');
+        const rect = section.getBoundingClientRect();
+        if(rect.top < window.innerHeight && !animated) {
+            animateCounters();
+            animated = true;
+        }
+    });
+    
+    // Keyboard shortcuts
+    document.addEventListener('keydown', e => {
+        if(e.key === 'Escape') closeMobileMenu();
+    });
+    
+    console.log('%cCompliance Hub v1.0 — Loaded', 'color:#FFD700;font-size:16px;font-weight:bold;');
+</script>
+</body>
+</html>
