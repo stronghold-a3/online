@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trust Signals | Stronghold A3 Security Agency - Zero-Liability Partner</title>
+    <meta name="description" content="Proven trust signals from 80+ Eastern Visayas clients. DOLE DO-174 compliant, 5% attrition rate, 15-min document retrieval. Zero-liability security guarantee.">
+    <meta name="keywords" content="trust signals security agency, zero-liability guarantee, Eastern Visayas security clients, low attrition security guards, compliant private security Philippines, DOLE DO-174 certified">
+    <meta name="author" content="Antonie M. Silva, CEO Stronghold A3 Security Agency">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Trust Signals | Stronghold A3 - Zero-Liability Security Partner">
+    <meta property="og:description" content="80+ loyal clients. 5% attrition rate. 15-minute document retrieval. Zero-liability security guarantee in Eastern Visayas.">
+    <meta property="og:image" content="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png">
+    <meta property="og:url" content="https://strongholda3.com/trust-signals.html">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Stronghold A3 Security Agency",
+        "description": "Eastern Visayas premier zero-liability security partner with proven client trust metrics",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "2nd Floor Real St.",
+            "addressLocality": "Tacloban City",
+            "addressRegion": "Leyte",
+            "postalCode": "6500",
+            "addressCountry": "Philippines"
+        },
+        "telephone": "+639171370112",
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Security Services",
+            "itemListElement": [
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Zero-Liability Security Protection"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Compliant Guarding Services"}}
+            ]
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "80+"
+        }
+    }
+    </script>
+    
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        montserrat: ['Montserrat', sans-serif],
+                        poppins: ['Poppins', sans-serif],
+                    },
+                },
+            },
+        }
+    </script>
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Custom Styles -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --gold: #FFD700;
+            --navy: #0A1628;
+            --blue: #3B82F6;
+            --green: #22C55E;
+            --red: #DC2626;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: radial-gradient(circle at 20% 0%, #002b5c 0%, #001b3d 45%, #000c1f 100%);
+            min-height: 100vh;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        /* Watermark */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: min(80vw, 80vh);
+            height: min(80vw, 80vh);
+            background-image: url('https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png');
+            background-size: contain;
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        main { position: relative; z-index: 1; }
+        
+        /* Glass Effects */
+        .glass {
+            background: linear-gradient(135deg, rgba(255,255,255,0.10), rgba(255,255,255,0.03));
+            backdrop-filter: blur(20px) saturate(160%);
+            border: 1px solid rgba(255,255,255,0.12);
+        }
+        .glass-strong {
+            background: linear-gradient(135deg, rgba(0,43,92,0.55), rgba(0,12,31,0.65));
+            backdrop-filter: blur(28px) saturate(180%);
+            border: 1px solid rgba(255,215,0,0.18);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.45);
+        }
+        .glass-gold {
+            background: linear-gradient(135deg, rgba(255,215,0,0.16), rgba(255,215,0,0.04));
+            border: 1px solid rgba(255,215,0,0.35);
+        }
+        .glass-blue {
+            background: linear-gradient(135deg, rgba(59,130,246,0.25), rgba(29,78,216,0.08));
+            border: 1px solid rgba(59,130,246,0.5);
+        }
+        .glass-green {
+            background: linear-gradient(135deg, rgba(34,197,94,0.25), rgba(21,128,61,0.08));
+            border: 1px solid rgba(34,197,94,0.5);
+        }
+        .glass-red {
+            background: linear-gradient(135deg, rgba(220,38,38,0.25), rgba(153,27,27,0.08));
+            border: 1px solid rgba(220,38,38,0.5);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp { 
+            from { opacity: 0; transform: translateY(24px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
+        .animate-fade-in-up { animation: fadeInUp 0.6s ease; }
+        
+        @keyframes pulseGlow { 
+            0%, 100% { box-shadow: 0 0 20px rgba(255,215,0,0.4); } 
+            50% { box-shadow: 0 0 40px rgba(255,215,0,0.8); } 
+        }
+        .pulse-glow { animation: pulseGlow 3s infinite; }
+        
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        .slide-in-right { animation: slideInRight 0.5s ease; }
+        
+        /* Collapsible Sections */
+        .collapsible-header {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .collapsible-header:hover { background: rgba(255,255,255,0.1); }
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+        }
+        .collapsible-content.active { max-height: 2000px; }
+        .chevron { transition: transform 0.3s ease; }
+        .chevron.rotate { transform: rotate(180deg); }
+        
+        /* Cards */
+        .feature-card {
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .feature-card:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(0,0,0,0.5); }
+        
+        /* Tabs */
+        .tab-btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            background: rgba(59,130,246,0.2);
+            color: #fff;
+            border: 1px solid rgba(59,130,246,0.3);
+            transition: all 0.3s ease;
+        }
+        .tab-btn:hover { background: rgba(59,130,246,0.4); }
+        .tab-btn.active {
+            background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+            border-color: #3B82F6;
+            box-shadow: 0 4px 12px rgba(59,130,246,0.4);
+        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeInUp 0.5s ease; }
+        
+        /* Progress Bars */
+        .progress-bar-wrap {
+            width: 100%;
+            height: 8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 9999px;
+            overflow: hidden;
+        }
+        .progress-bar {
+            height: 100%;
+            border-radius: 9999px;
+            transition: width 1s ease;
+        }
+        
+        /* Badges */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .badge-compliant { background: rgba(34,197,94,0.2); color: #34D399; border: 1px solid rgba(34,197,94,0.4); }
+        .badge-audit-ready { background: rgba(59,130,246,0.2); color: #60A5FA; border: 1px solid rgba(59,130,246,0.4); }
+        .badge-critical { background: rgba(220,38,38,0.2); color: #FCA5A5; border: 1px solid rgba(220,38,38,0.4); }
+        
+        /* Stats Counter */
+        .stat-counter {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 2.5rem;
+            line-height: 1.2;
+        }
+        .stat-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.7); }
+        
+        /* Client Logos Carousel */
+        .carousel-container {
+            overflow: hidden;
+            position: relative;
+        }
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .client-logo {
+            width: 180px;
+            height: 80px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 10px;
+            flex-shrink: 0;
+            font-weight: bold;
+            color: white;
+        }
+        
+        /* Testimonial Cards */
+        .testimonial-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+        }
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: -20px; right: 20px;
+            font-size: 4rem;
+            color: rgba(255,215,0,0.2);
+            font-family: Georgia, serif;
+        }
+        .rating-stars { color: var(--gold); font-size: 0.9rem; }
+        
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0; right: -100%;
+            width: 80%; max-width: 350px;
+            height: 100vh;
+            background: #0A1628;
+            z-index: 9999;
+            transition: right 0.3s ease;
+            padding: 20px;
+        }
+        .mobile-menu.open { right: 0; }
+        .overlay {
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,.7);
+            z-index: 9998;
+            display: none;
+        }
+        .overlay.show { display: block; }
+        
+        /* Floating CTA */
+        .floating-cta {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+        }
+        .btn-pulse { animation: pulseGlow 2s infinite; }
+        
+        /* BSC Dashboard Grid */
+        .bsc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .bsc-perspective {
+            border-left: 4px solid;
+            padding-left: 1rem;
+        }
+        .persp-financial { border-color: #3B82F6; }
+        .persp-customer { border-color: #8B5CF6; }
+        .persp-internal { border-color: #F59E0B; }
+        .persp-learning { border-color: #10B981; }
+        
+        /* Tool Showcase */
+        .tool-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .tool-card:hover { border-color: rgba(255,215,0,0.4); }
+    </style>
+</head>
+<body class="antialiased min-h-screen relative">
+
+<!-- Overlay -->
+<div class="overlay" id="overlay"></div>
+
+<!-- Mobile Menu -->
+<nav class="mobile-menu glass-strong" id="mobileMenu">
+    <div class="flex justify-between items-center mb-6">
+        <img src="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png"
+             alt="Stronghold A3 Logo" class="h-16 w-16 rounded-full object-cover">
+        <button onclick="closeMobileMenu()" class="text-white hover:text-blue-400 transition">
+            <i class="fas fa-times text-2xl"></i>
+        </button>
+    </div>
+    <ul class="space-y-4">
+        <li><a href="#home" onclick="closeMobileMenu()" class="block text-white">Home</a></li>
+        <li><a href="#guarantee" onclick="closeMobileMenu()" class="block text-white">Zero-Liability</a></li>
+        <li><a href="#social-proof" onclick="closeMobileMenu()" class="block text-white">Client Base</a></li>
+        <li><a href="#tools" onclick="closeMobileMenu()" class="block text-white">Measurement Tools</a></li>
+        <li><a href="#resources" onclick="closeMobileMenu()" class="block text-white">Resources</a></li>
+        <li><a href="#contact" class="block text-yellow-400 font-bold"><i class="fas fa-phone mr-2"></i>Contact Us</a></li>
+    </ul>
+</nav>
+
+<!-- Header -->
+<header class="sticky top-0 z-50 shadow-lg bg-[#0A1628]/90 backdrop-blur-md border-b border-blue-900/50">
+    <div class="container mx-auto px-4 py-4">
+        <div class="flex justify-between items-center">
+            <a href="#home" class="flex items-center space-x-3">
+                <img src="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png"
+                     alt="Stronghold A3 Logo" class="h-12 w-12 rounded-full object-cover border-2 border-blue-500">
+                <div>
+                    <h1 class="text-xl font-montserrat font-bold tracking-wide text-white">STRONGHOLD A3</h1>
+                    <p class="text-sm text-blue-400">Trust Signals Hub</p>
+                </div>
+            </a>
+            
+            <nav class="hidden md:flex items-center space-x-2">
+                <button onclick="switchTab('home')" class="tab-btn active" id="tab-home">Overview</button>
+                <button onclick="switchTab('guarantee')" class="tab-btn" id="tab-guarantee">Guarantees</button>
+                <button onclick="switchTab('social-proof')" class="tab-btn" id="tab-social-proof">Social Proof</button>
+                <button onclick="switchTab('tools')" class="tab-btn" id="tab-tools">Tools</button>
+                <button onclick="switchTab('testimonials')" class="tab-btn" id="tab-testimonials">Testimonials</button>
+            </nav>
+            
+            <button onclick="openMobileMenu()" class="md:hidden text-white">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main class="min-h-screen pb-20">
+    
+    <!-- HERO SECTION -->
+    <section id="home" class="tab-content active py-12">
+        <div class="container mx-auto px-4 animate-fade-in-up">
+            <div class="text-center mb-12">
+                <div class="inline-flex items-center gap-2 glass-gold px-6 py-3 rounded-full mb-6">
+                    <i class="fas fa-anchor text-[#0A1628]"></i>
+                    <span class="text-[#0A1628] font-montserrat font-bold">Anchored Pillar • Trust Signals</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-bold text-yellow-400 font-montserrat mb-4">
+                    Proven <span class="text-blue-400">Trust Signals</span>
+                </h1>
+                <p class="text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
+                    80+ Long-standing Clients Across Eastern Visayas. 
+                    We don't just promise reliability—we prove it with verifiable metrics and transparent operations.
+                </p>
+            </div>
+            
+            <!-- KPI Dashboard -->
+            <div class="grid md:grid-cols-4 gap-4 mb-8">
+                <div class="glass p-4 rounded-xl text-center">
+                    <div class="stat-counter text-blue-400">80<span class="text-lg">+</span></div>
+                    <p class="stat-label mt-2">Active Clients</p>
+                </div>
+                <div class="glass p-4 rounded-xl text-center">
+                    <div class="stat-counter text-green-400">5%</div>
+                    <p class="stat-label mt-2">Attrition Rate</p>
+                </div>
+                <div class="glass p-4 rounded-xl text-center">
+                    <div class="stat-counter text-yellow-400">15<span class="text-lg">min</span></div>
+                    <p class="stat-label mt-2">Document Retrieval</p>
+                </div>
+                <div class="glass p-4 rounded-xl text-center">
+                    <div class="stat-counter text-red-400">100%</div>
+                    <p class="stat-label mt-2">Compliance</p>
+                </div>
+            </div>
+            
+            <!-- Client Logos Carousel -->
+            <div class="carousel-container glass p-6 rounded-xl mb-8">
+                <div class="carousel-track" id="carouselTrack">
+                    <div class="flex space-x-4">
+                        <div class="client-logo"><i class="fas fa-building text-2xl"></i><span class="ml-2 text-sm">Institutional Client</span></div>
+                        <div class="client-logo"><i class="fas fa-hospital text-2xl"></i><span class="ml-2 text-sm">Healthcare Facility</span></div>
+                        <div class="client-logo"><i class="fas fa-school text-2xl"></i><span class="ml-2 text-sm">Educational Institution</span></div>
+                        <div class="client-logo"><i class="fas fa-industry text-2xl"></i><span class="ml-2 text-sm">Manufacturing Plant</span></div>
+                        <div class="client-logo"><i class="fas fa-store text-2xl"></i><span class="ml-2 text-sm">Retail Complex</span></div>
+                        <div class="client-logo"><i class="fas fa-building text-2xl"></i><span class="ml-2 text-sm">Corporate Office</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ZERO-LIABILITY GUARANTEE TAB -->
+    <section id="guarantee" class="tab-content py-8">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-yellow-400 font-montserrat mb-8">Zero-Liability Guarantee</h2>
+            
+            <!-- Main Guarantee Card -->
+            <div class="glass-green p-8 rounded-xl mb-8 slide-in-right">
+                <div class="flex items-start gap-4 mb-6">
+                    <div class="w-20 h-20 rounded-xl bg-green-500 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-shield-alt text-4xl text-black"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-white font-montserrat mb-2">Your Liability Shield</h3>
+                        <p class="text-white/80">We assume all legal and financial risks associated with security operations. You're protected.</p>
+                    </div>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div class="glass p-4 rounded-lg">
+                        <h4 class="font-bold text-white mb-2 flex items-center gap-2">
+                            <i class="fas fa-check-circle text-green-400"></i> Legal Protection
+                        </h4>
+                        <ul class="list-disc list-inside text-white/70 text-sm space-y-1">
+                            <li>No co-employer liability under DOLE DO-174</li>
+                            <li>No labor-related lawsuits transferred to you</li>
+                            <li>No sudden service suspensions due to documentation gaps</li>
+                            <li>All regulatory risk absorbed by us</li>
+                        </ul>
+                    </div>
+                    <div class="glass p-4 rounded-lg">
+                        <h4 class="font-bold text-white mb-2 flex items-center gap-2">
+                            <i class="fas fa-file-contract text-blue-400"></i> Regulatory Basis
+                        </h4>
+                        <ul class="list-disc list-inside text-white/70 text-sm space-y-1">
+                            <li>100% PNP-SOSIA compliance</li>
+                            <li>100% DOLE Department Order No. 174 adherence</li>
+                            <li>Digital Document Vault for instant verification</li>
+                            <li>Audit readiness guaranteed at all times</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <button onclick="toggleCollapsible('guarantee-details')" class="glass p-4 rounded-lg text-left text-white hover:bg-green-900 transition w-full md:w-auto">
+                    <span data-tooltip="Learn more"><i class="fas fa-info-circle mr-2"></i>How Zero-Liability Works</span>
+                </button>
+                
+                <div id="guarantee-details" class="collapsible-content">
+                    <div class="mt-4 grid md:grid-cols-3 gap-4">
+                        <div class="glass p-4 rounded-lg">
+                            <div class="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center mb-3 mx-auto">
+                                <i class="fas fa-handshake text-xl text-white"></i>
+                            </div>
+                            <h4 class="font-bold text-white text-center mb-2">Contract Structure</h4>
+                            <p class="text-sm text-white/70 text-center">Clear delineation where we own all employer responsibilities</p>
+                        </div>
+                        <div class="glass p-4 rounded-lg">
+                            <div class="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center mb-3 mx-auto">
+                                <i class="fas fa-file-shield text-xl text-white"></i>
+                            </div>
+                            <h4 class="font-bold text-white text-center mb-2">Liability Coverage</h4>
+                            <p class="text-sm text-white/70 text-center">Insurance-backed protection against operational risks</p>
+                        </div>
+                        <div class="glass p-4 rounded-lg">
+                            <div class="w-12 h-12 rounded-full bg-yellow-500 flex items-center justify-center mb-3 mx-auto">
+                                <i class="fas fa-certificate text-xl text-white"></i>
+                            </div>
+                            <h4 class="font-bold text-white text-center mb-2">Verification</h4>
+                            <p class="text-sm text-white/70 text-center">Anytime proof of compliance status provided instantly</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Comparison Table -->
+            <div class="glass p-6 rounded-xl">
+                <h3 class="text-2xl font-bold text-white font-montserrat mb-6">Why Trust Signals Matter</h3>
+                <table class="w-full">
+                    <thead>
+                        <tr class="border-b border-white/10">
+                            <th class="text-left py-3 px-4 text-white/80 font-semibold">Signal Category</th>
+                            <th class="text-left py-3 px-4 text-white/80 font-semibold">Non-Compliant Providers</th>
+                            <th class="text-left py-3 px-4 text-white/80 font-semibold">Stronghold A3 (You)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-white/5">
+                            <td class="py-3 px-4 text-white font-semibold">Client Base</td>
+                            <td class="py-3 px-4 text-white/70">Transient, short-term contracts</td>
+                            <td class="py-3 px-4 text-green-400">80+ long-standing relationships</td>
+                        </tr>
+                        <tr class="border-b border-white/5">
+                            <td class="py-3 px-4 text-white font-semibold">Personnel Stability</td>
+                            <td class="py-3 px-4 text-white/70">High attrition (15–25%)</td>
+                            <td class="py-3 px-4 text-green-400">&lt;5% annual turnover</td>
+                        </tr>
+                        <tr class="border-b border-white/5">
+                            <td class="py-3 px-4 text-white font-semibold">Operational Continuity</td>
+                            <td class="py-3 px-4 text-white/70">At risk during blackouts/fines</td>
+                            <td class="py-3 px-4 text-green-400">Crisis-proof workflows built-in</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4 text-white font-semibold">Documentation</td>
+                            <td class="py-3 px-4 text-white/70">Paper-based, easily lost</td>
+                            <td class="py-3 px-4 text-green-400">Digital Vault (&lt;15 min retrieval)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOCIAL PROOF TAB -->
+    <section id="social-proof" class="tab-content py-8">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-yellow-400 font-montserrat mb-8">Entrenched Trust Base</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8 mb-8">
+                <!-- Client Demographics -->
+                <div class="glass p-6 rounded-xl">
+                    <h3 class="text-2xl font-bold text-white font-montserrat mb-6">Local Institutional Capital</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="glass p-4 rounded-lg">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-white font-semibold">LGU Partnerships</span>
+                                <span class="text-green-400 font-bold">Strong Rapport</span>
+                            </div>
+                            <div class="progress-bar-wrap">
+                                <div class="progress-bar bg-green-500" style="width: 95%"></div>
+                            </div>
+                            <p class="text-xs text-white/60 mt-2">Enables faster incident response coordination</p>
+                        </div>
+                        
+                        <div class="glass p-4 rounded-lg">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-white font-semibold">PNP-SOSIA Standing</span>
+                                <span class="text-green-400 font-bold">Clean Record</span>
+                            </div>
+                            <div class="progress-bar-wrap">
+                                <div class="progress-bar bg-green-500" style="width: 100%"></div>
+                            </div>
+                            <p class="text-xs text-white/60 mt-2">No enforcement actions or blacklisting</p>
+                        </div>
+                        
+                        <div class="glass p-4 rounded-lg">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-white font-semibold">Referral Network</span>
+                                <span class="text-blue-400 font-bold">Decentralized Proof</span>
+                            </div>
+                            <div class="progress-bar-wrap">
+                                <div class="progress-bar bg-blue-500" style="width: 85%"></div>
+                            </div>
+                            <p class="text-xs text-white/60 mt-2">Word-of-mouth growth across Region VIII</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Regional Coverage Map Visualization -->
+                <div class="glass p-6 rounded-xl">
+                    <h3 class="text-2xl font-bold text-white font-montserrat mb-6">Eastern Visayas Footprint</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="glass p-4 rounded-lg text-center">
+                            <div class="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center mx-auto mb-3">
+                                <i class="fas fa-city text-xl text-white"></i>
+                            </div>
+                            <h4 class="font-bold text-white">Tacloban</h4>
+                            <p class="text-sm text-white/70">HQ Location<br>Primary Coverage Zone</p>
+                        </div>
+                        <div class="glass p-4 rounded-lg text-center">
+                            <div class="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center mx-auto mb-3">
+                                <i class="fas fa-map-marker-alt text-xl text-white"></i>
+                            </div>
+                            <h4 class="font-bold text-white">Leyte</h4>
+                            <p class="text-sm text-white/70">Multiple Sites<br>Consolidated Operations</p>
+                        </div>
+                        <div class="glass p-4 rounded-lg text-center">
+                            <div class="w-12 h-12 rounded-full bg-yellow-500 flex items-center justify-center mx-auto mb-3">
+                                <i class="fas fa-users text-xl text-white"></i>
+                            </div>
+                            <h4 class="font-bold text-white">Samar</h4>
+                            <p class="text-sm text-white/70">Regional Expansion<br>New Contracts Active</p>
+                        </div>
+                        <div class="glass p-4 rounded-lg text-center">
+                            <div class="w-12 h-12 rounded-full bg-red-500 flex items-center justify-center mx-auto mb-3">
+                                <i class="fas fa-anchor text-xl text-white"></i>
+                            </div>
+                            <h4 class="font-bold text-white">Biliran</h4>
+                            <p class="text-sm text-white/70">Emergency Response<br>Partner Network</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Retention Metrics -->
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="feature-card glass-green p-6 rounded-xl">
+                    <div class="text-center mb-4">
+                        <div class="stat-counter text-green-400">5%</div>
+                        <p class="stat-label mt-2">Annual Attrition Rate</p>
+                    </div>
+                    <p class="text-sm text-white/70 text-center">Industry average is 15–25%. Our retention program prevents guard drain.</p>
+                </div>
+                <div class="feature-card glass-blue p-6 rounded-xl">
+                    <div class="text-center mb-4">
+                        <div class="stat-counter text-blue-400">12<span class="text-lg">mo</span></div>
+                        <p class="stat-label mt-2">Average Contract Duration</p>
+                    </div>
+                    <p class="text-sm text-white/70 text-center">Long-term partnerships indicate high client satisfaction and trust.</p>
+                </div>
+                <div class="feature-card glass-yellow p-6 rounded-xl">
+                    <div class="w-12 h-12 rounded-full bg-yellow-500 flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-percent text-3xl text-black"></i>
+                    </div>
+                    <p class="text-2xl font-bold text-yellow-400 text-center">80<span class="text-lg">+</span></p>
+                    <p class="stat-label mt-2">Active Client Count</p>
+                    <p class="text-sm text-white/70 text-center">Each client represents decentralized social proof across the region.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MEASUREMENT TOOLS TAB -->
+    <section id="tools" class="tab-content py-8">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-yellow-400 font-montserrat mb-8">Trust Signal Measurement Framework</h2>
+            
+            <!-- Balanced Scorecard Section -->
+            <div class="glass p-6 rounded-xl mb-8">
+                <h3 class="text-2xl font-bold text-white font-montserrat mb-6 flex items-center gap-2">
+                    <i class="fas fa-chart-line text-blue-400"></i> Balanced Scorecard Strategic Dashboard
+                </h3>
+                
+                <div class="bsc-grid">
+                    <div class="bsc-perspective persp-financial">
+                        <h4 class="font-bold text-white mb-3">Financial Perspective</h4>
+                        <ul class="space-y-2">
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-star text-blue-400 mt-1"></i>
+                                <span class="text-white/80 text-sm">Premium pricing justified by verified reliability</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-dollar-sign text-blue-400 mt-1"></i>
+                                <span class="text-white/80 text-sm">ROI target: 54.5% through compliance moat</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bsc-perspective persp-customer">
+                        <h4 class="font-bold text-white mb-3">Customer Perspective</h4>
+                        <ul class="space-y-2">
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-user text-purple-400 mt-1"></i>
+                                <span class="text-white/80 text-sm">NPS &gt;80% on crisis responsiveness</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-star text-purple-400 mt-1"></i>
+                                <span class="text-white/80 text-sm">CSAT quarterly surveys maintained</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bsc-perspective persp-internal">
+                        <h4 class="font-bold text-white mb-3">Internal Processes</h4>
+                        <ul class="space-y-2">
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-clock text-yellow-400 mt-1"></i>
+                                <span class="text-white/80 text-sm">15-minute document retrieval (KPI)</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check-double text-yellow-400 mt-1"></i>
+                                <span class="text-white/80 text-sm">Digital Transparency Index: 100%</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bsc-perspective persp-learning">
+                        <h4 class="font-bold text-white mb-3">Learning & Growth</h4>
+                        <ul class="space-y-2">
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-chalkboard-teacher text-green-400 mt-1"></i>
+                                <span class="text-white/80 text-sm">Guard attrition &lt;5% annually</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-mobile-alt text-green-400 mt-1"></i>
+                                <span class="text-white/80 text-sm">Tech adoption via Digital Bayanihan program</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Digital Verification Tools -->
+            <h3 class="text-2xl font-bold text-white font-montserrat mb-6">Digital Verification Platforms</h3>
+            <div class="grid md:grid-cols-3 gap-6 mb-8">
+                <div class="tool-card">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-blue-500 flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-globe text-xl text-white"></i>
+                        </div>
+                        <h4 class="font-bold text-white">Cloud SMS Dashboard</h4>
+                    </div>
+                    <p class="text-white/70 text-sm mb-3">Real-time GPS tracking & digital guard tours replace analog guesswork.</p>
+                    <a href="./sms-portal.html" class="text-blue-400 hover:text-blue-300 text-sm"><i class="fas fa-external-link-alt"></i> Access Portal</a>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-green-500 flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-database text-xl text-white"></i>
+                        </div>
+                        <h4 class="font-bold text-white">Lead Tracker</h4>
+                    </div>
+                    <p class="text-white/70 text-sm mb-3">24-hour response mandate. Measures trust signal of responsiveness.</p>
+                    <a href="#" class="text-green-400 hover:text-green-300 text-sm"><i class="fas fa-eye"></i> View Metrics</a>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-yellow-500 flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-folder-open text-xl text-white"></i>
+                        </div>
+                        <h4 class="font-bold text-white">Document Vault</h4>
+                    </div>
+                    <p class="text-white/70 text-sm mb-3">15-minute stress test verifies audit readiness capability.</p>
+                    <a href="./audit-readiness.html" class="text-yellow-400 hover:text-yellow-300 text-sm"><i class="fas fa-eye"></i> Verify Status</a>
+                </div>
+            </div>
+            
+            <!-- Internal Stress Tests -->
+            <div class="glass p-6 rounded-xl">
+                <h3 class="text-2xl font-bold text-white font-montserrat mb-6">Operational Stress Tests</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-bold text-white mb-4 flex items-center gap-2">
+                            <i class="fas fa-flask text-red-400"></i> Quarterly Mock Audits
+                        </h4>
+                        <ul class="space-y-2">
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check-circle text-green-400 mt-1"></i>
+                                <span class="text-white/70 text-sm">Simulate official DOLE/PNP inspections</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-stopwatch text-green-400 mt-1"></i>
+                                <span class="text-white/70 text-sm">Success metric: Any document retrieved in &lt;15 min</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-calendar-alt text-green-400 mt-1"></i>
+                                <span class="text-white/70 text-sm">Frequency: Every quarter without exception</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-bold text-white mb-4 flex items-center gap-2">
+                            <i class="fas fa-bolt text-yellow-400"></i> Blackout & Breach Drills
+                        </h4>
+                        <ul class="space-y-2">
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-signal text-yellow-400 mt-1"></i>
+                                <span class="text-white/70 text-sm">Test total internet outage scenarios</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-tasks text-yellow-400 mt-1"></i>
+                                <span class="text-white/70 text-sm">Validate BCP Execution Fidelity</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-network-wired text-yellow-400 mt-1"></i>
+                                <span class="text-white/70 text-sm">Maintain 100% unbroken command chain</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS TAB -->
+    <section id="testimonials" class="tab-content py-8">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-yellow-400 font-montserrat mb-8">Client Testimonials</h2>
+            
+            <div class="grid md:grid-cols-3 gap-6 mb-8">
+                <div class="testimonial-card">
+                    <div class="rating-stars mb-3">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-white/80 italic mb-4">"Stronghold A3 has been our security partner for 3 years. The peace of mind knowing they're fully compliant and always ready for audits is invaluable."</p>
+                    <div class="text-sm text-white/60">
+                        <p class="font-bold">Maria Santos</p>
+                        <p>Operations Director, Healthcare Facility</p>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="rating-stars mb-3">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-white/80 italic mb-4">"Their retention rate shows—same guards have been protecting our facility for over a year. Professionalism and reliability unmatched in Tacloban."</p>
+                    <div class="text-sm text-white/60">
+                        <p class="font-bold">Dr. Antonio Cruz</p>
+                        <p>Hospital Administrator</p>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="rating-stars mb-3">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-white/80 italic mb-4">"When typhoons hit, everyone else disappears. Stronghold A3 stayed operational throughout Super Typhoon Yolanda recovery. True resilience."</p>
+                    <div class="text-sm text-white/60">
+                        <p class="font-bold">Engr. Roberto Reyes</p>
+                        <p>Construction Company Manager</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Trust Validation Badges -->
+            <div class="grid md:grid-cols-4 gap-4">
+                <div class="glass p-4 rounded-lg text-center">
+                    <i class="fas fa-shield-alt text-3xl text-green-500 mb-3"></i>
+                    <h4 class="font-bold text-white">DOLE DO-174</h4>
+                    <p class="text-xs text-white/60">Certified Contractor</p>
+                </div>
+                <div class="glass p-4 rounded-lg text-center">
+                    <i class="fas fa-id-card text-3xl text-blue-500 mb-3"></i>
+                    <h4 class="font-bold text-white">PNP-SOSIA</h4>
+                    <p class="text-xs text-white/60">Licensed Agency</p>
+                </div>
+                <div class="glass p-4 rounded-lg text-center">
+                    <i class="fas fa-fire-extinguisher text-3xl text-red-500 mb-3"></i>
+                    <h4 class="font-bold text-white">RA 10121</h4>
+                    <p class="text-xs text-white/60">DRRM Compliant</p>
+                </div>
+                <div class="glass p-4 rounded-lg text-center">
+                    <i class="fas fa-lock text-3xl text-yellow-500 mb-3"></i>
+                    <h4 class="font-bold text-white">RA 10173</h4>
+                    <p class="text-xs text-white/60">Data Privacy Act</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section id="contact" class="py-16 container mx-auto px-4 mt-12">
+        <div class="glass-strong p-8 rounded-xl text-center">
+            <div class="inline-flex items-center gap-2 glass-gold px-6 py-3 rounded-full mb-6">
+                <i class="fas fa-shield-alt text-[#0A1628]"></i>
+                <span class="text-[#0A1628] font-montserrat font-bold">Zero-Liability Assurance</span>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-yellow-400 font-montserrat mb-4">Verify Your Current Provider's Trust Signals</h2>
+            <p class="text-xl text-white/80 max-w-3xl mx-auto mb-8">
+                Don't wait for regulatory shocks to discover gaps. Get your current security provider evaluated today and protect your organization from compliance failures.
+            </p>
+            
+            <div class="grid md:grid-cols-3 gap-4 max-w-4xl mx-auto">
+                <a href="./security-assessment.html" class="btn-pulse glass p-6 rounded-lg text-center border-2 border-blue-500 hover:bg-blue-900 transition">
+                    <i class="fas fa-clipboard-check text-3xl text-blue-400 mb-3"></i>
+                    <h4 class="font-bold text-white">Free Assessment</h4>
+                    <p class="text-sm text-white/70">Evaluate current provider</p>
+                </a>
+                <a href="./capability.html" class="glass p-6 rounded-lg text-center border-2 border-green-500 hover:bg-green-900 transition">
+                    <i class="fas fa-tools text-3xl text-green-400 mb-3"></i>
+                    <h4 class="font-bold text-white">Our Capabilities</h4>
+                    <p class="text-sm text-white/70">See full service range</p>
+                </a>
+                <a href="#" class="glass p-6 rounded-lg text-center border-2 border-yellow-500 hover:bg-yellow-900 transition">
+                    <i class="fas fa-phone text-3xl text-yellow-400 mb-3"></i>
+                    <h4 class="font-bold text-white">Contact Support</h4>
+                    <p class="text-sm text-white/70">0917 137 0112</p>
+                </a>
+            </div>
+            
+            <div class="mt-8 grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
+                <div class="glass p-4 rounded-lg text-center">
+                    <a href="./policies.html" class="text-blue-400 hover:text-blue-300 transition"><i class="fas fa-file-contract mr-2"></i>View Policies</a>
+                </div>
+                <div class="glass p-4 rounded-lg text-center">
+                    <a href="./terms.html" class="text-blue-400 hover:text-blue-300 transition"><i class="fas fa-scroll mr-2"></i>Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="bg-[#0A1628] border-t border-blue-900 py-8">
+    <div class="container mx-auto px-4 text-center">
+        <p class="text-sm text-gray-500">© 2026 Stronghold A3 Security Agency. All Rights Reserved.</p>
+        <p class="text-xs text-gray-600 mt-1">DOLE DO-174 Compliant | Licensed Private Security Agency</p>
+    </div>
+</footer>
+
+<!-- Floating CTA -->
+<div class="floating-cta">
+    <a href="#contact" class="btn-pulse bg-blue-500 text-white rounded-full w-16 h-16 flex items-center justify-center shadow-lg">
+        <i class="fas fa-phone text-2xl"></i>
+    </a>
+</div>
+
+<script>
+    // ===== NAVIGATION =====
+    function openMobileMenu() {
+        document.getElementById('mobileMenu').classList.add('open');
+        document.getElementById('overlay').classList.add('show');
+    }
+    
+    function closeMobileMenu() {
+        document.getElementById('mobileMenu').classList.remove('open');
+        document.getElementById('overlay').classList.remove('show');
+    }
+    
+    document.getElementById('overlay').addEventListener('click', closeMobileMenu);
+    
+    // ===== TAB SYSTEM =====
+    function switchTab(tabId) {
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        const activeBtn = document.getElementById(`tab-${tabId}`);
+        if(activeBtn) activeBtn.classList.add('active');
+        
+        document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+        const targetContent = document.getElementById(tabId);
+        if(targetContent) targetContent.classList.add('active');
+    }
+    
+    // ===== COLLAPSIBLE SECTIONS =====
+    function toggleCollapsible(id) {
+        const content = document.getElementById(id);
+        const chevron = content.previousElementSibling.querySelector('.chevron');
+        
+        content.classList.toggle('active');
+        if(chevron) chevron.classList.toggle('rotate');
+    }
+    
+    // ===== KEYBOARD SHORTCUTS =====
+    document.addEventListener('keydown', e => {
+        if(e.key === 'Escape') closeMobileMenu();
+    });
+    
+    console.log('%cTrust Signals Hub v1.0 — Loaded', 'color:#FFD700;font-size:16px;font-weight:bold;');
+</script>
+</body>
+</html>
