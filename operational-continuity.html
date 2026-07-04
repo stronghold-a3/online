@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operational Continuity | Stronghold A3 - Non-Linear Security Architecture</title>
+    <meta name="description" content="Ensuring unbroken security during typhoons and blackouts. Stronghold A3's non-linear resilience hub uses 3-Bridge Communication & offline-first Cloud SMS technology.">
+    <meta name="keywords" content="operational continuity security, typhoon proof security, offline communication system, Eastern Visayas disaster response, 3-bridge architecture security">
+    <meta name="author" content="Antonie M. Silva, CEO Stronghold A3 Security Agency">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Operational Continuity | Stronghold A3 - Armored by Resilience">
+    <meta property="og:description" content="Zero downtime security even during regional infrastructure failures. Powered by our proprietary 3-Bridge Architecture.">
+    <meta property="og:image" content="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png">
+    <meta property="og:url" content="https://strongholda3.com/operational-continuity.html">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Operational Continuity Protocol",
+        "provider": {
+            "@type": "Organization",
+            "name": "Stronghold A3 Security Agency"
+        },
+        "areaServed": {
+            "@type": "AdministrativeArea",
+            "name": "Eastern Visayas"
+        },
+        "description": "Non-linear resilience hub ensuring zero operational paralysis during systemic shocks like typhoons and network failures."
+    }
+    </script>
+    
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        montserrat: ['Montserrat', sans-serif],
+                        poppins: ['Poppins', sans-serif],
+                    },
+                },
+            },
+        }
+    </script>
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Custom Styles -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --gold: #FFD700;
+            --navy: #0A1628;
+            --blue: #3B82F6;
+            --red: #DC2626;
+            --green: #22C55E;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: radial-gradient(circle at 20% 0%, #002b5c 0%, #001b3d 45%, #000c1f 100%);
+            min-height: 100vh;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        /* Watermark */
+        body::before {
+            content: '';
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: min(80vw, 80vh); height: min(80vw, 80vh);
+            background-image: url('https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png');
+            background-size: contain; opacity: 0.03; pointer-events: none; z-index: 0;
+        }
+        main { position: relative; z-index: 1; }
+        
+        /* Glass Effects */
+        .glass {
+            background: linear-gradient(135deg, rgba(255,255,255,0.10), rgba(255,255,255,0.03));
+            backdrop-filter: blur(20px) saturate(160%); border: 1px solid rgba(255,255,255,0.12);
+        }
+        .glass-strong {
+            background: linear-gradient(135deg, rgba(0,43,92,0.55), rgba(0,12,31,0.65));
+            backdrop-filter: blur(28px) saturate(180%); border: 1px solid rgba(255,215,0,0.18); box-shadow: 0 8px 32px rgba(0,0,0,0.45);
+        }
+        .glass-red { background: linear-gradient(135deg, rgba(220,38,38,0.25), rgba(153,27,27,0.08)); border: 1px solid rgba(220,38,38,0.5); }
+        .glass-blue { background: linear-gradient(135deg, rgba(59,130,246,0.25), rgba(29,78,216,0.08)); border: 1px solid rgba(59,130,246,0.5); }
+        
+        /* Animations */
+        @keyframes fadeInUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+        .animate-fade-in-up { animation: fadeInUp 0.6s ease; }
+        
+        /* Collapsible */
+        .collapsible-header { cursor: pointer; transition: all 0.3s ease; display: flex; justify-content: space-between; align-items: center; }
+        .collapsible-header:hover { background: rgba(255,255,255,0.1); }
+        .collapsible-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
+        .collapsible-content.active { max-height: 2000px; }
+        .chevron { transition: transform 0.3s ease; }
+        .chevron.rotate { transform: rotate(180deg); }
+        
+        /* Bridges Visualizer */
+        .bridge-item {
+            position: relative;
+            padding-left: 60px;
+            margin-bottom: 2rem;
+        }
+        .bridge-marker {
+            position: absolute;
+            left: 0; top: 0;
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: bold; font-size: 0.9rem;
+            box-shadow: 0 0 16px rgba(255,255,255,0.3);
+        }
+        .bridge-1 .bridge-marker { background: var(--blue); color: white; }
+        .bridge-2 .bridge-marker { background: var(--gold); color: black; }
+        .bridge-3 .bridge-marker { background: var(--red); color: white; }
+        .bridge-line {
+            position: absolute;
+            left: 19px; bottom: -2rem;
+            width: 2px; height: calc(100% + 2rem);
+            background: rgba(255,215,0,0.3);
+            display: none;
+        }
+        .bridge-item:last-child .bridge-line { display: none; }
+        
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed; top: 0; right: -100%; width: 80%; max-width: 350px;
+            height: 100vh; background: #0A1628; z-index: 9999;
+            transition: right 0.3s ease; padding: 20px;
+        }
+        .mobile-menu.open { right: 0; }
+        .overlay {
+            position: fixed; inset: 0; background: rgba(0,0,0,.7);
+            z-index: 9998; display: none;
+        }
+        .overlay.show { display: block; }
+        
+        /* Floating CTA */
+        .floating-cta {
+            position: fixed; bottom: 20px; right: 20px; z-index: 9999;
+        }
+        .btn-pulse { animation: pulseGlow 2s infinite; }
+        
+        /* Badge */
+        .badge {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            padding: 0.3rem 0.8rem; border-radius: 9999px; font-size: 0.75rem;
+            font-weight: 700; font-family: 'Montserrat', sans-serif;
+        }
+        .badge-compliant { background: rgba(34,197,94,0.2); color: #34D399; border: 1px solid rgba(34,197,94,0.4); }
+        .badge-critical { background: rgba(220,38,38,0.2); color: #FCA5A5; border: 1px solid rgba(220,38,38,0.4); }
+        
+        /* Stats */
+        .stat-counter { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 2rem; line-height: 1.2; }
+        .stat-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.7); }
+    </style>
+</head>
+<body class="antialiased min-h-screen relative">
+
+<!-- Overlay -->
+<div class="overlay" id="overlay"></div>
+
+<!-- Mobile Menu -->
+<nav class="mobile-menu glass-strong" id="mobileMenu">
+    <div class="flex justify-between items-center mb-6">
+        <img src="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png"
+             alt="Stronghold A3 Logo" class="h-16 w-16 rounded-full object-cover">
+        <button onclick="closeMobileMenu()" class="text-white hover:text-blue-400 transition">
+            <i class="fas fa-times text-2xl"></i>
+        </button>
+    </div>
+    <ul class="space-y-4">
+        <li><a href="#home" onclick="closeMobileMenu()" class="block text-white">Home</a></li>
+        <li><a href="#architecture" onclick="closeMobileMenu()" class="block text-white">3-Bridge System</a></li>
+        <li><a href="#features" onclick="closeMobileMenu()" class="block text-white">Digital Features</a></li>
+        <li><a href="#client-benefits" onclick="closeMobileMenu()" class="block text-white">Client Benefits</a></li>
+        <li><a href="#contact" class="block text-yellow-400 font-bold"><i class="fas fa-phone mr-2"></i>Contact Us</a></li>
+    </ul>
+</nav>
+
+<!-- Header -->
+<header class="sticky top-0 z-50 shadow-lg bg-[#0A1628]/90 backdrop-blur-md border-b border-blue-900/50">
+    <div class="container mx-auto px-4 py-4">
+        <div class="flex justify-between items-center">
+            <a href="#home" class="flex items-center space-x-3">
+                <img src="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png"
+                     alt="Stronghold A3 Logo" class="h-12 w-12 rounded-full object-cover border-2 border-blue-500">
+                <div>
+                    <h1 class="text-xl font-montserrat font-bold tracking-wide text-white">STRONGHOLD A3</h1>
+                    <p class="text-sm text-blue-400">Operational Continuity Hub</p>
+                </div>
+            </a>
+            
+            <nav class="hidden md:flex items-center space-x-2">
+                <button onclick="switchSection('home')" class="px-4 py-2 rounded-lg font-semibold text-white hover:bg-blue-900 transition">Overview</button>
+                <button onclick="switchSection('architecture')" class="px-4 py-2 rounded-lg font-semibold text-white hover:bg-blue-900 transition">Architecture</button>
+                <button onclick="switchSection('features')" class="px-4 py-2 rounded-lg font-semibold text-white hover:bg-blue-900 transition">Features</button>
+                <button onclick="switchSection('client-benefits')" class="px-4 py-2 rounded-lg font-semibold text-white hover:bg-blue-900 transition">Benefits</button>
+            </nav>
+            
+            <button onclick="openMobileMenu()" class="md:hidden text-white">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main class="min-h-screen pb-20">
+    
+    <!-- HERO SECTION -->
+    <section id="home" class="py-16 container mx-auto px-4 animate-fade-in-up">
+        <div class="text-center mb-12">
+            <div class="inline-flex items-center gap-2 glass-gold px-6 py-3 rounded-full mb-6">
+                <i class="fas fa-shield-alt text-[#0A1628]"></i>
+                <span class="text-[#0A1628] font-montserrat font-bold">Armored Domain • Operational Continuity</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold text-yellow-400 font-montserrat mb-4">
+                Unbroken <span class="text-red-400">Resilience</span>
+            </h1>
+            <p class="text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
+                We ensure total operational continuity during typhoons, power outages, and network blackouts. 
+                Our non-linear resilience hub replaces fragile infrastructure with redundant communication chains.
+            </p>
+        </div>
+        
+        <!-- KPI Dashboard -->
+        <div class="grid md:grid-cols-4 gap-4 mb-8">
+            <div class="glass p-4 rounded-xl text-center">
+                <div class="stat-counter text-green-400">100%</div>
+                <p class="stat-label mt-2">Uptime Guarantee</p>
+            </div>
+            <div class="glass p-4 rounded-xl text-center">
+                <div class="stat-counter text-blue-400">3</div>
+                <p class="stat-label mt-2">Redundant Bridges</p>
+            </div>
+            <div class="glass p-4 rounded-xl text-center">
+                <div class="stat-counter text-red-400">&lt;1 sec</div>
+                <p class="stat-label mt-2">Failover Speed</p>
+            </div>
+            <div class="glass p-4 rounded-xl text-center">
+                <div class="stat-counter text-white">∞</div>
+                <p class="stat-label mt-2">Data Retention</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ARCHITECTURE SECTION -->
+    <section id="architecture" class="py-12 container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-yellow-400 font-montserrat mb-8">The 3-Bridge Communication System</h2>
+        
+        <div class="glass-strong p-8 rounded-xl mb-8">
+            <p class="text-white/80 mb-8">A non-linear architectural design engineered to "change lanes" automatically when primary infrastructure fails. If one bridge breaks, two others sustain the connection.</p>
+            
+            <div class="relative pl-4 space-y-0">
+                <!-- Bridge 1 -->
+                <div class="bridge-item bridge-1">
+                    <div class="bridge-marker">1</div>
+                    <div class="bg-blue-900/50 p-6 rounded-lg border-l-4 border-blue-500">
+                        <h3 class="text-xl font-bold text-white mb-2">Bridge 1: Offline-First Cloud App</h3>
+                        <p class="text-white/70 mb-3">Primary high-bandwidth channel. Guards operate in "Offline Mode," caching posts locally. Auto-syncs instantly upon connectivity restoration.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="badge badge-compliant"><i class="fas fa-cloud-arrow-down"></i> Auto-Sync</span>
+                            <span class="badge badge-compliant"><i class="fas fa-check-circle"></i> Full Data</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Bridge 2 -->
+                <div class="bridge-item bridge-2">
+                    <div class="bridge-line"></div>
+                    <div class="bridge-marker">2</div>
+                    <div class="bg-yellow-900/30 p-6 rounded-lg border-l-4 border-yellow-500">
+                        <h3 class="text-xl font-bold text-white mb-2">Bridge 2: SMS Gateway Fallback</h3>
+                        <p class="text-white/70 mb-3">Low-bandwidth emergency relay. When cellular data fails, incident reports convert to coded SMS texts sent directly to the Ops Manager.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="badge badge-compliant"><i class="fas fa-sms"></i> Zero Data Loss</span>
+                            <span class="badge badge-compliant"><i class="fas fa-wifi"></i> Low Bandwidth</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Bridge 3 -->
+                <div class="bridge-item bridge-3">
+                    <div class="bridge-line"></div>
+                    <div class="bridge-marker">3</div>
+                    <div class="bg-red-900/50 p-6 rounded-lg border-l-4 border-red-500">
+                        <h3 class="text-xl font-bold text-white mb-2">Bridge 3: Viber/Radio Mesh</h3>
+                        <p class="text-white/70 mb-3">Zero-data tertiary layer. In total network failure scenarios, local mesh networks maintain command chain triangulation.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="badge badge-critical"><i class="fas fa-tower-broadcast"></i> Radio Mesh</span>
+                            <span class="badge badge-critical"><i class="fas fa-mobile"></i> Instant Voice</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES SECTION -->
+    <section id="features" class="py-12 container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-yellow-400 font-montserrat mb-8">Digital Resilience Tools</h2>
+        
+        <div class="grid md:grid-cols-3 gap-6">
+            <!-- Tech Shield -->
+            <div class="glass p-6 rounded-xl feature-card">
+                <div class="w-14 h-14 rounded-lg bg-blue-500 flex items-center justify-center mb-4">
+                    <i class="fas fa-microchip text-2xl text-white"></i>
+                </div>
+                <h3 class="font-bold text-white text-xl mb-2">Tech Shield Architecture</h3>
+                <p class="text-white/70 text-sm mb-4">Automated lane-changing ensures your site remains monitored regardless of external infrastructure status.</p>
+                <button onclick="toggleCollapsible('tech-details')" class="text-blue-400 hover:text-blue-300 text-sm font-semibold">
+                    Learn More <i class="fas fa-chevron-right"></i>
+                </button>
+                <div id="tech-details" class="collapsible-content mt-2 hidden">
+                    <ul class="list-disc list-inside text-xs text-white/60 space-y-1">
+                        <li>Automatic failover logic</li>
+                        <li>Real-time status monitoring</li>
+                        <li>Multi-protocol support</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Digital Bayanihan -->
+            <div class="glass p-6 rounded-xl feature-card">
+                <div class="w-14 h-14 rounded-lg bg-green-500 flex items-center justify-center mb-4">
+                    <i class="fas fa-users text-2xl text-white"></i>
+                </div>
+                <h3 class="font-bold text-white text-xl mb-2">Digital Bayanihan</h3>
+                <p class="text-white/70 text-sm mb-4">Change management protocol using peer-mentorship ("App Buddies") to ensure 100% tech adoption among veteran staff.</p>
+                <button onclick="toggleCollapsible('bayanihan-details')" class="text-green-400 hover:text-green-300 text-sm font-semibold">
+                    See Program Details <i class="fas fa-chevron-right"></i>
+                </button>
+                <div id="bayanihan-details" class="collapsible-content mt-2 hidden">
+                    <ul class="list-disc list-inside text-xs text-white/60 space-y-1">
+                        <li>Peer-mentorship training</li>
+                        <li>Gamified recognition (PHP 500 vouchers)</li>
+                        <li>Zero-judgment environment</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Offline Data Caching -->
+            <div class="glass p-6 rounded-xl feature-card">
+                <div class="w-14 h-14 rounded-lg bg-yellow-500 flex items-center justify-center mb-4">
+                    <i class="fas fa-save text-2xl text-black"></i>
+                </div>
+                <h3 class="font-bold text-white text-xl mb-2">Offline Data Caching</h3>
+                <p class="text-white/70 text-sm mb-4">Local storage of post orders and incident templates allows guards to log tours in "dead zones."</p>
+                <div class="mt-2">
+                    <span class="badge badge-compliant"><i class="fas fa-clock"></i> Auto-Sync Enabled</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLIENT BENEFITS SECTION -->
+    <section id="client-benefits" class="py-12 container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-yellow-400 font-montserrat mb-8">Transparency & Assurance</h2>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+            <!-- White Label Portal -->
+            <div class="glass p-6 rounded-xl">
+                <div class="flex items-start gap-4 mb-4">
+                    <div class="w-12 h-12 rounded-lg bg-blue-500 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-chart-line text-xl text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white">White-Label Client Portal</h3>
+                        <p class="text-white/70 text-sm">Branded dashboard where clients view live guard locations, GPS tracking, and real-time activity logs.</p>
+                    </div>
+                </div>
+                <div class="bg-black/20 p-4 rounded-lg border border-blue-500/30">
+                    <div class="flex items-center gap-3 mb-2">
+                        <i class="fas fa-map-marker-alt text-blue-400"></i>
+                        <span class="text-sm font-semibold">Live GPS Tracking</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i class="fas fa-video text-blue-400"></i>
+                        <span class="text-sm font-semibold">Real-Time Activity Logs</span>
+                    </div>
+                </div>
+                <a href="./capability.html" class="block text-center mt-4 text-blue-400 hover:text-blue-300 font-semibold text-sm">View Demo</a>
+            </div>
+            
+            <!-- DRRM Tagging -->
+            <div class="glass p-6 rounded-xl">
+                <div class="flex items-start gap-4 mb-4">
+                    <div class="w-12 h-12 rounded-lg bg-green-500 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-exclamation-triangle text-xl text-black"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white">DRRM/Emergency Tagging</h3>
+                        <p class="text-white/70 text-sm">Tag specific incidents as "Disaster Response" or "Evacuation Protocol" for documented RA 10121 compliance.</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 mt-4">
+                    <div class="glass p-3 rounded-lg flex-1 text-center">
+                        <i class="fas fa-file-contract text-2xl text-green-400 mb-2"></i>
+                        <div class="text-xs font-bold text-white">Compliance Proof</div>
+                    </div>
+                    <div class="glass p-3 rounded-lg flex-1 text-center">
+                        <i class="fas fa-history text-2xl text-blue-400 mb-2"></i>
+                        <div class="text-xs font-bold text-white">Full Audit Trail</div>
+                    </div>
+                </div>
+                <a href="./priority-protocols.html" class="block text-center mt-4 text-green-400 hover:text-green-300 font-semibold text-sm">View Protocols</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="py-16 container mx-auto px-4 mt-12">
+        <div class="glass-strong p-8 rounded-xl text-center">
+            <div class="inline-flex items-center gap-2 glass-gold px-6 py-3 rounded-full mb-6">
+                <i class="fas fa-shield-alt text-[#0A1628]"></i>
+                <span class="text-[#0A1628] font-montserrat font-bold">Zero-Liability Assurance</span>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-yellow-400 font-montserrat mb-4">Is Your Current Provider Typhoon-Proof?</h2>
+            <p class="text-xl text-white/80 max-w-3xl mx-auto mb-8">
+                Don't wait for infrastructure collapse to discover vulnerabilities. Get your current provider evaluated today.
+            </p>
+            
+            <div class="grid md:grid-cols-3 gap-4 max-w-4xl mx-auto">
+                <a href="./security-assessment.html" class="btn-pulse glass p-6 rounded-lg text-center border-2 border-blue-500 hover:bg-blue-900 transition">
+                    <i class="fas fa-clipboard-check text-3xl text-blue-400 mb-3"></i>
+                    <h4 class="font-bold text-white">Free Assessment</h4>
+                    <p class="text-sm text-white/70">Evaluate continuity plan</p>
+                </a>
+                <a href="./operational-workflows.html" class="glass p-6 rounded-lg text-center border-2 border-green-500 hover:bg-green-900 transition">
+                    <i class="fas fa-cogs text-3xl text-green-400 mb-3"></i>
+                    <h4 class="font-bold text-white">Our Workflows</h4>
+                    <p class="text-sm text-white/70">See crisis protocols</p>
+                </a>
+                <a href="#" class="glass p-6 rounded-lg text-center border-2 border-yellow-500 hover:bg-yellow-900 transition">
+                    <i class="fas fa-phone text-3xl text-yellow-400 mb-3"></i>
+                    <h4 class="font-bold text-white">Contact Support</h4>
+                    <p class="text-sm text-white/70">0917 137 0112</p>
+                </a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="bg-[#0A1628] border-t border-blue-900 py-8">
+    <div class="container mx-auto px-4 text-center">
+        <p class="text-sm text-gray-500">© 2026 Stronghold A3 Security Agency. All Rights Reserved.</p>
+        <p class="text-xs text-gray-600 mt-1">DOLE DO-174 Compliant | Licensed Private Security Agency</p>
+    </div>
+</footer>
+
+<!-- Floating CTA -->
+<div class="floating-cta">
+    <a href="#contact" class="btn-pulse bg-blue-500 text-white rounded-full w-16 h-16 flex items-center justify-center shadow-lg">
+        <i class="fas fa-phone text-2xl"></i>
+    </a>
+</div>
+
+<script>
+    // ===== NAVIGATION =====
+    function openMobileMenu() { document.getElementById('mobileMenu').classList.add('open'); document.getElementById('overlay').classList.add('show'); }
+    function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); document.getElementById('overlay').classList.remove('show'); }
+    document.getElementById('overlay').addEventListener('click', closeMobileMenu);
+    
+    // ===== SECTION SWITCHING =====
+    function switchSection(id) {
+        window.location.href = '#' + id;
+        closeMobileMenu();
+    }
+    
+    // ===== COLLAPSIBLE SECTIONS =====
+    function toggleCollapsible(id) {
+        const content = document.getElementById(id);
+        content.classList.toggle('hidden');
+    }
+    
+    console.log('%cOperational Continuity v1.0 — Loaded', 'color:#FFD700;font-size:16px;font-weight:bold;');
+</script>
+</body>
+</html>
