@@ -1,20 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- SEO & Meta -->
     <title>Stronghold A3 | Zero-Liability Security Partner Eastern Visayas</title>
     <meta name="description" content="Stronghold A3 anchors clients in legitimacy (DOLE DO-174), armors them with resilience (BCP & Tech), and assures zero liability. Trusted by 80+ Eastern Visayas firms.">
     <meta name="keywords" content="security agency Tacloban, zero-liability security, anchoring compliance, armored resilience security, assured client protection, Eastern Visayas security">
     <meta name="author" content="Antonie M. Silva, CEO Stronghold A3 Security Agency">
     <meta name="theme-color" content="#0A1628">
+    <link rel="canonical" href="https://strongholda3.com/">
+    <meta name="robots" content="index, follow">
+    
+    <!-- PWA Manifest Placeholder (for future implementation) -->
+    <link rel="manifest" href="manifest.json">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Stronghold A3 | Premier Security Agency Eastern Visayas">
+    <meta property="og:title" content="Stronghold A3 | Premier Security Agency Eastern Visayas - Zero-Liability Partner">
     <meta property="og:description" content="The only security partner Anchored in Legitimacy, Armored by Resilience, and Assured by Zero-Liability.">
     <meta property="og:image" content="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png">
     <meta property="og:url" content="https://strongholda3.com">
+    <meta property="og:site_name" content="Stronghold A3 Security Agency">
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png">
@@ -36,7 +44,7 @@
                 extend: {
                     fontFamily: {
                         montserrat: ['Montserrat', 'sans-serif'],
-                        poppins: ['Poppins', 'sans-serif'],
+                        poppins: ['Poppins', sans-serif],
                         'roboto-condensed': ['Roboto Condensed', 'sans-serif'],
                         mono: ['JetBrains Mono', 'monospace'],
                     },
@@ -77,7 +85,8 @@
         body::before {
             content: '';
             position: fixed;
-            top: 50%; left: 50%; transform: translate(-50%, -50%);
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
             width: min(80vw, 80vh); height: min(80vw, 80vh);
             background-image: url('https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png');
             background-size: contain; background-repeat: no-repeat; background-position: center;
@@ -282,20 +291,17 @@
 <!-- Mobile Menu -->
 <nav class="mobile-menu glass-strong" id="mobileMenu">
     <div class="flex justify-between items-center mb-6">
-        <img src="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png"
-             alt="Stronghold A3 Logo" class="h-16 w-16 rounded-full object-cover">
-        <button onclick="closeMobileMenu()" class="text-white hover:text-blue-400 transition">
-            <i class="fas fa-times text-2xl"></i>
-        </button>
+        <img src="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png" alt="Stronghold A3 Logo" class="h-16 w-16 rounded-full object-cover">
+        <button onclick="closeMobileMenu()" class="text-white hover:text-blue-400 transition"><i class="fas fa-times text-2xl"></i></button>
     </div>
     <ul class="space-y-4">
-        <li><a href="#home" onclick="closeMobileMenu()" class="text-lg block text-white hover:text-blue-400 transition">Home</a></li>
-        <li><a href="#anchored" onclick="closeMobileMenu()" class="text-lg block text-white hover:text-blue-400 transition">Anchored</a></li>
-        <li><a href="#armored" onclick="closeMobileMenu()" class="text-lg block text-white hover:text-blue-400 transition">Armored</a></li>
-        <li><a href="#assured" onclick="closeMobileMenu()" class="text-lg block text-white hover:text-blue-400 transition">Assured</a></li>
-        <li><a href="#strategy" onclick="closeMobileMenu()" class="text-lg block text-white hover:text-blue-400 transition">Strategy Map</a></li>
-        <li><a href="#contact" onclick="closeMobileMenu()" class="text-lg block text-white hover:text-blue-400 transition">Contact Us</a></li>
-        <li><a href="https://resilient-secure-mobile.deploypad.app/" target="_blank" class="text-lg block text-yellow-400 font-bold">SMS App</a></li>
+        <li><a href="#home" onclick="closeMobileMenu()" class="block text-white hover:text-blue-400 transition">Home</a></li>
+        <li><a href="#anchored" onclick="closeMobileMenu()" class="block text-white hover:text-blue-400 transition">Anchored</a></li>
+        <li><a href="#armored" onclick="closeMobileMenu()" class="block text-white hover:text-blue-400 transition">Armored</a></li>
+        <li><a href="#assured" onclick="closeMobileMenu()" class="block text-white hover:text-blue-400 transition">Assured</a></li>
+        <li><a href="#strategy" onclick="closeMobileMenu()" class="block text-white hover:text-blue-400 transition">Strategy Map</a></li>
+        <li><a href="#contact" onclick="closeMobileMenu()" class="block text-white hover:text-blue-400 transition">Contact Us</a></li>
+        <li><a href="https://stronghold-sms.bolt.host/" target="_blank" class="block text-yellow-400 font-bold"><i class="fas fa-mobile-alt mr-2"></i>SMS Portal</a></li>
     </ul>
     <div class="mt-6 pt-6 border-t border-yellow-900/30">
         <p class="text-sm text-gray-300">© 2026 Stronghold A3 Security Agency</p>
@@ -308,9 +314,7 @@
     <div class="container mx-auto px-4 py-4">
         <div class="flex justify-between items-center">
             <a href="#home" class="flex items-center space-x-3">
-                <img src="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png"
-                     alt="Stronghold A3 Logo"
-                     class="h-12 w-12 rounded-full object-cover border-2 border-blue-500">
+                <img src="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png" alt="Stronghold A3 Logo" class="h-12 w-12 rounded-full object-cover border-2 border-blue-500">
                 <div class="hidden md:block">
                     <h1 class="text-xl font-montserrat font-bold tracking-wide text-white">STRONGHOLD A3</h1>
                     <p class="text-sm text-blue-400">Zero-Liability Security Partner</p>
@@ -326,7 +330,7 @@
                     </button>
                     <div class="a3-dropdown-menu">
                         <div class="a3-dropdown-header">Stability & Legitimacy</div>
-                        <a href="./policies.html" class="a3-dropdown-item"><i class="fas fa-gavel"></i> Legal Compliance</a>
+                        <a href="./compliance.html" class="a3-dropdown-item"><i class="fas fa-gavel"></i> Compliance</a>
                         <a href="./audit-readiness.html" class="a3-dropdown-item"><i class="fas fa-file-alt"></i> Audit Readiness</a>
                         <a href="./trust-signals.html" class="a3-dropdown-item"><i class="fas fa-handshake"></i> Trust Signals</a>
                     </div>
@@ -339,9 +343,9 @@
                     </button>
                     <div class="a3-dropdown-menu">
                         <div class="a3-dropdown-header">Protection & Resilience</div>
-                        <a href="./security-assessment.html" class="a3-dropdown-item"><i class="fas fa-bolt"></i> Operational Continuity</a>
-                        <a href="./digital-bayanihan.html" class="a3-dropdown-item"><i class="fas fa-users"></i> Guard Empowerment</a>
-                        <a href="./operational-workflows.html" class="a3-dropdown-item"><i class="fas fa-microchip"></i> Tech Shield</a>
+                        <a href="./operational-continuity.html" class="a3-dropdown-item"><i class="fas fa-bolt"></i> Continuity</a>
+                        <a href="./guard-empowerment.html" class="a3-dropdown-item"><i class="fas fa-users"></i> Guard Welfare</a>
+                        <a href="./tech-shield.html" class="a3-dropdown-item"><i class="fas fa-microchip"></i> Tech Shield</a>
                     </div>
                 </div>
 
@@ -352,13 +356,13 @@
                     </button>
                     <div class="a3-dropdown-menu">
                         <div class="a3-dropdown-header">Confidence & Peace of Mind</div>
-                        <a href="./capability.html" class="a3-dropdown-item"><i class="fas fa-shield-alt"></i> Zero-Liability Promise</a>
-                        <a href="./security-assessment.html" class="a3-dropdown-item"><i class="fas fa-chart-line"></i> Customer Transparency</a>
-                        <a href="./priority-protocols.html" class="a3-dropdown-item"><i class="fas fa-rocket"></i> Growth & Partnership</a>
+                        <a href="./zero-liability.html" class="a3-dropdown-item"><i class="fas fa-shield-alt"></i> Zero Liability</a>
+                        <a href="./customer-transparency.html" class="a3-dropdown-item"><i class="fas fa-chart-line"></i> Transparency</a>
+                        <a href="./growth-partnerships.html" class="a3-dropdown-item"><i class="fas fa-rocket"></i> Partnership</a>
                     </div>
                 </div>
 
-                <a href="https://resilient-secure-mobile.deploypad.app/" target="_blank" class="bg-yellow-400 text-[#0A1628] px-4 py-2 rounded-lg font-bold hover:bg-yellow-300 transition ml-4">
+                <a href="https://stronghold-sms.bolt.host/" target="_blank" class="bg-yellow-400 text-[#0A1628] px-4 py-2 rounded-lg font-bold hover:bg-yellow-300 transition ml-4">
                     SMS App
                 </a>
             </nav>
@@ -411,8 +415,8 @@
                     </div>
                 </div>
                 <div class="pillar-cta">
-                    <a href="./audit-readiness.html" class="btn btn-primary"><i class="fas fa-info-circle"></i> VIEW AUDIT STANDARDS</a>
-                    <a href="mailto:partnership@stronghold-a3.com" class="btn btn-gold"><i class="fas fa-handshake"></i> VERIFY LICENSE</a>
+                    <a href="./compliance.html" class="btn btn-primary"><i class="fas fa-info-circle"></i> VIEW COMPLIANCE</a>
+                    <a href="mailto:partnership@stronghold-a3.com" class="btn btn-gold"><i class="fas fa-handshake"></i> PARTNER WITH US</a>
                 </div>
             </div>
             <div class="pillar-card-section glass-strong anchored">
@@ -421,7 +425,7 @@
                 <p>Secure cloud repository ensuring 100% availability during regulatory scrutiny. Replaces fragile paper logs with encrypted digital access.</p>
                 <div class="metric-box mt-4 glass"><div class="metric-value metric-p2">&lt;15 min</div><div class="metric-label">Document Retrieval Target</div></div>
                 <div class="pillar-cta mt-6">
-                    <a href="./audit-readiness.html" class="btn btn-primary"><i class="fas fa-folder-open"></i> HOW IT WORKS</a>
+                    <a href="./audit-readiness.html" class="btn btn-primary"><i class="fas fa-folder-open"></i> AUDIT READINESS</a>
                     <a href="./policies.html" class="btn btn-gold"><i class="fas fa-file-contract"></i> POLICIES</a>
                 </div>
             </div>
@@ -435,7 +439,7 @@
                 </div>
                 <div class="pillar-cta mt-6">
                     <a href="./trust-signals.html" class="btn btn-primary"><i class="fas fa-star"></i> CLIENT PROOF</a>
-                    <a href="mailto:partnership@stronghold-a3.com" class="btn btn-gold"><i class="fas fa-phone"></i> PARTNER WITH US</a>
+                    <a href="#contact" class="btn btn-gold"><i class="fas fa-phone"></i> CONTACT US</a>
                 </div>
             </div>
         </div>
@@ -470,7 +474,7 @@
                     </ul>
                 </div>
                 <div class="pillar-cta mt-6">
-                    <a href="./operational-workflows.html" class="btn btn-primary"><i class="fas fa-network-wired"></i> VIEW RESILIENCE PLAN</a>
+                    <a href="./operational-continuity.html" class="btn btn-primary"><i class="fas fa-network-wired"></i> RESILIENCE PLAN</a>
                     <a href="./security-assessment.html" class="btn btn-gold"><i class="fas fa-clipboard-check"></i> ASSESS VULNERABILITY</a>
                 </div>
             </div>
@@ -481,8 +485,8 @@
                 <div class="progress-bar-wrap mt-4"><div class="progress-bar bg-green-500" style="width: 95%"></div></div>
                 <div class="flex justify-between text-xs text-white/60 mt-1"><span>Talent Stability</span><span>&gt;95% Retention</span></div>
                 <div class="pillar-cta mt-6">
-                    <a href="./digital-bayanihan.html" class="btn btn-primary"><i class="fas fa-users"></i> GUARD WELFARE PROGRAM</a>
-                    <a href="./security-assessment.html" class="btn btn-gold"><i class="fas fa-user-shield"></i> EXPLORE SERVICES</a>
+                    <a href="./guard-empowerment.html" class="btn btn-primary"><i class="fas fa-users"></i> GUARD WELFARE</a>
+                    <a href="#contact" class="btn btn-gold"><i class="fas fa-user-shield"></i> EXPLORE SERVICES</a>
                 </div>
             </div>
             <div class="pillar-card-section glass-strong armored">
@@ -496,7 +500,7 @@
                     </div>
                 </div>
                 <div class="pillar-cta mt-6">
-                    <a href="./sms-user-manual.html" class="btn btn-primary"><i class="fas fa-book"></i> USER MANUAL</a>
+                    <a href="./tech-shield.html" class="btn btn-primary"><i class="fas fa-book"></i> LEARN MORE</a>
                     <a href="#" class="btn btn-gold"><i class="fas fa-external-link-alt"></i> LOGIN TO PORTAL</a>
                 </div>
             </div>
@@ -524,7 +528,7 @@
                 <h3>Zero-Liability Promise</h3>
                 <p>Through strict compliance and dynamic inflation-adjustment clauses, we protect your margins and legal standing completely.</p>
                 <div class="pillar-cta">
-                    <a href="./policies.html" class="btn btn-primary"><i class="fas fa-file-contract"></i> VIEW CONTRACT TERMS</a>
+                    <a href="./zero-liability.html" class="btn btn-primary"><i class="fas fa-file-contract"></i> OUR PROMISE</a>
                     <a href="#contact" class="btn btn-gold"><i class="fas fa-envelope"></i> REQUEST QUOTE</a>
                 </div>
             </div>
@@ -537,7 +541,7 @@
                     <p class="text-xs text-white/60">Generated daily, emailed automatically every morning.</p>
                 </div>
                 <div class="pillar-cta mt-6">
-                    <a href="./security-assessment.html" class="btn btn-primary"><i class="fas fa-eye"></i> DEMO ACCESS</a>
+                    <a href="./customer-transparency.html" class="btn btn-primary"><i class="fas fa-eye"></i> DEMO ACCESS</a>
                     <a href="#contact" class="btn btn-gold"><i class="fas fa-comments"></i> CHAT SUPPORT</a>
                 </div>
             </div>
@@ -546,7 +550,7 @@
                 <h3>Growth Partnerships</h3>
                 <p>Hybrid Security Leapfrog combines physical guarding with remote monitoring, increasing coverage without expanding costs linearly.</p>
                 <div class="pillar-cta mt-6">
-                    <a href="./priority-protocols.html" class="btn btn-primary"><i class="fas fa-bullhorn"></i> GROWTH PLANS</a>
+                    <a href="./growth-partnerships.html" class="btn btn-primary"><i class="fas fa-bullhorn"></i> GROWTH PLANS</a>
                     <a href="#contact" class="btn btn-gold"><i class="fas fa-handshake"></i> JOIN PARTNERSHIP</a>
                 </div>
             </div>
@@ -565,8 +569,9 @@
                 <i class="fas fa-anchor text-blue-400"></i> Anchored (Compliance)
             </h4>
             <ul class="space-y-2 text-sm">
-                <li><a href="./policies.html" class="hover:text-blue-400 transition"><i class="fas fa-file-contract mr-2"></i>Company Policies</a></li>
-                <li><a href="./privacy-policy.html" class="hover:text-blue-400 transition"><i class="fas fa-shield-alt mr-2"></i>Privacy Policy</a></li>
+                <li><a href="./compliance.html" class="hover:text-blue-400 transition"><i class="fas fa-gavel mr-2"></i>Legal Compliance</a></li>
+                <li><a href="./audit-readiness.html" class="hover:text-blue-400 transition"><i class="fas fa-file-alt mr-2"></i>Audit Readiness</a></li>
+                <li><a href="./trust-signals.html" class="hover:text-blue-400 transition"><i class="fas fa-handshake mr-2"></i>Trust Signals</a></li>
                 <li><a href="./bcp.html" class="hover:text-blue-400 transition"><i class="fas fa-shield-alt mr-2"></i>1-Day BCPs</a></li>
             </ul>
         </div>
@@ -580,6 +585,7 @@
                 <li><a href="./security-assessment.html" class="hover:text-red-400 transition"><i class="fas fa-clipboard-check mr-2"></i>Free Assessment</a></li>
                 <li><a href="./operational-workflows.html" class="hover:text-red-400 transition"><i class="fas fa-cogs mr-2"></i>Workflows</a></li>
                 <li><a href="./priority-protocols.html" class="hover:text-red-400 transition"><i class="fas fa-exclamation-triangle mr-2"></i>Priority Protocols</a></li>
+                <li><a href="./raci-protocol.html" class="hover:text-red-400 transition"><i class="fas fa-sitemap mr-2"></i>RACI Protocols</a></li>
             </ul>
         </div>
 
@@ -592,6 +598,7 @@
                 <li><a href="./capability.html" class="hover:text-green-400 transition"><i class="fas fa-star mr-2"></i>Service Capabilities</a></li>
                 <li><a href="./digital-bayanihan.html" class="hover:text-green-400 transition"><i class="fas fa-users mr-2"></i>Digital Bayanihan</a></li>
                 <li><a href="./sms-portal.html" class="hover:text-green-400 transition"><i class="fas fa-mobile-alt mr-2"></i>SMS Tools</a></li>
+                <li><a href="./security-assessment.html" class="hover:text-green-400 transition"><i class="fas fa-phone mr-2"></i>Contact Us</a></li>
             </ul>
         </div>
     </div>
@@ -672,4 +679,460 @@
                         <thead><tr><th>Strategic Objective</th><th>KPI</th><th>Baseline</th><th>Target</th><th>Phase</th><th>Owner</th></tr></thead>
                         <tbody>
                             <tr><td>Eliminate Operational Bottlenecks</td><td>Admin Overhead Reduction</td><td>Heavy manual work</td><td>40% reduction</td><td>Phase 2</td><td>Admin/Ops</td></tr>
-                            <tr><td>Ensure Compliance & Audit Readiness</td><td>Document Retrieval Speed</td><td>Manual files</td><td>&lt;15 minutes</td>
+                            <tr><td>Ensure Compliance & Audit Readiness</td><td>Document Retrieval Speed</td><td>Manual files</td><td>&lt;15 minutes</td><td>Phase 1</td><td>Admin</td></tr>
+                            <tr><td>Guarantee Operational Continuity</td><td>BCP Execution Fidelity</td><td>Total paralysis</td><td>100% adherence</td><td>Phase 1</td><td>Ops Manager</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="bsc-perspective perspective-learning">
+                <div class="bsc-header" onclick="toggleBSC('bsc-learning', this)">
+                    <h3><i class="fas fa-graduation-cap mr-2 text-yellow-400"></i>LEARNING & GROWTH PERSPECTIVE</h3>
+                    <i class="fas fa-chevron-down chevron"></i>
+                </div>
+                <div id="bsc-learning" class="bsc-content">
+                    <table class="bsc-table">
+                        <thead><tr><th>Strategic Objective</th><th>KPI</th><th>Baseline</th><th>Target</th><th>Phase</th><th>Owner</th></tr></thead>
+                        <tbody>
+                            <tr><td>Build Resilient, Highly Retained Workforce</td><td>Guard Attrition Rate</td><td>15–25% industry avg</td><td>&lt;5% annually</td><td>Phase 3</td><td>Admin/Ops</td></tr>
+                            <tr><td>Foster Digital Adoption & Capability</td><td>Tech Adoption Compliance</td><td>Tech anxiety</td><td>100% utilization</td><td>Phase 2</td><td>Ops/Supervisor</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Financial ROI Content -->
+        <div id="content-financial" class="strategy-content hidden">
+            <h2 class="text-3xl font-bold text-yellow-400 mb-6 font-montserrat">Financial Performance & ROI</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                <div class="glass-strong p-6 rounded-xl stat-card">
+                    <div class="text-sm text-white mb-2">Total Year 1 Investment</div>
+                    <div class="text-2xl font-bold text-white font-montserrat">PHP 1,065,000</div>
+                    <div class="mt-2 text-xs text-gray-400">Low CAPEX Model</div>
+                </div>
+                <div class="glass-strong p-6 rounded-xl stat-card border-t-4 border-yellow-400">
+                    <div class="text-sm text-white mb-2">Projected Year 1 Benefit</div>
+                    <div class="text-2xl font-bold text-yellow-400 font-montserrat">PHP 1,600,000</div>
+                    <div class="mt-2 text-xs text-gray-400">Revenue + Savings</div>
+                </div>
+                <div class="glass-strong p-6 rounded-xl stat-card border-t-4 border-blue-400">
+                    <div class="text-sm text-white mb-2">Net Year 1 Gain</div>
+                    <div class="text-2xl font-bold text-white font-montserrat">PHP 565,000</div>
+                    <div class="mt-2 text-xs text-gray-400">Operating Profit</div>
+                </div>
+                <div class="glass-strong p-6 rounded-xl stat-card border-t-4 border-green-500">
+                    <div class="text-sm text-white mb-2">Year 1 ROI</div>
+                    <div class="text-2xl font-bold text-green-400 font-montserrat">54.5%</div>
+                    <div class="mt-2 text-xs text-gray-400">Rapid Payback Period</div>
+                </div>
+            </div>
+            <div class="glass p-6 rounded-xl">
+                <h3 class="text-xl font-bold text-white mb-4 font-montserrat">Value Drivers Analysis</h3>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded bg-blue-900 flex items-center justify-center flex-shrink-0"><i class="fas fa-clock text-blue-400"></i></div>
+                        <div><h4 class="font-bold text-white font-montserrat">Admin Efficiency</h4><p class="text-sm text-white mt-1">Reclaims 40% of administrative staff time through automation tools and Cloud SMS adoption.</p></div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded bg-green-900 flex items-center justify-center flex-shrink-0"><i class="fas fa-chart-line text-green-400"></i></div>
+                        <div><h4 class="font-bold text-white font-montserrat">Revenue Generation</h4><p class="text-sm text-white mt-1">Estimated PHP 50,000 net monthly margin per new hybrid contract (Physical Guard + Tech).</p></div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded bg-red-900 flex items-center justify-center flex-shrink-0"><i class="fas fa-filter text-red-400"></i></div>
+                        <div><h4 class="font-bold text-white font-montserrat">Leakage Prevention</h4><p class="text-sm text-white mt-1">Recovery of dropped high-value leads via strict 24-hour RACI follow-up mandate.</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stronghold Sequence Content -->
+        <div id="content-sequence" class="strategy-content hidden">
+            <div class="text-center mb-8">
+                <div class="inline-flex items-center gap-2 glass-gold px-4 py-2 rounded-full mb-4">
+                    <i class="fas fa-chess-rook text-[#0A1628]"></i>
+                    <span class="text-[#0A1628] font-montserrat font-bold text-sm">CHAPTER III · THE STRATEGIC SOLUTION</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold text-white font-montserrat mb-3">The Stronghold <span class="text-yellow-400">Sequence</span></h2>
+                <p class="text-white/70 max-w-2xl mx-auto text-sm leading-relaxed">Four sequentially-ordered strategic options designed to reengineer Region VIII's premier 'Zero-Liability' security partner. We cannot scale a fractured system — each phase must be completed before the next begins.</p>
+            </div>
+
+            <!-- Visual Flow Connector -->
+            <div class="glass rounded-2xl p-6 mb-8">
+                <p class="text-center text-xs font-bold text-white/50 uppercase tracking-widest mb-4">Execution Sequence — Click a phase to explore</p>
+                <div class="sequence-flow">
+                    <div class="flow-step" onclick="selectPhase(1)">
+                        <div class="flow-circle fc-1">01</div>
+                        <div class="flow-step-label">Crisis-Proofing</div>
+                        <div class="flow-step-sub">Wks 1–4</div>
+                    </div>
+                    <div class="flow-arrow"><i class="fas fa-chevron-right"></i></div>
+                    <div class="flow-step" onclick="selectPhase(2)">
+                        <div class="flow-circle fc-2">02</div>
+                        <div class="flow-step-label">Digital Transform</div>
+                        <div class="flow-step-sub">Mo 2–4</div>
+                    </div>
+                    <div class="flow-arrow"><i class="fas fa-chevron-right"></i></div>
+                    <div class="flow-step" onclick="selectPhase(3)">
+                        <div class="flow-circle fc-3">03</div>
+                        <div class="flow-step-label">Talent Fortress</div>
+                        <div class="flow-step-sub">Mo 5–7</div>
+                    </div>
+                    <div class="flow-arrow"><i class="fas fa-chevron-right"></i></div>
+                    <div class="flow-step" onclick="selectPhase(4)">
+                        <div class="flow-circle fc-4">04</div>
+                        <div class="flow-step-label">Market Capture</div>
+                        <div class="flow-step-sub">Mo 8–12</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phase Tabs -->
+            <div class="phase-tabs">
+                <button class="phase-tab-btn active-p1" id="ptab-1" onclick="selectPhase(1)">
+                    <span class="phase-num">1</span>
+                    <span>Crisis-Proofing</span>
+                </button>
+                <button class="phase-tab-btn" id="ptab-2" onclick="selectPhase(2)">
+                    <span class="phase-num">2</span>
+                    <span>Digital Transformation</span>
+                </button>
+                <button class="phase-tab-btn" id="ptab-3" onclick="selectPhase(3)">
+                    <span class="phase-num">3</span>
+                    <span>Talent Fortress</span>
+                </button>
+                <button class="phase-tab-btn" id="ptab-4" onclick="selectPhase(4)">
+                    <span class="phase-num">4</span>
+                    <span>Market Capture</span>
+                </button>
+            </div>
+
+            <!-- Phase Panels (Simplified for brevity, but structure is complete) -->
+            <div class="phase-panel active" id="phase-panel-1">
+                <div class="phase-card">
+                    <div class="phase-header phase-header-p1">
+                        <div class="phase-badge badge-p1"><span style="font-size:1.2rem">🛡️</span><span>PHASE<br>ONE</span></div>
+                        <div class="phase-header-text">
+                            <div class="phase-label">Option 4 · Ranked #3 (Score: 8.35/10)</div>
+                            <div class="phase-title">Crisis-Proofing</div>
+                            <div class="phase-subtitle">Secure operations against disasters and audits by building a reliable digital continuity system.</div>
+                            <div style="display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:0.75rem;">
+                                <div class="phase-timeline"><i class="fas fa-clock"></i> Weeks 1–4</div>
+                                <div class="score-badge score-p1"><i class="fas fa-trophy"></i> Ranked #3 Overall</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="phase-body">
+                        <div class="phase-thesis thesis-p1">"Establish an immediate, non-negotiable baseline of business continuity and digital record-keeping to ensure that disruptions or sudden audit does not result in operational paralysis."</div>
+                        <div class="metrics-row">
+                            <div class="metric-box"><div class="metric-value metric-p1">PHP 175K</div><div class="metric-label">Investment</div></div>
+                            <div class="metric-box"><div class="metric-value metric-p1">&lt;15 min</div><div class="metric-label">Doc Retrieval Target</div></div>
+                            <div class="metric-box"><div class="metric-value metric-p1">100%</div><div class="metric-label">Audit Readiness</div></div>
+                        </div>
+                        <h4 class="text-sm font-bold text-white/60 uppercase tracking-widest mb-3 font-montserrat">Strategic Pillars</h4>
+                        <div class="pillars-grid">
+                            <div class="pillar-card"><div class="pillar-icon pillar-icon-p1"><i class="fas fa-cloud-upload-alt"></i></div><div class="pillar-name">Digital Document Vault</div><div class="pillar-desc">Securely store all licenses, registrations, and contracts in the cloud.</div></div>
+                            <div class="pillar-card"><div class="pillar-icon pillar-icon-p1"><i class="fas fa-sitemap"></i></div><div class="pillar-name">3-Bridge BCP Protocol</div><div class="pillar-desc">A simple 1-page "Red Alert" checklist covering 5 scenarios.</div></div>
+                            <div class="pillar-card"><div class="pillar-icon pillar-icon-p1"><i class="fas fa-clipboard-check"></i></div><div class="pillar-name">Mock Audit Readiness</div><div class="pillar-desc">Quarterly internal "stress tests" mimicking a DOLE or PNP audit.</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="phase-panel" id="phase-panel-2">
+                <div class="phase-card">
+                    <div class="phase-header phase-header-p2">
+                        <div class="phase-badge badge-p2"><span style="font-size:1.2rem">⚙️</span><span>PHASE<br>TWO</span></div>
+                        <div class="phase-header-text">
+                            <div class="phase-label">Option 2 · Ranked #1 (Score: 8.95/10)</div>
+                            <div class="phase-title">Digital Transformation</div>
+                            <div class="phase-subtitle">Eliminate confusion and manual bottlenecks by adopting cloud-based systems and clear SOPs.</div>
+                            <div style="display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:0.75rem;">
+                                <div class="phase-timeline"><i class="fas fa-clock"></i> Months 2–4</div>
+                                <div class="score-badge score-p2"><i class="fas fa-trophy"></i> Ranked #1 Overall</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="phase-body">
+                        <div class="phase-thesis thesis-p2">"Stronghold A3 will eliminate structural role ambiguity and analog operational bottlenecks by adopting cloud-based Security Management Systems and formalizing SOPs."</div>
+                        <div class="metrics-row">
+                            <div class="metric-box"><div class="metric-value metric-p2">PHP 890K</div><div class="metric-label">Investment</div></div>
+                            <div class="metric-box"><div class="metric-value metric-p2">40%</div><div class="metric-label">Admin Overhead Cut</div></div>
+                            <div class="metric-box"><div class="metric-value metric-p2">100%</div><div class="metric-label">Lead Drop Elimination</div></div>
+                        </div>
+                        <h4 class="text-sm font-bold text-white/60 uppercase tracking-widest mb-3 font-montserrat">Strategic Pillars</h4>
+                        <div class="pillars-grid">
+                            <div class="pillar-card"><div class="pillar-icon pillar-icon-p2"><i class="fas fa-tasks"></i></div><div class="pillar-name">RACI Protocol Implementation</div><div class="pillar-desc">Strictly define who is Responsible, Accountable, Consulted, and Informed.</div></div>
+                            <div class="pillar-card"><div class="pillar-icon pillar-icon-p2"><i class="fas fa-mobile-alt"></i></div><div class="pillar-name">Offline-First Cloud SMS</div><div class="pillar-desc">Deploy a 3-Bridge Architecture for zero-data dead zones.</div></div>
+                            <div class="pillar-card"><div class="pillar-icon pillar-icon-p2"><i class="fas fa-calculator"></i></div><div class="pillar-name">Automated HR & Payroll</div><div class="pillar-desc">Cloud HR software for flawless DOLE-compliant wage computation.</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="phase-panel" id="phase-panel-3">
+                <div class="phase-card">
+                    <div class="phase-header phase-header-p3">
+                        <div class="phase-badge badge-p3"><span style="font-size:1.2rem">🏰</span><span>PHASE<br>THREE</span></div>
+                        <div class="phase-header-text">
+                            <div class="phase-label">Option 3 · Ranked #2 (Score: 8.70/10)</div>
+                            <div class="phase-title">Talent Fortress Strategy</div>
+                            <div class="phase-subtitle">Protect profit margins and retain top talent through fair wages, flexible pricing, and local resilience.</div>
+                            <div style="display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:0.75rem;">
+                                <div class="phase-timeline"><i class="fas fa-clock"></i> Months 5–7</div>
+                                <div class="score-badge score-p3"><i class="fas fa-trophy"></i> Ranked #2 Overall</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="phase-body">
+                        <div class="phase-thesis thesis-p3">"Stronghold A3 will defend its profit margins and talent pool against predatory undercutting and regional inflation by institutionalizing its decent wage advantage."</div>
+                        <div class="metrics-row">
+                            <div class="metric-box"><div class="metric-value metric-p3">Low</div><div class="metric-label">Investment Required</div></div>
+                            <div class="metric-box"><div class="metric-value metric-p3">&lt;5%</div><div class="metric-label">Attrition Target</div></div>
+                            <div class="metric-box"><div class="metric-value metric-p3">100%</div><div class="metric-label">Contracts w/ Escalation</div></div>
+                        </div>
+                        <h4 class="text-sm font-bold text-white/60 uppercase tracking-widest mb-3 font-montserrat">Strategic Pillars</h4>
+                        <div class="pillars-grid">
+                            <div class="pillar-card"><div class="pillar-icon pillar-icon-p3"><i class="fas fa-file-contract"></i></div><div class="pillar-name">Dynamic Contract Structuring</div><div class="pillar-desc">Revise all new and renewing client contracts to include automatic inflation-adjustment clauses.</div></div>
+                            <div class="pillar-card"><div class="pillar-icon pillar-icon-p3"><i class="fas fa-heart"></i></div><div class="pillar-name">Guard as Ambassador Program</div><div class="pillar-desc">Formalize the decent wage advantage with non-monetary perks and emergency relief.</div></div>
+                            <div class="pillar-card"><div class="pillar-icon pillar-icon-p3"><i class="fas fa-map-pin"></i></div><div class="pillar-name">Localized Pre-Positioning</div><div class="pillar-desc">Utilize deep Tacloban geography knowledge to pre-position emergency supplies.</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="phase-panel" id="phase-panel-4">
+                <div class="phase-card">
+                    <div class="phase-header phase-header-p4">
+                        <div class="phase-badge badge-p4"><span style="font-size:1.2rem">🚀</span><span>PHASE<br>FOUR</span></div>
+                        <div class="phase-header-text">
+                            <div class="phase-label">Option 1 · Ranked #4 (Score: 7.90/10) — Highest Economic Impact</div>
+                            <div class="phase-title">Market Capture & Hybrid Upsell</div>
+                            <div class="phase-subtitle">With a digitized, compliant, and stable foundation in place, launch proactive B2B marketing.</div>
+                            <div style="display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:0.75rem;">
+                                <div class="phase-timeline"><i class="fas fa-clock"></i> Months 8–12</div>
+                                <div class="score-badge score-p4"><i class="fas fa-chart-line"></i> Highest Economic Impact</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="phase-body">
+                        <div class="phase-thesis thesis-p4">"We lead Region VIII as the only fully compliant, risk-free security partner."</div>
+                        <div class="metrics-row">
+                            <div class="metric-box"><div class="metric-value metric-p4">Moderate</div><div class="metric-label">Investment</div></div>
+                            <div class="metric-box"><div class="metric-value metric-p4">15–20%</div><div class="metric-label">Client Growth Target</div></div>
+                            <div class="metric-box"><div class="metric-value metric-p4">54.5%</div><div class="metric-label">Year 1 ROI</div></div>
+                        </div>
+                        <h4 class="text-sm font-bold text-white/60 uppercase tracking-widest mb-3 font-montserrat">Strategic Pillars</h4>
+                        <div class="pillars-grid">
+                            <div class="pillar-card"><div class="pillar-icon pillar-icon-p4"><i class="fas fa-bullhorn"></i></div><div class="pillar-name">Proactive B2B Capability Marketing</div><div class="pillar-desc">Transition from passive word-of-mouth to active B2B outreach targeting BPOs, LGUs, and NGOs.</div></div>
+                            <div class="pillar-card"><div class="pillar-icon pillar-icon-p4"><i class="fas fa-first-aid"></i></div><div class="pillar-name">DRRM-Integrated Service Bundling</div><div class="pillar-desc">Package physical guarding with RA 10121-compliant emergency response protocols.</div></div>
+                            <div class="pillar-card"><div class="pillar-icon pillar-icon-p4"><i class="fas fa-link"></i></div><div class="pillar-name">Hybrid Security Partnerships</div><div class="pillar-desc">Form exclusive alliances with local Tacloban-based CCTV and IT vendors.</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CONTACT PAGE ==================== -->
+    <section id="contact" class="py-16 container mx-auto px-4 bg-gradient-to-r from-[#001b3d] to-[#000c1f]">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-yellow-400 font-montserrat">Contact <span class="text-blue-400">Us</span></h2>
+            <p class="text-xl text-white max-w-2xl mx-auto mt-4">Schedule your complimentary risk assessment or reach us directly for immediate assistance.</p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-8 mb-12">
+            <div class="glass p-8 rounded-xl">
+                <h3 class="text-2xl font-bold mb-6 text-blue-400 font-montserrat">Send Us a Message</h3>
+                <form id="contactForm" onsubmit="handleFormSubmit(event)">
+                    <div class="space-y-4">
+                        <div><label class="block text-sm font-semibold mb-2 text-white">Full Name *</label><input type="text" required class="w-full glass border-blue-500 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 text-white" placeholder="Your full name"></div>
+                        <div><label class="block text-sm font-semibold mb-2 text-white">Email Address *</label><input type="email" required class="w-full glass border-blue-500 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 text-white" placeholder="your@email.com"></div>
+                        <div><label class="block text-sm font-semibold mb-2 text-white">Phone Number *</label><input type="tel" required class="w-full glass border-blue-500 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 text-white" placeholder="09XX XXX XXXX"></div>
+                        <div><label class="block text-sm font-semibold mb-2 text-white">Company/Organization</label><input type="text" class="w-full glass border-blue-500 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 text-white" placeholder="Your company name"></div>
+                        <div><label class="block text-sm font-semibold mb-2 text-white">Service Interested In</label>
+                            <select class="w-full glass border-blue-500 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 text-white">
+                                <option value="Risk Assessment" class="bg-[#0A1628]">Free Risk Assessment</option>
+                                <option value="Corporate Security" class="bg-[#0A1628]">Corporate Site Security</option>
+                                <option value="Event Security" class="bg-[#0A1628]">Event Security</option>
+                                <option value="Disaster Response" class="bg-[#0A1628]">Disaster Response</option>
+                                <option value="Consulting" class="bg-[#0A1628]">Security Consulting</option>
+                                <option value="Partnership" class="bg-[#0A1628]">Strategic Partnership</option>
+                            </select>
+                        </div>
+                        <div><label class="block text-sm font-semibold mb-2 text-white">Message</label><textarea rows="4" class="w-full glass border-blue-500 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 text-white" placeholder="How can we help you?"></textarea></div>
+                        <button type="submit" class="w-full btn-primary bg-blue-500 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-600 transition">
+                            <i class="fas fa-paper-plane mr-2"></i>Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="space-y-6">
+                <div class="glass p-6 rounded-xl">
+                    <h3 class="text-xl font-bold mb-4 flex items-center text-yellow-400 font-montserrat"><i class="fas fa-map-marker-alt mr-3"></i>Our Office</h3>
+                    <p class="text-white">2nd Floor Real St.<br>Tacloban City, Leyte<br>Philippines 6500</p>
+                </div>
+                <div class="glass p-6 rounded-xl">
+                    <h3 class="text-xl font-bold mb-4 flex items-center text-blue-400 font-montserrat"><i class="fas fa-phone mr-3"></i>Direct Contact</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-3">
+                            <div class="bg-blue-500 p-2 rounded-lg flex-shrink-0"><i class="fas fa-phone text-white"></i></div>
+                            <div><p class="text-sm text-white">General Line</p><a href="tel:09171370112" class="text-xl font-bold text-white">09171370112</a></div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="bg-yellow-400 p-2 rounded-lg flex-shrink-0"><i class="fas fa-user-tie text-black"></i></div>
+                            <div><p class="text-sm text-white">CEO Direct</p><p class="text-white font-bold">Antonie M. Silva</p><a href="tel:09171350112" class="text-lg font-bold text-white">09171350112</a></div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="bg-blue-500 p-2 rounded-lg flex-shrink-0"><i class="fas fa-envelope text-white"></i></div>
+                            <div><p class="text-sm text-white">Email</p><a href="mailto:info@strongholda3.com" class="text-white hover:text-blue-400">info@strongholda3.com</a></div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="bg-green-500 p-2 rounded-lg flex-shrink-0"><i class="fas fa-handshake text-white"></i></div>
+                            <div><p class="text-sm text-white">Partnerships</p><a href="mailto:partnership@stronghold-a3.com" class="text-white hover:text-blue-400">partnership@stronghold-a3.com</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-red p-6 rounded-xl">
+                    <h3 class="text-xl font-bold mb-4 flex items-center text-yellow-400 font-montserrat"><i class="fas fa-exclamation-triangle mr-3"></i>Emergency Contact</h3>
+                    <p class="text-white mb-4">Available 24/7 for urgent security matters:</p>
+                    <a href="tel:09171370112" class="text-3xl font-bold text-white hover:text-yellow-400 transition">09171370112</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer>
+    <div class="bg-[#0A1628] border-t border-blue-900">
+        <div class="container mx-auto px-4 py-8">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center md:text-left">
+                    <div class="flex items-center justify-center md:justify-start gap-3 mb-4">
+                        <img src="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png"
+                             alt="Stronghold A3" class="w-12 h-12 rounded-full object-cover">
+                        <div><h3 class="font-bold font-montserrat text-white">STRONGHOLD A3</h3><p class="text-xs text-blue-400">Zero-Liability Security</p></div>
+                    </div>
+                    <p class="text-sm text-white/70">Eastern Visayas' premier security partner committed to zero-liability protection through compliance excellence.</p>
+                </div>
+                <div class="text-center">
+                    <h4 class="font-bold font-montserrat text-white mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-white/70 hover:text-blue-400 transition">Home</a></li>
+                        <li><a href="#anchored" class="text-white/70 hover:text-blue-400 transition">Anchored</a></li>
+                        <li><a href="#armored" class="text-white/70 hover:text-blue-400 transition">Armored</a></li>
+                        <li><a href="#assured" class="text-white/70 hover:text-blue-400 transition">Assured</a></li>
+                        <li><a href="#strategy" class="text-white/70 hover:text-blue-400 transition">Strategy Map</a></li>
+                        <li><a href="#contact" class="text-white/70 hover:text-blue-400 transition">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="text-center">
+                    <h4 class="font-bold font-montserrat text-white mb-4">Policy & Legal</h4>
+                    <ul class="space-y-2 text-sm text-white/70">
+                        <li><a href="./policies.html" class="hover:text-white">Privacy Policy</a></li>
+                        <li><a href="./terms.html" class="hover:text-white">Terms of Service</a></li>
+                        <li><a href="./cookie-policy.html" class="hover:text-white">Cookie Policy</a></li>
+                        <li><a href="./accessibility-policy.html" class="hover:text-white">Accessibility</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-blue-900 mt-8 pt-6 text-center">
+                <p class="text-sm text-gray-500">© 2026 Stronghold A3 Security Agency. All Rights Reserved.</p>
+                <p class="text-xs text-gray-600 mt-1">DOLE DO-174 Compliant | Licensed Private Security Agency</p>
+            </div>
+        </div>
+    </div>
+    <!-- Floating CTA -->
+    <div class="floating-cta">
+        <a href="tel:09171370112" class="bg-blue-500 text-white rounded-full w-16 h-16 flex items-center justify-center pulse-green shadow-lg">
+            <i class="fas fa-phone text-2xl"></i>
+        </a>
+    </div>
+</footer>
+
+<script>
+    // ==================== NAVIGATION ====================
+    function showPage(pageId) {
+        const el = document.getElementById(pageId);
+        if(el) {
+            el.scrollIntoView({behavior: 'smooth'});
+        }
+        closeMobileMenu();
+    }
+    
+    // ==================== STRATEGY TABS ====================
+    function switchStrategyTab(tabName) {
+        document.querySelectorAll('.strategy-content').forEach(c => c.classList.add('hidden'));
+        document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+        document.getElementById(`content-${tabName}`).classList.remove('hidden');
+        document.getElementById(`tab-${tabName}`).classList.add('active');
+    }
+    
+    // ==================== BSC COLLAPSIBLE ====================
+    function toggleBSC(contentId, headerEl) {
+        const c = document.getElementById(contentId);
+        const ch = headerEl.querySelector('.chevron');
+        c.classList.toggle('active');
+        ch.classList.toggle('rotate');
+    }
+    
+    // ==================== PHASE SELECTOR ====================
+    let activePhase = 1;
+    function selectPhase(num) {
+        [1,2,3,4].forEach(i => {
+            document.getElementById(`phase-panel-${i}`).classList.remove('active');
+            const btn = document.getElementById(`ptab-${i}`);
+            btn.classList.remove('active-p1','active-p2','active-p3','active-p4');
+        });
+        document.getElementById(`phase-panel-${num}`).classList.add('active');
+        const colorMap = {1:'active-p1', 2:'active-p2', 3:'active-p3', 4:'active-p4'};
+        document.getElementById(`ptab-${num}`).classList.add(colorMap[num]);
+        activePhase = num;
+        const panel = document.getElementById(`phase-panel-${num}`);
+        if (window.innerWidth < 768) {
+            setTimeout(() => panel.scrollIntoView({behavior:'smooth', block:'start'}), 100);
+        }
+    }
+    
+    // ==================== MOBILE MENU ====================
+    function openMobileMenu() { document.getElementById('mobileMenu').classList.add('open'); document.getElementById('overlay').classList.add('show'); }
+    function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); document.getElementById('overlay').classList.remove('show'); }
+    document.getElementById('overlay').addEventListener('click', closeMobileMenu);
+    
+    // ==================== A3 DROPDOWN NAVIGATION ====================
+    function toggleDropdown(dropdownId) {
+        const dropdown = document.getElementById(`${dropdownId}-dropdown`);
+        const isOpen = dropdown.classList.contains('open');
+        closeAllDropdowns();
+        if (!isOpen) dropdown.classList.add('open');
+    }
+    function closeAllDropdowns() {
+        document.querySelectorAll('.a3-dropdown').forEach(d => d.classList.remove('open'));
+    }
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.a3-dropdown')) closeAllDropdowns();
+    });
+    
+    // ==================== FEATURE CARD COLLAPSIBLE ====================
+    function toggleCollapsible(id) {
+        const content = document.getElementById(id);
+        const chevron = content.previousElementSibling.querySelector('.chevron');
+        content.classList.toggle('active');
+        if(chevron) chevron.classList.toggle('rotate');
+    }
+    
+    // ==================== FORM ====================
+    function handleFormSubmit(e) {
+        e.preventDefault();
+        alert('Thank you! Your message has been received. Our team will contact you within 24 hours.');
+        e.target.reset();
+    }
+    
+    // ==================== KEYBOARD ====================
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMobileMenu(); });
+    
+    // ==================== INIT ====================
+    console.log('%cStronghold A3 v5.2 — Loaded', 'color:#3B82F6;font-size:16px;font-weight:bold;');
+</script>
+</body>
+</html>
