@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Guard Empowerment | Stronghold A3 - Talent Fortress & Retention Strategy</title>
+    <meta name="description" content="Stronghold A3 transforms guards into a 'Talent Fortress' via decent wages, emergency relief, and digital adoption programs. <5% attrition rate in Eastern Visayas.">
+    <meta name="keywords" content="guard empowerment security, low attrition security agency, security guard welfare Philippines, talent fortress security, strongholds a3, bayanihan security program">
+    <meta name="author" content="Antonie M. Silva, CEO Stronghold A3 Security Agency">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Guard Empowerment | Stronghold A3 - Armored by Resilience">
+    <meta property="og:description" content="Our guards are our greatest asset. We ensure retention, safety, and professional growth through our premium retention loop and digital protocols.">
+    <meta property="og:image" content="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png">
+    <meta property="og:url" content="https://strongholda3.com/guard-empowerment.html">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Stronghold A3 Security Agency",
+        "description": "Eastern Visayas premier security partner focused on guard welfare and zero-liability service.",
+        "employeeCount": "50+",
+        "jobTitle": "Security Supervisor",
+        "areaServed": "Tacloban, Leyte, Samar, Biliran",
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Human Capital Development",
+            "itemListElement": [
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Decent Wage Policy"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Bayanihan Relief Program"}}
+            ]
+        }
+    }
+    </script>
+    
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        montserrat: ['Montserrat', 'sans-serif'],
+                        poppins: ['Poppins', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Custom Styles -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --gold: #FFD700;
+            --navy: #0A1628;
+            --blue: #3B82F6;
+            --red: #DC2626;
+            --green: #22C55E;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: radial-gradient(circle at 20% 0%, #002b5c 0%, #001b3d 45%, #000c1f 100%);
+            min-height: 100vh;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        /* Watermark */
+        body::before {
+            content: '';
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: min(80vw, 80vh); height: min(80vw, 80vh);
+            background-image: url('https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png');
+            background-size: contain; opacity: 0.03; pointer-events: none; z-index: 0;
+        }
+        main { position: relative; z-index: 1; }
+        
+        /* Glass Effects */
+        .glass {
+            background: linear-gradient(135deg, rgba(255,255,255,0.10), rgba(255,255,255,0.03));
+            backdrop-filter: blur(20px) saturate(160%); border: 1px solid rgba(255,255,255,0.12);
+        }
+        .glass-strong {
+            background: linear-gradient(135deg, rgba(0,43,92,0.55), rgba(0,12,31,0.65));
+            backdrop-filter: blur(28px) saturate(180%); border: 1px solid rgba(255,215,0,0.18); box-shadow: 0 8px 32px rgba(0,0,0,0.45);
+        }
+        .glass-green { background: linear-gradient(135deg, rgba(34,197,94,0.25), rgba(21,128,61,0.08)); border: 1px solid rgba(34,197,94,0.5); }
+        .glass-gold { background: linear-gradient(135deg, rgba(255,215,0,0.16), rgba(255,215,0,0.04)); border: 1px solid rgba(255,215,0,0.35); }
+        
+        /* Animations */
+        @keyframes fadeInUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+        .animate-fade-in-up { animation: fadeInUp 0.6s ease; }
+        @keyframes pulseGlow { 0%,100%{box-shadow:0 0 20px rgba(255,215,0,0.4)} 50%{box-shadow:0 0 40px rgba(255,215,0,0.8)} }
+        .btn-pulse { animation: pulseGlow 2s infinite; }
+        
+        /* Collapsible */
+        .collapsible-header { cursor: pointer; transition: all 0.3s ease; display: flex; justify-content: space-between; align-items: center; }
+        .collapsible-header:hover { background: rgba(255,255,255,0.1); }
+        .collapsible-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
+        .collapsible-content.active { max-height: 2000px; }
+        .chevron { transition: transform 0.3s ease; }
+        .chevron.rotate { transform: rotate(180deg); }
+        
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed; top: 0; right: -100%; width: 80%; max-width: 350px;
+            height: 100vh; background: #0A1628; z-index: 9999;
+            transition: right 0.3s ease; padding: 20px;
+        }
+        .mobile-menu.open { right: 0; }
+        .overlay {
+            position: fixed; inset: 0; background: rgba(0,0,0,.7);
+            z-index: 9998; display: none;
+        }
+        .overlay.show { display: block; }
+        
+        /* Floating CTA */
+        .floating-cta {
+            position: fixed; bottom: 20px; right: 20px; z-index: 9999;
+        }
+        
+        /* Badge */
+        .badge {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            padding: 0.3rem 0.8rem; border-radius: 9999px; font-size: 0.75rem;
+            font-weight: 700; font-family: 'Montserrat', sans-serif;
+        }
+        .badge-compliant { background: rgba(34,197,94,0.2); color: #34D399; border: 1px solid rgba(34,197,94,0.4); }
+        .badge-critical { background: rgba(220,38,38,0.2); color: #FCA5A5; border: 1px solid rgba(220,38,38,0.4); }
+        
+        /* Stats */
+        .stat-counter { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 2rem; line-height: 1.2; }
+        .stat-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.7); }
+        
+        /* Timeline Steps */
+        .loop-step {
+            position: relative;
+            padding-left: 60px;
+            margin-bottom: 1.5rem;
+        }
+        .loop-marker {
+            position: absolute;
+            left: 0; top: 0;
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: bold; font-size: 0.9rem;
+            box-shadow: 0 0 16px rgba(255,255,255,0.3);
+            z-index: 10;
+        }
+        .loop-line {
+            position: absolute;
+            left: 20px; top: 40px;
+            width: 2px; height: calc(100% + 1.5rem);
+            background: rgba(255,215,0,0.3);
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen relative">
+
+<!-- Overlay -->
+<div class="overlay" id="overlay"></div>
+
+<!-- Mobile Menu -->
+<nav class="mobile-menu glass-strong" id="mobileMenu">
+    <div class="flex justify-between items-center mb-6">
+        <img src="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png"
+             alt="Stronghold A3 Logo" class="h-16 w-16 rounded-full object-cover">
+        <button onclick="closeMobileMenu()" class="text-white hover:text-blue-400 transition">
+            <i class="fas fa-times text-2xl"></i>
+        </button>
+    </div>
+    <ul class="space-y-4">
+        <li><a href="#home" onclick="closeMobileMenu()" class="block text-white">Home</a></li>
+        <li><a href="#retention-loop" onclick="closeMobileMenu()" class="block text-white">Retention Loop</a></li>
+        <li><a href="#digital-bayanihan" onclick="closeMobileMenu()" class="block text-white">Digital Bayanihan</a></li>
+        <li><a href="#emergency-relief" onclick="closeMobileMenu()" class="block text-white">Emergency Relief</a></li>
+        <li><a href="#contact" class="block text-yellow-400 font-bold"><i class="fas fa-phone mr-2"></i>Contact Us</a></li>
+    </ul>
+</nav>
+
+<!-- Header -->
+<header class="sticky top-0 z-50 shadow-lg bg-[#0A1628]/90 backdrop-blur-md border-b border-blue-900/50">
+    <div class="container mx-auto px-4 py-4">
+        <div class="flex justify-between items-center">
+            <a href="#home" class="flex items-center space-x-3">
+                <img src="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png"
+                     alt="Stronghold A3 Logo" class="h-12 w-12 rounded-full object-cover border-2 border-blue-500">
+                <div>
+                    <h1 class="text-xl font-montserrat font-bold tracking-wide text-white">STRONGHOLD A3</h1>
+                    <p class="text-sm text-blue-400">Guard Empowerment Hub</p>
+                </div>
+            </a>
+            
+            <nav class="hidden md:flex items-center space-x-2">
+                <button onclick="switchSection('home')" class="px-4 py-2 rounded-lg font-semibold text-white hover:bg-blue-900 transition">Overview</button>
+                <button onclick="switchSection('retention-loop')" class="px-4 py-2 rounded-lg font-semibold text-white hover:bg-blue-900 transition">Retention Loop</button>
+                <button onclick="switchSection('digital-bayanihan')" class="px-4 py-2 rounded-lg font-semibold text-white hover:bg-blue-900 transition">Digital Bayanihan</button>
+                <button onclick="switchSection('emergency-relief')" class="px-4 py-2 rounded-lg font-semibold text-white hover:bg-blue-900 transition">Relief Program</button>
+            </nav>
+            
+            <button onclick="openMobileMenu()" class="md:hidden text-white">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main class="min-h-screen pb-20">
+    
+    <!-- HERO SECTION -->
+    <section id="home" class="py-16 container mx-auto px-4 animate-fade-in-up">
+        <div class="text-center mb-12">
+            <div class="inline-flex items-center gap-2 glass-gold px-6 py-3 rounded-full mb-6">
+                <i class="fas fa-users text-[#0A1628]"></i>
+                <span class="text-[#0A1628] font-montserrat font-bold">Armored Domain • Guard Empowerment</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold text-yellow-400 font-montserrat mb-4">
+                Building a <span class="text-green-400">Talent Fortress</span>
+            </h1>
+            <p class="text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
+                We don't view guards as overhead—they are our strongest defensive asset. 
+                Through decent wages, welfare support, and tech adoption, we maintain a <span class="text-green-400 font-bold">&lt;5% attrition rate</span> while others struggle with 25%.
+            </p>
+        </div>
+        
+        <!-- KPI Dashboard -->
+        <div class="grid md:grid-cols-4 gap-4 mb-8">
+            <div class="glass p-4 rounded-xl text-center">
+                <div class="stat-counter text-green-400">5%</div>
+                <p class="stat-label mt-2">Annual Attrition</p>
+            </div>
+            <div class="glass p-4 rounded-xl text-center">
+                <div class="stat-counter text-blue-400">100%</div>
+                <p class="stat-label mt-2">Compliance Rate</p>
+            </div>
+            <div class="glass p-4 rounded-xl text-center">
+                <div class="stat-counter text-red-400">80+</div>
+                <p class="stat-label mt-2">Clients Served</p>
+            </div>
+            <div class="glass p-4 rounded-xl text-center">
+                <div class="stat-counter text-white">∞</div>
+                <p class="stat-label mt-2">Professional Pride</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- RETENTION LOOP SECTION -->
+    <section id="retention-loop" class="py-12 container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-yellow-400 font-montserrat mb-8">The Premium Retention Loop</h2>
+        
+        <div class="glass-strong p-8 rounded-xl mb-8">
+            <p class="text-white/80 mb-8">A self-reinforcing strategic mechanism that turns operational excellence into financial sustainability.</p>
+            
+            <div class="relative pl-4">
+                <!-- Step 1 -->
+                <div class="loop-step">
+                    <div class="loop-marker bg-blue-500">1</div>
+                    <div class="loop-line"></div>
+                    <div class="glass-blue p-4 rounded-lg border-l-4 border-blue-500">
+                        <h3 class="text-lg font-bold text-white">Stage 1: Decent Wage & Localized Relief</h3>
+                        <p class="text-white/70 text-sm">We initiate the loop by paying competitive wages and providing Bayanihan relief packs (rations, rain gear) during typhoons.</p>
+                    </div>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="loop-step">
+                    <div class="loop-marker bg-blue-500">2</div>
+                    <div class="loop-line"></div>
+                    <div class="glass p-4 rounded-lg border-l-4 border-blue-500">
+                        <h3 class="text-lg font-bold text-white">Stage 2: Market-Leading Retention</h3>
+                        <p class="text-white/70 text-sm">Guards treated as professionals voluntarily stay. Voluntary attrition drops below 5% annually.</p>
+                    </div>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="loop-step">
+                    <div class="loop-marker bg-blue-500">3</div>
+                    <div class="loop-line"></div>
+                    <div class="glass p-4 rounded-lg border-l-4 border-blue-500">
+                        <h3 class="text-lg font-bold text-white">Stage 3: Service Consistency</h3>
+                        <p class="text-white/70 text-sm">Experience remains on-site. Recruitment costs drop, tactical proficiency rises.</p>
+                    </div>
+                </div>
+                
+                <!-- Step 4 -->
+                <div class="loop-step">
+                    <div class="loop-marker bg-blue-500">4</div>
+                    <div class="loop-line"></div>
+                    <div class="glass p-4 rounded-lg border-l-4 border-blue-500">
+                        <h3 class="text-lg font-bold text-white">Stage 4: "Guard as Ambassador"</h3>
+                        <p class="text-white/70 text-sm">Stable personnel drive higher Community Trust & Client Satisfaction. They become first responders.</p>
+                    </div>
+                </div>
+                
+                <!-- Step 5 -->
+                <div class="loop-step">
+                    <div class="loop-marker bg-blue-500">5</div>
+                    <div class="loop-line"></div>
+                    <div class="glass p-4 rounded-lg border-l-4 border-blue-500">
+                        <h3 class="text-lg font-bold text-white">Stage 5: Premium Pricing Power</h3>
+                        <p class="text-white/70 text-sm">Clients pay for stability. Our Zero-Liability pricing command is backed by this superior force.</p>
+                    </div>
+                </div>
+                
+                <!-- Step 6 -->
+                <div class="loop-step">
+                    <div class="loop-marker bg-green-500">6</div>
+                    <div class="glass p-4 rounded-lg border-l-4 border-green-500">
+                        <h3 class="text-lg font-bold text-white">Stage 6: Reinvestment</h3>
+                        <p class="text-white/70 text-sm">Increased revenue sustains the Decent Wage Policy, closing the loop and starting again.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DIGITAL BAYANIHAN SECTION -->
+    <section id="digital-bayanihan" class="py-12 container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-yellow-400 font-montserrat mb-8">Digital Bayanihan Protocol</h2>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+            <!-- Feature Card 1 -->
+            <div class="glass p-6 rounded-xl feature-card">
+                <div class="w-14 h-14 rounded-lg bg-green-500 flex items-center justify-center mb-4">
+                    <i class="fas fa-users text-2xl text-white"></i>
+                </div>
+                <h3 class="font-bold text-white text-xl mb-2">Peer Mentorship ("App Buddies")</h3>
+                <p class="text-white/70 text-sm mb-3">Respected Tech Champions provide shoulder-to-shoulder, zero-judgment assistance during shifts to help older personnel master the Cloud SMS app.</p>
+                <div class="mt-3">
+                    <span class="badge badge-compliant"><i class="fas fa-check-circle"></i> Zero Anxiety</span>
+                    <span class="badge badge-compliant"><i class="fas fa-user-friends"></i> Social Learning</span>
+                </div>
+            </div>
+            
+            <!-- Feature Card 2 -->
+            <div class="glass p-6 rounded-xl feature-card">
+                <div class="w-14 h-14 rounded-lg bg-yellow-500 flex items-center justify-center mb-4">
+                    <i class="fas fa-trophy text-2xl text-black"></i>
+                </div>
+                <h3 class="font-bold text-white text-xl mb-2">Gamified Recognition</h3>
+                <p class="text-white/70 text-sm mb-3">Digital Guardian matrix rewards guards with tangible incentives, such as PHP 500 grocery vouchers, for 100% app compliance.</p>
+                <div class="mt-3">
+                    <span class="badge badge-critical"><i class="fas fa-dollar-sign"></i> Cash Rewards</span>
+                    <span class="badge badge-critical"><i class="fas fa-star"></i> Excellence Awards</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- WIIFM Section -->
+        <div class="mt-12 glass-strong p-8 rounded-xl">
+            <h3 class="text-2xl font-bold text-white font-montserrat mb-6 flex items-center gap-2">
+                <i class="fas fa-lightbulb text-yellow-400"></i> What's In It For Me? (WIIFM)
+            </h3>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="text-center p-4 glass rounded-lg">
+                    <div class="w-16 h-16 rounded-full bg-blue-500 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-route text-3xl text-white"></i>
+                    </div>
+                    <h4 class="font-bold text-white mb-2">Saves Fare Money</h4>
+                    <p class="text-sm text-white/70">GPS clock-ins eliminate travel to office to sign DTRs.</p>
+                </div>
+                
+                <div class="text-center p-4 glass rounded-lg">
+                    <div class="w-16 h-16 rounded-full bg-green-500 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-file-invoice-dollar text-3xl text-white"></i>
+                    </div>
+                    <h4 class="font-bold text-white mb-2">Error-Free Payroll</h4>
+                    <p class="text-sm text-white/70">Automated timekeeping ensures no missed overtime.</p>
+                </div>
+                
+                <div class="text-center p-4 glass rounded-lg">
+                    <div class="w-16 h-16 rounded-full bg-red-500 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-shield-alt text-3xl text-white"></i>
+                    </div>
+                    <h4 class="font-bold text-white mb-2">The Lifeline Button</h4>
+                    <p class="text-sm text-white/70">SOS sends instant GPS coords for immediate medical rescue.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EMERGENCY RELIEF SECTION -->
+    <section id="emergency-relief" class="py-12 container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-yellow-400 font-montserrat mb-8">Emergency Relief & Safety Shield</h2>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+            <!-- Bayanihan Packs -->
+            <div class="glass-strong p-6 rounded-xl">
+                <div class="flex items-start gap-4 mb-4">
+                    <div class="w-12 h-12 rounded-lg bg-red-500 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-boxes text-xl text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white">Bayanihan Packs</h3>
+                        <p class="text-white/70 text-sm">Pre-positioned relief kits (rations, rain gear) issued during typhoons (Signal No. 2+).</p>
+                    </div>
+                </div>
+                <div class="border-t border-white/10 pt-4">
+                    <h4 class="font-bold text-white text-sm mb-2">Strategic Impact</h4>
+                    <ul class="list-disc list-inside text-xs text-white/60 space-y-1">
+                        <li>Neutralizes labor drain during disasters</li>
+                        <li>Ensures guards remain alert/professional</li>
+                        <li>Maintains site stability when clients need it most</li>
+                    </ul>
+                </div>
+                <a href="./bcp.html" class="block mt-4 text-blue-400 hover:text-blue-300 text-sm font-semibold">View Crisis Protocols</a>
+            </div>
+            
+            <!-- SOS Lifeline -->
+            <div class="glass-strong p-6 rounded-xl">
+                <div class="flex items-start gap-4 mb-4">
+                    <div class="w-12 h-12 rounded-lg bg-green-500 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-siren text-xl text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white">SOS Lifeline</h3>
+                        <p class="text-white/70 text-sm">One-tap button on the app routes exact GPS coordinates to supervisors instantly.</p>
+                    </div>
+                </div>
+                <div class="border-t border-white/10 pt-4">
+                    <h4 class="font-bold text-white text-sm mb-2">Risk Mitigation</h4>
+                    <ul class="list-disc list-inside text-xs text-white/60 space-y-1">
+                        <li>Immediate tactical support dispatch</li>
+                        <li>Prioritizes guard safety in dead zones</li>
+                        <li>Supports Zero-Liability promise to client</li>
+                    </ul>
+                </div>
+                <a href="./operational-workflows.html" class="block mt-4 text-blue-400 hover:text-blue-300 text-sm font-semibold">See Command Protocols</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="py-16 container mx-auto px-4 mt-12">
+        <div class="glass-strong p-8 rounded-xl text-center">
+            <div class="inline-flex items-center gap-2 glass-gold px-6 py-3 rounded-full mb-6">
+                <i class="fas fa-shield-alt text-[#0A1628]"></i>
+                <span class="text-[#0A1628] font-montserrat font-bold">Zero-Liability Assurance</span>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-yellow-400 font-montserrat mb-4">Build Your Own Talent Fortress</h2>
+            <p class="text-xl text-white/80 max-w-3xl mx-auto mb-8">
+                Stable guards mean stable security. Join the employers who prioritize retention and professional pride.
+            </p>
+            
+            <div class="grid md:grid-cols-3 gap-4 max-w-4xl mx-auto">
+                <a href="./security-assessment.html" class="btn-pulse glass p-6 rounded-lg text-center border-2 border-blue-500 hover:bg-blue-900 transition">
+                    <i class="fas fa-clipboard-check text-3xl text-blue-400 mb-3"></i>
+                    <h4 class="font-bold text-white">Free Assessment</h4>
+                    <p class="text-sm text-white/70">Evaluate retention strategy</p>
+                </a>
+                <a href="./capability.html" class="glass p-6 rounded-lg text-center border-2 border-green-500 hover:bg-green-900 transition">
+                    <i class="fas fa-user-shield text-3xl text-green-400 mb-3"></i>
+                    <h4 class="font-bold text-white">Our Services</h4>
+                    <p class="text-sm text-white/70">View Guarding Solutions</p>
+                </a>
+                <a href="#" class="glass p-6 rounded-lg text-center border-2 border-yellow-500 hover:bg-yellow-900 transition">
+                    <i class="fas fa-phone text-3xl text-yellow-400 mb-3"></i>
+                    <h4 class="font-bold text-white">Contact Support</h4>
+                    <p class="text-sm text-white/70">0917 137 0112</p>
+                </a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="bg-[#0A1628] border-t border-blue-900 py-8">
+    <div class="container mx-auto px-4 text-center">
+        <p class="text-sm text-gray-500">© 2026 Stronghold A3 Security Agency. All Rights Reserved.</p>
+        <p class="text-xs text-gray-600 mt-1">DOLE DO-174 Compliant | Licensed Private Security Agency</p>
+    </div>
+</footer>
+
+<!-- Floating CTA -->
+<div class="floating-cta">
+    <a href="#contact" class="btn-pulse bg-blue-500 text-white rounded-full w-16 h-16 flex items-center justify-center shadow-lg">
+        <i class="fas fa-phone text-2xl"></i>
+    </a>
+</div>
+
+<script>
+    // ===== NAVIGATION =====
+    function openMobileMenu() { document.getElementById('mobileMenu').classList.add('open'); document.getElementById('overlay').classList.add('show'); }
+    function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); document.getElementById('overlay').classList.remove('show'); }
+    document.getElementById('overlay').addEventListener('click', closeMobileMenu);
+    
+    // ===== SECTION SWITCHING =====
+    function switchSection(id) {
+        window.location.href = '#' + id;
+        closeMobileMenu();
+    }
+    
+    // ===== COLLAPSIBLE SECTIONS =====
+    function toggleCollapsible(id) {
+        const content = document.getElementById(id);
+        if(content) content.classList.toggle('active');
+    }
+    
+    console.log('%cGuard Empowerment v1.0 — Loaded', 'color:#22C55E;font-size:16px;font-weight:bold;');
+</script>
+</body>
+</html>
