@@ -121,11 +121,31 @@
         /* Floating CTA */
         .floating-cta { position: fixed; bottom: 20px; right: 20px; z-index: 9999; }
         
-        /* Badge */
-        .badge { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.3rem 0.8rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 700; font-family: 'Montserrat', sans-serif; }
-        .badge-compliant { background: rgba(34,197,94,0.2); color: #34D399; border: 1px solid rgba(34,197,94,0.4); }
-        .badge-critical { background: rgba(220,38,38,0.2); color: #FCA5A5; border: 1px solid rgba(220,38,38,0.4); }
-        .badge-info { background: rgba(59,130,246,0.2); color: #93C5FD; border: 1px solid rgba(59,130,246,0.4); }
+        /* Badge Base */
+.badge { 
+    display: inline-flex; 
+    align-items: center; 
+    gap: 0.4rem; 
+    padding: 0.3rem 0.8rem; 
+    border-radius: 9999px; 
+    font-size: 0.75rem; 
+    font-weight: 700; 
+    font-family: 'Montserrat', sans-serif; 
+    transition: all 0.2s ease;
+}
+
+/* Status Badges */
+.badge-compliant { background: rgba(34,197,94,0.2); color: #34D399; border: 1px solid rgba(34,197,94,0.4); }
+.badge-critical { background: rgba(220,38,38,0.2); color: #FCA5A5; border: 1px solid rgba(220,38,38,0.4); }
+.badge-info { background: rgba(59,130,246,0.2); color: #93C5FD; border: 1px solid rgba(59,130,246,0.4); }
+
+/* ✨ Metallic Gold Badge (For Premium/Highlight/Zero-Liability states) */
+.badge-gold { 
+    background: rgba(212, 175, 55, 0.15); /* Metallic Gold tint */
+    color: #FDE047; /* Shiny Gold text for high contrast */
+    border: 1px solid rgba(212, 175, 55, 0.5); /* Solid metallic border */
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1); /* Metallic sheen/glow */
+}
         
         /* Stats */
         .stat-counter { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 2rem; line-height: 1.2; }
