@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Zero-Liability Promise | Stronghold A3 - Risk-Free Security Partner</title>
-    <meta name="description" content="Stronghold A3 offers a Zero-Liability guarantee. Clients inherit zero legal, financial, or operational burdens. 100% DOLE DO-174 compliant. Safe against typhoons and regulatory shocks.">
-    <meta name="keywords" content="zero-liability security, risk-free security partnership, dole do-174 compliance, strongholds a3, liability shield security, eastern visayas secure agency">
+    <title>Zero-Liability Security Framework | Stronghold A3 Risk Mitigation & Resilience</title>
+    <meta name="description" content="Stronghold A3's Zero-Liability Security Framework eliminates legal, financial, and operational burdens. Strategic risk mitigation, hybrid resilience, and 100% DOLE DO-174 compliance in Eastern Visayas.">
+    <meta name="keywords" content="zero-liability security, strategic risk mitigation, operational resilience, eastern visayas security, dole do-174 compliance, stronghold a3, regulatory firewall, hybrid security">
     <meta name="author" content="Antonie M. Silva, CEO Stronghold A3 Security Agency">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Zero-Liability Guarantee | Stronghold A3 Security Agency">
-    <meta property="og:description" content="Transforming guarding into a risk-free strategic partnership. Our clients inherit zero liabilities due to our 100% legal legitimacy and operational resilience.">
+    <meta property="og:title" content="Zero-Liability Security Framework | Stronghold A3">
+    <meta property="og:description" content="Transforming guarding into a risk-free strategic partnership. Our clients inherit zero liabilities due to our 100% legal legitimacy, RACI accountability, and operational resilience.">
     <meta property="og:image" content="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png">
     <meta property="og:url" content="https://strongholda3.com/zero-liability.html">
     
@@ -20,19 +20,20 @@
     {
         "@context": "https://schema.org",
         "@type": "Service",
-        "name": "Zero-Liability Protection",
+        "name": "Zero-Liability Security Framework",
         "provider": {
             "@type": "Organization",
             "name": "Stronghold A3 Security Agency"
         },
         "areaServed": "Eastern Visayas",
-        "description": "Client protection package eliminating legal, financial, and operational burdens associated with private security contracts.",
+        "description": "Strategic risk mitigation and operational resilience framework eliminating legal, financial, and operational burdens for institutional clients.",
         "hasOfferCatalog": {
             "@type": "OfferCatalog",
             "name": "Risk Elimination Services",
             "itemListElement": [
-                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "DOLE DO-174 Compliance"}},
-                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Regulatory Shock Insurance"}}
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Regulatory Firewall & Compliance"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Hybrid Resilience & BCP"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Talent Fortress & Retention"}}
             ]
         }
     }
@@ -47,7 +48,7 @@
                 extend: {
                     fontFamily: {
                         montserrat: ['Montserrat', 'sans-serif'],
-                        poppins: ['Poppins', sans-serif],
+                        poppins: ['Poppins', 'sans-serif'],
                     },
                 },
             },
@@ -103,6 +104,7 @@
         .glass-gold { background: linear-gradient(135deg, rgba(255,215,0,0.16), rgba(255,215,0,0.04)); border: 1px solid rgba(255,215,0,0.35); }
         .glass-green { background: linear-gradient(135deg, rgba(34,197,94,0.25), rgba(21,128,61,0.08)); border: 1px solid rgba(34,197,94,0.5); }
         .glass-blue { background: linear-gradient(135deg, rgba(59,130,246,0.25), rgba(29,78,216,0.08)); border: 1px solid rgba(59,130,246,0.5); }
+        .glass-red { background: linear-gradient(135deg, rgba(220,38,38,0.25), rgba(127,29,29,0.08)); border: 1px solid rgba(220,38,38,0.5); }
         
         /* Animations */
         @keyframes fadeInUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
@@ -110,16 +112,8 @@
         @keyframes pulseGlow { 0%,100%{box-shadow:0 0 20px rgba(255,215,0,0.4)} 50%{box-shadow:0 0 40px rgba(255,215,0,0.8)} }
         .btn-pulse { animation: pulseGlow 2s infinite; }
         
-        /* Collapsible */
-        .collapsible-header { cursor: pointer; transition: all 0.3s ease; display: flex; justify-content: space-between; align-items: center; }
-        .collapsible-header:hover { background: rgba(255,255,255,0.1); }
-        .collapsible-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
-        .collapsible-content.active { max-height: 2000px; }
-        .chevron { transition: transform 0.3s ease; }
-        .chevron.rotate { transform: rotate(180deg); }
-        
         /* Mobile Menu */
-        .mobile-menu { position: fixed; top: 0; right: -100%; width: 80%; max-width: 350px; height: 100vh; background: #0A1628; z-index: 9999; transition: right 0.3s ease; padding: 20px; }
+        .mobile-menu { position: fixed; top: 0; right: -100%; width: 80%; max-width: 350px; height: 100vh; background: #0A1628; z-index: 9999; transition: right 0.3s ease; padding: 20px; overflow-y: auto; }
         .mobile-menu.open { right: 0; }
         .overlay { position: fixed; inset: 0; background: rgba(0,0,0,.7); z-index: 9998; display: none; }
         .overlay.show { display: block; }
@@ -131,26 +125,42 @@
         .badge { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.3rem 0.8rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 700; font-family: 'Montserrat', sans-serif; }
         .badge-compliant { background: rgba(34,197,94,0.2); color: #34D399; border: 1px solid rgba(34,197,94,0.4); }
         .badge-critical { background: rgba(220,38,38,0.2); color: #FCA5A5; border: 1px solid rgba(220,38,38,0.4); }
+        .badge-info { background: rgba(59,130,246,0.2); color: #93C5FD; border: 1px solid rgba(59,130,246,0.4); }
         
         /* Stats */
         .stat-counter { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 2rem; line-height: 1.2; }
         .stat-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.7); }
         
-        /* Moat Visualization */
-        .moat-layer {
-            position: relative;
-            border: 2px dashed rgba(255,215,0,0.3);
-            padding: 1.5rem;
-            border-radius: 1rem;
-            transition: all 0.3s ease;
-        }
-        .moat-layer:hover { border-color: var(--gold); background: rgba(255,215,0,0.05); }
-        
         /* Navigation Tabs */
-        .tab-btn { transition: all 0.3s ease; padding: 0.75rem 1.5rem; border-radius: 0.5rem; cursor: pointer; font-weight: 600; background: rgba(255,215,0,0.1); color: #fff; border: 1px solid rgba(255,215,0,0.3); }
+        .tab-btn { transition: all 0.3s ease; padding: 0.6rem 1.2rem; border-radius: 0.5rem; cursor: pointer; font-weight: 600; font-size: 0.9rem; background: rgba(255,215,0,0.1); color: #fff; border: 1px solid rgba(255,215,0,0.3); }
         .tab-btn:hover { background: rgba(255,215,0,0.2); }
         .tab-btn.active { background: linear-gradient(135deg, #FFD700 0%, #F59E0B 100%); border-color: #FFD700; color: #0A1628; box-shadow: 0 4px 12px rgba(255,215,0,0.4); }
         .tab-content { display: none; } .tab-content.active { display: block; animation: fadeInUp 0.5s ease; }
+        
+        /* Roadmap Timeline */
+        .roadmap-step {
+            position: relative;
+            padding-left: 2.5rem;
+            margin-bottom: 2rem;
+            border-left: 2px solid rgba(255,215,0,0.3);
+        }
+        .roadmap-step::before {
+            content: '';
+            position: absolute;
+            left: -0.6rem;
+            top: 0.2rem;
+            width: 1.2rem;
+            height: 1.2rem;
+            background: #FFD700;
+            border: 4px solid #0A1628;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(255,215,0,0.5);
+        }
+        .roadmap-step:last-child { border-left: 2px solid transparent; }
+
+        /* Comparison Table */
+        .comparison-table th, .comparison-table td { padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .comparison-table tr:last-child td { border-bottom: none; }
     </style>
 </head>
 <body class="antialiased min-h-screen relative">
@@ -168,37 +178,45 @@
         </button>
     </div>
     <ul class="space-y-4">
-        <li><a href="#home" onclick="closeMobileMenu()" class="block text-white">Home</a></li>
-        <li><a href="#benefits" onclick="closeMobileMenu()" class="block text-white">Core Benefits</a></li>
-        <li><a href="#moat" onclick="closeMobileMenu()" class="block text-white">Defensive Moat</a></li>
-        <li><a href="#transparency" onclick="closeMobileMenu()" class="block text-white">Transparency Index</a></li>
-        <li><a href="#contact" class="block text-yellow-400 font-bold"><i class="fas fa-phone mr-2"></i>Contact Us</a></li>
+        <li><a href="#" onclick="switchSection('overview'); closeMobileMenu(); return false;" class="block text-white font-semibold">Strategic Inflection Point</a></li>
+        <li><a href="#" onclick="switchSection('moat'); closeMobileMenu(); return false;" class="block text-white font-semibold">Defensive Moat</a></li>
+        <li><a href="#" onclick="switchSection('resilience'); closeMobileMenu(); return false;" class="block text-white font-semibold">Hybrid Resilience</a></li>
+        <li><a href="#" onclick="switchSection('roadmap'); closeMobileMenu(); return false;" class="block text-white font-semibold">12-Month Roadmap</a></li>
+        <li class="pt-4 border-t border-white/10">
+            <a href="./security-assessment.html" class="block text-yellow-400 font-bold"><i class="fas fa-shield-alt mr-2"></i>Free Risk Assessment</a>
+        </li>
+        <li><a href="tel:09171370112" class="block text-green-400 font-bold"><i class="fas fa-phone mr-2"></i>0917 137 0112</a></li>
     </ul>
 </nav>
 
 <!-- Header -->
 <header class="sticky top-0 z-50 shadow-lg bg-[#0A1628]/90 backdrop-blur-md border-b border-yellow-900/50">
-    <div class="container mx-auto px-4 py-4">
+    <div class="container mx-auto px-4 py-3">
         <div class="flex justify-between items-center">
             <a href="#home" class="flex items-center space-x-3">
                 <img src="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png"
-                     alt="Stronghold A3 Logo" class="h-12 w-12 rounded-full object-cover border-2 border-yellow-500">
-                <div>
-                    <h1 class="text-xl font-montserrat font-bold tracking-wide text-white">STRONGHOLD A3</h1>
-                    <p class="text-sm text-yellow-400">Zero-Liability Partner</p>
+                     alt="Stronghold A3 Logo" class="h-10 w-10 rounded-full object-cover border-2 border-yellow-500">
+                <div class="hidden sm:block">
+                    <h1 class="text-lg font-montserrat font-bold tracking-wide text-white">STRONGHOLD A3</h1>
+                    <p class="text-xs text-yellow-400">Zero-Liability Framework</p>
                 </div>
             </a>
             
-            <nav class="hidden md:flex items-center space-x-2">
-                <button onclick="switchSection('home')" class="tab-btn active" id="tab-home">Overview</button>
-                <button onclick="switchSection('benefits')" class="tab-btn" id="tab-benefits">Benefits</button>
-                <button onclick="switchSection('moat')" class="tab-btn" id="tab-moat">The Moat</button>
-                <button onclick="switchSection('transparency')" class="tab-btn" id="tab-transparency">Index</button>
+            <nav class="hidden lg:flex items-center space-x-2">
+                <button onclick="switchSection('overview')" class="tab-btn active" id="tab-overview">Inflection Point</button>
+                <button onclick="switchSection('moat')" class="tab-btn" id="tab-moat">Defensive Moat</button>
+                <button onclick="switchSection('resilience')" class="tab-btn" id="tab-resilience">Resilience</button>
+                <button onclick="switchSection('roadmap')" class="tab-btn" id="tab-roadmap">Roadmap</button>
             </nav>
             
-            <button onclick="openMobileMenu()" class="md:hidden text-white">
-                <i class="fas fa-bars text-2xl"></i>
-            </button>
+            <div class="flex items-center space-x-3">
+                <a href="./security-assessment.html" class="hidden md:inline-flex items-center gap-2 bg-yellow-500 text-black px-4 py-2 rounded-lg font-bold text-sm hover:bg-yellow-400 transition">
+                    <i class="fas fa-clipboard-check"></i> Free Assessment
+                </a>
+                <button onclick="openMobileMenu()" class="lg:hidden text-white">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
         </div>
     </div>
 </header>
@@ -206,26 +224,26 @@
 <main class="min-h-screen pb-20">
     
     <!-- HERO SECTION -->
-    <section id="home" class="py-16 container mx-auto px-4 animate-fade-in-up">
-        <div class="text-center mb-12">
-            <div class="inline-flex items-center gap-2 glass-gold px-6 py-3 rounded-full mb-6">
+    <section id="home" class="py-12 md:py-16 container mx-auto px-4 animate-fade-in-up">
+        <div class="text-center mb-10">
+            <div class="inline-flex items-center gap-2 glass-gold px-5 py-2 rounded-full mb-6">
                 <i class="fas fa-shield-alt text-[#0A1628]"></i>
-                <span class="text-[#0A1628] font-montserrat font-bold">Core Value Proposition • Liability Shield</span>
+                <span class="text-[#0A1628] font-montserrat font-bold text-sm">Strategic Risk Mitigation • Eastern Visayas</span>
             </div>
-            <h1 class="text-4xl md:text-5xl font-bold text-yellow-400 font-montserrat mb-4">
-                The Zero-Liability <span class="text-white">Promise</span>
+            <h1 class="text-3xl md:text-5xl font-bold text-yellow-400 font-montserrat mb-4 leading-tight">
+                The Zero-Liability <span class="text-white">Security Framework</span>
             </h1>
-            <p class="text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
-                We don't just guard your assets—we protect you from the liabilities of guarding itself. 
+            <p class="text-lg md:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
+                Transforming security from a commodity expense into a strategic risk management asset. 
                 Our partners inherit <strong class="text-yellow-400">zero legal, financial, or operational burdens</strong>.
             </p>
         </div>
         
         <!-- KPI Dashboard -->
-        <div class="grid md:grid-cols-4 gap-4 mb-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 max-w-4xl mx-auto">
             <div class="glass p-4 rounded-xl text-center">
                 <div class="stat-counter text-yellow-400">0</div>
-                <p class="stat-label mt-2">Client Liabilities</p>
+                <p class="stat-label mt-2">Inherited Liabilities</p>
             </div>
             <div class="glass p-4 rounded-xl text-center">
                 <div class="stat-counter text-blue-400">100%</div>
@@ -233,170 +251,293 @@
             </div>
             <div class="glass p-4 rounded-xl text-center">
                 <div class="stat-counter text-green-400">&lt;5%</div>
-                <p class="stat-label mt-2">Attrition Risk</p>
+                <p class="stat-label mt-2">Talent Attrition</p>
             </div>
             <div class="glass p-4 rounded-xl text-center">
-                <div class="stat-counter text-red-400">∞</div>
-                <p class="stat-label mt-2">Coverage Duration</p>
+                <div class="stat-counter text-cyan-400">54.5%</div>
+                <p class="stat-label mt-2">Projected ROI</p>
             </div>
         </div>
     </section>
 
-    <!-- CORE BENEFITS SECTION -->
-    <section id="benefits" class="py-12 container mx-auto px-4 tab-content">
-        <h2 class="text-3xl md:text-4xl font-bold text-yellow-400 font-montserrat mb-8">Core Protections for Clients</h2>
-        
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <!-- Benefit 1 -->
-            <div class="glass p-6 rounded-xl">
-                <div class="w-14 h-14 rounded-lg bg-blue-500 flex items-center justify-center mb-4">
-                    <i class="fas fa-balance-scale text-2xl text-white"></i>
-                </div>
-                <h3 class="font-bold text-white text-xl mb-2">Legal Risks Eliminated</h3>
-                <p class="text-white/70 text-sm mb-4">100% insulated from "labor-only" contracting crackdowns. You cannot be held liable for our agency failures.</p>
-                <a href="./audit-readiness.html" class="block text-blue-400 hover:text-blue-300 text-sm font-semibold">View Legal Docs</a>
-            </div>
+    <!-- TAB 1: STRATEGIC INFLECTION POINT -->
+    <section id="overview" class="py-8 container mx-auto px-4 tab-content active">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-yellow-400 font-montserrat mb-4">The Strategic Inflection Point</h2>
+            <p class="text-white/80 text-lg mb-8">Eastern Visayas has reached a <strong class="text-white">"Compliance Tipping Point."</strong> Legacy security models are becoming active liabilities for institutional clients. As the regional economy expands into high-stakes BPO, logistics, and retail, regulatory pressure from LGUs and PNP-SOSIA is tightening. A single failure at a non-compliant agency triggers a cascading loss of confidence, shared legal responsibility, and reputational damage.</p>
             
-            <!-- Benefit 2 -->
-            <div class="glass p-6 rounded-xl">
-                <div class="w-14 h-14 rounded-lg bg-red-500 flex items-center justify-center mb-4">
-                    <i class="fas fa-exclamation-triangle text-2xl text-white"></i>
-                </div>
-                <h3 class="font-bold text-white text-xl mb-2">Regulatory Shocks Protected</h3>
-                <p class="text-white/70 text-sm mb-4">Prevent sudden service loss when non-compliant competitors are shut down by government inspections.</p>
-                <a href="./trust-signals.html" class="block text-red-400 hover:text-red-300 text-sm font-semibold">Verify License</a>
-            </div>
+            <h3 class="text-2xl font-bold text-white font-montserrat mb-6 flex items-center gap-3">
+                <i class="fas fa-chart-line text-blue-400"></i> The Macro-Risk Landscape for Region VIII
+            </h3>
             
-            <!-- Benefit 3 -->
-            <div class="glass p-6 rounded-xl">
-                <div class="w-14 h-14 rounded-lg bg-cyan-500 flex items-center justify-center mb-4">
-                    <i class="fas fa-cloud-showers-heavy text-2xl text-white"></i>
-                </div>
-                <h3 class="font-bold text-white text-xl mb-2">Operational Resilience</h3>
-                <p class="text-white/70 text-sm mb-4">Business continuity during typhoons via DRRM protocols, avoiding total paralysis common in manual firms.</p>
-                <a href="./operational-continuity.html" class="block text-cyan-400 hover:text-cyan-300 text-sm font-semibold">Resilience Plan</a>
-            </div>
-            
-            <!-- Benefit 4 -->
-            <div class="glass p-6 rounded-xl">
-                <div class="w-14 h-14 rounded-lg bg-green-500 flex items-center justify-center mb-4">
-                    <i class="fas fa-users text-2xl text-white"></i>
-                </div>
-                <h3 class="font-bold text-white text-xl mb-2">Talent Stability</h3>
-                <p class="text-white/70 text-sm mb-4">Below 5% attrition rate ensures stable, highly trained professionals rather than transient labor.</p>
-                <a href="./guard-empowerment.html" class="block text-green-400 hover:text-green-300 text-sm font-semibold">Our Talent</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- THE MOAT SECTION -->
-    <section id="moat" class="py-12 container mx-auto px-4 tab-content hidden">
-        <h2 class="text-3xl md:text-4xl font-bold text-yellow-400 font-montserrat mb-8">The Triple-Layered Defensive Moat</h2>
-        <p class="text-white/80 mb-8">Structurally engineered through three distinct layers of protection.</p>
-        
-        <div class="relative max-w-4xl mx-auto space-y-4">
-            <!-- Outer Layer -->
-            <div class="moat-layer glass-green">
-                <div class="flex items-center gap-3 mb-3">
-                    <span class="badge badge-compliant">Outer Layer</span>
-                    <h3 class="text-xl font-bold text-white">Data Security & Privacy</h3>
-                </div>
-                <p class="text-white/70 mb-4">Transitioning from unreliable paper logbooks to encrypted Digital Document Vaults and digital incident reporting compliant with Data Privacy Act (RA 10173).</p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="badge badge-critical">Encrypted Vault</span>
-                    <span class="badge badge-critical">RA 10173 Compliant</span>
-                </div>
-            </div>
-            
-            <!-- Middle Layer -->
-            <div class="moat-layer glass-blue">
-                <div class="flex items-center gap-3 mb-3">
-                    <span class="badge badge-compliant">Middle Layer</span>
-                    <h3 class="text-xl font-bold text-white">Operational Continuity</h3>
-                </div>
-                <p class="text-white/70 mb-4">Integration of RA 10121 DRRM protocols and scenario-based Typhoon BCPs preventing total operational paralysis.</p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="badge badge-critical">RA 10121</span>
-                    <span class="badge badge-critical">Typhoon BCP</span>
-                </div>
-            </div>
-            
-            <!-- Core Layer -->
-            <div class="moat-layer glass-gold">
-                <div class="flex items-center gap-3 mb-3">
-                    <span class="badge badge-compliant">Core Layer</span>
-                    <h3 class="text-xl font-bold text-black">Legal Legitimacy</h3>
-                </div>
-                <p class="text-black mb-4">100% adherence to DOLE DO-174 (prohibiting illegal labor contracting) and active PNP-SOSIA licensing. The foundation of liability exemption.</p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="badge badge-compliant">DOLE DO-174</span>
-                    <span class="badge badge-compliant">PNP Licensed</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- TRANSPARENCY INDEX SECTION -->
-    <section id="transparency" class="py-12 container mx-auto px-4 tab-content hidden">
-        <h2 class="text-3xl md:text-4xl font-bold text-yellow-400 font-montserrat mb-8">Verifying Reliability: The Digital Transparency Index</h2>
-        
-        <div class="grid md:grid-cols-2 gap-8 items-center mb-8">
-            <div class="glass p-6 rounded-xl">
-                <h3 class="text-xl font-bold text-white mb-4">KPI Metrics</h3>
-                <ul class="space-y-3 text-white/80">
-                    <li class="flex items-start gap-2">
-                        <i class="fas fa-check-circle text-green-400 mt-1"></i>
-                        <span><strong>Calculation:</strong> % of active clients receiving automated digital reports.</span>
-                    </li>
-                    <li class="flex items-start gap-2">
-                        <i class="fas fa-bullseye text-blue-400 mt-1"></i>
-                        <span><strong>Target:</strong> Non-negotiable 100% integration.</span>
-                    </li>
-                    <li class="flex items-start gap-2">
-                        <i class="fas fa-clock text-cyan-400 mt-1"></i>
-                        <span><strong>Frequency:</strong> Real-time daily/weekly incident summaries.</span>
-                    </li>
-                    <li class="flex items-start gap-2">
-                        <i class="fas fa-cloud-download text-purple-400 mt-1"></i>
-                        <span><strong>Delivery:</strong> Automated push via Cloud SMS portal.</span>
-                    </li>
-                </ul>
-            </div>
-            
-            <div class="glass p-6 rounded-xl text-center">
-                <div class="w-32 h-32 rounded-full border-8 border-yellow-500 flex items-center justify-center mx-auto mb-4">
-                    <div class="stat-counter text-yellow-400">100%</div>
-                </div>
-                <h3 class="text-xl font-bold text-white mb-2">Current Index Status</h3>
-                <p class="text-white/70 text-sm">Every active client is integrated. No analog guesswork remains.</p>
-            </div>
-        </div>
-        
-        <div class="glass-strong p-8 rounded-xl">
-            <h3 class="text-2xl font-bold text-white font-montserrat mb-6">Operational Tools Validating This Promise</h3>
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="text-center">
-                    <div class="w-16 h-16 rounded-lg bg-blue-500 flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-file-contract text-3xl text-white"></i>
+            <div class="grid md:grid-cols-2 gap-6 mb-8">
+                <!-- DOLE -->
+                <div class="glass p-6 rounded-xl border-l-4 border-red-500">
+                    <div class="flex items-center gap-3 mb-3">
+                        <i class="fas fa-balance-scale text-2xl text-red-400"></i>
+                        <h4 class="font-bold text-white text-lg">DOLE Department Order (DO) 174</h4>
                     </div>
-                    <h4 class="font-bold text-white">Audit-Ready Target</h4>
-                    <p class="text-sm text-white/60 mt-2">Non-negotiable 15-min retrieval of any document during quarterly mock audits.</p>
+                    <p class="text-white/70 text-sm mb-3">Strictly prohibits "labor-only" contracting.</p>
+                    <div class="glass-red p-3 rounded-lg">
+                        <p class="text-red-300 text-xs font-semibold"><i class="fas fa-exclamation-circle mr-1"></i> Risk: Non-compliance allows courts to deem the client the "direct employer," forcing the client to pay unpaid statutory contributions and back wages.</p>
+                    </div>
                 </div>
                 
-                <div class="text-center">
-                    <div class="w-16 h-16 rounded-lg bg-red-500 flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-network-wired text-3xl text-white"></i>
+                <!-- PNP-SOSIA -->
+                <div class="glass p-6 rounded-xl border-l-4 border-orange-500">
+                    <div class="flex items-center gap-3 mb-3">
+                        <i class="fas fa-id-badge text-2xl text-orange-400"></i>
+                        <h4 class="font-bold text-white text-lg">PNP-SOSIA Regulatory Audits</h4>
                     </div>
-                    <h4 class="font-bold text-white">3-Bridge System</h4>
-                    <p class="text-sm text-white/60 mt-2">Redundant architecture (Cloud → SMS → Radio) ensuring unbroken command chain.</p>
+                    <p class="text-white/70 text-sm mb-3">Mandates stringent licensing and record-keeping.</p>
+                    <div class="glass-red p-3 rounded-lg">
+                        <p class="text-red-300 text-xs font-semibold"><i class="fas fa-exclamation-circle mr-1"></i> Risk: Sudden "Regulatory Shockwaves" can lead to immediate operational suspensions, instant loss of site security, and insurance invalidation.</p>
+                    </div>
                 </div>
                 
-                <div class="text-center">
-                    <div class="w-16 h-16 rounded-lg bg-green-500 flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-chart-line text-3xl text-white"></i>
+                <!-- RA 10121 -->
+                <div class="glass p-6 rounded-xl border-l-4 border-cyan-500">
+                    <div class="flex items-center gap-3 mb-3">
+                        <i class="fas fa-cloud-showers-heavy text-2xl text-cyan-400"></i>
+                        <h4 class="font-bold text-white text-lg">Republic Act 10121 (DRRM Act)</h4>
                     </div>
-                    <h4 class="font-bold text-white">Premium Pricing Power</h4>
-                    <p class="text-sm text-white/60 mt-2">Command premium rates for verified "Liability-Free" status to institutional clients.</p>
+                    <p class="text-white/70 text-sm mb-3">Legally recognizes security personnel as first responders during evacuations.</p>
+                    <div class="glass-red p-3 rounded-lg">
+                        <p class="text-red-300 text-xs font-semibold"><i class="fas fa-exclamation-circle mr-1"></i> Risk: Institutional facilities failing to integrate guards into their BCP are in violation of mandatory disaster readiness standards.</p>
+                    </div>
+                </div>
+                
+                <!-- RA 10173 -->
+                <div class="glass p-6 rounded-xl border-l-4 border-purple-500">
+                    <div class="flex items-center gap-3 mb-3">
+                        <i class="fas fa-user-shield text-2xl text-purple-400"></i>
+                        <h4 class="font-bold text-white text-lg">Republic Act 10173 (Data Privacy Act)</h4>
+                    </div>
+                    <p class="text-white/70 text-sm mb-3">Governs the handling of visitor logs and CCTV footage.</p>
+                    <div class="glass-red p-3 rounded-lg">
+                        <p class="text-red-300 text-xs font-semibold"><i class="fas fa-exclamation-circle mr-1"></i> Risk: Improper data management by a security provider exposes the client to massive NPC fines and civil litigation.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="glass-strong p-6 rounded-xl text-center">
+                <p class="text-white/90 text-lg">This evolving landscape necessitates an internal transition toward the <strong class="text-yellow-400">"Zero-Liability" framework</strong>, where compliance serves as the primary engine for organizational stability.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TAB 2: DEFENSIVE MOAT & PARTNERSHIP -->
+    <section id="moat" class="py-8 container mx-auto px-4 tab-content">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-yellow-400 font-montserrat mb-4">Weaponizing Compliance: The Regulatory Firewall</h2>
+            <p class="text-white/80 text-lg mb-8">In a regional industry where 60–70% of firms operate via informal contracting, strict regulatory adherence is a foundational <strong class="text-white">"Defensive Moat."</strong> This firewall insulates the client from inherited liabilities, preventing the legal "bridge" that allows labor disputes to cross to the client’s balance sheet.</p>
+            
+            <!-- RACI Funnel -->
+            <div class="glass p-8 rounded-xl mb-8">
+                <h3 class="text-2xl font-bold text-white font-montserrat mb-4 flex items-center gap-3">
+                    <i class="fas fa-filter text-yellow-400"></i> The RACI Funnel & The "One 'A' Rule"
+                </h3>
+                <p class="text-white/70 mb-6">We eradicate the "Bystander Effect" through a Structural Architecture that ensures every task has a singular point of accountability. Information is <strong class="text-white">"pushed"</strong> to the client proactively.</p>
+                
+                <div class="grid md:grid-cols-3 gap-4">
+                    <div class="glass-blue p-4 rounded-lg text-center">
+                        <i class="fas fa-user-check text-3xl text-blue-400 mb-2"></i>
+                        <h4 class="font-bold text-white">Responsible (R)</h4>
+                        <p class="text-xs text-white/60 mt-1">The "Doer" executing the task.</p>
+                    </div>
+                    <div class="glass-gold p-4 rounded-lg text-center">
+                        <i class="fas fa-crown text-3xl text-yellow-400 mb-2"></i>
+                        <h4 class="font-bold text-white">Accountable (A)</h4>
+                        <p class="text-xs text-white/60 mt-1">The "Owner" (Only ONE per task).</p>
+                    </div>
+                    <div class="glass-green p-4 rounded-lg text-center">
+                        <i class="fas fa-comments text-3xl text-green-400 mb-2"></i>
+                        <h4 class="font-bold text-white">Consulted / Informed</h4>
+                        <p class="text-xs text-white/60 mt-1">Subject Experts & Stakeholders.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Benefit Matrix -->
+            <h3 class="text-2xl font-bold text-white font-montserrat mb-6 flex items-center gap-3">
+                <i class="fas fa-table text-green-400"></i> Zero-Liability Benefit Matrix
+            </h3>
+            <div class="glass-strong rounded-xl overflow-hidden mb-8">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm comparison-table">
+                        <thead class="bg-black/30">
+                            <tr>
+                                <th class="py-4 px-6 font-bold text-white">Dimension</th>
+                                <th class="py-4 px-6 font-bold text-red-400">Traditional Guarding</th>
+                                <th class="py-4 px-6 font-bold text-green-400">Stronghold A3 Zero-Liability</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-white/80">
+                            <tr>
+                                <td class="font-semibold text-white">Legal Risk</td>
+                                <td><i class="fas fa-times-circle text-red-400 mr-2"></i>High; potential "labor-only" claims.</td>
+                                <td><i class="fas fa-check-circle text-green-400 mr-2"></i>Zero; 100% DOLE DO-174 compliance.</td>
+                            </tr>
+                            <tr>
+                                <td class="font-semibold text-white">Audit Readiness</td>
+                                <td><i class="fas fa-times-circle text-red-400 mr-2"></i>Days; relies on disorganized paper files.</td>
+                                <td><i class="fas fa-check-circle text-green-400 mr-2"></i>&lt; 15 Minutes; via Digital Document Vault.</td>
+                            </tr>
+                            <tr>
+                                <td class="font-semibold text-white">Accountability</td>
+                                <td><i class="fas fa-times-circle text-red-400 mr-2"></i>Diffused; prone to the "Bystander Effect."</td>
+                                <td><i class="fas fa-check-circle text-green-400 mr-2"></i>Absolute; enforced by the One 'A' Rule.</td>
+                            </tr>
+                            <tr>
+                                <td class="font-semibold text-white">Incident Reporting</td>
+                                <td><i class="fas fa-times-circle text-red-400 mr-2"></i>Slow; paper-based and prone to loss.</td>
+                                <td><i class="fas fa-check-circle text-green-400 mr-2"></i>Real-Time; digital, professional PDF reports.</td>
+                            </tr>
+                            <tr>
+                                <td class="font-semibold text-white">Talent Stability</td>
+                                <td><i class="fas fa-times-circle text-red-400 mr-2"></i>15–25% annual attrition (industry avg).</td>
+                                <td><i class="fas fa-check-circle text-green-400 mr-2"></i>&lt; 5% annual attrition; preserving expertise.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TAB 3: HYBRID RESILIENCE & TALENT FORTRESS -->
+    <section id="resilience" class="py-8 container mx-auto px-4 tab-content">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-yellow-400 font-montserrat mb-4">Hybrid Resilience & The Talent Fortress</h2>
+            <p class="text-white/80 text-lg mb-8">In the volatile environment of Eastern Visayas, analog is not a backup; it is a failure point. Our framework utilizes a <strong class="text-white">"Hybrid Security"</strong> model that leapfrogs conventional methods to ensure continuity when infrastructure fails, backed by a highly retained workforce.</p>
+            
+            <!-- 3-Bridge System -->
+            <h3 class="text-2xl font-bold text-white font-montserrat mb-6 flex items-center gap-3">
+                <i class="fas fa-network-wired text-cyan-400"></i> Offline-First 3-Bridge Communication System
+            </h3>
+            <div class="grid md:grid-cols-3 gap-6 mb-10">
+                <div class="glass p-6 rounded-xl text-center border-t-4 border-blue-500">
+                    <div class="w-16 h-16 rounded-full bg-blue-500/20 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-cloud text-3xl text-blue-400"></i>
+                    </div>
+                    <h4 class="font-bold text-white text-lg mb-2">1. Cloud SMS Offline Mode</h4>
+                    <p class="text-white/70 text-sm">Field data is cached locally on guard devices when networks fail, auto-syncing when connectivity returns.</p>
+                </div>
+                <div class="glass p-6 rounded-xl text-center border-t-4 border-green-500">
+                    <div class="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-sms text-3xl text-green-400"></i>
+                    </div>
+                    <h4 class="font-bold text-white text-lg mb-2">2. SMS Gateway</h4>
+                    <p class="text-white/70 text-sm">Critical alerts fallback to coded SMS transmission in low-bandwidth environments, ensuring zero data loss.</p>
+                </div>
+                <div class="glass p-6 rounded-xl text-center border-t-4 border-purple-500">
+                    <div class="w-16 h-16 rounded-full bg-purple-500/20 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-walkie-talkie text-3xl text-purple-400"></i>
+                    </div>
+                    <h4 class="font-bold text-white text-lg mb-2">3. Viber/Radio Mesh</h4>
+                    <p class="text-white/70 text-sm">Ensures a final layer of communication survives in zero-data dead zones via pre-established radio channels.</p>
+                </div>
+            </div>
+
+            <!-- Talent Fortress -->
+            <h3 class="text-2xl font-bold text-white font-montserrat mb-6 flex items-center gap-3">
+                <i class="fas fa-users-shield text-green-400"></i> The Talent Fortress: Securing the Service Chain
+            </h3>
+            <div class="glass p-8 rounded-xl mb-8">
+                <p class="text-white/80 mb-6">A guard who has been at a site for three years understands its systemic vulnerabilities far better than a new hire. Our <strong class="text-white">"Decent Wage Policy"</strong> breaks the industry’s chronic attrition cycle.</p>
+                
+                <h4 class="text-xl font-bold text-yellow-400 mb-4">Digital Bayanihan & WIIFM Narrative</h4>
+                <p class="text-white/70 text-sm mb-4">We use "Kuya/Ate Tech Champions" and the "App Buddy" system to eliminate tech-anxiety. For our guards, technology is framed as an empowerment tool:</p>
+                
+                <div class="grid md:grid-cols-3 gap-4">
+                    <div class="glass-green p-4 rounded-lg">
+                        <i class="fas fa-money-check-alt text-2xl text-green-400 mb-2"></i>
+                        <h5 class="font-bold text-white text-sm">Faster Payroll</h5>
+                        <p class="text-xs text-white/60 mt-1">Digital timekeeping eliminates manual encoding errors, ensuring accurate, on-time salaries.</p>
+                    </div>
+                    <div class="glass-blue p-4 rounded-lg">
+                        <i class="fas fa-map-marker-alt text-2xl text-blue-400 mb-2"></i>
+                        <h5 class="font-bold text-white text-sm">GPS Clock-ins</h5>
+                        <p class="text-xs text-white/60 mt-1">Guards no longer need to travel to the main office just to sign physical DTRs, saving fare.</p>
+                    </div>
+                    <div class="glass-red p-4 rounded-lg">
+                        <i class="fas fa-broadcast-tower text-2xl text-red-400 mb-2"></i>
+                        <h5 class="font-bold text-white text-sm">The SOS Lifeline</h5>
+                        <p class="text-xs text-white/60 mt-1">A digital panic button ensures that if a guard is in danger, help is dispatched instantly to their GPS coordinates.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TAB 4: THE STRONGHOLD SEQUENCE (ROADMAP) -->
+    <section id="roadmap" class="py-8 container mx-auto px-4 tab-content">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-yellow-400 font-montserrat mb-4">The Stronghold Sequence: 12-Month Roadmap</h2>
+            <p class="text-white/80 text-lg mb-8">We cannot scale a fractured system. This sequential mandate ensures that crisis-proofing and standardization precede growth, providing the institutional stability required to absorb high-value contracts without service degradation.</p>
+            
+            <!-- Timeline -->
+            <div class="mb-12">
+                <div class="roadmap-step">
+                    <div class="glass p-5 rounded-xl">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="badge badge-compliant">Phase 1</span>
+                            <h4 class="font-bold text-white text-lg">Crisis-Proofing <span class="text-white/50 text-sm font-normal">(Weeks 1–4)</span></h4>
+                        </div>
+                        <p class="text-white/70 text-sm">Securing the "Compliance Firewall" via a Digital Document Vault and activating the 3-Bridge BCP to protect against asymmetric climate and regulatory shocks.</p>
+                    </div>
+                </div>
+                <div class="roadmap-step">
+                    <div class="glass p-5 rounded-xl">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="badge badge-info">Phase 2</span>
+                            <h4 class="font-bold text-white text-lg">Digital Transformation <span class="text-white/50 text-sm font-normal">(Months 2–4)</span></h4>
+                        </div>
+                        <p class="text-white/70 text-sm">Implementing the RACI Funnel to kill the Bystander Effect and rolling out the Offline-First SMS for real-time transparency and automated reporting.</p>
+                    </div>
+                </div>
+                <div class="roadmap-step">
+                    <div class="glass p-5 rounded-xl">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="badge badge-compliant">Phase 3</span>
+                            <h4 class="font-bold text-white text-lg">Talent Fortress <span class="text-white/50 text-sm font-normal">(Months 5–7)</span></h4>
+                        </div>
+                        <p class="text-white/70 text-sm">Launching the "Guard as Ambassador" program, institutionalizing the Decent Wage Policy, and deploying the "Digital Bayanihan" tech-onboarding protocol.</p>
+                    </div>
+                </div>
+                <div class="roadmap-step">
+                    <div class="glass p-5 rounded-xl">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="badge badge-critical">Phase 4</span>
+                            <h4 class="font-bold text-white text-lg">Market Capture <span class="text-white/50 text-sm font-normal">(Months 8–12)</span></h4>
+                        </div>
+                        <p class="text-white/70 text-sm">Aggressive B2B outreach as the region's premier Zero-Liability partner, targeting LGUs, NGOs, and corporate BPOs with hybrid security bundles.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ROI Dashboard -->
+            <h3 class="text-2xl font-bold text-white font-montserrat mb-6 flex items-center gap-3">
+                <i class="fas fa-chart-pie text-yellow-400"></i> 12-Month ROI Dashboard
+            </h3>
+            <p class="text-white/70 mb-6">This transformation is self-funding. By reclaiming administrative man-hours and preventing revenue leakage, the model yields a <strong class="text-yellow-400">54.5% ROI</strong> with a 6.5-month payback period.</p>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="glass p-6 rounded-xl border-l-4 border-blue-500">
+                    <h4 class="font-bold text-white text-lg mb-2"><i class="fas fa-cogs text-blue-400 mr-2"></i>Operational Excellence</h4>
+                    <p class="text-white/70 text-sm">40% reduction in manual administrative overhead and 100% elimination of dropped leads via the RACI Funnel.</p>
+                </div>
+                <div class="glass p-6 rounded-xl border-l-4 border-red-500">
+                    <h4 class="font-bold text-white text-lg mb-2"><i class="fas fa-shield-alt text-red-400 mr-2"></i>Risk Immunity</h4>
+                    <p class="text-white/70 text-sm">Zero risk of license suspension and guaranteed BCP continuity during regional climate shocks and regulatory audits.</p>
+                </div>
+                <div class="glass p-6 rounded-xl border-l-4 border-green-500">
+                    <h4 class="font-bold text-white text-lg mb-2"><i class="fas fa-user-tie text-green-400 mr-2"></i>Talent Retention</h4>
+                    <p class="text-white/70 text-sm">Voluntary guard turnover maintained below 5% annually, preserving site-specific expertise and professional pride.</p>
+                </div>
+                <div class="glass p-6 rounded-xl border-l-4 border-yellow-500">
+                    <h4 class="font-bold text-white text-lg mb-2"><i class="fas fa-chart-line text-yellow-400 mr-2"></i>Revenue Growth</h4>
+                    <p class="text-white/70 text-sm">15–20% growth in high-value client acquisition via premium hybrid pricing and DRRM-integrated service bundles.</p>
                 </div>
             </div>
         </div>
@@ -404,32 +545,32 @@
 
     <!-- CTA SECTION -->
     <section class="py-16 container mx-auto px-4">
-        <div class="glass-strong p-8 rounded-xl text-center">
+        <div class="glass-strong p-8 md:p-12 rounded-xl text-center max-w-4xl mx-auto">
             <div class="inline-flex items-center gap-2 glass-gold px-6 py-3 rounded-full mb-6">
                 <i class="fas fa-shield-alt text-[#0A1628]"></i>
                 <span class="text-[#0A1628] font-montserrat font-bold">Zero-Liability Assurance</span>
             </div>
-            <h2 class="text-3xl md:text-4xl font-bold text-yellow-400 font-montserrat mb-4">Are You Protected?</h2>
-            <p class="text-xl text-white/80 max-w-3xl mx-auto mb-8">
-                Don't wait for a regulatory shock or labor dispute to discover vulnerabilities. 
-                Verify your current provider's liability coverage today.
+            <h2 class="text-3xl md:text-4xl font-bold text-yellow-400 font-montserrat mb-4">From Tactical Watchmen to Strategic Partners</h2>
+            <p class="text-lg text-white/80 max-w-3xl mx-auto mb-8">
+                In the volatile macro-environment of Eastern Visayas, compliance is the only viable foundation for institutional growth. 
+                Don't wait for a regulatory shock to discover vulnerabilities.
             </p>
             
             <div class="grid md:grid-cols-3 gap-4 max-w-4xl mx-auto">
-                <a href="./security-assessment.html" class="btn-pulse glass p-6 rounded-lg text-center border-2 border-blue-500 hover:bg-blue-900 transition">
-                    <i class="fas fa-clipboard-check text-3xl text-blue-400 mb-3"></i>
+                <a href="./security-assessment.html" class="btn-pulse glass p-6 rounded-lg text-center border-2 border-blue-500 hover:bg-blue-900/50 transition group">
+                    <i class="fas fa-clipboard-check text-3xl text-blue-400 mb-3 group-hover:scale-110 transition-transform"></i>
                     <h4 class="font-bold text-white">Free Assessment</h4>
-                    <p class="text-sm text-white/70">Evaluate Current Coverage</p>
+                    <p class="text-xs text-white/70 mt-1">Evaluate Current Coverage</p>
                 </a>
-                <a href="./capability.html" class="glass p-6 rounded-lg text-center border-2 border-yellow-500 hover:bg-yellow-900 transition">
-                    <i class="fas fa-file-contract text-3xl text-yellow-400 mb-3"></i>
+                <a href="./capability.html" class="glass p-6 rounded-lg text-center border-2 border-yellow-500 hover:bg-yellow-900/50 transition group">
+                    <i class="fas fa-file-contract text-3xl text-yellow-400 mb-3 group-hover:scale-110 transition-transform"></i>
                     <h4 class="font-bold text-white">Our Services</h4>
-                    <p class="text-sm text-white/70">View Contract Terms</p>
+                    <p class="text-xs text-white/70 mt-1">View Contract Terms</p>
                 </a>
-                <a href="#" class="glass p-6 rounded-lg text-center border-2 border-green-500 hover:bg-green-900 transition">
-                    <i class="fas fa-phone text-3xl text-green-400 mb-3"></i>
+                <a href="tel:09171370112" class="glass p-6 rounded-lg text-center border-2 border-green-500 hover:bg-green-900/50 transition group">
+                    <i class="fas fa-phone text-3xl text-green-400 mb-3 group-hover:scale-110 transition-transform"></i>
                     <h4 class="font-bold text-white">Contact Support</h4>
-                    <p class="text-sm text-white/70">0917 137 0112</p>
+                    <p class="text-xs text-white/70 mt-1">0917 137 0112</p>
                 </a>
             </div>
         </div>
@@ -439,45 +580,75 @@
 <!-- Footer -->
 <footer class="bg-[#0A1628] border-t border-yellow-900/50 py-8">
     <div class="container mx-auto px-4 text-center">
-        <p class="text-sm text-gray-500">© 2026 Stronghold A3 Security Agency. All Rights Reserved.</p>
-        <p class="text-xs text-gray-600 mt-1">DOLE DO-174 Compliant | Licensed Private Security Agency</p>
+        <img src="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png" alt="Stronghold A3" class="h-12 w-12 mx-auto mb-4 rounded-full border border-yellow-500/50">
+        <p class="text-sm text-gray-400">© 2026 Stronghold A3 Security Agency. All Rights Reserved.</p>
+        <p class="text-xs text-gray-500 mt-2">DOLE DO-174 Compliant | PNP-SOSIA Licensed | PADPAO Region 8 Member</p>
+        <div class="flex justify-center space-x-4 mt-4">
+            <a href="#" class="text-gray-500 hover:text-yellow-400 transition"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-gray-500 hover:text-yellow-400 transition"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="text-gray-500 hover:text-yellow-400 transition"><i class="fas fa-envelope"></i></a>
+        </div>
     </div>
 </footer>
 
 <!-- Floating CTA -->
 <div class="floating-cta">
-    <a href="#contact" class="btn-pulse bg-yellow-500 text-black rounded-full w-16 h-16 flex items-center justify-center shadow-lg">
-        <i class="fas fa-phone text-2xl"></i>
+    <a href="tel:09171370112" class="btn-pulse bg-yellow-500 text-black rounded-full w-14 h-14 flex items-center justify-center shadow-lg hover:bg-yellow-400 transition">
+        <i class="fas fa-phone text-xl"></i>
     </a>
 </div>
 
 <script>
     // ===== NAVIGATION =====
-    function openMobileMenu() { document.getElementById('mobileMenu').classList.add('open'); document.getElementById('overlay').classList.add('show'); }
-    function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); document.getElementById('overlay').classList.remove('show'); }
+    function openMobileMenu() { 
+        document.getElementById('mobileMenu').classList.add('open'); 
+        document.getElementById('overlay').classList.add('show'); 
+        document.body.style.overflow = 'hidden';
+    }
+    function closeMobileMenu() { 
+        document.getElementById('mobileMenu').classList.remove('open'); 
+        document.getElementById('overlay').classList.remove('show'); 
+        document.body.style.overflow = 'auto';
+    }
     document.getElementById('overlay').addEventListener('click', closeMobileMenu);
     
     // ===== TAB SWITCHING =====
     function switchSection(id) {
-        document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
+        // Hide all tab contents
+        document.querySelectorAll('.tab-content').forEach(c => {
+            c.classList.remove('active');
+            c.classList.add('hidden');
+        });
+        
+        // Deactivate all buttons
         document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
         
+        // Show target content
         const target = document.getElementById(id);
-        if(target) target.classList.remove('hidden');
+        if(target) {
+            target.classList.remove('hidden');
+            target.classList.add('active');
+        }
         
+        // Activate target button
         const btn = document.getElementById(`tab-${id}`);
         if(btn) btn.classList.add('active');
         
-        window.location.hash = id;
-        closeMobileMenu();
+        // Scroll to top of main content smoothly
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
     
-    window.addEventListener('hashchange', () => {
+    // Initialize first tab
+    document.addEventListener('DOMContentLoaded', () => {
         const hash = window.location.hash.substring(1);
-        if(hash) switchSection(hash);
+        if(hash && document.getElementById(hash)) {
+            switchSection(hash);
+        } else {
+            switchSection('overview');
+        }
     });
 
-    console.log('%cZero-Liability v1.0 — Loaded', 'color:#FFD700;font-size:16px;font-weight:bold;');
+    console.log('%cZero-Liability Framework v2.0 — Loaded', 'color:#FFD700;font-size:16px;font-weight:bold;');
 </script>
 </body>
 </html>
