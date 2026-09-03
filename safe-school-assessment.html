@@ -1,0 +1,2101 @@
+<!-- Define the document type as HTML5. -->
+<!DOCTYPE html>
+<!-- Define the document language as English and enable dark-mode styling. -->
+<html lang="en" class="dark">
+<!-- Open the document head. -->
+<head>
+    <!-- Define UTF-8 character encoding. -->
+    <meta charset="UTF-8">
+    <!-- Configure responsive rendering on mobile devices. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Define the browser title. -->
+    <title>Stronghold A3 Safe Schools Security Risk Assessment</title>
+
+    <!-- Load Tailwind CSS for responsive interface styling. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure the Tailwind design system. -->
+    <script>
+        // Extend Tailwind with the Stronghold A3 visual identity.
+        tailwind.config = {
+            // Configure the dark-mode strategy.
+            darkMode: "class",
+            // Configure the custom design tokens.
+            theme: {
+                // Extend rather than replace the default Tailwind theme.
+                extend: {
+                    // Define the application's typography.
+                    fontFamily: {
+                        // Define the Montserrat heading family.
+                        montserrat: ["Montserrat", "sans-serif"],
+                        // Define the Poppins body family.
+                        poppins: ["Poppins", "sans-serif"]
+                    },
+                    // Define the application's brand colors.
+                    colors: {
+                        // Define the primary navy color.
+                        navy: "#0A1628",
+                        // Define the secondary navy color.
+                        "navy-light": "#001B3D",
+                        // Define the primary blue color.
+                        "brand-blue": "#3B82F6",
+                        // Define the accent gold color.
+                        "brand-gold": "#FFD700"
+                    }
+                }
+            }
+        };
+    </script>
+
+    <!-- Load the Montserrat and Poppins font families. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Load the Google Fonts CDN connection. -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Load the required font weights. -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Load Font Awesome icons. -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Load Chart.js for risk visualizations. -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+
+    <!-- Load jsPDF for client-side report generation. -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <!-- Load the Supabase browser client. -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- Open the application's custom stylesheet. -->
+    <style>
+        /* Define reusable application-level color variables. */
+        :root {
+            --navy: #0A1628;
+            --navy-light: #001B3D;
+            --blue: #3B82F6;
+            --gold: #FFD700;
+        }
+
+        /* Configure the entire document body. */
+        body {
+            font-family: "Poppins", sans-serif;
+            background: radial-gradient(circle at 20% 0%, #003A73 0%, #001B3D 45%, #000C1F 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: #FFFFFF;
+        }
+
+        /* Create the translucent glass panel treatment. */
+        .glass {
+            background: rgba(255, 255, 255, 0.055);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+
+        /* Create a stronger glass treatment for primary panels. */
+        .glass-strong {
+            background: rgba(4, 18, 38, 0.82);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+        }
+
+        /* Create the gold call-to-action panel. */
+        .glass-gold {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.96), rgba(255, 196, 0, 0.9));
+            color: var(--navy);
+        }
+
+        /* Define the assessment option interaction state. */
+        .option-card {
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.04);
+            transition: all 0.2s ease;
+        }
+
+        /* Define the assessment option hover state. */
+        .option-card:hover {
+            transform: translateY(-1px);
+            border-color: rgba(59, 130, 246, 0.7);
+            background: rgba(59, 130, 246, 0.09);
+        }
+
+        /* Define the selected assessment option state. */
+        .option-card.selected {
+            border-color: var(--blue);
+            background: rgba(59, 130, 246, 0.17);
+            box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.18);
+        }
+
+        /* Create the circular option indicator. */
+        .option-radio {
+            width: 20px;
+            height: 20px;
+            flex: 0 0 20px;
+            border-radius: 9999px;
+            border: 2px solid rgba(255, 255, 255, 0.35);
+        }
+
+        /* Fill the circular indicator when selected. */
+        .option-card.selected .option-radio {
+            border-color: var(--blue);
+            box-shadow: inset 0 0 0 4px var(--navy), inset 0 0 0 8px var(--blue);
+        }
+
+        /* Define the progress track. */
+        .progress-track {
+            width: 100%;
+            height: 8px;
+            overflow: hidden;
+            border-radius: 9999px;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        /* Define the progress fill. */
+        .progress-fill {
+            height: 100%;
+            border-radius: 9999px;
+            background: linear-gradient(90deg, var(--blue), var(--gold));
+            transition: width 0.35s ease;
+        }
+
+        /* Define the standard form-control appearance. */
+        input,
+        select,
+        textarea {
+            width: 100%;
+            color: #FFFFFF;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.13);
+            outline: none;
+        }
+
+        /* Define focused form-control styling. */
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--blue);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.14);
+        }
+
+        /* Ensure select options remain readable. */
+        select option {
+            background: var(--navy);
+            color: #FFFFFF;
+        }
+
+        /* Define the animated score ring. */
+        .score-ring {
+            background: conic-gradient(var(--blue) var(--score-progress), rgba(255, 255, 255, 0.08) 0);
+        }
+
+        /* Define a subtle entry animation. */
+        .animate-fade-in {
+            animation: fadeIn 0.35s ease-out;
+        }
+
+        /* Define the fade-in animation frames. */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Define the loading spinner animation. */
+        .spinner {
+            width: 18px;
+            height: 18px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top-color: #FFFFFF;
+            border-radius: 9999px;
+            animation: spin 0.7s linear infinite;
+        }
+
+        /* Define the spinner animation frames. */
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Improve keyboard accessibility. */
+        button:focus-visible,
+        a:focus-visible,
+        input:focus-visible,
+        select:focus-visible,
+        textarea:focus-visible {
+            outline: 3px solid rgba(255, 215, 0, 0.8);
+            outline-offset: 3px;
+        }
+
+        /* Respect users who request reduced motion. */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<!-- Open the document body. -->
+<body>
+    <!-- Define the main application container. -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 py-8 md:py-12">
+
+        <!-- Define the persistent application header. -->
+        <header class="flex flex-col md:flex-row md:items-center md:justify-between gap-5 mb-8">
+            <!-- Define the Stronghold A3 brand block. -->
+            <div>
+                <!-- Display the organization name. -->
+                <div class="text-brand-gold font-montserrat font-extrabold tracking-wide text-xl">STRONGHOLD A3</div>
+                <!-- Display the assessment product name. -->
+                <div class="text-gray-300 text-sm mt-1">Safe Schools Security Risk Assessment</div>
+            </div>
+
+            <!-- Display the assessment status badge. -->
+            <div class="glass rounded-full px-4 py-2 text-sm text-gray-300">
+                <!-- Display the shield icon. -->
+                <i class="fa-solid fa-shield-halved text-brand-blue mr-2"></i>
+                <!-- Display the product descriptor. -->
+                Education Security Edition
+            </div>
+        </header>
+
+        <!-- Define the introductory landing section. -->
+        <section id="introSection" class="animate-fade-in">
+            <!-- Define the hero panel. -->
+            <div class="glass-strong rounded-3xl p-7 md:p-12 text-center">
+                <!-- Display the primary hero icon. -->
+                <div class="w-20 h-20 mx-auto rounded-2xl bg-brand-blue/15 border border-brand-blue/40 flex items-center justify-center mb-6">
+                    <i class="fa-solid fa-school-shield text-4xl text-brand-blue"></i>
+                </div>
+
+                <!-- Display the main product heading. -->
+                <h1 class="font-montserrat font-extrabold text-3xl md:text-5xl leading-tight max-w-4xl mx-auto">
+                    How resilient is your school against today's security threats?
+                </h1>
+
+                <!-- Explain the expanded assessment scope. -->
+                <p class="text-gray-300 max-w-3xl mx-auto mt-5 text-base md:text-lg leading-relaxed">
+                    Assess physical security, student safety, digital threats, emergency preparedness, technology readiness, and human factors in one streamlined school-specific assessment.
+                </p>
+
+                <!-- Define the assessment benefit cards. -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mt-8 max-w-4xl mx-auto">
+                    <!-- Display the assessment duration. -->
+                    <div class="glass rounded-2xl p-4">
+                        <i class="fa-solid fa-clock text-brand-blue text-xl"></i>
+                        <div class="font-bold mt-2">5 Minutes</div>
+                        <div class="text-xs text-gray-400 mt-1">Guided assessment</div>
+                    </div>
+
+                    <!-- Display the risk scoring benefit. -->
+                    <div class="glass rounded-2xl p-4">
+                        <i class="fa-solid fa-chart-line text-brand-blue text-xl"></i>
+                        <div class="font-bold mt-2">Risk Index</div>
+                        <div class="text-xs text-gray-400 mt-1">Instant scoring</div>
+                    </div>
+
+                    <!-- Display the school-specific action plan. -->
+                    <div class="glass rounded-2xl p-4">
+                        <i class="fa-solid fa-bullseye text-brand-blue text-xl"></i>
+                        <div class="font-bold mt-2">Action Plan</div>
+                        <div class="text-xs text-gray-400 mt-1">Prioritized gaps</div>
+                    </div>
+
+                    <!-- Display the privacy benefit. -->
+                    <div class="glass rounded-2xl p-4">
+                        <i class="fa-solid fa-lock text-brand-blue text-xl"></i>
+                        <div class="font-bold mt-2">Confidential</div>
+                        <div class="text-xs text-gray-400 mt-1">Assessment data</div>
+                    </div>
+                </div>
+
+                <!-- Define the assessment-start button. -->
+                <button id="startButton" type="button" onclick="startAssessment()" class="mt-9 bg-brand-blue hover:bg-blue-600 text-white px-9 py-4 rounded-xl font-bold text-lg shadow-lg shadow-blue-500/20 transition">
+                    <i class="fa-solid fa-shield-halved mr-2"></i>
+                    Start Safe Schools Assessment
+                </button>
+
+                <!-- Display a concise confidentiality statement. -->
+                <p class="text-gray-500 text-sm mt-5">
+                    Designed for schools, colleges, universities, and multi-campus education groups.
+                </p>
+            </div>
+
+            <!-- Define the expanded assessment capabilities. -->
+            <div class="grid md:grid-cols-3 gap-4 mt-5">
+                <!-- Display physical safety coverage. -->
+                <div class="glass rounded-2xl p-5">
+                    <i class="fa-solid fa-building-shield text-brand-gold text-xl"></i>
+                    <h2 class="font-montserrat font-bold text-lg mt-3">Physical & Student Safety</h2>
+                    <p class="text-sm text-gray-400 mt-2">Perimeter, access, classrooms, playgrounds, visitor controls, bullying, and unauthorized-entry readiness.</p>
+                </div>
+
+                <!-- Display digital safety coverage. -->
+                <div class="glass rounded-2xl p-5">
+                    <i class="fa-solid fa-laptop-shield text-brand-gold text-xl"></i>
+                    <h2 class="font-montserrat font-bold text-lg mt-3">Digital Safety</h2>
+                    <p class="text-sm text-gray-400 mt-2">Cyberbullying, online grooming awareness, data protection, incident reporting, and technology resilience.</p>
+                </div>
+
+                <!-- Display emergency preparedness coverage. -->
+                <div class="glass rounded-2xl p-5">
+                    <i class="fa-solid fa-tower-broadcast text-brand-gold text-xl"></i>
+                    <h2 class="font-montserrat font-bold text-lg mt-3">Emergency Preparedness</h2>
+                    <p class="text-sm text-gray-400 mt-2">Evacuation, lockdown readiness, disaster response, communications, parent notification, and continuity.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Define the assessment questionnaire section. -->
+        <section id="assessmentSection" class="hidden animate-fade-in">
+            <!-- Define the primary questionnaire panel. -->
+            <div class="glass-strong rounded-3xl p-6 md:p-10">
+                <!-- Define the progress header. -->
+                <div class="mb-7">
+                    <!-- Display the current question and completion percentage. -->
+                    <div class="flex justify-between items-center text-sm mb-3">
+                        <span class="text-gray-400">
+                            Question <span id="currentQuestion" class="text-white font-bold">1</span>
+                            of <span id="totalQuestions" class="text-white font-bold">30</span>
+                        </span>
+                        <span id="progressPercent" class="text-brand-blue font-bold">0%</span>
+                    </div>
+
+                    <!-- Display the progress bar. -->
+                    <div class="progress-track">
+                        <div id="progressBar" class="progress-fill" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+                <!-- Display the active question. -->
+                <div id="questionArea" class="min-h-[390px]"></div>
+
+                <!-- Define the questionnaire navigation. -->
+                <div class="flex items-center justify-between gap-4 border-t border-white/10 pt-6">
+                    <!-- Define the previous-question button. -->
+                    <button id="previousButton" type="button" onclick="previousQuestion()" class="glass rounded-xl px-5 py-3 font-semibold text-white hover:bg-white/10 transition">
+                        <i class="fa-solid fa-arrow-left mr-2"></i>
+                        Previous
+                    </button>
+
+                    <!-- Display the save-progress message. -->
+                    <span class="hidden md:block text-xs text-gray-500">
+                        Your selections are retained while you complete the assessment.
+                    </span>
+
+                    <!-- Define the next-question button. -->
+                    <button id="nextButton" type="button" onclick="nextQuestion()" class="bg-brand-blue rounded-xl px-7 py-3 font-bold text-white hover:bg-blue-600 transition shadow-lg shadow-blue-500/20">
+                        Next
+                        <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Define the lead-capture section. -->
+        <section id="leadCaptureSection" class="hidden animate-fade-in">
+            <!-- Define the lead form container. -->
+            <div class="glass-strong rounded-3xl p-7 md:p-11 max-w-2xl mx-auto">
+                <!-- Define the lead form heading. -->
+                <div class="text-center mb-8">
+                    <!-- Display the report icon. -->
+                    <div class="w-16 h-16 mx-auto rounded-2xl bg-brand-blue/15 border border-brand-blue/40 flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-file-circle-check text-brand-blue text-2xl"></i>
+                    </div>
+
+                    <!-- Display the report heading. -->
+                    <h2 class="font-montserrat font-bold text-2xl md:text-3xl">Generate Your School Risk Profile</h2>
+
+                    <!-- Explain why the information is requested. -->
+                    <p class="text-gray-400 mt-2">
+                        Enter your organization details to view the risk profile and generate the report.
+                    </p>
+                </div>
+
+                <!-- Define the lead form. -->
+                <form id="leadForm" onsubmit="submitLead(event)" class="space-y-5">
+                    <!-- Define the full-name field. -->
+                    <div>
+                        <label for="fullName" class="block text-sm font-semibold text-gray-300 mb-2">Full Name *</label>
+                        <input id="fullName" name="fullName" type="text" autocomplete="name" required maxlength="120" class="rounded-xl px-4 py-3" placeholder="Your full name">
+                    </div>
+
+                    <!-- Define the email field. -->
+                    <div>
+                        <label for="email" class="block text-sm font-semibold text-gray-300 mb-2">Email Address *</label>
+                        <input id="email" name="email" type="email" autocomplete="email" required maxlength="160" class="rounded-xl px-4 py-3" placeholder="you@school.edu">
+                    </div>
+
+                    <!-- Define the organization field. -->
+                    <div>
+                        <label for="company" class="block text-sm font-semibold text-gray-300 mb-2">School / Organization *</label>
+                        <input id="company" name="company" type="text" autocomplete="organization" required maxlength="160" class="rounded-xl px-4 py-3" placeholder="School or institution name">
+                    </div>
+
+                    <!-- Define the education type field. -->
+                    <div>
+                        <label for="facilityType" class="block text-sm font-semibold text-gray-300 mb-2">Institution Type *</label>
+                        <select id="facilityType" name="facilityType" required class="rounded-xl px-4 py-3">
+                            <option value="">Select institution type...</option>
+                            <option value="Elementary School">Elementary School</option>
+                            <option value="Secondary School">Secondary School</option>
+                            <option value="Senior High School">Senior High School</option>
+                            <option value="College / University">College / University</option>
+                            <option value="Technical / Vocational School">Technical / Vocational School</option>
+                            <option value="Integrated School">Integrated School</option>
+                            <option value="Multi-Campus Institution">Multi-Campus Institution</option>
+                        </select>
+                    </div>
+
+                    <!-- Define the campus-count field. -->
+                    <div>
+                        <label for="campusCount" class="block text-sm font-semibold text-gray-300 mb-2">Number of Campuses *</label>
+                        <select id="campusCount" name="campusCount" required class="rounded-xl px-4 py-3">
+                            <option value="">Select number of campuses...</option>
+                            <option value="1">1 campus</option>
+                            <option value="2-3">2–3 campuses</option>
+                            <option value="4-10">4–10 campuses</option>
+                            <option value="11+">11+ campuses</option>
+                        </select>
+                    </div>
+
+                    <!-- Define the report-generation button. -->
+                    <button id="submitButton" type="submit" class="w-full bg-brand-gold text-navy rounded-xl px-8 py-4 font-bold text-lg hover:bg-yellow-400 transition shadow-lg shadow-yellow-500/10">
+                        <span id="submitButtonText">
+                            <i class="fa-solid fa-chart-pie mr-2"></i>
+                            Generate My Risk Profile
+                        </span>
+                    </button>
+
+                    <!-- Define the submission-status message. -->
+                    <p id="submissionStatus" class="hidden text-center text-sm text-gray-400"></p>
+                </form>
+            </div>
+        </section>
+
+        <!-- Define the dynamic results dashboard. -->
+        <section id="resultsSection" class="hidden animate-fade-in space-y-6">
+            <!-- Define the result overview panel. -->
+            <div class="glass-strong rounded-3xl p-7 md:p-10">
+                <!-- Define the result heading. -->
+                <div class="text-center">
+                    <!-- Display the institution name. -->
+                    <div id="resultOrganization" class="text-brand-gold font-semibold mb-2"></div>
+
+                    <!-- Display the main risk score heading. -->
+                    <h2 class="font-montserrat font-bold text-2xl md:text-3xl">Safe Schools Risk Index</h2>
+
+                    <!-- Display the score ring. -->
+                    <div id="scoreRing" class="score-ring w-48 h-48 rounded-full mx-auto my-7 flex items-center justify-center relative">
+                        <!-- Create the inner score area. -->
+                        <div class="w-40 h-40 rounded-full bg-navy flex flex-col items-center justify-center">
+                            <!-- Display the overall score. -->
+                            <div id="overallScore" class="font-montserrat font-extrabold text-5xl">0</div>
+                            <!-- Display the risk classification. -->
+                            <div id="riskLevel" class="text-sm font-bold tracking-wider text-brand-blue">CALCULATING</div>
+                        </div>
+                    </div>
+
+                    <!-- Display the risk summary. -->
+                    <p id="riskSummary" class="max-w-2xl mx-auto text-gray-300 leading-relaxed"></p>
+                </div>
+
+                <!-- Define the score interpretation cards. -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-8">
+                    <!-- Display the low-risk range. -->
+                    <div class="glass rounded-xl p-4 text-center">
+                        <div class="text-sm font-bold text-green-400">0–25</div>
+                        <div class="text-xs text-gray-500 mt-1">Lower Risk</div>
+                    </div>
+
+                    <!-- Display the moderate-risk range. -->
+                    <div class="glass rounded-xl p-4 text-center">
+                        <div class="text-sm font-bold text-yellow-400">26–50</div>
+                        <div class="text-xs text-gray-500 mt-1">Moderate</div>
+                    </div>
+
+                    <!-- Display the high-risk range. -->
+                    <div class="glass rounded-xl p-4 text-center">
+                        <div class="text-sm font-bold text-orange-400">51–75</div>
+                        <div class="text-xs text-gray-500 mt-1">High</div>
+                    </div>
+
+                    <!-- Display the critical-risk range. -->
+                    <div class="glass rounded-xl p-4 text-center">
+                        <div class="text-sm font-bold text-red-400">76–100</div>
+                        <div class="text-xs text-gray-500 mt-1">Critical</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Define the dashboard metric grid. -->
+            <div id="dashboardMetrics" class="grid md:grid-cols-4 gap-4"></div>
+
+            <!-- Define the category chart panel. -->
+            <div class="glass-strong rounded-3xl p-7">
+                <!-- Display the chart heading. -->
+                <h3 class="font-montserrat font-bold text-xl text-center mb-6">Risk Category Breakdown</h3>
+
+                <!-- Define the chart container. -->
+                <div class="max-w-xl mx-auto h-[330px]">
+                    <canvas id="radarChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Define the priority-action panel. -->
+            <div class="glass-strong rounded-3xl p-7">
+                <!-- Display the priority-action heading. -->
+                <h3 class="font-montserrat font-bold text-2xl text-center">Priority Action Plan</h3>
+
+                <!-- Explain the action-plan logic. -->
+                <p class="text-gray-400 text-center mt-2 mb-7">
+                    Focus first on the highest-scoring vulnerabilities.
+                </p>
+
+                <!-- Populate recommendations dynamically. -->
+                <div id="recommendationsContainer" class="space-y-4"></div>
+            </div>
+
+            <!-- Define the school-readiness capability panel. -->
+            <div class="glass-strong rounded-3xl p-7">
+                <!-- Display the capability heading. -->
+                <h3 class="font-montserrat font-bold text-xl mb-5">Safe Schools Capability Roadmap</h3>
+
+                <!-- Populate roadmap stages dynamically. -->
+                <div id="roadmapContainer" class="grid md:grid-cols-4 gap-3"></div>
+            </div>
+
+            <!-- Define the report and consultation actions. -->
+            <div class="glass-gold rounded-3xl p-7 text-center">
+                <!-- Display the action heading. -->
+                <h3 class="font-montserrat font-extrabold text-2xl">Turn the assessment into a school security program.</h3>
+
+                <!-- Display the action description. -->
+                <p class="max-w-2xl mx-auto mt-2 text-navy/75">
+                    Use the assessment as the starting point for physical security improvements, digital safety, emergency preparedness, technology integration, and continuous monitoring.
+                </p>
+
+                <!-- Define the result actions. -->
+                <div class="flex flex-col sm:flex-row justify-center gap-3 mt-6">
+                    <!-- Define the PDF-report action. -->
+                    <button type="button" onclick="downloadPDF()" class="bg-navy text-white px-7 py-3 rounded-xl font-bold hover:bg-navy-light transition">
+                        <i class="fa-solid fa-file-pdf mr-2"></i>
+                        Download PDF Report
+                    </button>
+
+                    <!-- Define the consultation phone action. -->
+                    <a href="tel:09171370112" class="bg-brand-blue text-white px-7 py-3 rounded-xl font-bold hover:bg-blue-600 transition">
+                        <i class="fa-solid fa-phone mr-2"></i>
+                        Request Consultation
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Define the application footer. -->
+    <footer class="max-w-6xl mx-auto px-4 pb-8 text-center text-xs text-gray-500">
+        <!-- Display the copyright statement. -->
+        © 2026 Stronghold A3 Security Agency.
+        <!-- Display the assessment disclaimer. -->
+        This assessment is a screening and planning tool and does not replace a professional security audit.
+    </footer>
+
+    <!-- Open the application logic. -->
+    <script>
+        // Retrieve the Supabase client factory from the loaded library.
+        const { createClient } = window.supabase;
+
+        // Define the Supabase project URL used by the existing Stronghold A3 implementation.
+        const supabaseUrl = "https://zpahlcmuowwwiauffrby.supabase.co";
+
+        // Define the existing anonymous Supabase public key.
+        const supabaseAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ6cGFobGNtdW93d3dpYXVmZnJieSIsInN1cCI6InN1cGFiYXNlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEwMjc5MjAsImV4cCI6MjA5NjYwMzkyMH0.nqX53srwL36lEzVPbEPC0x7TJmL6YZ2lhmQrDNtVKJw";
+
+        // Initialize the Supabase client.
+        const supabaseClient = createClient(supabaseUrl, supabaseAnonKey);
+
+        // Track the active question.
+        let currentQuestion = 0;
+
+        // Track the selected answer for every question.
+        let answers = [];
+
+        // Store calculated category scores.
+        let categoryScores = {};
+
+        // Store the completed lead information.
+        let leadData = {};
+
+        // Store the most recent calculated assessment result.
+        let assessmentResult = null;
+
+        // Store the Chart.js radar-chart instance.
+        let radarChartInstance = null;
+
+        // Define school-specific category weights that total one hundred percent.
+        const categoryWeights = {
+            "Physical & Student Safety": 0.24,
+            "Emergency Preparedness": 0.22,
+            "Digital Safety": 0.18,
+            "Technology & Monitoring": 0.14,
+            "Governance & Compliance": 0.12,
+            "Human Capital": 0.10
+        };
+
+        // Define the school-specific assessment questions.
+        const questions = [
+            // Assess perimeter and entry controls.
+            {
+                category: "Physical & Student Safety",
+                weight: 5,
+                question: "How well controlled are campus entry and exit points during normal school operations?",
+                options: [
+                    { text: "All entry points are controlled, staffed, and consistently monitored", score: 0 },
+                    { text: "Most entry points are controlled with minor gaps", score: 3 },
+                    { text: "Controls vary by time or location", score: 6 },
+                    { text: "Entry controls are minimal or inconsistent", score: 9 }
+                ]
+            },
+
+            // Assess visitor management.
+            {
+                category: "Physical & Student Safety",
+                weight: 5,
+                question: "How mature is your visitor identification, registration, and escort process?",
+                options: [
+                    { text: "Verified identification, digital or documented registration, and controlled access", score: 0 },
+                    { text: "Formal process exists but is partly manual", score: 3 },
+                    { text: "Process exists but enforcement is inconsistent", score: 6 },
+                    { text: "No reliable visitor-management process", score: 9 }
+                ]
+            },
+
+            // Assess classroom visibility.
+            {
+                category: "Physical & Student Safety",
+                weight: 4,
+                question: "How effectively are classroom blind spots, corridors, stairways, and isolated areas identified and controlled?",
+                options: [
+                    { text: "Regularly assessed with documented corrective actions", score: 0 },
+                    { text: "Known areas are generally monitored", score: 3 },
+                    { text: "Some blind spots are known but unresolved", score: 6 },
+                    { text: "No systematic review of blind spots", score: 9 }
+                ]
+            },
+
+            // Assess playground and student activity areas.
+            {
+                category: "Physical & Student Safety",
+                weight: 4,
+                question: "How well are playgrounds, sports areas, student gathering spaces, and other activity zones supervised?",
+                options: [
+                    { text: "Coverage, supervision ratios, and escalation procedures are documented", score: 0 },
+                    { text: "Supervision is generally adequate", score: 3 },
+                    { text: "Coverage varies during busy periods", score: 6 },
+                    { text: "Supervision gaps are frequent", score: 9 }
+                ]
+            },
+
+            // Assess emergency exits.
+            {
+                category: "Physical & Student Safety",
+                weight: 5,
+                question: "How confident are you that emergency exits remain accessible, visible, and usable?",
+                options: [
+                    { text: "Inspected regularly and consistently maintained", score: 0 },
+                    { text: "Generally compliant with occasional maintenance issues", score: 3 },
+                    { text: "Several unresolved issues exist", score: 6 },
+                    { text: "Exit access is frequently obstructed or uncertain", score: 9 }
+                ]
+            },
+
+            // Assess student behavioral safety.
+            {
+                category: "Physical & Student Safety",
+                weight: 5,
+                question: "How mature is the school's process for identifying, reporting, and responding to bullying or threatening student behavior?",
+                options: [
+                    { text: "Documented reporting, escalation, intervention, and follow-up are consistently used", score: 0 },
+                    { text: "Formal process exists with some implementation gaps", score: 3 },
+                    { text: "Processes are mostly informal", score: 6 },
+                    { text: "No dependable process exists", score: 9 }
+                ]
+            },
+
+            // Assess unauthorized-entry readiness.
+            {
+                category: "Physical & Student Safety",
+                weight: 5,
+                question: "How prepared is the school to detect and respond to an unauthorized person entering a protected area?",
+                options: [
+                    { text: "Layered controls, trained staff, escalation procedures, and drills are in place", score: 0 },
+                    { text: "Most controls exist but drills or coverage need improvement", score: 3 },
+                    { text: "Basic procedures exist without regular testing", score: 6 },
+                    { text: "Response depends mainly on individual judgment", score: 9 }
+                ]
+            },
+
+            // Assess emergency plans.
+            {
+                category: "Emergency Preparedness",
+                weight: 5,
+                question: "How current, documented, and tested is the school's emergency response plan?",
+                options: [
+                    { text: "Documented, reviewed, exercised, and updated regularly", score: 0 },
+                    { text: "Documented and reviewed but exercises are limited", score: 3 },
+                    { text: "Documented but rarely tested", score: 6 },
+                    { text: "No reliable documented plan", score: 9 }
+                ]
+            },
+
+            // Assess evacuation.
+            {
+                category: "Emergency Preparedness",
+                weight: 5,
+                question: "How prepared are students and staff for evacuation during fire, earthquake, or other emergencies?",
+                options: [
+                    { text: "Regular drills, clear routes, assembly areas, accountability, and after-action reviews", score: 0 },
+                    { text: "Regular drills with some process gaps", score: 3 },
+                    { text: "Drills occur irregularly", score: 6 },
+                    { text: "Little or no practical evacuation training", score: 9 }
+                ]
+            },
+
+            // Assess shelter or lockdown procedures.
+            {
+                category: "Emergency Preparedness",
+                weight: 5,
+                question: "How prepared is the school for a serious security emergency requiring controlled movement or sheltering?",
+                options: [
+                    { text: "Documented procedures, role assignments, communication methods, and exercises exist", score: 0 },
+                    { text: "Procedures exist but testing is limited", score: 3 },
+                    { text: "General guidance exists without structured exercises", score: 6 },
+                    { text: "No defined procedure exists", score: 9 }
+                ]
+            },
+
+            // Assess emergency communications.
+            {
+                category: "Emergency Preparedness",
+                weight: 4,
+                question: "How resilient is emergency communication when normal cellular or internet services are unavailable?",
+                options: [
+                    { text: "Multiple tested communication channels are available", score: 0 },
+                    { text: "Primary and backup channels exist", score: 3 },
+                    { text: "Only limited backup communication exists", score: 6 },
+                    { text: "No dependable backup channel exists", score: 9 }
+                ]
+            },
+
+            // Assess parent notification.
+            {
+                category: "Emergency Preparedness",
+                weight: 4,
+                question: "How prepared is the school to communicate verified emergency information to parents or guardians?",
+                options: [
+                    { text: "Predefined notification system, message templates, authorization rules, and drills exist", score: 0 },
+                    { text: "Notification system exists but has not been fully exercised", score: 3 },
+                    { text: "Communication depends mainly on manual coordination", score: 6 },
+                    { text: "No reliable parent notification procedure exists", score: 9 }
+                ]
+            },
+
+            // Assess disaster readiness.
+            {
+                category: "Emergency Preparedness",
+                weight: 4,
+                question: "How prepared is the institution for typhoons, earthquakes, flooding, or other local disasters?",
+                options: [
+                    { text: "Hazard-specific plans, supplies, roles, drills, and continuity measures are established", score: 0 },
+                    { text: "Basic plans and supplies are available", score: 3 },
+                    { text: "Preparation is largely reactive", score: 6 },
+                    { text: "No structured disaster-preparedness program exists", score: 9 }
+                ]
+            },
+
+            // Assess safe routes.
+            {
+                category: "Emergency Preparedness",
+                weight: 3,
+                question: "Has the school assessed safe arrival, departure, and emergency routes around the campus?",
+                options: [
+                    { text: "Routes are documented, reviewed, and coordinated with relevant stakeholders", score: 0 },
+                    { text: "Routes are understood but not formally reviewed", score: 3 },
+                    { text: "Some route risks are known", score: 6 },
+                    { text: "No structured route assessment exists", score: 9 }
+                ]
+            },
+
+            // Assess cyberbullying.
+            {
+                category: "Digital Safety",
+                weight: 5,
+                question: "How mature is the school's cyberbullying identification, reporting, and response process?",
+                options: [
+                    { text: "Clear reporting, safeguarding, escalation, documentation, and follow-up process", score: 0 },
+                    { text: "Formal process exists with some gaps", score: 3 },
+                    { text: "Response is mostly case-by-case", score: 6 },
+                    { text: "No defined process exists", score: 9 }
+                ]
+            },
+
+            // Assess online grooming awareness.
+            {
+                category: "Digital Safety",
+                weight: 5,
+                question: "How effectively does the school address online grooming and inappropriate online contact risks?",
+                options: [
+                    { text: "Regular awareness training, reporting routes, safeguarding procedures, and escalation controls", score: 0 },
+                    { text: "Awareness exists but training is inconsistent", score: 3 },
+                    { text: "Guidance exists but is rarely reinforced", score: 6 },
+                    { text: "No structured approach exists", score: 9 }
+                ]
+            },
+
+            // Assess student and staff cyber awareness.
+            {
+                category: "Digital Safety",
+                weight: 4,
+                question: "How regularly are students and staff trained on phishing, account security, social engineering, and responsible technology use?",
+                options: [
+                    { text: "Structured training is delivered and measured regularly", score: 0 },
+                    { text: "Training is delivered periodically", score: 3 },
+                    { text: "Awareness materials exist without regular training", score: 6 },
+                    { text: "No structured awareness program exists", score: 9 }
+                ]
+            },
+
+            // Assess school data protection.
+            {
+                category: "Digital Safety",
+                weight: 5,
+                question: "How mature are controls protecting student, parent, staff, academic, and administrative data?",
+                options: [
+                    { text: "Access controls, retention, backups, privacy controls, and incident procedures are documented and tested", score: 0 },
+                    { text: "Most controls exist with some gaps", score: 3 },
+                    { text: "Basic controls exist without systematic review", score: 6 },
+                    { text: "Data protection controls are largely undefined", score: 9 }
+                ]
+            },
+
+            // Assess digital incident response.
+            {
+                category: "Digital Safety",
+                weight: 4,
+                question: "How quickly can the school identify, report, contain, and escalate a digital security incident?",
+                options: [
+                    { text: "Defined process with responsible roles, escalation, and documented response targets", score: 0 },
+                    { text: "Process exists but response roles are not always clear", score: 3 },
+                    { text: "Response is mostly reactive", score: 6 },
+                    { text: "No defined process exists", score: 9 }
+                ]
+            },
+
+            // Assess CCTV coverage.
+            {
+                category: "Technology & Monitoring",
+                weight: 5,
+                question: "What proportion of critical campus areas have effective CCTV coverage?",
+                options: [
+                    { text: "More than 90% with appropriate monitoring and retention", score: 0 },
+                    { text: "60–90%", score: 3 },
+                    { text: "30–59%", score: 6 },
+                    { text: "Less than 30%", score: 9 }
+                ]
+            },
+
+            // Assess access-control integration.
+            {
+                category: "Technology & Monitoring",
+                weight: 4,
+                question: "How integrated are CCTV, access control, alarms, visitor management, and incident reporting?",
+                options: [
+                    { text: "Integrated platform with centralized visibility", score: 0 },
+                    { text: "Partially integrated systems", score: 3 },
+                    { text: "Mostly standalone systems", score: 6 },
+                    { text: "Little or no electronic integration", score: 9 }
+                ]
+            },
+
+            // Assess real-time reporting.
+            {
+                category: "Technology & Monitoring",
+                weight: 4,
+                question: "How quickly can security incidents be reported to school management?",
+                options: [
+                    { text: "Real-time or within 15 minutes", score: 0 },
+                    { text: "15–60 minutes", score: 3 },
+                    { text: "1–4 hours", score: 6 },
+                    { text: "More than 4 hours", score: 9 }
+                ]
+            },
+
+            // Assess data analytics.
+            {
+                category: "Technology & Monitoring",
+                weight: 3,
+                question: "Does the institution analyze incident and security data to identify recurring vulnerabilities?",
+                options: [
+                    { text: "Trend analysis, dashboards, and preventive action are routine", score: 0 },
+                    { text: "Basic reporting and occasional analysis", score: 3 },
+                    { text: "Mostly reactive reporting", score: 6 },
+                    { text: "Little or no security data analysis", score: 9 }
+                ]
+            },
+
+            // Assess panic-alert capability.
+            {
+                category: "Technology & Monitoring",
+                weight: 4,
+                question: "How effectively can authorized teachers or staff initiate a rapid emergency alert?",
+                options: [
+                    { text: "Tested panic or emergency-alert capability with defined command-center escalation", score: 0 },
+                    { text: "Rapid-alert capability exists but testing is limited", score: 3 },
+                    { text: "Alerts depend primarily on phone calls or manual escalation", score: 6 },
+                    { text: "No dependable rapid-alert mechanism exists", score: 9 }
+                ]
+            },
+
+            // Assess smart sensors.
+            {
+                category: "Technology & Monitoring",
+                weight: 3,
+                question: "How effectively does the institution use sensors or automated detection for hazards such as smoke, gas, or environmental threats?",
+                options: [
+                    { text: "Relevant automated detection is deployed, monitored, and tested", score: 0 },
+                    { text: "Some automated detection is deployed", score: 3 },
+                    { text: "Basic detection exists without centralized monitoring", score: 6 },
+                    { text: "Detection is primarily manual", score: 9 }
+                ]
+            },
+
+            // Assess governance.
+            {
+                category: "Governance & Compliance",
+                weight: 5,
+                question: "How clearly are school security responsibilities assigned to management, administrators, teachers, guards, and emergency teams?",
+                options: [
+                    { text: "Roles, authority, escalation, and accountability are documented", score: 0 },
+                    { text: "Most responsibilities are defined", score: 3 },
+                    { text: "Responsibilities are understood informally", score: 6 },
+                    { text: "Roles are unclear or overlapping", score: 9 }
+                ]
+            },
+
+            // Assess incident documentation.
+            {
+                category: "Governance & Compliance",
+                weight: 4,
+                question: "How consistently are security and safety incidents documented, reviewed, and closed with corrective action?",
+                options: [
+                    { text: "Standardized reporting, investigation, review, and corrective-action tracking", score: 0 },
+                    { text: "Formal reporting exists with occasional gaps", score: 3 },
+                    { text: "Reporting is inconsistent", score: 6 },
+                    { text: "Incidents are rarely documented systematically", score: 9 }
+                ]
+            },
+
+            // Assess privacy governance.
+            {
+                category: "Governance & Compliance",
+                weight: 5,
+                question: "How mature are the school's privacy controls for CCTV, visitor information, student records, and other sensitive data?",
+                options: [
+                    { text: "Policies, access controls, retention rules, notices, and accountability are documented and reviewed", score: 0 },
+                    { text: "Most controls exist with some documentation gaps", score: 3 },
+                    { text: "Basic controls exist but governance is inconsistent", score: 6 },
+                    { text: "Privacy controls are largely undefined", score: 9 }
+                ]
+            },
+
+            // Assess vendor compliance.
+            {
+                category: "Governance & Compliance",
+                weight: 4,
+                question: "How consistently does the institution verify that security providers and personnel meet required qualifications and contractual obligations?",
+                options: [
+                    { text: "Verification is documented and reviewed regularly", score: 0 },
+                    { text: "Verification is performed but not consistently documented", score: 3 },
+                    { text: "Verification occurs mainly during onboarding", score: 6 },
+                    { text: "Provider qualifications are rarely verified", score: 9 }
+                ]
+            },
+
+            // Assess liability preparedness.
+            {
+                category: "Governance & Compliance",
+                weight: 3,
+                question: "How effectively does the institution identify security-related legal, financial, and operational liabilities?",
+                options: [
+                    { text: "Formal risk register, ownership, mitigation, and review process exists", score: 0 },
+                    { text: "Major liabilities are tracked informally or periodically", score: 3 },
+                    { text: "Some risks are known but not systematically managed", score: 6 },
+                    { text: "No structured liability-risk process exists", score: 9 }
+                ]
+            },
+
+            // Assess security training.
+            {
+                category: "Human Capital",
+                weight: 5,
+                question: "How regularly do guards, teachers, administrators, and relevant staff receive practical safety and security training?",
+                options: [
+                    { text: "Role-based training is scheduled, completed, tested, and refreshed", score: 0 },
+                    { text: "Regular training exists with some gaps", score: 3 },
+                    { text: "Training is occasional", score: 6 },
+                    { text: "Training is mostly informal or absent", score: 9 }
+                ]
+            },
+
+            // Assess drill participation.
+            {
+                category: "Human Capital",
+                weight: 4,
+                question: "How consistently do staff and students participate in drills followed by after-action reviews?",
+                options: [
+                    { text: "Relevant drills are scheduled, measured, reviewed, and improved", score: 0 },
+                    { text: "Drills are conducted with limited review", score: 3 },
+                    { text: "Drills are irregular", score: 6 },
+                    { text: "Little or no practical drill activity", score: 9 }
+                ]
+            },
+
+            // Assess staffing resilience.
+            {
+                category: "Human Capital",
+                weight: 4,
+                question: "How resilient is security coverage when guards or key safety personnel are absent?",
+                options: [
+                    { text: "Documented relief staffing and continuity arrangements exist", score: 0 },
+                    { text: "Backup coverage is generally available", score: 3 },
+                    { text: "Coverage depends on ad-hoc replacements", score: 6 },
+                    { text: "Absences routinely create security gaps", score: 9 }
+                ]
+            },
+
+            // Assess safeguarding culture.
+            {
+                category: "Human Capital",
+                weight: 4,
+                question: "How confident are staff and students that they know how and where to report safety concerns?",
+                options: [
+                    { text: "Reporting channels are visible, trusted, accessible, and routinely reinforced", score: 0 },
+                    { text: "Reporting channels exist and are generally understood", score: 3 },
+                    { text: "Reporting depends heavily on individual awareness", score: 6 },
+                    { text: "Reporting channels are unclear or unavailable", score: 9 }
+                ]
+            },
+
+            // Assess leadership review.
+            {
+                category: "Human Capital",
+                weight: 3,
+                question: "How often does school leadership review security performance and track improvements?",
+                options: [
+                    { text: "Formal recurring management review with measurable actions", score: 0 },
+                    { text: "Periodic review occurs", score: 3 },
+                    { text: "Review occurs mainly after incidents", score: 6 },
+                    { text: "Security performance is rarely reviewed", score: 9 }
+                ]
+            }
+        ];
+
+        // Define recommendations for each risk category.
+        const recommendationCatalog = {
+            "Physical & Student Safety": {
+                icon: "fa-building-shield",
+                title: "Physical & Student Safety",
+                solution: "Layered campus protection and student-safety controls",
+                actions: [
+                    "Map perimeter, access, classroom, playground, and blind-spot vulnerabilities.",
+                    "Strengthen visitor identification, controlled access, supervision, and incident escalation.",
+                    "Establish documented student-safety reporting and response pathways."
+                ]
+            },
+            "Emergency Preparedness": {
+                icon: "fa-tower-broadcast",
+                title: "Emergency Preparedness",
+                solution: "Integrated emergency response and continuity program",
+                actions: [
+                    "Refresh hazard-specific emergency procedures and role assignments.",
+                    "Exercise evacuation, sheltering, communications, and accountability procedures.",
+                    "Establish resilient parent, staff, emergency-service, and community communications."
+                ]
+            },
+            "Digital Safety": {
+                icon: "fa-laptop-shield",
+                title: "Digital Safety",
+                solution: "School cyber-safety and safeguarding framework",
+                actions: [
+                    "Formalize cyberbullying and online-safeguarding reporting and escalation.",
+                    "Strengthen data access, retention, backup, privacy, and incident-response controls.",
+                    "Introduce recurring digital-safety awareness for staff and students."
+                ]
+            },
+            "Technology & Monitoring": {
+                icon: "fa-microchip",
+                title: "Technology & Monitoring",
+                solution: "Connected security visibility and faster incident response",
+                actions: [
+                    "Assess CCTV, access control, alarms, sensors, and incident-reporting integration.",
+                    "Introduce real-time or near-real-time incident reporting and trend dashboards.",
+                    "Evaluate authorized emergency-alert and command-center integration."
+                ]
+            },
+            "Governance & Compliance": {
+                icon: "fa-scale-balanced",
+                title: "Governance & Compliance",
+                solution: "Security governance, accountability, and privacy controls",
+                actions: [
+                    "Create a security responsibility matrix and escalation framework.",
+                    "Maintain a risk register with owners, deadlines, evidence, and corrective actions.",
+                    "Review privacy, vendor, documentation, and liability controls regularly."
+                ]
+            },
+            "Human Capital": {
+                icon: "fa-people-group",
+                title: "Human Capital",
+                solution: "Prepared people and resilient security staffing",
+                actions: [
+                    "Build role-based training for guards, teachers, administrators, and response teams.",
+                    "Schedule drills with measurable objectives and after-action reviews.",
+                    "Strengthen relief staffing, reporting culture, and leadership security reviews."
+                ]
+            }
+        };
+
+        // Start the assessment experience.
+        function startAssessment() {
+            // Reset the assessment state.
+            resetAssessmentState();
+
+            // Hide the introduction section.
+            document.getElementById("introSection").classList.add("hidden");
+
+            // Show the assessment section.
+            document.getElementById("assessmentSection").classList.remove("hidden");
+
+            // Display the correct question count.
+            document.getElementById("totalQuestions").textContent = questions.length;
+
+            // Render the first question.
+            renderQuestion();
+
+            // Move the viewport to the assessment.
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
+        // Reset all temporary assessment state.
+        function resetAssessmentState() {
+            // Return the question index to the beginning.
+            currentQuestion = 0;
+
+            // Create an empty answer array.
+            answers = [];
+
+            // Clear previous category calculations.
+            categoryScores = {};
+
+            // Clear the previous assessment result.
+            assessmentResult = null;
+        }
+
+        // Render the active question.
+        function renderQuestion() {
+            // Retrieve the active question object.
+            const question = questions[currentQuestion];
+
+            // Retrieve the question display container.
+            const questionArea = document.getElementById("questionArea");
+
+            // Build the option cards safely from the question data.
+            const optionMarkup = question.options.map((option, optionIndex) => {
+                // Determine whether this option is currently selected.
+                const selectedClass = answers[currentQuestion] === optionIndex ? "selected" : "";
+
+                // Return the complete option-card markup.
+                return `
+                    <button
+                        type="button"
+                        class="option-card ${selectedClass} w-full p-4 rounded-xl flex items-center gap-4 text-left"
+                        onclick="selectOption(${optionIndex})"
+                        aria-pressed="${answers[currentQuestion] === optionIndex}"
+                    >
+                        <span class="option-radio" aria-hidden="true"></span>
+                        <span class="text-white font-medium leading-relaxed">${escapeHtml(option.text)}</span>
+                    </button>
+                `;
+            }).join("");
+
+            // Populate the question area.
+            questionArea.innerHTML = `
+                <div class="mb-7">
+                    <span class="inline-flex items-center gap-2 glass px-3 py-1.5 rounded-full text-xs font-bold text-brand-blue uppercase tracking-wider mb-4">
+                        <i class="fa-solid fa-layer-group"></i>
+                        ${escapeHtml(question.category)}
+                    </span>
+
+                    <div class="text-xs text-gray-500 mb-2">
+                        Risk domain ${currentQuestion + 1} of ${questions.length}
+                    </div>
+
+                    <h3 class="font-montserrat text-xl md:text-3xl font-bold text-white leading-relaxed">
+                        ${escapeHtml(question.question)}
+                    </h3>
+                </div>
+
+                <div class="space-y-3">
+                    ${optionMarkup}
+                </div>
+            `;
+
+            // Calculate the current progress percentage.
+            const progress = Math.round(((currentQuestion + 1) / questions.length) * 100);
+
+            // Update the progress bar width.
+            document.getElementById("progressBar").style.width = `${progress}%`;
+
+            // Update the displayed progress percentage.
+            document.getElementById("progressPercent").textContent = `${progress}%`;
+
+            // Update the question number.
+            document.getElementById("currentQuestion").textContent = currentQuestion + 1;
+
+            // Disable the previous button on the first question.
+            document.getElementById("previousButton").disabled = currentQuestion === 0;
+
+            // Reduce the previous button opacity when disabled.
+            document.getElementById("previousButton").classList.toggle("opacity-40", currentQuestion === 0);
+
+            // Change the final navigation button text on the final question.
+            document.getElementById("nextButton").innerHTML = currentQuestion === questions.length - 1
+                ? 'Complete Assessment <i class="fa-solid fa-check ml-2"></i>'
+                : 'Next <i class="fa-solid fa-arrow-right ml-2"></i>';
+        }
+
+        // Record an answer for the active question.
+        function selectOption(optionIndex) {
+            // Save the selected option index.
+            answers[currentQuestion] = optionIndex;
+
+            // Re-render the question to update the selected state.
+            renderQuestion();
+        }
+
+        // Move to the next question or lead form.
+        function nextQuestion() {
+            // Require the current question to have an answer.
+            if (answers[currentQuestion] === undefined) {
+                showInlineMessage("Please select an answer before continuing.");
+                return;
+            }
+
+            // Move forward when more questions remain.
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion += 1;
+                renderQuestion();
+                return;
+            }
+
+            // Hide the assessment form after completion.
+            document.getElementById("assessmentSection").classList.add("hidden");
+
+            // Show the lead-capture form.
+            document.getElementById("leadCaptureSection").classList.remove("hidden");
+
+            // Move the viewport to the lead form.
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
+        // Move to the previous question.
+        function previousQuestion() {
+            // Stop if already at the first question.
+            if (currentQuestion === 0) {
+                return;
+            }
+
+            // Move one question backward.
+            currentQuestion -= 1;
+
+            // Render the previous question.
+            renderQuestion();
+
+            // Move the viewport to the question.
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
+        // Submit the lead information and calculate the assessment.
+        async function submitLead(event) {
+            // Prevent normal browser form submission.
+            event.preventDefault();
+
+            // Retrieve the submit button.
+            const submitButton = document.getElementById("submitButton");
+
+            // Retrieve the button text container.
+            const submitButtonText = document.getElementById("submitButtonText");
+
+            // Retrieve the status message container.
+            const submissionStatus = document.getElementById("submissionStatus");
+
+            // Disable repeated submissions.
+            submitButton.disabled = true;
+
+            // Display submission progress.
+            submitButtonText.innerHTML = '<span class="inline-flex items-center gap-2"><span class="spinner"></span> Preparing your risk profile...</span>';
+
+            // Capture the lead data.
+            leadData = {
+                fullName: document.getElementById("fullName").value.trim(),
+                email: document.getElementById("email").value.trim(),
+                company: document.getElementById("company").value.trim(),
+                facilityType: document.getElementById("facilityType").value,
+                campusCount: document.getElementById("campusCount").value,
+                timestamp: new Date().toISOString()
+            };
+
+            // Calculate the completed assessment.
+            assessmentResult = calculateResults();
+
+            // Show the results immediately for a responsive user experience.
+            document.getElementById("leadCaptureSection").classList.add("hidden");
+
+            // Display the results dashboard.
+            document.getElementById("resultsSection").classList.remove("hidden");
+
+            // Render all dashboard components.
+            renderResults(assessmentResult);
+
+            // Return the button to its normal state.
+            submitButton.disabled = false;
+
+            // Restore the original button label.
+            submitButtonText.innerHTML = '<i class="fa-solid fa-chart-pie mr-2"></i> Generate My Risk Profile';
+
+            // Hide the old status message.
+            submissionStatus.classList.add("hidden");
+
+            // Attempt to save the completed assessment without blocking the results.
+            await saveAssessmentLead(assessmentResult);
+
+            // Move the viewport to the results dashboard.
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
+        // Calculate category and overall risk scores.
+        function calculateResults() {
+            // Create a clean score object for every category.
+            categoryScores = {};
+
+            // Initialize each category.
+            Object.keys(categoryWeights).forEach(category => {
+                categoryScores[category] = {
+                    weightedRiskPoints: 0,
+                    maximumRiskPoints: 0,
+                    questionCount: 0
+                };
+            });
+
+            // Process every answered question.
+            questions.forEach((question, questionIndex) => {
+                // Retrieve the selected option.
+                const selectedOption = question.options[answers[questionIndex]];
+
+                // Skip missing options defensively.
+                if (!selectedOption) {
+                    return;
+                }
+
+                // Retrieve the category accumulator.
+                const category = categoryScores[question.category];
+
+                // Add the weighted selected risk points.
+                category.weightedRiskPoints += question.weight * selectedOption.score;
+
+                // Add the maximum possible weighted risk points.
+                category.maximumRiskPoints += question.weight * 9;
+
+                // Count the answered question.
+                category.questionCount += 1;
+            });
+
+            // Normalize each category to a zero-to-one-hundred risk scale.
+            const normalizedScores = {};
+
+            // Process every category.
+            Object.keys(categoryScores).forEach(category => {
+                // Retrieve the category accumulator.
+                const categoryScore = categoryScores[category];
+
+                // Protect against division by zero.
+                normalizedScores[category] = categoryScore.maximumRiskPoints > 0
+                    ? Math.round((categoryScore.weightedRiskPoints / categoryScore.maximumRiskPoints) * 100)
+                    : 0;
+            });
+
+            // Calculate the weighted overall score.
+            const overallScore = Math.round(
+                Object.entries(normalizedScores).reduce(
+                    (total, [category, score]) => total + score * categoryWeights[category],
+                    0
+                )
+            );
+
+            // Determine the risk classification.
+            const riskProfile = getRiskProfile(overallScore);
+
+            // Identify the highest-risk category.
+            const priorityCategory = Object.entries(normalizedScores)
+                .sort((first, second) => second[1] - first[1])[0];
+
+            // Calculate a simple readiness percentage.
+            const readinessScore = Math.max(0, 100 - overallScore);
+
+            // Return the complete result object.
+            return {
+                overallScore,
+                riskLevel: riskProfile.level,
+                riskColor: riskProfile.color,
+                summary: riskProfile.summary,
+                normalizedScores,
+                priorityCategory: priorityCategory ? priorityCategory[0] : "",
+                readinessScore
+            };
+        }
+
+        // Convert an overall score into a risk profile.
+        function getRiskProfile(score) {
+            // Return the lower-risk profile.
+            if (score <= 25) {
+                return {
+                    level: "LOW RISK",
+                    color: "#10B981",
+                    summary: "Your institution demonstrates strong foundational controls. Focus on continuous improvement, testing, and technology-enabled visibility."
+                };
+            }
+
+            // Return the moderate-risk profile.
+            if (score <= 50) {
+                return {
+                    level: "MODERATE RISK",
+                    color: "#F59E0B",
+                    summary: "The institution has meaningful safeguards but identifiable gaps could affect student safety, continuity, response, or accountability."
+                };
+            }
+
+            // Return the high-risk profile.
+            if (score <= 75) {
+                return {
+                    level: "HIGH RISK",
+                    color: "#F97316",
+                    summary: "Multiple vulnerabilities require prioritized corrective action. Strengthen the highest-risk domains before relying on existing controls."
+                };
+            }
+
+            // Return the critical-risk profile.
+            return {
+                level: "CRITICAL RISK",
+                color: "#EF4444",
+                summary: "Significant vulnerabilities are present across core safety domains. Immediate leadership attention and a structured remediation program are warranted."
+            };
+        }
+
+        // Render the complete results dashboard.
+        function renderResults(result) {
+            // Display the organization name.
+            document.getElementById("resultOrganization").textContent = leadData.company;
+
+            // Display the overall score.
+            document.getElementById("overallScore").textContent = result.overallScore;
+
+            // Display the risk level.
+            document.getElementById("riskLevel").textContent = result.riskLevel;
+
+            // Apply the risk-level color.
+            document.getElementById("riskLevel").style.color = result.riskColor;
+
+            // Display the risk summary.
+            document.getElementById("riskSummary").textContent = result.summary;
+
+            // Update the score ring percentage.
+            document.getElementById("scoreRing").style.setProperty("--score-progress", `${result.overallScore}%`);
+
+            // Render dashboard metric cards.
+            renderDashboardMetrics(result);
+
+            // Render the radar chart.
+            createRadarChart(result.normalizedScores);
+
+            // Render prioritized recommendations.
+            generateRecommendations(result.normalizedScores);
+
+            // Render the capability roadmap.
+            renderRoadmap(result);
+        }
+
+        // Render concise dashboard metrics.
+        function renderDashboardMetrics(result) {
+            // Retrieve the metrics container.
+            const container = document.getElementById("dashboardMetrics");
+
+            // Retrieve the number of risk domains.
+            const categoryCount = Object.keys(result.normalizedScores).length;
+
+            // Calculate the number of high-priority domains.
+            const priorityCount = Object.values(result.normalizedScores).filter(score => score >= 51).length;
+
+            // Populate the metric cards.
+            container.innerHTML = `
+                <div class="glass-strong rounded-2xl p-5">
+                    <div class="text-xs uppercase tracking-wider text-gray-500">Overall Risk</div>
+                    <div class="text-3xl font-montserrat font-extrabold mt-2">${result.overallScore}/100</div>
+                    <div class="text-xs text-gray-400 mt-1">${escapeHtml(result.riskLevel)}</div>
+                </div>
+
+                <div class="glass-strong rounded-2xl p-5">
+                    <div class="text-xs uppercase tracking-wider text-gray-500">Readiness</div>
+                    <div class="text-3xl font-montserrat font-extrabold mt-2">${result.readinessScore}%</div>
+                    <div class="text-xs text-gray-400 mt-1">Screening indicator</div>
+                </div>
+
+                <div class="glass-strong rounded-2xl p-5">
+                    <div class="text-xs uppercase tracking-wider text-gray-500">Priority Domains</div>
+                    <div class="text-3xl font-montserrat font-extrabold mt-2">${priorityCount}</div>
+                    <div class="text-xs text-gray-400 mt-1">51+ risk score</div>
+                </div>
+
+                <div class="glass-strong rounded-2xl p-5">
+                    <div class="text-xs uppercase tracking-wider text-gray-500">Risk Domains</div>
+                    <div class="text-3xl font-montserrat font-extrabold mt-2">${categoryCount}</div>
+                    <div class="text-xs text-gray-400 mt-1">School-specific modules</div>
+                </div>
+            `;
+        }
+
+        // Create or refresh the radar chart.
+        function createRadarChart(scores) {
+            // Retrieve the radar-chart canvas.
+            const canvas = document.getElementById("radarChart");
+
+            // Destroy an existing chart before creating a replacement.
+            if (radarChartInstance) {
+                radarChartInstance.destroy();
+            }
+
+            // Create the new radar chart.
+            radarChartInstance = new Chart(canvas.getContext("2d"), {
+                type: "radar",
+                data: {
+                    labels: Object.keys(scores),
+                    datasets: [
+                        {
+                            label: "Risk Score",
+                            data: Object.values(scores),
+                            backgroundColor: "rgba(59, 130, 246, 0.16)",
+                            borderColor: "#3B82F6",
+                            borderWidth: 2,
+                            pointBackgroundColor: "#FFD700",
+                            pointBorderColor: "#FFFFFF",
+                            pointRadius: 4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            min: 0,
+                            max: 100,
+                            ticks: {
+                                stepSize: 25,
+                                color: "#CBD5E1",
+                                backdropColor: "transparent"
+                            },
+                            grid: {
+                                color: "rgba(255,255,255,0.1)"
+                            },
+                            angleLines: {
+                                color: "rgba(255,255,255,0.1)"
+                            },
+                            pointLabels: {
+                                color: "#FFFFFF",
+                                font: {
+                                    family: "Montserrat",
+                                    size: 11,
+                                    weight: "600"
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        }
+
+        // Generate the three highest-priority recommendations.
+        function generateRecommendations(scores) {
+            // Retrieve the recommendations container.
+            const container = document.getElementById("recommendationsContainer");
+
+            // Sort categories from highest to lowest risk.
+            const sortedCategories = Object.entries(scores)
+                .sort((first, second) => second[1] - first[1])
+                .slice(0, 3);
+
+            // Build each recommendation card.
+            container.innerHTML = sortedCategories.map(([category, score], index) => {
+                // Retrieve the recommendation configuration.
+                const recommendation = recommendationCatalog[category];
+
+                // Determine the priority label.
+                const priority = score >= 76 ? "URGENT" : score >= 51 ? "HIGH" : score >= 26 ? "MEDIUM" : "LOW";
+
+                // Determine the visual class.
+                const priorityClass = score >= 76
+                    ? "text-red-400 border-red-500/40 bg-red-500/10"
+                    : score >= 51
+                        ? "text-orange-400 border-orange-500/40 bg-orange-500/10"
+                        : score >= 26
+                            ? "text-yellow-400 border-yellow-500/40 bg-yellow-500/10"
+                            : "text-green-400 border-green-500/40 bg-green-500/10";
+
+                // Return the recommendation card.
+                return `
+                    <article class="glass rounded-2xl p-5 border-l-4 ${score >= 76 ? "border-red-500" : score >= 51 ? "border-orange-500" : score >= 26 ? "border-yellow-500" : "border-green-500"}">
+                        <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+                            <div class="flex gap-4">
+                                <div class="w-11 h-11 rounded-xl bg-brand-blue/15 text-brand-blue flex items-center justify-center shrink-0">
+                                    <i class="fa-solid ${recommendation.icon}"></i>
+                                </div>
+
+                                <div>
+                                    <div class="flex flex-wrap items-center gap-2">
+                                        <span class="text-xs text-gray-500 font-bold">PRIORITY ${index + 1}</span>
+                                        <span class="text-xs font-bold px-2.5 py-1 rounded-full border ${priorityClass}">
+                                            ${priority}
+                                        </span>
+                                    </div>
+
+                                    <h4 class="font-montserrat font-bold text-lg mt-2">
+                                        ${escapeHtml(recommendation.title)}
+                                    </h4>
+
+                                    <p class="text-sm text-gray-400 mt-1">
+                                        ${escapeHtml(recommendation.solution)}
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="text-right">
+                                <div class="text-2xl font-montserrat font-extrabold">${score}</div>
+                                <div class="text-xs text-gray-500">risk / 100</div>
+                            </div>
+                        </div>
+
+                        <ul class="grid md:grid-cols-3 gap-3 mt-5">
+                            ${recommendation.actions.map(action => `
+                                <li class="glass rounded-xl p-3 text-sm text-gray-300">
+                                    <i class="fa-solid fa-circle-check text-brand-blue mr-2"></i>
+                                    ${escapeHtml(action)}
+                                </li>
+                            `).join("")}
+                        </ul>
+                    </article>
+                `;
+            }).join("");
+        }
+
+        // Render a four-stage capability roadmap.
+        function renderRoadmap(result) {
+            // Retrieve the roadmap container.
+            const container = document.getElementById("roadmapContainer");
+
+            // Define the roadmap stages.
+            const roadmapStages = [
+                {
+                    icon: "fa-magnifying-glass-chart",
+                    title: "1. Assess",
+                    text: "Establish the current risk baseline and document vulnerabilities."
+                },
+                {
+                    icon: "fa-list-check",
+                    title: "2. Prioritize",
+                    text: "Rank corrective actions by risk, impact, and urgency."
+                },
+                {
+                    icon: "fa-person-chalkboard",
+                    title: "3. Exercise",
+                    text: "Train people and test evacuation, communication, and response procedures."
+                },
+                {
+                    icon: "fa-chart-line",
+                    title: "4. Monitor",
+                    text: "Use recurring assessments, incident trends, and technology for continuous improvement."
+                }
+            ];
+
+            // Render every roadmap stage.
+            container.innerHTML = roadmapStages.map(stage => `
+                <div class="glass rounded-xl p-4">
+                    <i class="fa-solid ${stage.icon} text-brand-blue"></i>
+                    <h4 class="font-bold mt-3">${stage.title}</h4>
+                    <p class="text-xs text-gray-400 mt-2">${stage.text}</p>
+                </div>
+            `).join("");
+        }
+
+        // Save the completed assessment lead to Supabase.
+        async function saveAssessmentLead(result) {
+            // Stop if Supabase is unavailable.
+            if (!supabaseClient) {
+                return;
+            }
+
+            // Build a database-compatible lead object.
+            const leadRecord = {
+                full_name: leadData.fullName,
+                email: leadData.email,
+                company: leadData.company,
+                facility_type: leadData.facilityType,
+                osri_score: result.overallScore,
+                risk_level: result.riskLevel,
+                status: "New"
+            };
+
+            // Attempt to insert the lead.
+            const { error } = await supabaseClient
+                .from("security_assessment_leads")
+                .insert([leadRecord]);
+
+            // Log a non-blocking error if database persistence fails.
+            if (error) {
+                console.error("Assessment lead persistence failed:", error);
+            }
+        }
+
+        // Generate a branded PDF report.
+        function downloadPDF() {
+            // Stop if the assessment has not been calculated.
+            if (!assessmentResult) {
+                return;
+            }
+
+            // Retrieve the jsPDF constructor.
+            const { jsPDF } = window.jspdf;
+
+            // Create an A4 portrait PDF.
+            const document = new jsPDF("p", "mm", "a4");
+
+            // Define reusable report colors.
+            const navy = [10, 22, 40];
+            const blue = [59, 130, 246];
+            const gold = [255, 215, 0];
+            const darkText = [31, 41, 55];
+            const grayText = [107, 114, 128];
+
+            // Define the report page dimensions.
+            const pageWidth = 210;
+            const pageHeight = 297;
+
+            // Define the left report margin.
+            const margin = 16;
+
+            // Draw the report header.
+            document.setFillColor(...navy);
+            document.rect(0, 0, pageWidth, 40, "F");
+
+            // Draw the Stronghold A3 brand.
+            document.setTextColor(...gold);
+            document.setFont("helvetica", "bold");
+            document.setFontSize(21);
+            document.text("STRONGHOLD A3", margin, 18);
+
+            // Draw the report subtitle.
+            document.setTextColor(255, 255, 255);
+            document.setFont("helvetica", "normal");
+            document.setFontSize(9);
+            document.text("SAFE SCHOOLS SECURITY RISK ASSESSMENT", margin, 26);
+
+            // Draw the report date.
+            document.setFontSize(8);
+            document.text(new Date().toLocaleDateString("en-PH", {
+                year: "numeric",
+                month: "long",
+                day: "numeric"
+            }), margin, 33);
+
+            // Draw the report title.
+            document.setTextColor(...darkText);
+            document.setFont("helvetica", "bold");
+            document.setFontSize(15);
+            document.text("School Security Risk Profile", margin, 55);
+
+            // Draw the client name.
+            document.setFont("helvetica", "normal");
+            document.setFontSize(10);
+            document.text(`Institution: ${truncateForPdf(leadData.company, 80)}`, margin, 64);
+
+            // Draw the institution type.
+            document.text(`Institution Type: ${truncateForPdf(leadData.facilityType, 70)}`, margin, 71);
+
+            // Draw the campus count.
+            document.text(`Campus Count: ${truncateForPdf(leadData.campusCount, 40)}`, margin, 78);
+
+            // Draw the overall score label.
+            document.setFont("helvetica", "bold");
+            document.setFontSize(11);
+            document.text("OVERALL SAFE SCHOOLS RISK INDEX", margin, 92);
+
+            // Draw the overall score.
+            document.setTextColor(...blue);
+            document.setFontSize(34);
+            document.text(String(assessmentResult.overallScore), margin, 108);
+
+            // Draw the score classification.
+            document.setTextColor(...darkText);
+            document.setFontSize(11);
+            document.text(assessmentResult.riskLevel, margin + 25, 106);
+
+            // Draw the score summary.
+            document.setFont("helvetica", "normal");
+            document.setFontSize(9);
+            const summaryLines = document.splitTextToSize(assessmentResult.summary, 178);
+            document.text(summaryLines, margin, 119);
+
+            // Set the initial category table position.
+            let yPosition = 137;
+
+            // Draw the category section heading.
+            document.setFont("helvetica", "bold");
+            document.setFontSize(12);
+            document.text("Risk Domain Breakdown", margin, yPosition);
+
+            // Move below the heading.
+            yPosition += 9;
+
+            // Draw every category score.
+            Object.entries(assessmentResult.normalizedScores).forEach(([category, score]) => {
+                // Draw the category name.
+                document.setFont("helvetica", "normal");
+                document.setFontSize(9);
+                document.setTextColor(...darkText);
+                document.text(truncateForPdf(category, 48), margin, yPosition);
+
+                // Draw the score.
+                document.setFont("helvetica", "bold");
+                document.text(`${score}/100`, 177, yPosition, { align: "right" });
+
+                // Draw the background bar.
+                document.setFillColor(235, 238, 242);
+                document.roundedRect(margin, yPosition + 3, 161, 4, 2, 2, "F");
+
+                // Draw the score bar.
+                document.setFillColor(...blue);
+                document.roundedRect(margin, yPosition + 3, Math.max(1, 161 * (score / 100)), 4, 2, 2, "F");
+
+                // Move to the next category.
+                yPosition += 16;
+            });
+
+            // Add a new page for recommendations.
+            document.addPage();
+
+            // Draw the second-page header.
+            document.setFillColor(...navy);
+            document.rect(0, 0, pageWidth, 32, "F");
+
+            // Draw the second-page title.
+            document.setTextColor(...gold);
+            document.setFont("helvetica", "bold");
+            document.setFontSize(16);
+            document.text("Priority Action Plan", margin, 20);
+
+            // Start the recommendations below the header.
+            yPosition = 46;
+
+            // Sort categories by highest risk.
+            const sortedCategories = Object.entries(assessmentResult.normalizedScores)
+                .sort((first, second) => second[1] - first[1])
+                .slice(0, 4);
+
+            // Render the highest-priority recommendations.
+            sortedCategories.forEach(([category, score], index) => {
+                // Retrieve the recommendation data.
+                const recommendation = recommendationCatalog[category];
+
+                // Draw the priority number.
+                document.setFillColor(...blue);
+                document.circle(margin + 5, yPosition, 5, "F");
+
+                // Draw the priority number in white.
+                document.setTextColor(255, 255, 255);
+                document.setFont("helvetica", "bold");
+                document.setFontSize(8);
+                document.text(String(index + 1), margin + 5, yPosition + 2.5, { align: "center" });
+
+                // Draw the recommendation title.
+                document.setTextColor(...darkText);
+                document.setFontSize(11);
+                document.text(truncateForPdf(recommendation.title, 58), margin + 13, yPosition + 1);
+
+                // Draw the score.
+                document.setFontSize(9);
+                document.text(`Risk score: ${score}/100`, 177, yPosition + 1, { align: "right" });
+
+                // Draw the solution line.
+                document.setFont("helvetica", "normal");
+                document.setFontSize(9);
+                document.text(truncateForPdf(recommendation.solution, 95), margin + 13, yPosition + 8);
+
+                // Move below the solution.
+                yPosition += 15;
+
+                // Draw each action.
+                recommendation.actions.forEach(action => {
+                    // Wrap the action text.
+                    const actionLines = document.splitTextToSize(`• ${action}`, 165);
+
+                    // Draw the action text.
+                    document.text(actionLines, margin + 13, yPosition);
+
+                    // Advance based on the number of wrapped lines.
+                    yPosition += actionLines.length * 5 + 2;
+                });
+
+                // Add separation between recommendation blocks.
+                yPosition += 6;
+
+                // Create another page when required.
+                if (yPosition > 270 && index < sortedCategories.length - 1) {
+                    document.addPage();
+                    yPosition = 22;
+                }
+            });
+
+            // Add the roadmap section.
+            if (yPosition > 245) {
+                document.addPage();
+                yPosition = 22;
+            }
+
+            // Draw the roadmap heading.
+            document.setTextColor(...darkText);
+            document.setFont("helvetica", "bold");
+            document.setFontSize(12);
+            document.text("Continuous Improvement Roadmap", margin, yPosition);
+
+            // Move below the roadmap heading.
+            yPosition += 9;
+
+            // Draw the roadmap statement.
+            document.setFont("helvetica", "normal");
+            document.setFontSize(9);
+            const roadmapText = "Assess → Prioritize → Exercise → Monitor. Reassess periodically and use incident trends to guide continuous improvement.";
+            document.text(document.splitTextToSize(roadmapText, 178), margin, yPosition);
+
+            // Draw the report disclaimer.
+            yPosition = Math.min(pageHeight - 24, yPosition + 22);
+            document.setTextColor(...grayText);
+            document.setFontSize(7.5);
+            const disclaimer = "This report is a screening and planning tool. It does not constitute a complete professional security audit, legal opinion, emergency-response directive, or technical penetration test.";
+            document.text(document.splitTextToSize(disclaimer, 178), margin, yPosition);
+
+            // Build a filesystem-safe report filename.
+            const filename = `Stronghold-A3-Safe-Schools-${sanitizeFilename(leadData.company)}.pdf`;
+
+            // Save the generated PDF.
+            document.save(filename);
+        }
+
+        // Display a temporary inline validation message.
+        function showInlineMessage(message) {
+            // Retrieve the status container.
+            const status = document.getElementById("submissionStatus");
+
+            // Display the message.
+            status.textContent = message;
+
+            // Make the message visible.
+            status.classList.remove("hidden");
+
+            // Apply an accessible warning color.
+            status.className = "text-center text-sm text-yellow-300";
+
+            // Hide the message after a short delay.
+            window.setTimeout(() => {
+                status.classList.add("hidden");
+            }, 3000);
+        }
+
+        // Escape dynamic text before inserting it into HTML.
+        function escapeHtml(value) {
+            // Convert the value into a string.
+            const text = String(value ?? "");
+
+            // Escape HTML-sensitive characters.
+            return text
+                .replaceAll("&", "&amp;")
+                .replaceAll("<", "&lt;")
+                .replaceAll(">", "&gt;")
+                .replaceAll('"', "&quot;")
+                .replaceAll("'", "&#039;");
+        }
+
+        // Limit text length for PDF layout.
+        function truncateForPdf(value, maximumLength) {
+            // Convert the value to text.
+            const text = String(value ?? "");
+
+            // Return the text unchanged when already short enough.
+            if (text.length <= maximumLength) {
+                return text;
+            }
+
+            // Return a shortened representation.
+            return `${text.slice(0, maximumLength - 3)}...`;
+        }
+
+        // Convert an organization name into a safe PDF filename.
+        function sanitizeFilename(value) {
+            // Replace unsafe characters with hyphens.
+            const sanitized = String(value ?? "School")
+                .replace(/[^a-z0-9]+/gi, "-")
+                .replace(/^-+|-+$/g, "");
+
+            // Return a fallback when the value becomes empty.
+            return sanitized || "School";
+        }
+
+        // Initialize the application after the document is ready.
+        document.addEventListener("DOMContentLoaded", () => {
+            // Display the correct total question count.
+            document.getElementById("totalQuestions").textContent = questions.length;
+
+            // Disable the previous button initially.
+            document.getElementById("previousButton").disabled = true;
+
+            // Apply the initial disabled appearance.
+            document.getElementById("previousButton").classList.add("opacity-40");
+        });
+    </script>
+</body>
+</html>
