@@ -1,0 +1,104 @@
+# Define the Netlify build and deployment configuration.
+[build]
+
+# Publish the project root when the application uses a static HTML structure.
+publish = "."
+
+# Explicitly indicate that no build command is required for the static application.
+command = ""
+
+# Configure Netlify's development server behavior.
+[dev]
+
+# Use Netlify's standard local development port.
+port = 8888
+
+# Enable the Netlify framework's automatic server behavior.
+autoLaunch = false
+
+# Configure production HTTP response headers.
+[[headers]]
+
+# Apply the security headers to every deployed route.
+for = "/*"
+
+# Prevent browsers from MIME-sniffing content types.
+[headers.values]
+
+# Define a restrictive content security policy suitable for a static application.
+Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none';"
+
+# Prevent the site from being embedded inside another website.
+X-Frame-Options = "DENY"
+
+# Enable browser protection against MIME-type confusion.
+X-Content-Type-Options = "nosniff"
+
+# Control how much referrer information browsers send to external destinations.
+Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Restrict potentially sensitive browser capabilities that the application does not require.
+Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=(), serial=(), bluetooth=()"
+
+# Tell compatible browsers to use HTTPS for future requests.
+Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+
+# Prevent legacy browsers from enabling potentially unsafe cross-domain document policies.
+X-Permitted-Cross-Domain-Policies = "none"
+
+# Configure immutable caching for versioned static assets.
+[[headers]]
+
+# Match common static assets that can safely receive long-lived caching.
+for = "/assets/*"
+
+# Define cache behavior for static assets.
+[headers.values]
+
+# Cache assets for one year while allowing shared caches to reuse them.
+Cache-Control = "public, max-age=31536000, immutable"
+
+# Prevent browsers from exposing deployment metadata through unnecessary headers.
+[[headers]]
+
+# Apply additional security policy to the assessment page.
+for = "/safe-school-assessment.html"
+
+# Define page-specific response headers.
+[headers.values]
+
+# Prevent the assessment page from being cached by shared or browser caches.
+Cache-Control = "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0"
+
+# Explicitly prevent intermediary caches from storing assessment content.
+Pragma = "no-cache"
+
+# Mark the page as immediately expired for HTTP/1.0 compatibility.
+Expires = "0"
+
+# Configure redirects for the site's primary assessment route.
+[[redirects]]
+
+# Provide a clean route for the Safe School Assessment.
+from = "/safe-school-assessment"
+
+# Send users to the actual static HTML document.
+to = "/safe-school-assessment.html"
+
+# Use a permanent redirect because the clean route is intentional.
+status = 301
+
+# Configure a friendly fallback for the site's root route.
+[[redirects]]
+
+# Match the site's root URL.
+from = "/assessment"
+
+# Redirect the assessment shortcut to the production assessment page.
+to = "/safe-school-assessment.html"
+
+# Use a permanent redirect for the stable shortcut.
+status = 301
+
+# Prevent redirect loops when the requested path is already the destination.
+force = false
