@@ -1,295 +1,854 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Stronghold A3 Safe Schools Security Risk Assessment">
-  <title>Stronghold A3 | Safe Schools Risk Assessment</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: { montserrat: ['Montserrat', 'sans-serif'], poppins: ['Poppins', 'sans-serif'] },
-          colors: { navy: '#0A1628', 'navy-light': '#001b3d', 'brand-blue': '#3B82F6', 'brand-gold': '#FFD700' }
+    <!-- Define the document character encoding. -->
+    <meta charset="UTF-8">
+    <!-- Make the interface responsive on phones, tablets, and desktops. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Give the assessment page a concise browser title. -->
+    <title>Safe School Assessment | Stronghold A3</title>
+
+    <!-- Load Tailwind CSS for the same utility-first visual language used by the reference index page. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure the shared Stronghold A3 typography and color tokens. -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        montserrat: ["Montserrat", "sans-serif"],
+                        poppins: ["Poppins", "sans-serif"]
+                    },
+                    colors: {
+                        navy: "#0F172A",
+                        "brand-blue": "#2563EB",
+                        "brand-cyan": "#06B6D4",
+                        "brand-emerald": "#10B981",
+                        "brand-amber": "#F59E0B"
+                    },
+                    boxShadow: {
+                        soft: "0 12px 35px rgba(15, 23, 42, 0.08)"
+                    }
+                }
+            }
+        };
+    </script>
+
+    <!-- Load the same typography family used by the supplied Stronghold A3 reference interface. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Load the Google Fonts origin efficiently. -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Load Montserrat for headings and Poppins for body content. -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Load Font Awesome for consistent interface icons. -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Define reusable component styles that complement the Tailwind classes. -->
+    <style>
+        /* Keep the page visually consistent with the supplied Stronghold A3 index. */
+        html { scroll-behavior: smooth; }
+
+        /* Establish the shared body typography, background, and text color. */
+        body {
+            font-family: "Poppins", sans-serif;
+            background: #F8FAFC;
+            color: #0F172A;
         }
-      }
-    };
-  </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <style>
-    :root { --gold:#FFD700; --navy:#0A1628; --blue:#3B82F6; }
-    html { scroll-behavior:smooth; }
-    body { font-family:'Poppins',sans-serif; background:radial-gradient(circle at 20% 0%,#002b5c 0%,#001b3d 45%,#000c1f 100%); background-attachment:fixed; min-height:100vh; color:#fff; }
-    body::before { content:''; position:fixed; inset:0; background:url('https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png') center/45% no-repeat; opacity:.025; pointer-events:none; z-index:-1; }
-    h1,h2,h3,h4 { font-family:'Montserrat',sans-serif; letter-spacing:.01em; }
-    .glass { background:linear-gradient(135deg,rgba(255,255,255,.085),rgba(255,255,255,.025)); backdrop-filter:blur(20px) saturate(150%); -webkit-backdrop-filter:blur(20px) saturate(150%); border:1px solid rgba(255,255,255,.12); box-shadow:0 12px 38px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.08); }
-    .glass-strong { background:linear-gradient(135deg,rgba(10,22,40,.88),rgba(0,12,31,.94)); backdrop-filter:blur(26px); border:1px solid rgba(59,130,246,.22); box-shadow:0 16px 50px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.08); }
-    .hero { min-height:430px; position:relative; overflow:hidden; }
-    .hero img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.42) saturate(.9); }
-    .hero::after { content:''; position:absolute; inset:0; background:linear-gradient(90deg,rgba(5,15,30,.98) 0%,rgba(5,15,30,.78) 48%,rgba(5,15,30,.18) 100%); }
-    .hero-content { position:relative; z-index:2; }
-    .section-image { height:180px; width:100%; object-fit:cover; border-radius:18px; filter:brightness(.72) saturate(.85); }
-    .option-card { background:rgba(255,255,255,.035); border:1px solid rgba(255,255,255,.1); transition:.25s ease; cursor:pointer; }
-    .option-card:hover { transform:translateY(-2px); border-color:rgba(59,130,246,.55); background:rgba(59,130,246,.08); }
-    .option-card.selected { border-color:#3B82F6; background:linear-gradient(135deg,rgba(59,130,246,.23),rgba(59,130,246,.08)); box-shadow:0 0 22px rgba(59,130,246,.18); }
-    .radio { width:20px; height:20px; border:2px solid rgba(255,255,255,.3); border-radius:50%; display:grid; place-items:center; flex:none; }
-    .selected .radio { border-color:#3B82F6; background:#3B82F6; }
-    .selected .radio::after { content:''; width:7px; height:7px; border-radius:50%; background:white; }
-    .progress-track { height:8px; border-radius:99px; background:rgba(255,255,255,.1); overflow:hidden; }
-    .progress-fill { height:100%; border-radius:99px; background:linear-gradient(90deg,#3B82F6,#60A5FA); transition:width .35s ease; }
-    input,select,textarea { color:#fff!important; background:rgba(255,255,255,.05)!important; border:1px solid rgba(255,255,255,.14)!important; }
-    select option { background:#0A1628; color:#fff; }
-    input:focus,select:focus,textarea:focus { outline:none; border-color:#3B82F6!important; box-shadow:0 0 0 3px rgba(59,130,246,.18); }
-    .module { display:none; }
-    .module.active { display:block; animation:fade .35s ease; }
-    @keyframes fade { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
-    .score-ring { width:150px; height:150px; border-radius:50%; display:grid; place-items:center; background:conic-gradient(#3B82F6 var(--score),rgba(255,255,255,.08) 0); position:relative; }
-    .score-ring::before { content:''; position:absolute; inset:10px; border-radius:50%; background:#07162b; }
-    .score-ring > div { position:relative; z-index:1; text-align:center; }
-    .hidden { display:none!important; }
-    .chart-wrap { position:relative; height:320px; }
-    @media(max-width:768px){ .hero{min-height:500px}.hero::after{background:linear-gradient(180deg,rgba(5,15,30,.72),rgba(5,15,30,.98))}.chart-wrap{height:280px} }
-    @media print { body{background:white;color:#111} .no-print{display:none!important}.glass,.glass-strong{box-shadow:none;background:white;color:#111;border:1px solid #ddd} }
-  </style>
+
+        /* Use Montserrat consistently for brand and section headings. */
+        h1, h2, h3, h4, .font-heading {
+            font-family: "Montserrat", sans-serif;
+        }
+
+        /* Provide a reusable section card pattern. */
+        .section-card {
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            border-radius: 1rem;
+            box-shadow: 0 12px 35px rgba(15, 23, 42, 0.06);
+        }
+
+        /* Provide a reusable dark brand panel. */
+        .brand-panel {
+            background: linear-gradient(115deg, #0F172A 0%, #172554 58%, #1D4ED8 100%);
+        }
+
+        /* Keep the assessment navigation visible while users work through questions. */
+        .sticky-progress {
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            backdrop-filter: blur(14px);
+            background: rgba(248, 250, 252, 0.94);
+            border-bottom: 1px solid #E2E8F0;
+        }
+
+        /* Style each assessment option as a reusable interactive control. */
+        .assessment-option {
+            transition: transform 160ms ease, border-color 160ms ease, background-color 160ms ease, box-shadow 160ms ease;
+        }
+
+        /* Give selected options a strong but restrained visual state. */
+        .assessment-option.selected {
+            border-color: #2563EB;
+            background: #EFF6FF;
+            box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.10);
+        }
+
+        /* Improve keyboard visibility for all interactive elements. */
+        :focus-visible {
+            outline: 3px solid rgba(6, 182, 212, 0.45);
+            outline-offset: 2px;
+        }
+
+        /* Keep charts and summary visuals compact and responsive. */
+        .score-ring {
+            width: 150px;
+            height: 150px;
+            border-radius: 9999px;
+            display: grid;
+            place-items: center;
+            background: conic-gradient(#2563EB var(--score-angle), #E2E8F0 0deg);
+            position: relative;
+        }
+
+        /* Create the inner circle for the score ring. */
+        .score-ring::after {
+            content: "";
+            position: absolute;
+            inset: 12px;
+            border-radius: 9999px;
+            background: #FFFFFF;
+        }
+
+        /* Keep the score text above the inner ring. */
+        .score-ring > div {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Hide the result area until the assessment is complete. */
+        #resultsPanel {
+            display: none;
+        }
+
+        /* Provide a print-friendly version of the completed assessment. */
+        @media print {
+            header, .sticky-progress, #assessmentControls, .no-print {
+                display: none !important;
+            }
+
+            body {
+                background: #FFFFFF;
+            }
+
+            .section-card, .brand-panel {
+                box-shadow: none !important;
+                break-inside: avoid;
+            }
+
+            #resultsPanel {
+                display: block !important;
+            }
+        }
+    </style>
 </head>
-<body>
-  <header class="sticky top-0 z-50 border-b border-blue-900/50 bg-[#0A1628]/90 backdrop-blur-xl no-print">
-    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
-      <a href="#top" class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-brand-gold text-navy grid place-items-center font-black">A3</div>
-        <div><div class="font-extrabold tracking-wide">STRONGHOLD A3</div><div class="text-[10px] text-slate-400 uppercase tracking-[.2em]">Safe Schools Assessment</div></div>
-      </a>
-      <nav class="hidden md:flex items-center gap-5 text-xs font-semibold text-slate-300">
-        <a href="#assessment" class="hover:text-brand-gold">Assessment</a>
-        <a href="#results" class="hover:text-brand-gold">Results</a>
-        <a href="#actions" class="hover:text-brand-gold">Action Plan</a>
-      </nav>
+
+<body class="antialiased leading-relaxed">
+    <!-- Provide the same compact Stronghold A3 header treatment used in the reference interface. -->
+    <header class="bg-slate-900 text-white border-b border-slate-800 shadow-lg sticky top-0 z-50">
+        <!-- Constrain header content to the shared maximum width. -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <!-- Present the Stronghold A3 brand lockup. -->
+            <a href="index.html" class="flex items-center gap-3" aria-label="Return to Stronghold A3 home">
+                <!-- Reuse the reference A3 badge treatment. -->
+                <span class="bg-blue-600 text-white font-black text-xl px-3 py-1 rounded-md shadow-inner">A3</span>
+                <!-- Present the brand name and product descriptor. -->
+                <span>
+                    <span class="block font-heading font-bold tracking-tight leading-none">STRONGHOLD A3</span>
+                    <span class="block text-xs text-slate-400 mt-1">Integrated School Safety &amp; Resilience</span>
+                </span>
+            </a>
+
+            <!-- Provide concise navigation rather than repeating long explanatory text. -->
+            <nav class="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs font-semibold text-slate-300" aria-label="Primary navigation">
+                <a href="index.html" class="hover:text-cyan-400 transition-colors">Home</a>
+                <a href="#about" class="hover:text-cyan-400 transition-colors">About</a>
+                <a href="#assessment" class="hover:text-cyan-400 transition-colors">Assessment</a>
+                <a href="#resultsPanel" class="hover:text-cyan-400 transition-colors">Results</a>
+                <a href="#contact" class="hover:text-cyan-400 transition-colors">Next Steps</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Show assessment progress without overwhelming the user. -->
+    <div class="sticky-progress no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+            <!-- Keep the progress information readable on smaller screens. -->
+            <div class="flex items-center justify-between gap-4 text-xs font-semibold">
+                <!-- Describe the current assessment state. -->
+                <span id="progressLabel" class="text-slate-600">Assessment readiness: 0%</span>
+                <!-- Display the answered question count. -->
+                <span id="answerCount" class="text-slate-500">0 / 24 answered</span>
+            </div>
+            <!-- Render the progress bar. -->
+            <div class="mt-2 h-1.5 rounded-full bg-slate-200 overflow-hidden" aria-hidden="true">
+                <div id="progressBar" class="h-full rounded-full bg-blue-600 transition-all duration-300" style="width: 0%;"></div>
+            </div>
+        </div>
     </div>
-  </header>
 
-  <main id="top" class="max-w-7xl mx-auto px-4 py-6 md:py-10 space-y-8">
-    <section class="hero rounded-3xl shadow-2xl">
-      <img src="assets/Cover1.png" alt="Safe school campus">
-      <div class="hero-content h-full min-h-[430px] flex items-center px-6 md:px-12 py-12">
-        <div class="max-w-3xl">
-          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-brand-gold/40 bg-brand-gold/10 text-brand-gold text-xs font-bold uppercase tracking-wider mb-5"><i class="fa-solid fa-shield-halved"></i> Safe Schools Edition</div>
-          <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">School Safety,<br><span class="text-brand-gold">Measured. Managed. Ready.</span></h1>
-          <p class="mt-5 text-slate-300 max-w-2xl text-sm md:text-base">A focused risk assessment for physical security, student safety, digital threats, emergency readiness, and community resilience.</p>
-          <div class="mt-8 flex flex-wrap gap-3"><a href="#assessment" class="px-6 py-3 rounded-xl bg-brand-blue hover:bg-blue-500 font-bold text-sm shadow-lg shadow-blue-900/30">Start Assessment <i class="fa-solid fa-arrow-right ml-2"></i></a><span class="px-5 py-3 rounded-xl glass text-xs text-slate-300 flex items-center gap-2"><i class="fa-regular fa-clock text-brand-gold"></i> 5–7 minutes</span></div>
+    <!-- Begin the main content container. -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+        <!-- Introduce the assessment with the same dark-to-blue hero language as the reference page. -->
+        <section id="about" class="brand-panel text-white rounded-2xl p-7 sm:p-10 shadow-xl overflow-hidden relative">
+            <!-- Add a subtle decorative glow without introducing a separate design language. -->
+            <div class="absolute -right-24 -top-24 w-64 h-64 rounded-full bg-cyan-400/10 blur-3xl" aria-hidden="true"></div>
+            <!-- Keep the content above the decorative layer. -->
+            <div class="relative z-10 max-w-4xl">
+                <!-- State the legal and strategic alignment clearly but accurately. -->
+                <div class="inline-flex items-center gap-2 bg-blue-500/20 border border-blue-400/30 px-3 py-1 rounded-full text-cyan-300 text-xs font-semibold">
+                    <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+                    Safe Schools Act Alignment
+                </div>
+                <!-- Give the tool a direct audience-facing title. -->
+                <h1 class="mt-5 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">Safe School Readiness Assessment</h1>
+                <!-- State the purpose in one concise sentence. -->
+                <p class="mt-4 text-slate-300 max-w-3xl">A practical school safety diagnostic covering people, places, preparedness, technology, student wellbeing, and community response.</p>
+
+                <!-- Provide the three key positioning statements requested by the user. -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mt-7">
+                    <!-- Explain the legislative alignment lens. -->
+                    <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+                        <div class="text-cyan-300 text-xs font-bold uppercase tracking-wider">Safe Schools Act</div>
+                        <p class="text-sm text-slate-200 mt-1">Uses safe-school principles as an assessment and readiness lens.</p>
+                    </div>
+                    <!-- Explain the Stronghold A3 mission connection. -->
+                    <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+                        <div class="text-cyan-300 text-xs font-bold uppercase tracking-wider">Stronghold A3 Mission</div>
+                        <p class="text-sm text-slate-200 mt-1">Moves schools from fragmented protection toward integrated resilience.</p>
+                    </div>
+                    <!-- Identify the developer and validator exactly as requested. -->
+                    <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+                        <div class="text-cyan-300 text-xs font-bold uppercase tracking-wider">Developed &amp; Validated By</div>
+                        <p class="text-sm text-slate-200 mt-1">Alvin Silva — Development Management Professional &amp; Resilience Practitioner.</p>
+                    </div>
+                </div>
+
+                <!-- Give users a single obvious starting action. -->
+                <div class="mt-7 flex flex-wrap gap-3">
+                    <a href="#assessment" class="inline-flex items-center gap-2 bg-white text-blue-700 font-bold px-5 py-3 rounded-xl shadow-md hover:bg-slate-100 transition-colors text-sm">
+                        <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+                        Start Assessment
+                    </a>
+                    <a href="https://alvin-silva.asilvainnovations.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 border border-white/20 text-white font-semibold px-5 py-3 rounded-xl hover:bg-white/10 transition-colors text-sm">
+                        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                        Validation Profile
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Explain the assessment in a compact reusable card row. -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <!-- Explain what the tool measures. -->
+            <article class="section-card p-5">
+                <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 grid place-items-center">
+                    <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+                </div>
+                <h2 class="font-heading font-bold text-lg mt-4">Whole-School View</h2>
+                <p class="text-sm text-slate-600 mt-2">Assess physical, digital, behavioral, operational, and community risks together.</p>
+            </article>
+            <!-- Explain how the tool prioritizes action. -->
+            <article class="section-card p-5">
+                <div class="w-10 h-10 rounded-xl bg-cyan-50 text-cyan-600 grid place-items-center">
+                    <i class="fa-solid fa-list-check" aria-hidden="true"></i>
+                </div>
+                <h2 class="font-heading font-bold text-lg mt-4">Action-Oriented</h2>
+                <p class="text-sm text-slate-600 mt-2">Identify priority gaps and turn them into practical readiness actions.</p>
+            </article>
+            <!-- Explain what the result is not. -->
+            <article class="section-card p-5">
+                <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 grid place-items-center">
+                    <i class="fa-solid fa-scale-balanced" aria-hidden="true"></i>
+                </div>
+                <h2 class="font-heading font-bold text-lg mt-4">Decision Support</h2>
+                <p class="text-sm text-slate-600 mt-2">A structured diagnostic—not a substitute for legal, engineering, emergency, or regulatory review.</p>
+            </article>
+        </section>
+
+        <!-- Start the actual assessment form. -->
+        <section id="assessment" class="section-card overflow-hidden">
+            <!-- Use the same section-label convention found throughout the reference interface. -->
+            <div class="p-6 sm:p-8 border-b border-slate-200">
+                <span class="text-blue-600 text-xs font-extrabold uppercase tracking-widest">Assessment</span>
+                <h2 class="font-heading text-2xl sm:text-3xl font-bold text-slate-900 mt-1">School Safety Readiness</h2>
+                <p class="text-slate-600 text-sm mt-2 max-w-3xl">Answer each item based on the school's current, documented practice. Choose the option that best reflects the present condition.</p>
+            </div>
+
+            <!-- Collect optional institution details for the on-screen report. -->
+            <div class="p-6 sm:p-8 bg-slate-50 border-b border-slate-200">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <!-- Collect the institution name. -->
+                    <label class="block">
+                        <span class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">School / Institution</span>
+                        <input id="schoolName" type="text" class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm focus:border-blue-600" placeholder="Enter school name">
+                    </label>
+                    <!-- Collect the campus or location descriptor. -->
+                    <label class="block">
+                        <span class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Campus / Site</span>
+                        <input id="campusName" type="text" class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm focus:border-blue-600" placeholder="Main campus">
+                    </label>
+                    <!-- Collect the respondent role without requiring unnecessary personal data. -->
+                    <label class="block">
+                        <span class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Respondent Role</span>
+                        <select id="respondentRole" class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm focus:border-blue-600">
+                            <option value="">Select role</option>
+                            <option>School Administrator</option>
+                            <option>Safety / Security Lead</option>
+                            <option>Teacher / Staff</option>
+                            <option>Facilities / Operations</option>
+                            <option>Other Stakeholder</option>
+                        </select>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Render all assessment questions through JavaScript to keep the UI reusable and maintainable. -->
+            <form id="assessmentForm" class="p-6 sm:p-8 space-y-8" novalidate>
+                <!-- JavaScript inserts the question groups here. -->
+                <div id="questionGroups" class="space-y-10"></div>
+
+                <!-- Provide assessment controls at the bottom of the form. -->
+                <div id="assessmentControls" class="pt-6 border-t border-slate-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 no-print">
+                    <!-- Explain the scoring scale without unnecessary text. -->
+                    <div class="text-xs text-slate-500">
+                        <span class="font-semibold text-slate-700">Scale:</span> 0 Not in place · 1 Developing · 2 Established · 3 Strong
+                    </div>
+                    <!-- Provide the main action. -->
+                    <button type="submit" class="inline-flex items-center justify-center gap-2 bg-blue-600 text-white font-bold px-6 py-3 rounded-xl shadow-md hover:bg-blue-700 transition-colors">
+                        <i class="fa-solid fa-chart-column" aria-hidden="true"></i>
+                        Generate Readiness Result
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Display the generated result after submission. -->
+        <section id="resultsPanel" class="section-card overflow-hidden">
+            <!-- Provide a consistent result header. -->
+            <div class="brand-panel text-white p-7 sm:p-9">
+                <span class="text-cyan-300 text-xs font-extrabold uppercase tracking-widest">Assessment Result</span>
+                <h2 class="font-heading text-2xl sm:text-3xl font-bold mt-1">School Safety Readiness Profile</h2>
+                <p id="resultInstitution" class="text-slate-300 text-sm mt-2"></p>
+            </div>
+
+            <!-- Present the score and category findings. -->
+            <div class="p-6 sm:p-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <!-- Display the overall readiness score. -->
+                    <div class="lg:col-span-4 flex justify-center">
+                        <div id="scoreRing" class="score-ring" style="--score-angle: 0deg;">
+                            <div class="text-center">
+                                <div id="overallScore" class="font-heading text-4xl font-black text-slate-900">0%</div>
+                                <div class="text-xs font-semibold text-slate-500">Readiness</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Display the executive interpretation. -->
+                    <div class="lg:col-span-8">
+                        <div class="flex flex-wrap items-center gap-3">
+                            <span id="readinessBadge" class="px-3 py-1 rounded-full text-xs font-bold"></span>
+                            <span class="text-xs text-slate-500">Based on current self-reported conditions</span>
+                        </div>
+                        <h3 class="font-heading text-xl font-bold text-slate-900 mt-4">Priority areas</h3>
+                        <div id="priorityAreas" class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3"></div>
+                    </div>
+                </div>
+
+                <!-- Present category-level results. -->
+                <div class="mt-8">
+                    <h3 class="font-heading text-lg font-bold text-slate-900">Readiness by domain</h3>
+                    <div id="domainResults" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4"></div>
+                </div>
+
+                <!-- Present the action plan generated from the lowest-scoring domains. -->
+                <div class="mt-8 rounded-2xl bg-slate-50 border border-slate-200 p-6">
+                    <span class="text-blue-600 text-xs font-extrabold uppercase tracking-widest">Next Actions</span>
+                    <h3 class="font-heading text-xl font-bold text-slate-900 mt-1">Build from the gaps</h3>
+                    <div id="actionPlan" class="mt-4 space-y-3"></div>
+                </div>
+
+                <!-- Keep controls together and easy to find. -->
+                <div class="mt-8 flex flex-wrap gap-3 no-print">
+                    <button id="printReport" type="button" class="inline-flex items-center gap-2 bg-slate-900 text-white font-bold px-5 py-3 rounded-xl hover:bg-slate-800 transition-colors">
+                        <i class="fa-solid fa-print" aria-hidden="true"></i>
+                        Print / Save PDF
+                    </button>
+                    <button id="retakeAssessment" type="button" class="inline-flex items-center gap-2 border border-slate-300 text-slate-700 font-bold px-5 py-3 rounded-xl hover:bg-slate-50 transition-colors">
+                        <i class="fa-solid fa-rotate-left" aria-hidden="true"></i>
+                        Reassess
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Explain the alignment architecture in a compact reference section. -->
+        <section class="section-card p-6 sm:p-8">
+            <span class="text-blue-600 text-xs font-extrabold uppercase tracking-widest">Alignment Lens</span>
+            <h2 class="font-heading text-2xl font-bold text-slate-900 mt-1">From compliance thinking to resilience practice</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+                <!-- Connect physical safety to the assessment. -->
+                <article class="rounded-xl border border-slate-200 p-5">
+                    <div class="text-blue-600 text-xl"><i class="fa-solid fa-building-shield" aria-hidden="true"></i></div>
+                    <h3 class="font-heading font-bold text-base mt-3">Safe Environment</h3>
+                    <p class="text-sm text-slate-600 mt-1">Campus access, perimeter, classrooms, playgrounds, visibility, and physical hazards.</p>
+                </article>
+                <!-- Connect student wellbeing and protection to the assessment. -->
+                <article class="rounded-xl border border-slate-200 p-5">
+                    <div class="text-cyan-600 text-xl"><i class="fa-solid fa-people-roof" aria-hidden="true"></i></div>
+                    <h3 class="font-heading font-bold text-base mt-3">Protection &amp; Wellbeing</h3>
+                    <p class="text-sm text-slate-600 mt-1">Bullying, safeguarding, reporting pathways, student support, and behavioral risks.</p>
+                </article>
+                <!-- Connect emergency readiness to the assessment. -->
+                <article class="rounded-xl border border-slate-200 p-5">
+                    <div class="text-emerald-600 text-xl"><i class="fa-solid fa-truck-medical" aria-hidden="true"></i></div>
+                    <h3 class="font-heading font-bold text-base mt-3">Preparedness</h3>
+                    <p class="text-sm text-slate-600 mt-1">Emergency plans, drills, communications, evacuation, lockdown, and continuity.</p>
+                </article>
+                <!-- Connect technology and community coordination to the assessment. -->
+                <article class="rounded-xl border border-slate-200 p-5">
+                    <div class="text-amber-600 text-xl"><i class="fa-solid fa-network-wired" aria-hidden="true"></i></div>
+                    <h3 class="font-heading font-bold text-base mt-3">Connected Resilience</h3>
+                    <p class="text-sm text-slate-600 mt-1">Cyber awareness, incident intelligence, parent communication, and local response coordination.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Provide a concise developer and validation statement requested by the user. -->
+        <section id="contact" class="brand-panel text-white rounded-2xl p-7 sm:p-9 shadow-xl">
+            <!-- Keep the closing call to action focused on professional review rather than unnecessary marketing copy. -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-7 items-center">
+                <div class="lg:col-span-8">
+                    <span class="text-cyan-300 text-xs font-extrabold uppercase tracking-widest">Stronghold A3</span>
+                    <h2 class="font-heading text-2xl sm:text-3xl font-bold mt-1">Turn assessment findings into a safer, more resilient school.</h2>
+                    <p class="text-slate-300 text-sm mt-3 max-w-2xl">For a site-specific assessment, implementation plan, or integrated school safety program, use the readiness profile as the starting point for a deeper review.</p>
+                </div>
+                <div class="lg:col-span-4 lg:text-right">
+                    <p class="text-xs text-slate-400 uppercase tracking-wider font-bold">Developed &amp; Validated By</p>
+                    <a href="https://alvin-silva.asilvainnovations.com" target="_blank" rel="noopener noreferrer" class="inline-block text-white font-heading font-bold mt-1 hover:text-cyan-300 transition-colors">Alvin Silva</a>
+                    <p class="text-sm text-slate-300">Development Management Professional<br>Resilience Practitioner</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Include the legal positioning note so the page does not imply a formal government certification. -->
+        <section class="text-xs text-slate-500 pb-4">
+            <p><strong class="text-slate-700">Alignment note:</strong> This tool is designed around safe-school and school-security principles and is intended to support institutional readiness. It does not by itself certify legal or regulatory compliance.</p>
+        </section>
+    </main>
+
+    <!-- Reuse the reference page's dark footer structure. -->
+    <footer class="bg-slate-900 text-slate-400 border-t border-slate-800 py-8 mt-8 text-center text-xs">
+        <!-- Constrain footer content to the shared maximum width. -->
+        <div class="max-w-7xl mx-auto px-4 space-y-2">
+            <!-- Identify the product clearly. -->
+            <p class="font-semibold text-slate-300">Stronghold A3 — Safe School Assessment</p>
+            <!-- Summarize the assessment scope. -->
+            <p>Safe-school alignment lens • Physical • Digital • Behavioral • Operational • Emergency • Community Resilience</p>
+            <!-- Identify the developer and validator. -->
+            <p>Developed and validated by Alvin Silva, Development Management Professional &amp; Resilience Practitioner.</p>
+            <!-- Include the copyright year. -->
+            <p class="text-slate-500 pt-2">&copy; 2026 Stronghold A3. All Rights Reserved.</p>
         </div>
-      </div>
-    </section>
+    </footer>
 
-    <section class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
-      <div class="glass rounded-2xl p-5"><div class="text-brand-gold text-2xl font-black">5</div><div class="text-xs text-slate-400 mt-1">Risk domains</div></div>
-      <div class="glass rounded-2xl p-5"><div class="text-brand-gold text-2xl font-black">25</div><div class="text-xs text-slate-400 mt-1">Core indicators</div></div>
-      <div class="glass rounded-2xl p-5"><div class="text-brand-gold text-2xl font-black">Live</div><div class="text-xs text-slate-400 mt-1">Risk scoring</div></div>
-      <div class="glass rounded-2xl p-5"><div class="text-brand-gold text-2xl font-black">PDF</div><div class="text-xs text-slate-400 mt-1">Action report</div></div>
-    </section>
+    <!-- Define the assessment data and reusable interface behavior. -->
+    <script>
+        // Define the complete assessment domain model in one reusable data structure.
+        const assessmentDomains = [
+            {
+                id: "physical",
+                title: "Safe Physical Environment",
+                icon: "fa-building-shield",
+                accent: "blue",
+                questions: [
+                    "Controlled entry points are consistently monitored during operating hours.",
+                    "Visitors, contractors, and deliveries are identified and managed through a documented process.",
+                    "Perimeter, gates, blind spots, lighting, and access routes are routinely inspected.",
+                    "Classrooms, laboratories, playgrounds, and common areas have identified safety controls.",
+                    "Emergency exits and evacuation routes are visible, accessible, and regularly checked.",
+                    "High-risk physical hazards are documented and assigned for corrective action."
+                ]
+            },
+            {
+                id: "student",
+                title: "Student Protection & Wellbeing",
+                icon: "fa-people-roof",
+                accent: "cyan",
+                questions: [
+                    "Students have clear, accessible ways to report bullying, threats, abuse, or unsafe behavior.",
+                    "Staff know the escalation pathway for safeguarding and student protection concerns.",
+                    "The school has preventive measures for bullying, harassment, violence, and other harmful behavior.",
+                    "Behavioral warning signs are addressed through coordinated school support processes.",
+                    "Students receive practical safety awareness appropriate to their age and role.",
+                    "Privacy and dignity are considered when responding to sensitive student safety concerns."
+                ]
+            },
+            {
+                id: "emergency",
+                title: "Emergency Preparedness",
+                icon: "fa-truck-medical",
+                accent: "emerald",
+                questions: [
+                    "The school maintains current emergency response and evacuation procedures.",
+                    "Emergency drills are scheduled, documented, evaluated, and improved after each exercise.",
+                    "Staff understand roles for evacuation, sheltering, lockdown, first response, and reunification.",
+                    "Emergency communication channels are tested and have defined backup methods.",
+                    "Critical contact lists for responders, administrators, and key stakeholders are maintained.",
+                    "The school has continuity arrangements for major disruptions and recovery."
+                ]
+            },
+            {
+                id: "digital",
+                title: "Digital & Information Safety",
+                icon: "fa-network-wired",
+                accent: "amber",
+                questions: [
+                    "School systems use defined access controls and account management practices.",
+                    "Staff and students receive practical cybersecurity and digital safety awareness.",
+                    "The school has safeguards for student, staff, and institutional information.",
+                    "Cyberbullying, online grooming, phishing, and account compromise are addressed in safety procedures.",
+                    "Technology incidents have a documented reporting and escalation pathway.",
+                    "Critical digital services have backup, recovery, and continuity arrangements."
+                ]
+            }
+        ];
 
-    <section id="assessment" class="glass-strong rounded-3xl p-5 md:p-8">
-      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-5 mb-7">
-        <div><div class="text-brand-gold text-xs font-extrabold uppercase tracking-[.2em]">School Risk Assessment</div><h2 class="text-2xl md:text-3xl font-extrabold mt-1">Build the school safety baseline</h2><p class="text-sm text-slate-400 mt-2 max-w-2xl">Answer based on current practice, not planned improvements. The score updates as you go.</p></div>
-        <div class="w-full lg:w-80"><div class="flex justify-between text-xs text-slate-400 mb-2"><span id="progressLabel">Step 1 of 6</span><span id="progressPercent">17%</span></div><div class="progress-track"><div id="progressFill" class="progress-fill" style="width:17%"></div></div></div>
-      </div>
+        // Define the response labels and score values used throughout the tool.
+        const responseOptions = [
+            { value: 0, label: "Not in place", description: "No consistent control or practice." },
+            { value: 1, label: "Developing", description: "Partly implemented or inconsistent." },
+            { value: 2, label: "Established", description: "Implemented and generally practiced." },
+            { value: 3, label: "Strong", description: "Documented, practiced, tested, and improved." }
+        ];
 
-      <div id="module-0" class="module active">
-        <div class="grid lg:grid-cols-2 gap-6 items-stretch">
-          <div class="space-y-5"><h3 class="text-xl font-bold">School profile</h3><div class="grid sm:grid-cols-2 gap-4"><label class="text-xs text-slate-300">School name<input id="schoolName" class="mt-2 w-full rounded-xl px-4 py-3" placeholder="School or campus name"></label><label class="text-xs text-slate-300">School type<select id="schoolType" class="mt-2 w-full rounded-xl px-4 py-3"><option>Elementary</option><option>Secondary</option><option>College / University</option><option>Integrated School</option><option>Technical / Vocational</option></select></label><label class="text-xs text-slate-300">Learners<select id="learnerCount" class="mt-2 w-full rounded-xl px-4 py-3"><option>Under 500</option><option>500–1,000</option><option>1,001–2,500</option><option>2,501–5,000</option><option>Over 5,000</option></select></label><label class="text-xs text-slate-300">Campus setting<select id="campusSetting" class="mt-2 w-full rounded-xl px-4 py-3"><option>Urban</option><option>Suburban</option><option>Rural</option><option>Mixed / Multi-campus</option></select></label></div><label class="text-xs text-slate-300 block">Primary concern<textarea id="primaryConcern" rows="3" class="mt-2 w-full rounded-xl px-4 py-3" placeholder="Optional: the issue you most want to address"></textarea></label></div>
-          <div><img class="section-image" src="assets/2.png" alt="School safety operations"><div class="mt-4 p-5 rounded-2xl bg-blue-500/10 border border-blue-400/20"><div class="font-bold text-sm"><i class="fa-solid fa-crosshairs text-brand-gold mr-2"></i>Assessment principle</div><p class="text-xs text-slate-400 mt-2">This tool looks at how well the school prevents, detects, responds to, and learns from safety risks.</p></div></div>
-        </div>
-      </div>
+        // Define concise action guidance for each assessment domain.
+        const domainActions = {
+            physical: "Prioritize access control, perimeter checks, blind-spot review, emergency exits, and corrective-action tracking.",
+            student: "Strengthen reporting pathways, safeguarding escalation, prevention programs, and coordinated student-support responses.",
+            emergency: "Refresh response plans, test communications, run realistic drills, clarify roles, and close exercise findings.",
+            digital: "Review access controls, awareness, data protection, incident reporting, backups, and cyber-related student safety risks."
+        };
 
-      <div id="module-1" class="module"><div class="grid lg:grid-cols-5 gap-6"><div class="lg:col-span-2"><img class="section-image h-full min-h-[260px]" src="assets/3.png" alt="Physical school security"></div><div class="lg:col-span-3"><div class="text-brand-blue text-xs font-bold uppercase tracking-widest">01 · Physical security</div><h3 class="text-xl font-bold mt-1">Can the campus control access and see what matters?</h3><div id="questions-physical" class="mt-5 space-y-4"></div></div></div></div>
-      <div id="module-2" class="module"><div class="grid lg:grid-cols-5 gap-6"><div class="lg:col-span-2 order-2 lg:order-1"><div class="glass rounded-2xl p-5 h-full"><div class="text-brand-gold text-xs font-bold uppercase tracking-widest">02 · Student & behavioral safety</div><h3 class="text-xl font-bold mt-1">Are people and behavior risks actively managed?</h3><p class="text-xs text-slate-400 mt-3">Focus on prevention, reporting, supervision, and support—not labels or blame.</p></div></div><div class="lg:col-span-3 order-1 lg:order-2"><img class="section-image" src="assets/4.png" alt="Student safety and safeguarding"><div id="questions-behavior" class="mt-5 space-y-4"></div></div></div></div>
-      <div id="module-3" class="module"><div class="grid lg:grid-cols-5 gap-6"><div class="lg:col-span-2"><img class="section-image h-full min-h-[260px]" src="assets/5.png" alt="Digital and emergency school safety"></div><div class="lg:col-span-3"><div class="text-brand-blue text-xs font-bold uppercase tracking-widest">03 · Digital safety</div><h3 class="text-xl font-bold mt-1">Can the school protect systems, data, and people online?</h3><div id="questions-digital" class="mt-5 space-y-4"></div></div></div></div>
-      <div id="module-4" class="module"><div class="grid lg:grid-cols-5 gap-6"><div class="lg:col-span-3"><div class="text-brand-blue text-xs font-bold uppercase tracking-widest">04 · Emergency readiness</div><h3 class="text-xl font-bold mt-1">Can the school respond quickly and recover well?</h3><div id="questions-emergency" class="mt-5 space-y-4"></div></div><div class="lg:col-span-2"><img class="section-image h-full min-h-[260px]" src="assets/2.png" alt="Emergency preparedness at school"><div class="mt-4 p-4 rounded-xl bg-brand-gold/10 border border-brand-gold/20 text-xs text-slate-300"><i class="fa-solid fa-circle-info text-brand-gold mr-2"></i>Assess the system as it exists today: alerts, roles, drills, routes, communications, and recovery.</div></div></div></div>
-      <div id="module-5" class="module"><div class="grid lg:grid-cols-5 gap-6"><div class="lg:col-span-2"><div class="glass rounded-2xl p-6 h-full"><div class="text-brand-gold text-xs font-bold uppercase tracking-widest">05 · Community resilience</div><h3 class="text-xl font-bold mt-1">Is safety connected beyond the campus gate?</h3><p class="text-xs text-slate-400 mt-3">Consider parents, local responders, safe routes, neighboring communities, and multi-campus coordination.</p></div></div><div class="lg:col-span-3"><img class="section-image" src="assets/Cover1.png" alt="School community resilience"><div id="questions-community" class="mt-5 space-y-4"></div></div></div></div>
+        // Render the question groups from the reusable domain data.
+        function renderAssessmentQuestions() {
+            // Find the question container once before generating the interface.
+            const questionGroupsContainer = document.getElementById("questionGroups");
 
-      <div class="mt-8 pt-6 border-t border-white/10 flex justify-between gap-3">
-        <button id="backButton" type="button" class="px-5 py-3 rounded-xl border border-white/15 text-sm font-semibold hover:bg-white/5 disabled:opacity-30" disabled><i class="fa-solid fa-arrow-left mr-2"></i>Back</button>
-        <button id="nextButton" type="button" class="px-6 py-3 rounded-xl bg-brand-blue hover:bg-blue-500 text-sm font-bold">Continue <i class="fa-solid fa-arrow-right ml-2"></i></button>
-      </div>
-    </section>
+            // Build each domain section from the shared data model.
+            questionGroupsContainer.innerHTML = assessmentDomains.map((domain, domainIndex) => `
+                <section aria-labelledby="${domain.id}-heading">
+                    <div class="flex items-start gap-3 mb-5">
+                        <div class="w-10 h-10 shrink-0 rounded-xl bg-${domain.accent}-50 text-${domain.accent}-600 grid place-items-center">
+                            <i class="fa-solid ${domain.icon}" aria-hidden="true"></i>
+                        </div>
+                        <div>
+                            <span class="text-${domain.accent}-600 text-xs font-extrabold uppercase tracking-widest">Domain ${domainIndex + 1}</span>
+                            <h3 id="${domain.id}-heading" class="font-heading text-xl font-bold text-slate-900">${domain.title}</h3>
+                        </div>
+                    </div>
 
-    <section id="results" class="glass-strong rounded-3xl p-5 md:p-8 hidden">
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-5"><div><div class="text-brand-gold text-xs font-extrabold uppercase tracking-[.2em]">Assessment Result</div><h2 class="text-2xl md:text-3xl font-extrabold mt-1">Your school safety profile</h2><p id="resultSummary" class="text-sm text-slate-400 mt-2"></p></div><div class="flex gap-2 no-print"><button id="restartButton" class="px-4 py-2 rounded-xl border border-white/15 text-xs font-semibold hover:bg-white/5">Retake</button><button id="pdfButton" class="px-4 py-2 rounded-xl bg-brand-gold text-navy text-xs font-bold"><i class="fa-solid fa-file-pdf mr-2"></i>PDF report</button></div></div>
-      <div class="grid lg:grid-cols-12 gap-7 mt-8"><div class="lg:col-span-4 flex flex-col items-center justify-center"><div id="scoreRing" class="score-ring" style="--score:0deg"><div><div id="overallScore" class="text-4xl font-black">0</div><div class="text-[10px] uppercase tracking-widest text-slate-400">out of 100</div></div></div><div id="riskLevel" class="mt-4 px-4 py-1.5 rounded-full text-xs font-bold border"></div></div><div class="lg:col-span-8"><div class="chart-wrap"><canvas id="riskChart"></canvas></div></div></div>
-      <div id="actions" class="mt-8"><div class="flex items-end justify-between mb-4"><div><div class="text-brand-blue text-xs font-bold uppercase tracking-widest">Priority actions</div><h3 class="text-xl font-bold">What to address first</h3></div><div id="priorityCount" class="text-xs text-slate-400"></div></div><div id="recommendations" class="grid md:grid-cols-2 gap-4"></div></div>
-      <div class="mt-8 grid md:grid-cols-3 gap-4"><div class="p-5 rounded-2xl bg-blue-500/10 border border-blue-400/20"><div class="font-bold text-sm">Immediate</div><p class="text-xs text-slate-400 mt-2">Close critical control gaps and assign owners.</p></div><div class="p-5 rounded-2xl bg-brand-gold/10 border border-brand-gold/20"><div class="font-bold text-sm">Next 90 days</div><p class="text-xs text-slate-400 mt-2">Deploy priority technology, training, and response improvements.</p></div><div class="p-5 rounded-2xl bg-emerald-500/10 border border-emerald-400/20"><div class="font-bold text-sm">Ongoing</div><p class="text-xs text-slate-400 mt-2">Monitor trends, drill, review incidents, and update controls.</p></div></div>
-    </section>
+                    <div class="space-y-4">
+                        ${domain.questions.map((question, questionIndex) => {
+                            const questionId = `${domain.id}-${questionIndex}`;
+                            return `
+                                <fieldset class="rounded-xl border border-slate-200 p-4 sm:p-5">
+                                    <legend class="w-full pr-2">
+                                        <span class="text-xs font-bold text-slate-400 mr-2">${String(questionIndex + 1).padStart(2, "0")}</span>
+                                        <span class="text-sm font-semibold text-slate-800">${question}</span>
+                                    </legend>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 mt-4">
+                                        ${responseOptions.map(option => `
+                                            <label class="assessment-option cursor-pointer rounded-xl border border-slate-200 bg-white p-3">
+                                                <input
+                                                    type="radio"
+                                                    name="${questionId}"
+                                                    value="${option.value}"
+                                                    class="sr-only"
+                                                    data-question-id="${questionId}"
+                                                    aria-label="${option.label}"
+                                                >
+                                                <span class="block text-sm font-bold text-slate-800">${option.value} — ${option.label}</span>
+                                                <span class="block text-xs text-slate-500 mt-1">${option.description}</span>
+                                            </label>
+                                        `).join("")}
+                                    </div>
+                                </fieldset>
+                            `;
+                        }).join("")}
+                    </div>
+                </section>
+            `).join("");
 
-    <footer class="text-center text-xs text-slate-500 py-4">Stronghold A3 · Safe Schools Security Risk Assessment · 2026</footer>
-  </main>
+            // Attach the same selection behavior to every generated option.
+            document.querySelectorAll('input[type="radio"][data-question-id]').forEach(input => {
+                input.addEventListener("change", handleAnswerChange);
+            });
+        }
 
-<script>
-const assessmentModules = [
-  { key:'physical', title:'Physical Security', questions:[
-    ['Perimeter and gates are controlled, inspected, and secured during operating hours.', 'access'],
-    ['Visitor identity and access are recorded and managed consistently.', 'visitors'],
-    ['CCTV coverage addresses key entrances, blind spots, and high-risk areas.', 'cctv'],
-    ['Staff know how to respond to unauthorized entry or suspicious activity.', 'response'],
-    ['Emergency exits, lighting, locks, and critical safety equipment are routinely checked.', 'infrastructure']
-  ]},
-  { key:'behavior', title:'Student & Behavioral Safety', questions:[
-    ['There is a clear process for reporting bullying, threats, harassment, or safeguarding concerns.', 'reporting'],
-    ['High-risk areas such as corridors, playgrounds, and arrival zones are actively supervised.', 'supervision'],
-    ['Staff receive practical training in de-escalation and student safeguarding.', 'training'],
-    ['Serious concerns are escalated using defined roles and documented procedures.', 'escalation'],
-    ['Students and families know where to seek help when they feel unsafe.', 'support']
-  ]},
-  { key:'digital', title:'Digital Safety', questions:[
-    ['School accounts use strong authentication and appropriate access controls.', 'identity'],
-    ['Staff and students receive guidance on phishing, cyberbullying, grooming, and online safety.', 'awareness'],
-    ['Sensitive student and school data are protected with clear privacy practices.', 'data'],
-    ['Backups, incident response, and recovery procedures are tested.', 'recovery'],
-    ['Technology or security teams monitor important systems for unusual activity.', 'monitoring']
-  ]},
-  { key:'emergency', title:'Emergency Readiness', questions:[
-    ['The school maintains current emergency plans for fire, severe weather, medical events, violence, and other hazards.', 'plans'],
-    ['Evacuation, shelter, lockdown, and reunification procedures are practiced regularly.', 'drills'],
-    ['Emergency alerts can reach staff, students, families, and responders quickly.', 'alerts'],
-    ['Staff understand incident roles, command structure, and decision authority.', 'command'],
-    ['The school reviews incidents and drills to improve its procedures.', 'learning']
-  ]},
-  { key:'community', title:'Community Resilience', questions:[
-    ['Parents or guardians receive clear safety information and emergency updates.', 'parents'],
-    ['The school coordinates emergency planning with local responders or government partners.', 'partners'],
-    ['Safe arrival and departure routes are reviewed for traffic, hazards, and vulnerable points.', 'routes'],
-    ['Multi-campus schools can share alerts, lessons learned, and risk trends.', 'coordination'],
-    ['The school has a practical recovery and continuity plan for prolonged disruption.', 'continuity']
-  ]}
-];
-const responseOptions = [
-  { value:0, label:'Not in place', description:'No consistent control or process.' },
-  { value:25, label:'Limited', description:'Some activity, but inconsistent or informal.' },
-  { value:50, label:'Developing', description:'Defined in parts and improving.' },
-  { value:75, label:'Established', description:'Implemented and routinely used.' },
-  { value:100, label:'Mature', description:'Tested, monitored, and continuously improved.' }
-];
-let currentModule = 0;
-let answers = {};
-let riskChart = null;
-const moduleOrder = ['profile','physical','behavior','digital','emergency','community'];
-const domainLabels = ['Physical','Student safety','Digital','Emergency','Community'];
-function createQuestionCards() {
-  assessmentModules.forEach((module) => {
-    const container = document.getElementById(`questions-${module.key}`);
-    container.innerHTML = module.questions.map((question, index) => `
-      <div class="question-block">
-        <div class="text-sm font-semibold mb-2">${index + 1}. ${question[0]}</div>
-        <div class="grid sm:grid-cols-5 gap-2">
-          ${responseOptions.map(option => `<button type="button" class="option-card rounded-xl p-3 text-left" data-domain="${module.key}" data-question="${question[1]}" data-value="${option.value}"><div class="flex items-center gap-2"><span class="radio"></span><span class="text-xs font-bold">${option.label}</span></div><div class="text-[10px] text-slate-500 mt-1 pl-7">${option.description}</div></button>`).join('')}
-        </div>
-      </div>`).join('');
-  });
-}
-function showModule(index) {
-  document.querySelectorAll('.module').forEach((element, moduleIndex) => element.classList.toggle('active', moduleIndex === index));
-  currentModule = index;
-  const step = index + 1;
-  const percent = Math.round((step / moduleOrder.length) * 100);
-  document.getElementById('progressLabel').textContent = `Step ${step} of ${moduleOrder.length}`;
-  document.getElementById('progressPercent').textContent = `${percent}%`;
-  document.getElementById('progressFill').style.width = `${percent}%`;
-  document.getElementById('backButton').disabled = index === 0;
-  document.getElementById('nextButton').innerHTML = index === moduleOrder.length - 1 ? 'Calculate score <i class="fa-solid fa-chart-line ml-2"></i>' : 'Continue <i class="fa-solid fa-arrow-right ml-2"></i>';
-  window.scrollTo({ top: document.getElementById('assessment').offsetTop - 90, behavior:'smooth' });
-}
-function isModuleComplete(index) {
-  if (index === 0) return Boolean(document.getElementById('schoolName').value.trim());
-  const module = assessmentModules[index - 1];
-  return module.questions.every(question => Object.prototype.hasOwnProperty.call(answers, `${module.key}:${question[1]}`));
-}
-function calculateScores() {
-  return assessmentModules.map(module => {
-    const values = module.questions.map(question => answers[`${module.key}:${question[1]}`] ?? 0);
-    return values.reduce((sum, value) => sum + value, 0) / values.length;
-  });
-}
-function riskDescriptor(score) {
-  if (score < 40) return ['Critical risk','bg-red-500/15 text-red-300 border-red-500/40'];
-  if (score < 60) return ['High risk','bg-orange-500/15 text-orange-300 border-orange-500/40'];
-  if (score < 80) return ['Moderate risk','bg-yellow-500/15 text-yellow-200 border-yellow-500/40'];
-  return ['Strong baseline','bg-emerald-500/15 text-emerald-300 border-emerald-500/40'];
-}
-const recommendationMap = {
-  physical:{ icon:'fa-door-open', title:'Strengthen access & visibility', text:'Prioritize visitor control, perimeter checks, CCTV blind spots, lighting, locks, and response procedures.' },
-  behavior:{ icon:'fa-people-group', title:'Strengthen student safeguarding', text:'Formalize reporting, supervision, de-escalation, escalation, and support pathways for students and families.' },
-  digital:{ icon:'fa-laptop-shield', title:'Harden digital safety', text:'Improve authentication, awareness, privacy controls, monitoring, backups, and cyber incident response.' },
-  emergency:{ icon:'fa-tower-broadcast', title:'Improve emergency readiness', text:'Refresh plans, test drills, strengthen alerts, clarify command roles, and capture lessons after every exercise.' },
-  community:{ icon:'fa-handshake-angle', title:'Build community resilience', text:'Connect parents, responders, safe-route planning, multi-campus coordination, and continuity planning.' }
-};
-function renderResults() {
-  const scores = calculateScores();
-  const overall = Math.round(scores.reduce((sum, value) => sum + value, 0) / scores.length);
-  const [level, levelClass] = riskDescriptor(overall);
-  document.getElementById('results').classList.remove('hidden');
-  document.getElementById('overallScore').textContent = overall;
-  document.getElementById('scoreRing').style.setProperty('--score', `${overall * 3.6}deg`);
-  document.getElementById('riskLevel').className = `mt-4 px-4 py-1.5 rounded-full text-xs font-bold border ${levelClass}`;
-  document.getElementById('riskLevel').textContent = level;
-  const schoolName = document.getElementById('schoolName').value.trim() || 'This school';
-  document.getElementById('resultSummary').textContent = `${schoolName} has an overall safety readiness score of ${overall}/100. The lowest-scoring domains should drive the first action cycle.`;
-  if (riskChart) riskChart.destroy();
-  riskChart = new Chart(document.getElementById('riskChart'), { type:'bar', data:{ labels:domainLabels, datasets:[{ label:'Readiness score', data:scores.map(Math.round), backgroundColor:['#3B82F6','#FFD700','#06B6D4','#10B981','#818CF8'], borderRadius:8, borderSkipped:false }] }, options:{ responsive:true, maintainAspectRatio:false, scales:{ y:{ beginAtZero:true, max:100, grid:{color:'rgba(255,255,255,.08)'}, ticks:{color:'#94A3B8'} }, x:{ grid:{display:false}, ticks:{color:'#CBD5E1'} } }, plugins:{ legend:{display:false}, tooltip:{ callbacks:{ label:(context)=>`${context.raw}/100` } } } } });
-  const ranked = assessmentModules.map((module,index)=>({ ...module, score:scores[index] })).sort((a,b)=>a.score-b.score).slice(0,4);
-  document.getElementById('priorityCount').textContent = `${ranked.length} priority areas`;
-  document.getElementById('recommendations').innerHTML = ranked.map(item => { const rec = recommendationMap[item.key]; const priority = item.score < 40 ? 'Critical' : item.score < 60 ? 'High' : 'Watch'; return `<article class="glass rounded-2xl p-5 border-l-4 ${item.score < 40 ? 'border-red-500' : item.score < 60 ? 'border-orange-400' : 'border-brand-gold'}"><div class="flex items-start justify-between gap-3"><div class="flex items-center gap-3"><div class="w-10 h-10 rounded-xl bg-blue-500/15 grid place-items-center text-brand-blue"><i class="fa-solid ${rec.icon}"></i></div><div><h4 class="font-bold">${rec.title}</h4><div class="text-[10px] uppercase tracking-wider text-slate-500 mt-1">${item.title}</div></div></div><span class="text-xs font-bold px-2 py-1 rounded-full bg-white/5">${Math.round(item.score)}/100</span></div><p class="text-xs text-slate-400 mt-4">${rec.text}</p><div class="mt-4 text-[10px] font-bold uppercase tracking-widest ${item.score < 60 ? 'text-orange-300' : 'text-brand-gold'}">${priority} priority</div></article>`; }).join('');
-  document.getElementById('results').scrollIntoView({behavior:'smooth', block:'start'});
-}
-function resetAssessment() {
-  answers = {};
-  currentModule = 0;
-  document.querySelectorAll('input,textarea').forEach(element => element.value = '');
-  document.querySelectorAll('.option-card').forEach(card => card.classList.remove('selected'));
-  document.getElementById('results').classList.add('hidden');
-  showModule(0);
-}
-function downloadReport() {
-  const { jsPDF } = window.jspdf;
-  const scores = calculateScores();
-  const overall = Math.round(scores.reduce((sum, value) => sum + value, 0) / scores.length);
-  const schoolName = document.getElementById('schoolName').value.trim() || 'School';
-  const [level] = riskDescriptor(overall);
-  const documentReport = new jsPDF();
-  documentReport.setFillColor(10,22,40); documentReport.rect(0,0,210,32,'F');
-  documentReport.setTextColor(255,215,0); documentReport.setFont('helvetica','bold'); documentReport.setFontSize(20); documentReport.text('STRONGHOLD A3',14,18);
-  documentReport.setTextColor(255,255,255); documentReport.setFontSize(8); documentReport.text('SAFE SCHOOLS SECURITY RISK ASSESSMENT',14,26);
-  documentReport.setTextColor(31,41,55); documentReport.setFontSize(14); documentReport.text('Assessment Summary',14,48);
-  documentReport.setFontSize(10); documentReport.text(`School: ${schoolName}`,14,58); documentReport.text(`Type: ${document.getElementById('schoolType').value}`,14,65); documentReport.text(`Overall score: ${overall}/100`,14,72); documentReport.text(`Risk status: ${level}`,14,79);
-  documentReport.setFontSize(12); documentReport.setFont('helvetica','bold'); documentReport.text('Domain Scores',14,94); documentReport.setFont('helvetica','normal');
-  let y = 104;
-  assessmentModules.forEach((module,index)=>{ documentReport.text(`${module.title}: ${Math.round(scores[index])}/100`,18,y); y += 8; });
-  y += 6; documentReport.setFont('helvetica','bold'); documentReport.text('Priority Actions',14,y); y += 9; documentReport.setFont('helvetica','normal');
-  assessmentModules.map((module,index)=>({module,score:scores[index]})).sort((a,b)=>a.score-b.score).slice(0,4).forEach((item,index)=>{ const rec = recommendationMap[item.module.key]; const lines = documentReport.splitTextToSize(`${index+1}. ${rec.title} — ${rec.text}`,178); if(y + lines.length*5 > 280){documentReport.addPage();y=20;} documentReport.text(lines,16,y); y += lines.length*5 + 4; });
-  documentReport.setFontSize(8); documentReport.setTextColor(107,114,128); documentReport.text('For planning purposes. Validate findings through a formal site assessment and stakeholder review.',14,290);
-  documentReport.save(`StrongholdA3_Safe_Schools_${schoolName.replace(/[^a-z0-9]+/gi,'_')}.pdf`);
-}
-createQuestionCards();
-document.addEventListener('click',(event)=>{
-  const card = event.target.closest('.option-card');
-  if (!card) return;
-  const key = `${card.dataset.domain}:${card.dataset.question}`;
-  answers[key] = Number(card.dataset.value);
-  document.querySelectorAll(`.option-card[data-domain="${card.dataset.domain}"][data-question="${card.dataset.question}"]`).forEach(item=>item.classList.remove('selected'));
-  card.classList.add('selected');
-});
-document.getElementById('nextButton').addEventListener('click',()=>{
-  if (!isModuleComplete(currentModule)) { alert(currentModule === 0 ? 'Please enter the school name before continuing.' : 'Please answer every item in this section before continuing.'); return; }
-  if (currentModule < moduleOrder.length - 1) showModule(currentModule + 1); else renderResults();
-});
-document.getElementById('backButton').addEventListener('click',()=>{ if(currentModule>0) showModule(currentModule-1); });
-document.getElementById('restartButton').addEventListener('click',resetAssessment);
-document.getElementById('pdfButton').addEventListener('click',downloadReport);
-showModule(0);
-</script>
+        // Update the visual selected state and progress whenever a response changes.
+        function handleAnswerChange(event) {
+            // Find the radio group that changed.
+            const questionId = event.target.dataset.questionId;
+
+            // Clear the selected visual state for this question.
+            document.querySelectorAll(`input[data-question-id="${questionId}"]`).forEach(input => {
+                input.closest(".assessment-option").classList.remove("selected");
+            });
+
+            // Highlight the newly selected response.
+            event.target.closest(".assessment-option").classList.add("selected");
+
+            // Refresh the assessment progress indicators.
+            updateProgress();
+        }
+
+        // Calculate the current completion percentage.
+        function updateProgress() {
+            // Count all assessment questions.
+            const totalQuestions = assessmentDomains.reduce((total, domain) => total + domain.questions.length, 0);
+
+            // Count all questions with a selected answer.
+            const answeredQuestions = document.querySelectorAll('input[type="radio"]:checked').length;
+
+            // Calculate the percentage safely.
+            const percentage = Math.round((answeredQuestions / totalQuestions) * 100);
+
+            // Update the progress text.
+            document.getElementById("progressLabel").textContent = `Assessment readiness: ${percentage}%`;
+
+            // Update the answered count.
+            document.getElementById("answerCount").textContent = `${answeredQuestions} / ${totalQuestions} answered`;
+
+            // Update the progress bar width.
+            document.getElementById("progressBar").style.width = `${percentage}%`;
+        }
+
+        // Collect all assessment responses into a structured object.
+        function collectResponses() {
+            // Create an empty response object.
+            const responses = {};
+
+            // Loop through every assessment domain.
+            assessmentDomains.forEach(domain => {
+                // Create a response array for the current domain.
+                responses[domain.id] = [];
+
+                // Loop through every question in the current domain.
+                domain.questions.forEach((question, questionIndex) => {
+                    // Build the unique radio group name.
+                    const questionId = `${domain.id}-${questionIndex}`;
+
+                    // Find the selected response.
+                    const selectedInput = document.querySelector(`input[name="${questionId}"]:checked`);
+
+                    // Store the numeric score or null if unanswered.
+                    responses[domain.id].push(selectedInput ? Number(selectedInput.value) : null);
+                });
+            });
+
+            // Return the complete response object.
+            return responses;
+        }
+
+        // Determine whether every question has been answered.
+        function isAssessmentComplete(responses) {
+            // Flatten all response arrays and check for unanswered values.
+            return Object.values(responses).flat().every(value => value !== null);
+        }
+
+        // Convert a domain score into a readable status.
+        function getReadinessStatus(percentage) {
+            // Return the strongest status for high scores.
+            if (percentage >= 80) return { label: "Strong Readiness", classes: "bg-emerald-100 text-emerald-700" };
+
+            // Return a stable but improvable status for middle scores.
+            if (percentage >= 60) return { label: "Established Readiness", classes: "bg-blue-100 text-blue-700" };
+
+            // Return a developing status for lower-middle scores.
+            if (percentage >= 40) return { label: "Developing Readiness", classes: "bg-amber-100 text-amber-700" };
+
+            // Return the priority status for low scores.
+            return { label: "Priority Improvement", classes: "bg-red-100 text-red-700" };
+        }
+
+        // Generate and display the assessment result.
+        function generateResult() {
+            // Collect the current responses.
+            const responses = collectResponses();
+
+            // Stop the calculation if the assessment is incomplete.
+            if (!isAssessmentComplete(responses)) {
+                // Identify the first unanswered question for better user guidance.
+                const firstUnanswered = document.querySelector('input[type="radio"]:not(:checked)');
+                // Inform the user without introducing a disruptive modal.
+                alert("Please complete all assessment items before generating the result.");
+                // Move focus toward the first unanswered area when possible.
+                if (firstUnanswered) firstUnanswered.closest("fieldset").scrollIntoView({ behavior: "smooth", block: "center" });
+                // Exit before generating an incomplete result.
+                return;
+            }
+
+            // Create an array for the domain-level calculations.
+            const domainResults = [];
+
+            // Calculate each domain independently.
+            assessmentDomains.forEach(domain => {
+                // Retrieve all scores for the domain.
+                const scores = responses[domain.id];
+
+                // Calculate the maximum possible domain score.
+                const maximumScore = scores.length * 3;
+
+                // Calculate the actual domain score.
+                const actualScore = scores.reduce((sum, score) => sum + score, 0);
+
+                // Convert the score to a percentage.
+                const percentage = Math.round((actualScore / maximumScore) * 100);
+
+                // Store the calculated result.
+                domainResults.push({
+                    ...domain,
+                    actualScore,
+                    maximumScore,
+                    percentage,
+                    status: getReadinessStatus(percentage)
+                });
+            });
+
+            // Calculate the total score across all domains.
+            const totalActualScore = domainResults.reduce((sum, domain) => sum + domain.actualScore, 0);
+
+            // Calculate the maximum possible total score.
+            const totalMaximumScore = domainResults.reduce((sum, domain) => sum + domain.maximumScore, 0);
+
+            // Calculate the overall readiness percentage.
+            const overallPercentage = Math.round((totalActualScore / totalMaximumScore) * 100);
+
+            // Update the result institution label.
+            const schoolName = document.getElementById("schoolName").value.trim() || "School / Institution";
+
+            // Retrieve the campus descriptor.
+            const campusName = document.getElementById("campusName").value.trim();
+
+            // Build a concise institution label.
+            document.getElementById("resultInstitution").textContent = campusName ? `${schoolName} · ${campusName}` : schoolName;
+
+            // Update the overall score text.
+            document.getElementById("overallScore").textContent = `${overallPercentage}%`;
+
+            // Update the score ring angle.
+            document.getElementById("scoreRing").style.setProperty("--score-angle", `${overallPercentage * 3.6}deg`);
+
+            // Update the readiness badge.
+            const overallStatus = getReadinessStatus(overallPercentage);
+            const readinessBadge = document.getElementById("readinessBadge");
+            readinessBadge.textContent = overallStatus.label;
+            readinessBadge.className = `px-3 py-1 rounded-full text-xs font-bold ${overallStatus.classes}`;
+
+            // Sort the domains from lowest readiness to highest readiness.
+            const priorityDomains = [...domainResults].sort((first, second) => first.percentage - second.percentage).slice(0, 3);
+
+            // Render the priority areas.
+            document.getElementById("priorityAreas").innerHTML = priorityDomains.map((domain, index) => `
+                <div class="rounded-xl border border-slate-200 bg-white p-4">
+                    <div class="flex items-center justify-between gap-3">
+                        <span class="text-sm font-bold text-slate-800">${index + 1}. ${domain.title}</span>
+                        <span class="text-xs font-bold ${domain.status.classes} px-2 py-1 rounded-full">${domain.percentage}%</span>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-2">${domainActions[domain.id]}</p>
+                </div>
+            `).join("");
+
+            // Render the domain result cards.
+            document.getElementById("domainResults").innerHTML = domainResults.map(domain => `
+                <article class="rounded-xl border border-slate-200 p-4">
+                    <div class="flex items-start justify-between gap-3">
+                        <div>
+                            <h4 class="font-heading font-bold text-sm text-slate-900">${domain.title}</h4>
+                            <p class="text-xs text-slate-500 mt-1">${domain.actualScore} / ${domain.maximumScore} points</p>
+                        </div>
+                        <span class="text-sm font-black text-slate-900">${domain.percentage}%</span>
+                    </div>
+                    <div class="mt-3 h-2 rounded-full bg-slate-100 overflow-hidden">
+                        <div class="h-full rounded-full bg-blue-600" style="width: ${domain.percentage}%;"></div>
+                    </div>
+                    <span class="inline-block mt-3 text-xs font-bold px-2 py-1 rounded-full ${domain.status.classes}">${domain.status.label}</span>
+                </article>
+            `).join("");
+
+            // Render practical actions for the three weakest domains.
+            document.getElementById("actionPlan").innerHTML = priorityDomains.map((domain, index) => `
+                <div class="flex items-start gap-3">
+                    <span class="shrink-0 w-7 h-7 rounded-full bg-blue-50 text-blue-700 text-xs font-bold grid place-items-center">${index + 1}</span>
+                    <div>
+                        <p class="text-sm font-bold text-slate-800">${domain.title}</p>
+                        <p class="text-sm text-slate-600 mt-1">${domainActions[domain.id]}</p>
+                    </div>
+                </div>
+            `).join("");
+
+            // Reveal the completed result panel.
+            const resultsPanel = document.getElementById("resultsPanel");
+            resultsPanel.style.display = "block";
+
+            // Scroll the user directly to the result.
+            resultsPanel.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+
+        // Reset the assessment and hide any previous result.
+        function resetAssessment() {
+            // Reset the form controls.
+            document.getElementById("assessmentForm").reset();
+
+            // Remove all selected visual states.
+            document.querySelectorAll(".assessment-option.selected").forEach(option => option.classList.remove("selected"));
+
+            // Hide the result panel.
+            document.getElementById("resultsPanel").style.display = "none";
+
+            // Refresh the progress indicators.
+            updateProgress();
+
+            // Return the user to the assessment.
+            document.getElementById("assessment").scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+
+        // Initialize the interface after the page is ready.
+        document.addEventListener("DOMContentLoaded", () => {
+            // Render the reusable assessment question groups.
+            renderAssessmentQuestions();
+
+            // Initialize the progress display.
+            updateProgress();
+
+            // Generate the result when the assessment form is submitted.
+            document.getElementById("assessmentForm").addEventListener("submit", event => {
+                // Prevent a page reload.
+                event.preventDefault();
+
+                // Generate the assessment result.
+                generateResult();
+            });
+
+            // Print the report through the browser's native print dialog.
+            document.getElementById("printReport").addEventListener("click", () => window.print());
+
+            // Reset the assessment when the user selects reassess.
+            document.getElementById("retakeAssessment").addEventListener("click", resetAssessment);
+        });
+    </script>
 </body>
 </html>
