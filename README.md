@@ -1,4 +1,4 @@
-# Stronghold A3 Security Agency — PWA
+# Stronghold A3 Security Agency
 
 **Eastern Visayas' Premier "Zero-Liability" Security Partner**
 
