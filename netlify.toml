@@ -25,8 +25,13 @@ for = "/*"
 # Prevent browsers from MIME-sniffing content types.
 [headers.values]
 
-# Define a restrictive content security policy suitable for a static application.
-Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none';"
+# Define a content security policy that matches the third-party resources the
+# pages actually load (Tailwind CDN, Font Awesome, Google Fonts, chart.js,
+# hosted images, and the embedded map/Cloud SMS iframes). Previously this was
+# stricter than the site's own markup, which caused Tailwind, Font Awesome,
+# every externally-hosted image, and all iframes to be silently blocked by
+# the browser after deploy.
+Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: blob: https://fhwhqoiucfxmfsclianh.databasepad.com https://zpahlcmuowwwiauffrby.supabase.co https://placehold.co https://via.placeholder.com; frame-src https://www.google.com https://www.openstreetmap.org https://resilient-secure-mobile.deploypad.app; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none';"
 
 # Prevent the site from being embedded inside another website.
 X-Frame-Options = "DENY"
