@@ -1,25 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Define the document character set. -->
     <meta charset="UTF-8">
-
-    <!-- Make the interface responsive on mobile, tablet, and desktop screens. -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Describe the purpose of the assessment page. -->
     <meta name="description" content="Stronghold A3 Safe School Assessment using the C-A-S-E Resilience Model: Coping Capacity, Adaptability, Sensitivity, and Exposure.">
-
-    <!-- Prevent search engines from treating the assessment as a legal compliance certificate. -->
     <meta name="robots" content="noindex,nofollow">
-
-    <!-- Set the browser page title. -->
     <title>Safe School Assessment | Stronghold A3</title>
-
-    <!-- Load Tailwind CSS to maintain the visual language of the supplied Stronghold A3 interface. -->
+    <link rel="canonical" href="https://www.strongholda3.com/safe-schools-assessment">
+    <link rel="icon" type="image/x-icon" href="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Configure Tailwind with the Stronghold A3 design tokens found in the supplied interface. -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -45,1859 +35,494 @@
             }
         };
     </script>
-
-    <!-- Establish a fast connection to Google Fonts. -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
-    <!-- Establish a fast cross-origin connection to Google Fonts. -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <!-- Load the Montserrat and Poppins typefaces used by the supplied Stronghold A3 interface. -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Load Font Awesome for consistent interface icons. -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <!-- Define reusable application styles. -->
     <style>
-        /* Enable smooth scrolling between assessment sections. */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Establish the base page typography, color, and background. */
-        body {
-            margin: 0;
-            min-height: 100vh;
-            overflow-x: hidden;
-            background: #F8FAFC;
-            color: #0F172A;
-            font-family: "Poppins", sans-serif;
-        }
-
-        /* Use the Stronghold A3 heading typeface for major headings. */
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6,
-        .font-heading {
-            font-family: "Montserrat", sans-serif;
-        }
-
-        /* Define the dark Stronghold A3 brand surface. */
-        .stronghold-gradient {
-            background:
-                radial-gradient(circle at 90% 10%, rgba(37, 99, 235, 0.28), transparent 30%),
-                linear-gradient(115deg, #0F172A 0%, #172554 55%, #1E40AF 100%);
-        }
-
-        /* Define the lighter Stronghold A3 action gradient. */
-        .action-gradient {
-            background: linear-gradient(115deg, #2563EB 0%, #1D4ED8 55%, #4338CA 100%);
-        }
-
-        /* Define the reusable white content card. */
-        .app-card {
-            background: #FFFFFF;
-            border: 1px solid #E2E8F0;
-            border-radius: 1rem;
-            box-shadow: 0 12px 35px rgba(15, 23, 42, 0.06);
-        }
-
-        /* Define the reusable dark content card. */
-        .dark-card {
-            background: #0F172A;
-            border: 1px solid #1E293B;
-            border-radius: 1rem;
-        }
-
-        /* Keep assessment progress visible while the user works. */
-        .progress-shell {
-            position: sticky;
-            top: 0;
-            z-index: 50;
-            background: rgba(255, 255, 255, 0.96);
-            border-bottom: 1px solid #E2E8F0;
-            backdrop-filter: blur(14px);
-        }
-
-        /* Define the assessment progress bar track. */
-        .progress-track {
-            height: 0.4rem;
-            overflow: hidden;
-            border-radius: 9999px;
-            background: #E2E8F0;
-        }
-
-        /* Define the assessment progress bar. */
-        .progress-fill {
-            height: 100%;
-            width: 0%;
-            border-radius: 9999px;
-            background: linear-gradient(90deg, #2563EB, #06B6D4);
-            transition: width 300ms ease;
-        }
-
-        /* Define the reusable assessment response card. */
-        .response-card {
-            position: relative;
-            display: block;
-            cursor: pointer;
-            border: 1px solid #E2E8F0;
-            border-radius: 0.875rem;
-            background: #FFFFFF;
-            padding: 1rem;
-            transition: all 180ms ease;
-        }
-
-        /* Give response cards a subtle hover state. */
-        .response-card:hover {
-            border-color: #93C5FD;
-            background: #F8FBFF;
-            transform: translateY(-1px);
-        }
-
-        /* Visually distinguish the selected response. */
-        .response-card.selected {
-            border-color: #2563EB;
-            background: #EFF6FF;
-            box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.10);
-        }
-
-        /* Hide native radio controls while retaining keyboard accessibility. */
-        .response-card input {
-            position: absolute;
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        /* Give keyboard users a visible focus treatment. */
-        .response-card:focus-within {
-            outline: 3px solid rgba(37, 99, 235, 0.18);
-            outline-offset: 2px;
-        }
-
-        /* Define the four-domain navigation step. */
-        .domain-step {
-            border: 1px solid #E2E8F0;
-            background: #FFFFFF;
-            color: #64748B;
-            transition: all 180ms ease;
-        }
-
-        /* Highlight the current domain. */
-        .domain-step.active {
-            border-color: #2563EB;
-            background: #EFF6FF;
-            color: #1D4ED8;
-        }
-
-        /* Mark completed domains. */
-        .domain-step.complete {
-            border-color: #A7F3D0;
-            background: #ECFDF5;
-            color: #047857;
-        }
-
-        /* Define the circular resilience score. */
-        .score-ring {
-            --score-angle: 0deg;
-            position: relative;
-            display: grid;
-            width: 190px;
-            height: 190px;
-            place-items: center;
-            border-radius: 9999px;
-            background: conic-gradient(#2563EB var(--score-angle), #E2E8F0 0deg);
-        }
-
-        /* Create the white center of the score ring. */
-        .score-ring::after {
-            position: absolute;
-            inset: 10px;
-            content: "";
-            border-radius: 9999px;
-            background: #FFFFFF;
-        }
-
-        /* Keep score text above the score ring center. */
-        .score-ring-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Define accessible hidden content. */
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-
-        /* Prevent hidden progressive-disclosure panels from occupying space. */
-        [hidden] {
-            display: none !important;
-        }
-
-        /* Improve the appearance of the image panels used throughout the assessment. */
-        .assessment-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Give decorative images a consistent visual treatment. */
-        .image-frame {
-            overflow: hidden;
-            border: 1px solid #E2E8F0;
-            border-radius: 1rem;
-            background: #F1F5F9;
-        }
-
-        /* Keep print output focused on the assessment result. */
-        @media print {
-            header,
-            .progress-shell,
-            .no-print,
-            #assessmentIntroduction,
-            #consentStep,
-            #contextStep,
-            #domainStep,
-            #reviewStep,
-            #privacySection,
-            footer {
-                display: none !important;
-            }
-
-            body {
-                background: #FFFFFF;
-            }
-
-            #resultsPanel {
-                display: block !important;
-                border: 0;
-                box-shadow: none;
-            }
-        }
-
-        /* Respect reduced-motion preferences. */
-        @media (prefers-reduced-motion: reduce) {
-            html {
-                scroll-behavior: auto;
-            }
-
-            *,
-            *::before,
-            *::after {
-                scroll-behavior: auto !important;
-                transition: none !important;
-            }
-        }
+        html { scroll-behavior: smooth; }
+        body { margin: 0; min-height: 100vh; overflow-x: hidden; background: #F8FAFC; color: #0F172A; font-family: "Poppins", sans-serif; }
+        h1, h2, h3, h4, h5, h6, .font-heading { font-family: "Montserrat", sans-serif; }
+        .stronghold-gradient { background: radial-gradient(circle at 90% 10%, rgba(37, 99, 235, 0.28), transparent 30%), linear-gradient(115deg, #0F172A 0%, #172554 55%, #1E40AF 100%); }
+        .action-gradient { background: linear-gradient(115deg, #2563EB 0%, #1D4ED8 55%, #4338CA 100%); }
+        .app-card { background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 1rem; box-shadow: 0 12px 35px rgba(15, 23, 42, 0.06); }
+        .dark-card { background: #0F172A; border: 1px solid #1E293B; border-radius: 1rem; }
+        .progress-shell { position: sticky; top: 0; z-index: 50; background: rgba(255, 255, 255, 0.96); border-bottom: 1px solid #E2E8F0; backdrop-filter: blur(14px); }
+        .progress-track { height: 0.4rem; overflow: hidden; border-radius: 9999px; background: #E2E8F0; }
+        .progress-fill { height: 100%; width: 0%; border-radius: 9999px; background: linear-gradient(90deg, #2563EB, #06B6D4); transition: width 300ms ease; }
+        .response-card { position: relative; display: block; cursor: pointer; border: 1px solid #E2E8F0; border-radius: 0.875rem; background: #FFFFFF; padding: 1rem; transition: all 180ms ease; }
+        .response-card:hover { border-color: #93C5FD; background: #F8FBFF; transform: translateY(-1px); }
+        .response-card.selected { border-color: #2563EB; background: #EFF6FF; box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.10); }
+        .response-card input { position: absolute; opacity: 0; pointer-events: none; }
+        .response-card:focus-within { outline: 3px solid rgba(37, 99, 235, 0.18); outline-offset: 2px; }
+        .domain-step { border: 1px solid #E2E8F0; background: #FFFFFF; color: #64748B; transition: all 180ms ease; }
+        .domain-step.active { border-color: #2563EB; background: #EFF6FF; color: #1D4ED8; }
+        .domain-step.complete { border-color: #A7F3D0; background: #ECFDF5; color: #047857; }
+        .score-ring { --score-angle: 0deg; position: relative; display: grid; width: 190px; height: 190px; place-items: center; border-radius: 9999px; background: conic-gradient(#2563EB var(--score-angle), #E2E8F0 0deg); }
+        .score-ring::after { position: absolute; inset: 10px; content: ""; border-radius: 9999px; background: #FFFFFF; }
+        .score-ring-content { position: relative; z-index: 1; }
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+        [hidden] { display: none !important; }
+        .assessment-image { width: 100%; height: 100%; object-fit: cover; }
+        .image-frame { overflow: hidden; border: 1px solid #E2E8F0; border-radius: 1rem; background: #F1F5F9; }
+        @media print { header, .progress-shell, .no-print, #assessmentIntroduction, #consentStep, #contextStep, #domainStep, #reviewStep, #privacySection, footer { display: none !important; } body { background: #FFFFFF; } #resultsPanel { display: block !important; border: 0; box-shadow: none; } }
+        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; } }
     </style>
 </head>
-
 <body class="antialiased leading-relaxed">
-
-    <!-- Provide the shared Stronghold A3 navigation pattern. -->
     <header class="sticky top-0 z-[60] bg-slate-900 text-white border-b border-slate-800 shadow-lg">
-        <!-- Constrain navigation to the same width as the supplied Stronghold A3 interface. -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-            <!-- Arrange brand and navigation responsively. -->
             <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-
-                <!-- Link the brand mark back to the main application. -->
                 <a href="index.html" class="flex items-center gap-3 group" aria-label="Return to Stronghold A3 home page">
-                    <!-- Display the Stronghold A3 icon when available. -->
                     <span class="w-11 h-11 rounded-xl bg-blue-600 text-white grid place-items-center overflow-hidden shadow-inner border border-blue-400/20">
-                        <img
-                            src="assets/stronghold-a3-icon.png"
-                            alt="Stronghold A3"
-                            class="w-9 h-9 object-contain"
-                            onerror="this.remove(); this.nextElementSibling.classList.remove('hidden');"
-                        >
-                        <!-- Use the A3 mark as an accessible fallback if the image is unavailable. -->
+                        <img src="assets/stronghold-a3-icon.png" alt="Stronghold A3" class="w-9 h-9 object-contain" onerror="this.remove(); this.nextElementSibling.classList.remove('hidden');">
                         <span class="hidden font-black text-lg" aria-hidden="true">A3</span>
                     </span>
-
-                    <!-- Identify the application. -->
                     <span>
                         <span class="block text-lg font-bold tracking-tight leading-none font-heading group-hover:text-cyan-300 transition-colors">STRONGHOLD A3</span>
                         <span class="block text-xs text-slate-400 mt-1">Integrated School Safety &amp; Resilience</span>
                     </span>
                 </a>
-
-                <!-- Provide concise navigation to the major page areas. -->
-                <nav class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs font-semibold text-slate-300" aria-label="Primary navigation">
+                <nav class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs font-semibold text-slate-300" aria-label="Primary-navigation">
                     <a href="#overview" class="hover:text-cyan-400 transition-colors">Overview</a>
+                    <a href="#video-briefing" class="hover:text-cyan-400 transition-colors">Briefing</a>
                     <a href="#assessment" class="hover:text-cyan-400 transition-colors">Assessment</a>
                     <a href="#resultsPanel" class="hover:text-cyan-400 transition-colors">Results</a>
-                    <a href="#privacySection" class="hover:text-cyan-400 transition-colors">Privacy</a>
                     <a href="index.html" class="hover:text-cyan-400 transition-colors">Stronghold A3</a>
                 </nav>
             </div>
         </div>
     </header>
 
-    <!-- Keep users informed about assessment completion without exposing future questions. -->
     <div class="progress-shell no-print">
-        <!-- Constrain progress information to the application width. -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
-            <!-- Show compact progress metadata. -->
             <div class="flex items-center justify-between gap-4 text-xs font-semibold">
                 <span id="progressLabel" class="text-slate-600">Assessment not started</span>
-                <span id="answerCount" class="text-slate-500">0 / 24 answered</span>
+                <span id="answerCount" class="text-slate-500">0 / 32 answered</span>
             </div>
-
-            <!-- Show visual progress. -->
             <div class="progress-track mt-2" aria-hidden="true">
                 <div id="progressBar" class="progress-fill"></div>
             </div>
         </div>
     </div>
 
-    <!-- Begin the main application content. -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-
-        <!-- Introduce the assessment and its purpose. -->
         <section id="overview" class="stronghold-gradient rounded-2xl p-7 sm:p-10 text-white shadow-stronghold overflow-hidden relative">
-            <!-- Add restrained decorative light for visual continuity with the supplied application. -->
             <div class="absolute -right-24 -top-24 w-80 h-80 rounded-full bg-cyan-400/10 blur-3xl" aria-hidden="true"></div>
-
-            <!-- Keep hero content above decorative elements. -->
             <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-
-                <!-- Present the core assessment proposition. -->
                 <div class="lg:col-span-8">
-                    <!-- Identify the legislative alignment. -->
                     <div class="inline-flex items-center gap-2 bg-blue-500/20 border border-blue-400/30 px-3 py-1 rounded-full text-cyan-300 text-xs font-semibold">
                         <span class="w-2 h-2 rounded-full bg-cyan-400" aria-hidden="true"></span>
                         Safe Schools Act Alignment
                     </div>
-
-                    <!-- State the assessment name clearly. -->
-                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mt-5">
-                        Safe School Resilience Assessment
-                    </h1>
-
-                    <!-- State the practical purpose without unnecessary marketing language. -->
-                    <p class="text-slate-300 text-sm sm:text-base max-w-3xl mt-4">
-                        A focused diagnostic for educational institutions to identify resilience strengths, vulnerabilities, and priority actions.
-                    </p>
-
-                    <!-- Present the C-A-S-E formula prominently. -->
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mt-5">Safe School Resilience Assessment</h1>
+                    <p class="text-slate-300 text-sm sm:text-base max-w-3xl mt-4">A focused diagnostic for educational institutions to identify resilience strengths, vulnerabilities, and priority actions using Zero-Liability security principles.</p>
                     <div class="mt-6 rounded-2xl border border-white/10 bg-white/5 p-5 max-w-2xl">
-                        <div class="text-cyan-300 text-xs font-extrabold uppercase tracking-widest">
-                            Stronghold A3 Resilience Model
-                        </div>
-
-                        <div class="font-heading text-3xl sm:text-4xl font-black mt-2 tracking-tight">
-                            C + A − S − E
-                        </div>
-
-                        <p class="text-slate-300 text-sm mt-2">
-                            Coping Capacity + Adaptability − Sensitivity − Exposure
-                        </p>
-                    </div>
-
-                    <!-- Provide only the information users need before starting. -->
-                    <div class="flex flex-wrap gap-3 mt-6">
-                        <span class="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/10 px-3 py-2 text-xs text-slate-200">
-                            <i class="fa-solid fa-shield-halved text-cyan-300" aria-hidden="true"></i>
-                            School-focused
-                        </span>
-
-                        <span class="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/10 px-3 py-2 text-xs text-slate-200">
-                            <i class="fa-solid fa-lock text-cyan-300" aria-hidden="true"></i>
-                            Privacy-first
-                        </span>
-
-                        <span class="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/10 px-3 py-2 text-xs text-slate-200">
-                            <i class="fa-solid fa-layer-group text-cyan-300" aria-hidden="true"></i>
-                            Progressive
-                        </span>
+                        <div class="text-cyan-300 text-xs font-extrabold uppercase tracking-widest">Stronghold A3 Resilience Model</div>
+                        <div class="font-heading text-3xl sm:text-4xl font-black mt-2 tracking-tight">C + A − S − E</div>
+                        <p class="text-slate-300 text-sm mt-2">Coping Capacity + Adaptability − Sensitivity − Exposure</p>
                     </div>
                 </div>
-
-                <!-- Use the supplied cover image as the hero visual. -->
                 <div class="lg:col-span-4">
                     <div class="image-frame h-64 lg:h-80 border-white/10 bg-white/5">
-                        <img
-                            src="assets/Cover1.png"
-                            alt="Safe school resilience assessment visual"
-                            class="assessment-image"
-                            loading="eager"
-                        >
+                        <img src="assets/Cover1.png" alt="Safe school resilience assessment visual" class="assessment-image" loading="eager">
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Explain the four domains before asking users to provide information. -->
         <section id="case-model" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-
-            <!-- Explain Coping Capacity. -->
             <article class="app-card overflow-hidden">
-                <div class="h-36 bg-slate-100">
-                    <img src="assets/2.png" alt="Coping Capacity" class="assessment-image" loading="lazy">
-                </div>
+                <div class="h-36 bg-slate-100"><img src="assets/2.png" alt="Coping Capacity" class="assessment-image" loading="lazy"></div>
                 <div class="p-5">
-                    <div class="flex items-center justify-between">
-                        <span class="text-3xl font-black text-blue-600 font-heading">C</span>
-                        <i class="fa-solid fa-shield-halved text-blue-600" aria-hidden="true"></i>
-                    </div>
+                    <div class="flex items-center justify-between"><span class="text-3xl font-black text-blue-600 font-heading">C</span><i class="fa-solid fa-shield-halved text-blue-600"></i></div>
                     <h2 class="font-heading font-bold text-lg mt-2">Coping Capacity</h2>
                     <p class="text-xs text-slate-600 mt-1">Prepare, respond, absorb disruption, and maintain essential functions.</p>
                 </div>
             </article>
-
-            <!-- Explain Adaptability. -->
             <article class="app-card overflow-hidden">
-                <div class="h-36 bg-slate-100">
-                    <img src="assets/3.png" alt="Adaptability" class="assessment-image" loading="lazy">
-                </div>
+                <div class="h-36 bg-slate-100"><img src="assets/3.png" alt="Adaptability" class="assessment-image" loading="lazy"></div>
                 <div class="p-5">
-                    <div class="flex items-center justify-between">
-                        <span class="text-3xl font-black text-cyan-600 font-heading">A</span>
-                        <i class="fa-solid fa-arrows-rotate text-cyan-600" aria-hidden="true"></i>
-                    </div>
+                    <div class="flex items-center justify-between"><span class="text-3xl font-black text-cyan-600 font-heading">A</span><i class="fa-solid fa-arrows-rotate text-cyan-600"></i></div>
                     <h2 class="font-heading font-bold text-lg mt-2">Adaptability</h2>
                     <p class="text-xs text-slate-600 mt-1">Learn, adjust, improve controls, and adapt to changing risks.</p>
                 </div>
             </article>
-
-            <!-- Explain Sensitivity. -->
             <article class="app-card overflow-hidden">
-                <div class="h-36 bg-slate-100">
-                    <img src="assets/4.png" alt="Sensitivity" class="assessment-image" loading="lazy">
-                </div>
+                <div class="h-36 bg-slate-100"><img src="assets/4.png" alt="Sensitivity" class="assessment-image" loading="lazy"></div>
                 <div class="p-5">
-                    <div class="flex items-center justify-between">
-                        <span class="text-3xl font-black text-amber-500 font-heading">S</span>
-                        <i class="fa-solid fa-triangle-exclamation text-amber-500" aria-hidden="true"></i>
-                    </div>
+                    <div class="flex items-center justify-between"><span class="text-3xl font-black text-amber-500 font-heading">S</span><i class="fa-solid fa-triangle-exclamation text-amber-500"></i></div>
                     <h2 class="font-heading font-bold text-lg mt-2">Sensitivity</h2>
                     <p class="text-xs text-slate-600 mt-1">Identify conditions that can increase the impact of disruption.</p>
                 </div>
             </article>
-
-            <!-- Explain Exposure. -->
             <article class="app-card overflow-hidden">
-                <div class="h-36 bg-slate-100">
-                    <img src="assets/5.png" alt="Exposure" class="assessment-image" loading="lazy">
-                </div>
+                <div class="h-36 bg-slate-100"><img src="assets/5.png" alt="Exposure" class="assessment-image" loading="lazy"></div>
                 <div class="p-5">
-                    <div class="flex items-center justify-between">
-                        <span class="text-3xl font-black text-red-600 font-heading">E</span>
-                        <i class="fa-solid fa-location-crosshairs text-red-600" aria-hidden="true"></i>
-                    </div>
+                    <div class="flex items-center justify-between"><span class="text-3xl font-black text-red-600 font-heading">E</span><i class="fa-solid fa-location-crosshairs text-red-600"></i></div>
                     <h2 class="font-heading font-bold text-lg mt-2">Exposure</h2>
                     <p class="text-xs text-slate-600 mt-1">Identify hazards, threats, dependencies, and conditions that increase risk.</p>
                 </div>
             </article>
         </section>
 
-        <!-- Provide a concise legislative positioning statement. -->
-        <section class="app-card p-6 sm:p-8">
-            <!-- Identify the section. -->
-            <span class="text-blue-600 text-xs font-extrabold uppercase tracking-widest">
-                Safe Schools Act Alignment
-            </span>
-
-            <!-- State the alignment without making an unsupported legal-compliance claim. -->
-            <h2 class="font-heading text-2xl font-bold text-slate-900 mt-1">
-                A school safety lens built around readiness and resilience
-            </h2>
-
-            <!-- Explain what the alignment means in practical terms. -->
-            <p class="text-sm text-slate-600 mt-3 max-w-4xl">
-                The assessment is structured around safe-school priorities including preparedness, emergency response, physical safety, safeguarding, digital risks, continuity, and institutional improvement. It is an assessment aid, not a government certification or legal determination of compliance.
-            </p>
-
-            <!-- Connect the tool to the Stronghold A3 mission. -->
-            <div class="mt-5 grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="rounded-xl bg-slate-50 border border-slate-200 p-5">
-                    <div class="flex items-center gap-3">
-                        <span class="w-9 h-9 rounded-lg bg-blue-100 text-blue-700 grid place-items-center">
-                            <i class="fa-solid fa-building-shield" aria-hidden="true"></i>
-                        </span>
-                        <h3 class="font-heading font-bold text-slate-900">Stronghold A3 Mission</h3>
-                    </div>
-                    <p class="text-xs text-slate-600 mt-3">
-                        Translate risk information into stronger institutional resilience, preparedness, protection, and response capability.
-                    </p>
+        <!-- NEW: Video Briefing Section -->
+        <section id="video-briefing" class="app-card p-6 sm:p-8 overflow-hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                <div class="lg:col-span-5">
+                    <span class="text-blue-600 text-xs font-extrabold uppercase tracking-widest">Video Briefing</span>
+                    <h2 class="font-heading text-2xl font-bold text-slate-900 mt-1">Safe School Resilience in Action</h2>
+                    <p class="text-sm text-slate-600 mt-3">Watch our briefing on how the C-A-S-E model integrates with physical security, DRRM, and zero-liability frameworks to protect educational institutions in Eastern Visayas.</p>
                 </div>
-
-                <div class="rounded-xl bg-slate-50 border border-slate-200 p-5">
-                    <div class="flex items-center gap-3">
-                        <span class="w-9 h-9 rounded-lg bg-cyan-100 text-cyan-700 grid place-items-center">
-                            <i class="fa-solid fa-school" aria-hidden="true"></i>
-                        </span>
-                        <h3 class="font-heading font-bold text-slate-900">Education Focus</h3>
+                <div class="lg:col-span-7">
+                    <div class="image-frame aspect-video bg-slate-900 border-slate-200">
+                        <iframe 
+                            src="https://drive.google.com/file/d/198jYEilCLPfnzOqujE-ssIxLHJuVTEt4O6-ZT0561tw/preview" 
+                            class="w-full h-full rounded-lg" 
+                            allow="autoplay; encrypted-media" 
+                            allowfullscreen
+                            title="Safe School-SH3 Briefing Video">
+                        </iframe>
                     </div>
-                    <p class="text-xs text-slate-600 mt-3">
-                        Considers students, staff, facilities, digital systems, critical functions, families, and community response.
-                    </p>
                 </div>
             </div>
         </section>
 
-        <!-- Begin the progressive-disclosure assessment. -->
+        <section class="app-card p-6 sm:p-8">
+            <span class="text-blue-600 text-xs font-extrabold uppercase tracking-widest">Safe Schools Act Alignment</span>
+            <h2 class="font-heading text-2xl font-bold text-slate-900 mt-1">A school safety lens built around readiness and resilience</h2>
+            <p class="text-sm text-slate-600 mt-3 max-w-4xl">The assessment is structured around safe-school priorities including preparedness, emergency response, physical safety, safeguarding, digital risks, continuity, and institutional improvement.</p>
+        </section>
+
         <section id="assessment" class="app-card overflow-hidden">
-
-            <!-- Provide a short assessment introduction before requesting consent. -->
             <div id="assessmentIntroduction" class="p-6 sm:p-8">
-                <!-- Identify the assessment section. -->
-                <span class="text-blue-600 text-xs font-extrabold uppercase tracking-widest">
-                    Assessment
-                </span>
-
-                <!-- Explain the interaction model. -->
-                <h2 class="font-heading text-2xl sm:text-3xl font-bold text-slate-900 mt-1">
-                    One step at a time
-                </h2>
-
-                <!-- Keep the instruction short. -->
-                <p class="text-sm text-slate-600 mt-2 max-w-3xl">
-                    The tool reveals only the current step. Complete the consent, context, and four C-A-S-E domains before receiving the resilience profile.
-                </p>
-
-                <!-- Show the five-step workflow. -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 mt-6">
-                    <div class="rounded-xl border border-slate-200 bg-slate-50 p-4">
-                        <span class="text-xs font-black text-blue-600">01</span>
-                        <p class="font-bold text-sm mt-1">Consent</p>
-                    </div>
-
-                    <div class="rounded-xl border border-slate-200 bg-slate-50 p-4">
-                        <span class="text-xs font-black text-blue-600">02</span>
-                        <p class="font-bold text-sm mt-1">Context</p>
-                    </div>
-
-                    <div class="rounded-xl border border-slate-200 bg-slate-50 p-4">
-                        <span class="text-xs font-black text-blue-600">03</span>
-                        <p class="font-bold text-sm mt-1">C-A-S-E</p>
-                    </div>
-
-                    <div class="rounded-xl border border-slate-200 bg-slate-50 p-4">
-                        <span class="text-xs font-black text-blue-600">04</span>
-                        <p class="font-bold text-sm mt-1">Review</p>
-                    </div>
-
-                    <div class="rounded-xl border border-slate-200 bg-slate-50 p-4">
-                        <span class="text-xs font-black text-blue-600">05</span>
-                        <p class="font-bold text-sm mt-1">Result</p>
-                    </div>
-                </div>
-
-                <!-- Give users an immediate privacy assurance. -->
-                <div class="mt-6 rounded-xl border border-blue-100 bg-blue-50 p-4">
-                    <div class="flex items-start gap-3">
-                        <i class="fa-solid fa-lock text-blue-600 mt-1" aria-hidden="true"></i>
-                        <div>
-                            <p class="text-sm font-bold text-blue-900">Your information matters.</p>
-                            <p class="text-xs text-blue-800 mt-1">
-                                Consent is required. Do not enter names, identification numbers, passwords, medical details, or unnecessary personal information.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Start the consent step. -->
-                <button id="startAssessmentButton" type="button" class="mt-6 inline-flex items-center gap-2 bg-blue-600 text-white font-bold px-6 py-3 rounded-xl shadow-md hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-200 transition-colors">
-                    Begin
-                    <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-                </button>
+                <span class="text-blue-600 text-xs font-extrabold uppercase tracking-widest">Assessment</span>
+                <h2 class="font-heading text-2xl sm:text-3xl font-bold text-slate-900 mt-1">One step at a time</h2>
+                <button id="startAssessmentButton" type="button" class="mt-6 inline-flex items-center gap-2 bg-blue-600 text-white font-bold px-6 py-3 rounded-xl shadow-md hover:bg-blue-700 transition-colors">Begin <i class="fa-solid fa-arrow-right"></i></button>
             </div>
 
-            <!-- Collect explicit informed consent before collecting assessment responses. -->
             <div id="consentStep" class="p-6 sm:p-8" hidden>
-                <!-- Identify the current step. -->
-                <span class="text-blue-600 text-xs font-extrabold uppercase tracking-widest">
-                    Step 1 of 5
-                </span>
-
-                <!-- State the consent requirement. -->
-                <h3 class="font-heading text-2xl font-bold text-slate-900 mt-1">
-                    Privacy, confidentiality &amp; consent
-                </h3>
-
-                <!-- Explain the essential safeguards. -->
-                <p class="text-sm text-slate-600 mt-2 max-w-3xl">
-                    Please read this before continuing.
-                </p>
-
-                <!-- Present the three key safeguards. -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-
-                    <!-- Explain purpose limitation. -->
-                    <article class="rounded-xl border border-slate-200 p-5">
-                        <i class="fa-solid fa-bullseye text-blue-600 text-lg" aria-hidden="true"></i>
-                        <h4 class="font-bold text-slate-800 mt-3">Purpose</h4>
-                        <p class="text-xs text-slate-500 mt-1">
-                            Responses are used to produce the assessment profile and identify improvement priorities.
-                        </p>
-                    </article>
-
-                    <!-- Explain confidentiality. -->
-                    <article class="rounded-xl border border-slate-200 p-5">
-                        <i class="fa-solid fa-user-lock text-cyan-600 text-lg" aria-hidden="true"></i>
-                        <h4 class="font-bold text-slate-800 mt-3">Confidentiality</h4>
-                        <p class="text-xs text-slate-500 mt-1">
-                            Keep responses at an institutional level and avoid unnecessary personal or sensitive information.
-                        </p>
-                    </article>
-
-                    <!-- Explain data minimization. -->
-                    <article class="rounded-xl border border-slate-200 p-5">
-                        <i class="fa-solid fa-database text-emerald-600 text-lg" aria-hidden="true"></i>
-                        <h4 class="font-bold text-slate-800 mt-3">Data minimization</h4>
-                        <p class="text-xs text-slate-500 mt-1">
-                            The assessment does not require passwords, identification numbers, or individual case records.
-                        </p>
-                    </article>
-                </div>
-
-                <!-- Require affirmative consent. -->
+                <span class="text-blue-600 text-xs font-extrabold uppercase tracking-widest">Step 1 of 5</span>
+                <h3 class="font-heading text-2xl font-bold text-slate-900 mt-1">Privacy, confidentiality &amp; consent</h3>
                 <label for="consentCheckbox" class="mt-6 flex items-start gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4 cursor-pointer">
                     <input id="consentCheckbox" type="checkbox" class="mt-1 w-4 h-4 accent-blue-600">
-                    <span class="text-sm text-slate-700">
-                        I have read and understood the privacy and confidentiality notice. I understand the purpose of this assessment and consent to providing responses for it.
-                    </span>
+                    <span class="text-sm text-slate-700">I have read and understood the privacy and confidentiality notice. I consent to providing responses.</span>
                 </label>
-
-                <!-- Continue only after consent. -->
-                <button id="consentContinueButton" type="button" class="mt-5 inline-flex items-center gap-2 bg-slate-900 text-white font-bold px-6 py-3 rounded-xl hover:bg-slate-800 focus:outline-none focus:ring-4 focus:ring-slate-200 transition-colors">
-                    Continue
-                    <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-                </button>
+                <button id="consentContinueButton" type="button" class="mt-5 inline-flex items-center gap-2 bg-slate-900 text-white font-bold px-6 py-3 rounded-xl hover:bg-slate-800 transition-colors">Continue <i class="fa-solid fa-arrow-right"></i></button>
             </div>
 
-            <!-- Collect optional non-sensitive assessment context. -->
             <div id="contextStep" class="p-6 sm:p-8 bg-slate-50 border-t border-slate-200" hidden>
-                <!-- Identify the current step. -->
-                <span class="text-blue-600 text-xs font-extrabold uppercase tracking-widest">
-                    Step 2 of 5
-                </span>
-
-                <!-- State that context is optional. -->
-                <h3 class="font-heading text-2xl font-bold text-slate-900 mt-1">
-                    Assessment context
-                </h3>
-
-                <!-- Keep context instructions concise. -->
-                <p class="text-sm text-slate-600 mt-2">
-                    Optional. Use institutional information only.
-                </p>
-
-                <!-- Collect general institutional context. -->
+                <span class="text-blue-600 text-xs font-extrabold uppercase tracking-widest">Step 2 of 5</span>
+                <h3 class="font-heading text-2xl font-bold text-slate-900 mt-1">Assessment context</h3>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-
-                    <!-- Collect the school or institution name. -->
-                    <label class="block">
-                        <span class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">
-                            School / Institution
-                        </span>
-                        <input
-                            id="schoolName"
-                            type="text"
-                            autocomplete="organization"
-                            maxlength="120"
-                            class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm focus:border-blue-600 focus:ring-4 focus:ring-blue-100 outline-none"
-                            placeholder="Optional"
-                        >
-                    </label>
-
-                    <!-- Collect the campus name. -->
-                    <label class="block">
-                        <span class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">
-                            Campus / Site
-                        </span>
-                        <input
-                            id="campusName"
-                            type="text"
-                            maxlength="120"
-                            class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm focus:border-blue-600 focus:ring-4 focus:ring-blue-100 outline-none"
-                            placeholder="Optional"
-                        >
-                    </label>
-
-                    <!-- Collect the respondent's institutional role. -->
-                    <label class="block">
-                        <span class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">
-                            Respondent Role
-                        </span>
-                        <select id="respondentRole" class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm focus:border-blue-600 focus:ring-4 focus:ring-blue-100 outline-none">
-                            <option value="">Optional</option>
-                            <option value="School Administrator">School Administrator</option>
-                            <option value="Safety / Security Lead">Safety / Security Lead</option>
-                            <option value="Teacher / Staff">Teacher / Staff</option>
-                            <option value="Facilities / Operations">Facilities / Operations</option>
-                            <option value="Other Stakeholder">Other Stakeholder</option>
-                        </select>
-                    </label>
+                    <label class="block"><span class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">School / Institution</span><input id="schoolName" type="text" class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none" placeholder="Optional"></label>
+                    <label class="block"><span class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Campus / Site</span><input id="campusName" type="text" class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none" placeholder="Optional"></label>
+                    <label class="block"><span class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Respondent Role</span><select id="respondentRole" class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none"><option value="">Optional</option><option value="School Administrator">School Administrator</option><option value="Safety / Security Lead">Safety / Security Lead</option></select></label>
                 </div>
-
-                <!-- Explain that personal information should not be entered. -->
-                <div class="mt-5 flex items-start gap-3 rounded-xl border border-amber-100 bg-amber-50 p-4">
-                    <i class="fa-solid fa-circle-info text-amber-600 mt-1" aria-hidden="true"></i>
-                    <p class="text-xs text-amber-800">
-                        Do not enter student names, staff names, incident narratives, health information, identification numbers, passwords, or other unnecessary personal data.
-                    </p>
-                </div>
-
-                <!-- Begin the C-A-S-E assessment. -->
-                <button id="beginCaseButton" type="button" class="mt-6 inline-flex items-center gap-2 bg-blue-600 text-white font-bold px-6 py-3 rounded-xl shadow-md hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-200 transition-colors">
-                    Begin C-A-S-E
-                    <i class="fa-solid fa-compass" aria-hidden="true"></i>
-                </button>
+                <button id="beginCaseButton" type="button" class="mt-6 inline-flex items-center gap-2 bg-blue-600 text-white font-bold px-6 py-3 rounded-xl shadow-md hover:bg-blue-700 transition-colors">Begin C-A-S-E <i class="fa-solid fa-compass"></i></button>
             </div>
 
-            <!-- Display one C-A-S-E domain at a time. -->
             <div id="domainStep" class="p-6 sm:p-8" hidden>
-
-                <!-- Identify the active domain. -->
                 <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5 border-b border-slate-200 pb-5">
                     <div>
-                        <span id="domainStepLabel" class="text-blue-600 text-xs font-extrabold uppercase tracking-widest">
-                            Step 3 of 5
-                        </span>
+                        <span id="domainStepLabel" class="text-blue-600 text-xs font-extrabold uppercase tracking-widest">Step 3 of 5</span>
                         <h3 id="domainTitle" class="font-heading text-2xl font-bold text-slate-900 mt-1"></h3>
                         <p id="domainDescription" class="text-sm text-slate-600 mt-1 max-w-3xl"></p>
                     </div>
-
-                    <!-- Show domain-level completion without showing future questions. -->
                     <div class="rounded-xl bg-slate-100 px-4 py-3 text-center min-w-40">
                         <div id="domainProgressText" class="text-xs font-bold text-slate-500"></div>
                         <div id="domainAnswerText" class="text-sm font-bold text-slate-800 mt-1"></div>
                     </div>
                 </div>
-
-                <!-- Show the C-A-S-E sequence. -->
-                <div id="domainStepper" class="grid grid-cols-4 gap-2 mt-5" aria-label="C-A-S-E domain progress"></div>
-
-                <!-- Reinforce the mathematical model. -->
-                <div class="mt-5 rounded-xl border border-blue-100 bg-blue-50 p-4">
-                    <div class="flex items-start gap-3">
-                        <i class="fa-solid fa-square-root-variable text-blue-600 mt-1" aria-hidden="true"></i>
-                        <div>
-                            <p class="text-sm font-bold text-blue-900">
-                                Resilience = C + A − S − E
-                            </p>
-                            <p class="text-xs text-blue-700 mt-1">
-                                C and A contribute positive resilience capacity. S and E represent vulnerability pressures.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Render the current domain's questions here. -->
+                <div id="domainStepper" class="grid grid-cols-4 gap-2 mt-5"></div>
                 <form id="domainForm" class="mt-6 space-y-4" novalidate>
                     <div id="domainQuestions"></div>
-
-                    <!-- Provide domain navigation. -->
                     <div class="pt-5 border-t border-slate-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-                        <!-- Allow the user to revisit the previous domain. -->
-                        <button id="previousDomainButton" type="button" class="inline-flex items-center justify-center gap-2 border border-slate-300 text-slate-700 font-bold px-5 py-3 rounded-xl hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-slate-100 transition-colors">
-                            <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
-                            Previous
-                        </button>
-
-                        <!-- Move forward after completing the visible domain. -->
-                        <button id="nextDomainButton" type="button" class="inline-flex items-center justify-center gap-2 bg-blue-600 text-white font-bold px-6 py-3 rounded-xl shadow-md hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-200 transition-colors sm:ml-auto">
-                            Next domain
-                            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-                        </button>
+                        <button id="previousDomainButton" type="button" class="inline-flex items-center justify-center gap-2 border border-slate-300 text-slate-700 font-bold px-5 py-3 rounded-xl hover:bg-slate-50 transition-colors"><i class="fa-solid fa-arrow-left"></i> Previous</button>
+                        <button id="nextDomainButton" type="button" class="inline-flex items-center justify-center gap-2 bg-blue-600 text-white font-bold px-6 py-3 rounded-xl shadow-md hover:bg-blue-700 transition-colors sm:ml-auto">Next domain <i class="fa-solid fa-arrow-right"></i></button>
                     </div>
                 </form>
             </div>
 
-            <!-- Confirm completion before displaying the result. -->
             <div id="reviewStep" class="p-6 sm:p-8" hidden>
-                <!-- Identify the review stage. -->
-                <span class="text-emerald-600 text-xs font-extrabold uppercase tracking-widest">
-                    Step 4 of 5
-                </span>
-
-                <!-- Confirm that all domains are complete. -->
-                <h3 class="font-heading text-2xl font-bold text-slate-900 mt-1">
-                    C-A-S-E complete
-                </h3>
-
-                <!-- Explain what happens next. -->
-                <p class="text-sm text-slate-600 mt-2 max-w-3xl">
-                    All four domains have been answered. Generate the resilience profile when you are ready.
-                </p>
-
-                <!-- Summarize domain completion. -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-6">
-
-                    <!-- Summarize Coping Capacity. -->
-                    <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
-                        <span class="text-xs font-black text-blue-600">C</span>
-                        <p class="font-bold text-slate-800 mt-1">Coping Capacity</p>
-                        <p class="text-xs text-emerald-600 mt-1">Complete</p>
-                    </div>
-
-                    <!-- Summarize Adaptability. -->
-                    <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
-                        <span class="text-xs font-black text-cyan-600">A</span>
-                        <p class="font-bold text-slate-800 mt-1">Adaptability</p>
-                        <p class="text-xs text-emerald-600 mt-1">Complete</p>
-                    </div>
-
-                    <!-- Summarize Sensitivity. -->
-                    <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
-                        <span class="text-xs font-black text-amber-600">S</span>
-                        <p class="font-bold text-slate-800 mt-1">Sensitivity</p>
-                        <p class="text-xs text-emerald-600 mt-1">Complete</p>
-                    </div>
-
-                    <!-- Summarize Exposure. -->
-                    <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
-                        <span class="text-xs font-black text-red-600">E</span>
-                        <p class="font-bold text-slate-800 mt-1">Exposure</p>
-                        <p class="text-xs text-emerald-600 mt-1">Complete</p>
-                    </div>
-                </div>
-
-                <!-- Provide final review controls. -->
-                <div class="mt-6 flex flex-wrap gap-3">
-                    <button id="reviewPreviousButton" type="button" class="inline-flex items-center gap-2 border border-slate-300 text-slate-700 font-bold px-5 py-3 rounded-xl hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-slate-100 transition-colors">
-                        <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
-                        Review answers
-                    </button>
-
-                    <button id="generateResultButton" type="button" class="inline-flex items-center gap-2 bg-blue-600 text-white font-bold px-6 py-3 rounded-xl shadow-md hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-200 transition-colors">
-                        Generate resilience profile
-                        <i class="fa-solid fa-chart-column" aria-hidden="true"></i>
-                    </button>
-                </div>
+                <span class="text-emerald-600 text-xs font-extrabold uppercase tracking-widest">Step 4 of 5</span>
+                <h3 class="font-heading text-2xl font-bold text-slate-900 mt-1">C-A-S-E complete</h3>
+                <button id="generateResultButton" type="button" class="mt-6 inline-flex items-center gap-2 bg-blue-600 text-white font-bold px-6 py-3 rounded-xl shadow-md hover:bg-blue-700 transition-colors">Generate resilience profile <i class="fa-solid fa-chart-column"></i></button>
             </div>
         </section>
 
-        <!-- Display the assessment result only after completion. -->
         <section id="resultsPanel" class="app-card overflow-hidden" hidden>
-
-            <!-- Present the result header using the Stronghold A3 dark visual language. -->
             <div class="stronghold-gradient text-white p-7 sm:p-9">
-                <span class="text-cyan-300 text-xs font-extrabold uppercase tracking-widest">
-                    Step 5 of 5 · Assessment Result
-                </span>
-
-                <h2 class="font-heading text-2xl sm:text-3xl font-bold mt-1">
-                    C-A-S-E Resilience Profile
-                </h2>
-
+                <span class="text-cyan-300 text-xs font-extrabold uppercase tracking-widest">Step 5 of 5 · Assessment Result</span>
+                <h2 class="font-heading text-2xl sm:text-3xl font-bold mt-1">C-A-S-E Resilience Profile</h2>
                 <p id="resultInstitution" class="text-slate-300 text-sm mt-2"></p>
             </div>
-
-            <!-- Display the calculated profile. -->
             <div class="p-6 sm:p-8">
-
-                <!-- Present the overall score and priority information. -->
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-
-                    <!-- Display the normalized resilience index. -->
                     <div class="lg:col-span-4 flex justify-center">
-                        <div id="scoreRing" class="score-ring" aria-label="Overall resilience index">
+                        <div id="scoreRing" class="score_ring" aria-label="Overall resilience index">
                             <div class="score-ring-content text-center">
                                 <div id="overallScore" class="font-heading text-4xl font-black text-slate-900">0%</div>
                                 <div class="text-xs font-semibold text-slate-500">Resilience Index</div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Explain the score. -->
                     <div class="lg:col-span-8">
-                        <div class="flex flex-wrap items-center gap-3">
-                            <span id="readinessBadge" class="px-3 py-1 rounded-full text-xs font-bold"></span>
-                            <span class="text-xs text-slate-500">Based on current assessment responses</span>
-                        </div>
-
-                        <!-- Show the exact C-A-S-E calculation. -->
+                        <span id="readinessBadge" class="px-3 py-1 rounded-full text-xs font-bold"></span>
                         <div class="mt-4 rounded-xl bg-slate-50 border border-slate-200 p-4">
-                            <p class="text-xs font-extrabold uppercase tracking-widest text-blue-600">
-                                Resilience Formula
-                            </p>
-
-                            <p class="font-heading text-2xl font-black text-slate-900 mt-1">
-                                C + A − S − E
-                            </p>
-
+                            <p class="text-xs font-extrabold uppercase tracking-widest text-blue-600">Resilience Formula</p>
+                            <p class="font-heading text-2xl font-black text-slate-900 mt-1">C + A − S − E</p>
                             <p id="formulaDetail" class="text-xs text-slate-500 mt-2"></p>
-
-                            <p id="formulaRawScore" class="text-xs text-slate-500 mt-1"></p>
                         </div>
-
-                        <!-- Show the highest-priority areas. -->
-                        <h3 class="font-heading text-xl font-bold text-slate-900 mt-5">
-                            Priority areas
-                        </h3>
-
+                        <h3 class="font-heading text-xl font-bold text-slate-900 mt-5">Priority areas</h3>
                         <div id="priorityAreas" class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-3"></div>
                     </div>
                 </div>
 
-                <!-- Show domain-level results. -->
-                <div class="mt-8">
-                    <h3 class="font-heading text-lg font-bold text-slate-900">
-                        Readiness by domain
-                    </h3>
-
-                    <div id="domainResults" class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4"></div>
-                </div>
-
-                <!-- Provide action-oriented recommendations. -->
                 <div class="mt-8 rounded-2xl bg-slate-50 border border-slate-200 p-6">
-                    <span class="text-blue-600 text-xs font-extrabold uppercase tracking-widest">
-                        Next Actions
-                    </span>
-
-                    <h3 class="font-heading text-xl font-bold text-slate-900 mt-1">
-                        Build from the gaps
-                    </h3>
-
+                    <span class="text-blue-600 text-xs font-extrabold uppercase tracking-widest">Next Actions & Stronghold A3 Solutions</span>
+                    <h3 class="font-heading text-xl font-bold text-slate-900 mt-1">Strategic Recommendations</h3>
                     <div id="actionPlan" class="mt-4 space-y-3"></div>
                 </div>
 
-                <!-- Provide the professional attribution requested by the user. -->
-                <div class="mt-8 rounded-2xl border border-blue-100 bg-blue-50 p-6">
-                    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
-                        <div>
-                            <p class="text-xs font-extrabold uppercase tracking-widest text-blue-600">
-                                Developed &amp; Validated By
-                            </p>
-
-                            <a
-                                href="https://alvin-silva.asilvainnovations.com"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="inline-block font-heading text-lg font-bold text-slate-900 hover:text-blue-700 transition-colors mt-1"
-                            >
-                                Alvin Silva
-                            </a>
-
-                            <p class="text-sm text-slate-600">
-                                Development Management Professional &amp; Resilience Practitioner
-                            </p>
-                        </div>
-
-                        <div class="text-sm text-blue-800 max-w-xl">
-                            Stronghold A3 applies the assessment to support practical resilience-building and safer educational environments.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Provide result actions. -->
                 <div class="mt-8 flex flex-wrap gap-3 no-print">
-                    <button id="printResultButton" type="button" class="inline-flex items-center gap-2 bg-slate-900 text-white font-bold px-5 py-3 rounded-xl hover:bg-slate-800 focus:outline-none focus:ring-4 focus:ring-slate-200 transition-colors">
-                        <i class="fa-solid fa-print" aria-hidden="true"></i>
-                        Print result
-                    </button>
-
-                    <button id="restartAssessmentButton" type="button" class="inline-flex items-center gap-2 border border-slate-300 text-slate-700 font-bold px-5 py-3 rounded-xl hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-slate-100 transition-colors">
-                        <i class="fa-solid fa-rotate-left" aria-hidden="true"></i>
-                        Start again
-                    </button>
+                    <button id="printResultButton" type="button" class="inline-flex items-center gap-2 bg-slate-900 text-white font-bold px-5 py-3 rounded-xl hover:bg-slate-800 transition-colors"><i class="fa-solid fa-print"></i> Print result</button>
+                    <button id="restartAssessmentButton" type="button" class="inline-flex items-center gap-2 border border-slate-300 text-slate-700 font-bold px-5 py-3 rounded-xl hover:bg-slate-50 transition-colors"><i class="fa-solid fa-rotate-left"></i> Start again</button>
                 </div>
             </div>
-        </section>
-
-        <!-- Explain privacy and confidentiality independently from the consent step. -->
-        <section id="privacySection" class="app-card p-6 sm:p-8">
-            <!-- Identify the privacy section. -->
-            <span class="text-blue-600 text-xs font-extrabold uppercase tracking-widest">
-                Privacy &amp; Confidentiality
-            </span>
-
-            <!-- State the central assurance. -->
-            <h2 class="font-heading text-2xl font-bold text-slate-900 mt-1">
-                Share only what the assessment needs
-            </h2>
-
-            <!-- State the practical privacy rules. -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-5">
-
-                <!-- Explain local processing. -->
-                <div class="rounded-xl border border-slate-200 p-5">
-                    <i class="fa-solid fa-laptop text-blue-600 text-lg" aria-hidden="true"></i>
-                    <h3 class="font-bold text-slate-800 mt-3">No automatic submission</h3>
-                    <p class="text-xs text-slate-500 mt-1">
-                        This standalone page calculates the result in the browser and does not automatically transmit responses to a server.
-                    </p>
-                </div>
-
-                <!-- Explain data minimization. -->
-                <div class="rounded-xl border border-slate-200 p-5">
-                    <i class="fa-solid fa-filter text-cyan-600 text-lg" aria-hidden="true"></i>
-                    <h3 class="font-bold text-slate-800 mt-3">Minimum information</h3>
-                    <p class="text-xs text-slate-500 mt-1">
-                        School context is optional. Assessment questions focus on institutional conditions rather than individual records.
-                    </p>
-                </div>
-
-                <!-- Explain confidentiality boundaries. -->
-                <div class="rounded-xl border border-slate-200 p-5">
-                    <i class="fa-solid fa-user-shield text-emerald-600 text-lg" aria-hidden="true"></i>
-                    <h3 class="font-bold text-slate-800 mt-3">Protect sensitive information</h3>
-                    <p class="text-xs text-slate-500 mt-1">
-                        Do not include personal identifiers, credentials, medical information, or detailed incident records.
-                    </p>
-                </div>
-            </div>
-
-            <!-- State the implementation boundary clearly. -->
-            <div class="mt-5 rounded-xl border border-slate-200 bg-slate-50 p-4">
-                <p class="text-xs text-slate-600">
-                    <strong class="text-slate-800">Implementation note:</strong>
-                    Privacy protections for any future server-side storage, analytics, dashboards, or integrations must be implemented through the application's backend, access controls, retention policy, and applicable privacy requirements.
-                </p>
-            </div>
-        </section>
-
-        <!-- Provide a concise professional closing section. -->
-        <section class="action-gradient text-white rounded-2xl p-7 sm:p-9 shadow-xl">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-7 items-center">
-                <div class="lg:col-span-8">
-                    <span class="text-blue-100 text-xs font-extrabold uppercase tracking-widest">
-                        Stronghold A3
-                    </span>
-
-                    <h2 class="font-heading text-2xl sm:text-3xl font-extrabold mt-1">
-                        From assessment to action.
-                    </h2>
-
-                    <p class="text-blue-100 text-sm mt-3 max-w-2xl">
-                        Use the C-A-S-E profile to prioritize deeper review, preparedness planning, risk reduction, safeguarding, continuity, and resilience-building.
-                    </p>
-                </div>
-
-                <div class="lg:col-span-4 lg:text-right">
-                    <a href="https://alvin-silva.asilvainnovations.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-white text-blue-700 font-bold px-5 py-3 rounded-xl shadow-md hover:bg-slate-100 transition-colors text-sm">
-                        About the Practitioner
-                        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Clearly distinguish alignment from legal certification. -->
-        <section class="pb-4">
-            <p class="text-xs text-slate-500">
-                <strong class="text-slate-700">Alignment statement:</strong>
-                This tool is designed to support safe-school planning and resilience assessment consistent with the Safe Schools Act alignment requested for Stronghold A3. It is not, by itself, a government inspection, certification, accreditation, legal opinion, or determination of statutory compliance.
-            </p>
         </section>
     </main>
 
-    <!-- Provide the shared Stronghold A3 footer treatment. -->
     <footer class="bg-slate-900 text-slate-400 border-t border-slate-800 py-8 mt-8">
-        <!-- Constrain footer content to the application width. -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-2">
-            <!-- Identify the product. -->
-            <p class="font-semibold text-slate-300">
-                Stronghold A3 — Safe School Resilience Assessment
-            </p>
-
-            <!-- Restate the C-A-S-E model concisely. -->
-            <p class="text-xs">
-                C-A-S-E Resilience Model · Coping Capacity · Adaptability · Sensitivity · Exposure
-            </p>
-
-            <!-- State the alignment. -->
-            <p class="text-xs">
-                Safe Schools Act alignment · Physical · Digital · Behavioral · Operational · Community Safety
-            </p>
-
-            <!-- Identify the developer and validator. -->
-            <p class="text-xs">
-                Developed and validated by Alvin Silva, Development Management Professional &amp; Resilience Practitioner.
-            </p>
-
-            <!-- Provide the copyright notice. -->
-            <p class="text-slate-500 text-xs pt-2">
-                &copy; 2026 Stronghold A3. All Rights Reserved.
-            </p>
+            <p class="font-semibold text-slate-300">Stronghold A3 — Safe School Resilience Assessment</p>
+            <p class="text-xs">&copy; 2026 Stronghold A3. All Rights Reserved.</p>
         </div>
     </footer>
 
-    <!-- Contain all assessment logic in one self-contained application module. -->
     <script>
-        // Define the four C-A-S-E domains in the mathematical order requested.
         const assessmentDomains = [
             {
-                id: "coping",
-                letter: "C",
-                title: "Coping Capacity",
-                icon: "fa-shield-halved",
-                accent: "blue",
+                id: "coping", letter: "C", title: "Coping Capacity", icon: "fa-shield-halved", accent: "blue",
                 description: "The school's ability to prepare, respond, absorb disruption, and maintain essential functions.",
-                action: "Strengthen emergency roles, communication, drills, continuity arrangements, and recovery procedures.",
                 questions: [
                     "Emergency response and evacuation procedures are current and accessible.",
                     "Staff understand their assigned roles during emergencies.",
                     "Emergency communication channels are tested and have backup methods.",
                     "Critical contacts for responders and key school personnel are maintained.",
                     "The school has continuity arrangements for major disruptions.",
-                    "Drills and exercises are documented, reviewed, and followed by corrective action."
+                    "Drills and exercises are documented, reviewed, and followed by corrective action.",
+                    "Physical security personnel are deployed according to a risk-based schedule and maintain clear emergency roles.",
+                    "The school utilizes redundant communication systems (e.g., 3-Bridge Architecture: Cloud, SMS Gateway, Radio) to maintain contact during network outages."
                 ]
             },
             {
-                id: "adaptability",
-                letter: "A",
-                title: "Adaptability",
-                icon: "fa-arrows-rotate",
-                accent: "cyan",
+                id: "adaptability", letter: "A", title: "Adaptability", icon: "fa-arrows-rotate", accent: "cyan",
                 description: "The school's ability to learn, adjust, improve controls, and adapt to changing risks.",
-                action: "Strengthen learning loops, corrective-action tracking, plan reviews, change management, and exercise-based improvement.",
                 questions: [
                     "Safety plans are reviewed when hazards, operations, facilities, or community conditions change.",
                     "Lessons from incidents, drills, exercises, and near misses inform improvements.",
                     "The school can adjust procedures when an emerging threat or disruption occurs.",
                     "Staff receive updated guidance when safety roles or procedures change.",
                     "Corrective actions have owners, timelines, and verification of closure.",
-                    "The school periodically tests whether existing controls still work as intended."
+                    "The school periodically tests whether existing controls still work as intended.",
+                    "Security personnel and staff receive regular, updated training on local hazards (e.g., typhoons) and evolving safeguarding protocols.",
+                    "Post-incident reviews and guard tour data are actively used to adjust security patrol routes and access controls."
                 ]
             },
             {
-                id: "sensitivity",
-                letter: "S",
-                title: "Sensitivity",
-                icon: "fa-triangle-exclamation",
-                accent: "amber",
+                id: "sensitivity", letter: "S", title: "Sensitivity", icon: "fa-triangle-exclamation", accent: "amber",
                 description: "The conditions that can increase the impact of hazards or disruptions on people, systems, and school functions.",
-                action: "Prioritize groups, functions, dependencies, and conditions that may experience greater harm during disruption.",
                 questions: [
                     "The school identifies people and groups that may be disproportionately affected by emergencies.",
                     "Safeguarding, bullying, harassment, and behavioral risks have defined response pathways.",
                     "Critical school functions and dependencies are identified and prioritized.",
                     "Accessibility and additional support needs are considered in emergency planning.",
                     "Student welfare and sensitive information are handled through appropriate safeguards.",
-                    "Warning signs and emerging vulnerabilities have a clear escalation pathway."
+                    "Warning signs and emerging vulnerabilities have a clear escalation pathway.",
+                    "Protocols are in place to protect vulnerable populations and ensure strict adherence to Data Privacy Act (RA 10173) for incident logs.",
+                    "Safeguarding pathways integrate with local community and DRRM resources for rapid behavioral or welfare interventions."
                 ]
             },
             {
-                id: "exposure",
-                letter: "E",
-                title: "Exposure",
-                icon: "fa-location-crosshairs",
-                accent: "red",
+                id: "exposure", letter: "E", title: "Exposure", icon: "fa-location-crosshairs", accent: "red",
                 description: "The hazards, threats, locations, dependencies, and conditions to which the school is exposed.",
-                action: "Reduce avoidable exposure through hazard identification, access controls, physical safeguards, cyber controls, and mitigation planning.",
                 questions: [
                     "Perimeters, gates, blind spots, lighting, and access routes are routinely inspected.",
                     "Visitor, contractor, delivery, and vehicle access is controlled.",
                     "Physical hazards in classrooms, laboratories, playgrounds, and common areas are identified.",
                     "Relevant natural, technological, human-caused, and community hazards are identified.",
                     "Digital systems are assessed for cyber threats and service disruption.",
-                    "High-risk exposures are documented, prioritized, and assigned for mitigation."
+                    "High-risk exposures are documented, prioritized, and assigned for mitigation.",
+                    "Physical perimeters, blind spots, and access points are monitored using a hybrid approach (physical guards + offline-first Tech Shield/CCTV).",
+                    "The facility's exposure to regional disruptions is mitigated by pre-positioned emergency supplies and localized contingency planning."
                 ]
             }
         ];
 
-        // Define the four-point response scale used consistently across every question.
         const responseOptions = [
-            {
-                value: 0,
-                label: "Not in place",
-                description: "No consistent control or practice."
-            },
-            {
-                value: 1,
-                label: "Developing",
-                description: "Partly implemented or inconsistent."
-            },
-            {
-                value: 2,
-                label: "Established",
-                description: "Implemented and generally practiced."
-            },
-            {
-                value: 3,
-                label: "Strong",
-                description: "Documented, practiced, tested, and improved."
-            }
+            { value: 0, label: "Not in place", description: "No consistent control or practice." },
+            { value: 1, label: "Developing", description: "Partly implemented or inconsistent." },
+            { value: 2, label: "Established", description: "Implemented and generally practiced." },
+            { value: 3, label: "Strong", description: "Documented, practiced, tested, and improved." }
         ];
 
-        // Store responses only in browser memory for this standalone assessment.
         const assessmentResponses = {};
-
-        // Track the currently displayed domain.
         let currentDomainIndex = 0;
 
-        // Return the total number of questions in the complete instrument.
-        function getTotalQuestionCount() {
-            return assessmentDomains.reduce(
-                (totalQuestionCount, domain) => totalQuestionCount + domain.questions.length,
-                0
-            );
-        }
+        function getTotalQuestionCount() { return assessmentDomains.reduce((t, d) => t + d.questions.length, 0); }
+        function getAnsweredQuestionCount() { return Object.keys(assessmentResponses).length; }
 
-        // Return the number of answered questions.
-        function getAnsweredQuestionCount() {
-            return Object.keys(assessmentResponses).length;
-        }
-
-        // Update the global progress indicator.
         function updateProgress() {
-            const totalQuestionCount = getTotalQuestionCount();
-            const answeredQuestionCount = getAnsweredQuestionCount();
-            const completionPercentage = Math.round(
-                (answeredQuestionCount / totalQuestionCount) * 100
-            );
-
-            document.getElementById("answerCount").textContent =
-                `${answeredQuestionCount} / ${totalQuestionCount} answered`;
-
-            document.getElementById("progressBar").style.width =
-                `${completionPercentage}%`;
-
-            document.getElementById("progressLabel").textContent =
-                answeredQuestionCount === 0
-                    ? "Assessment not started"
-                    : `Assessment progress: ${completionPercentage}%`;
+            const total = getTotalQuestionCount();
+            const answered = getAnsweredQuestionCount();
+            const pct = Math.round((answered / total) * 100);
+            document.getElementById("answerCount").textContent = `${answered} / ${total} answered`;
+            document.getElementById("progressBar").style.width = `${pct}%`;
+            document.getElementById("progressLabel").textContent = answered === 0 ? "Assessment not started" : `Progress: ${pct}%`;
         }
 
-        // Show exactly one progressive-disclosure step.
         function showAssessmentStep(stepId) {
-            const stepIds = [
-                "assessmentIntroduction",
-                "consentStep",
-                "contextStep",
-                "domainStep",
-                "reviewStep"
-            ];
-
-            stepIds.forEach(step => {
-                document.getElementById(step).hidden = step !== stepId;
+            ["assessmentIntroduction", "consentStep", "contextStep", "domainStep", "reviewStep"].forEach(s => {
+                document.getElementById(s).hidden = s !== stepId;
             });
         }
 
-        // Determine whether a domain has been completely answered.
         function isDomainComplete(domain) {
-            return domain.questions.every((question, questionIndex) => {
-                const responseKey = `${domain.id}-${questionIndex}`;
+            return domain.questions.every((q, i) => assessmentResponses[`${domain.id}-${i}`] !== undefined);
+        }
 
-                return assessmentResponses[responseKey] !== undefined;
+        function renderDomainStepper() {
+            const el = document.getElementById("domainStepper");
+            el.innerHTML = assessmentDomains.map((d, i) => {
+                const cls = i === currentDomainIndex ? "active" : (isDomainComplete(d) ? "complete" : "");
+                return `<button type="button" class="domain-step ${cls} rounded-xl p-3 text-center" data-domain-index="${i}"><span class="block text-sm font-black">${d.letter}</span><span class="block text-[10px] font-semibold mt-1">${d.title}</span></button>`;
+            }).join("");
+            el.querySelectorAll("[data-domain-index]").forEach(btn => {
+                btn.addEventListener("click", () => {
+                    const req = Number(btn.dataset.domainIndex);
+                    if (req <= currentDomainIndex || assessmentDomains.slice(0, req).every(isDomainComplete)) {
+                        currentDomainIndex = req;
+                        renderCurrentDomain();
+                    }
+                });
             });
         }
 
-        // Render the C-A-S-E domain stepper.
-        function renderDomainStepper() {
-            const domainStepper = document.getElementById("domainStepper");
+        function updateCurrentDomainProgress() {
+            const d = assessmentDomains[currentDomainIndex];
+            const ans = d.questions.filter((q, i) => assessmentResponses[`${d.id}-${i}`] !== undefined).length;
+            document.getElementById("domainProgressText").textContent = `Domain ${currentDomainIndex + 1} of 4`;
+            document.getElementById("domainAnswerText").textContent = `${ans} / ${d.questions.length} answered`;
+        }
 
-            domainStepper.innerHTML = assessmentDomains.map((domain, domainIndex) => {
-                const isCurrentDomain = domainIndex === currentDomainIndex;
-                const isCompletedDomain = isDomainComplete(domain);
+        function handleResponseSelection(e) {
+            const input = e.target;
+            const qId = input.dataset.questionId;
+            assessmentResponses[qId] = Number(input.value);
+            document.querySelectorAll(`input[data-question-id="${qId}"]`).forEach(i => i.closest(".response-card").classList.remove("selected"));
+            input.closest(".response-card").classList.add("selected");
+            updateCurrentDomainProgress(); updateProgress(); renderDomainStepper();
+        }
 
-                const stateClass = isCurrentDomain
-                    ? "active"
-                    : isCompletedDomain
-                        ? "complete"
-                        : "";
+        function renderCurrentDomain() {
+            const d = assessmentDomains[currentDomainIndex];
+            document.getElementById("domainStepLabel").textContent = `Step 3 of 5 · Domain ${currentDomainIndex + 1}`;
+            document.getElementById("domainTitle").textContent = `${d.letter} — ${d.title}`;
+            document.getElementById("domainDescription").textContent = d.description;
+            const qc = document.getElementById("domainQuestions");
+            qc.innerHTML = d.questions.map((q, i) => {
+                const qId = `${d.id}-${i}`;
+                const sv = assessmentResponses[qId];
+                return `<fieldset class="rounded-xl border border-slate-200 p-4 sm:p-5"><legend class="w-full"><span class="text-xs font-black text-slate-400 mr-2">${String(i + 1).padStart(2, "0")}</span><span class="text-sm font-semibold text-slate-800">${q}</span></legend><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-4">${responseOptions.map(o => `<label class="response-card ${sv === o.value ? 'selected' : ''}" tabindex="0"><input type="radio" name="${qId}" value="${o.value}" data-question-id="${qId}" ${sv === o.value ? 'checked' : ''}><span class="block text-sm font-bold text-slate-800">${o.value} — ${o.label}</span><span class="block text-xs text-slate-500 mt-1">${o.description}</span></label>`).join("")}</div></fieldset>`;
+            }).join("");
+            qc.querySelectorAll("input[type='radio']").forEach(i => i.addEventListener("change", handleResponseSelection));
+            updateCurrentDomainProgress(); renderDomainStepper();
+            document.getElementById("nextDomainButton").innerHTML = currentDomainIndex === 3 ? `Review <i class="fa-solid fa-arrow-right"></i>` : `Next domain <i class="fa-solid fa-arrow-right"></i>`;
+        }
 
-                return `
-                    <button
-                        type="button"
-                        class="domain-step ${stateClass} rounded-xl p-3 text-center"
-                        data-domain-index="${domainIndex}"
-                        aria-label="${domain.letter} — ${domain.title}"
-                    >
-                        <span class="block text-sm font-black">${domain.letter}</span>
-                        <span class="block text-[10px] font-semibold mt-1">${domain.title}</span>
-                    </button>
-                `;
+        function moveToNextDomain() {
+            if (!isDomainComplete(assessmentDomains[currentDomainIndex])) return alert("Please answer every item.");
+            if (currentDomainIndex === 3) { showAssessmentStep("reviewStep"); return; }
+            currentDomainIndex++; renderCurrentDomain();
+        }
+
+        function moveToPreviousDomain() {
+            if (currentDomainIndex === 0) { showAssessmentStep("contextStep"); return; }
+            currentDomainIndex--; renderCurrentDomain();
+        }
+
+        function calculateRawCaseScore(s) { return s.coping + s.adaptability - s.sensitivity - s.exposure; }
+        function normalizeCaseScore(raw) { return Math.max(0, Math.min(100, Math.round(((raw - -36) / 72) * 100))); }
+        function calculateDomainPercentage(d) {
+            const max = d.questions.length * 3;
+            const act = d.questions.reduce((t, q, i) => t + assessmentResponses[`${d.id}-${i}`], 0);
+            return { actualScore: act, maximumScore: max, percentage: Math.round((act / max) * 100) };
+        }
+        function getReadinessStatus(idx) {
+            if (idx >= 80) return { label: "Strong resilience", classes: "bg-emerald-100 text-emerald-700" };
+            if (idx >= 60) return { label: "Established resilience", classes: "bg-blue-100 text-blue-700" };
+            if (idx >= 40) return { label: "Developing resilience", classes: "bg-amber-100 text-amber-700" };
+            return { label: "Priority improvement", classes: "bg-red-100 text-red-700" };
+        }
+
+        const strongholdRecommendations = {
+            coping: { title: "Strengthen Coping Capacity", solutions: ["Deploy DOLE/PNP-compliant physical security personnel with clear emergency roles.", "Implement Stronghold A3's 3-Bridge Communication System (Cloud SMS, SMS Gateway, Radio Mesh) to ensure zero data loss during outages.", "Establish automated digital guard tours and incident reporting via Offline-First Cloud SMS."] },
+            adaptability: { title: "Enhance Adaptability", solutions: ["Utilize post-incident reviews and digital audit logs to continuously adjust patrol routes.", "Enroll staff and guards in localized DRRM and safeguarding training programs.", "Adopt dynamic contract structuring and RACI protocols to eliminate operational bottlenecks."] },
+            sensitivity: { title: "Reduce Sensitivity", solutions: ["Implement Data Privacy Act (RA 10173) encrypted digital vaults for student welfare logs.", "Integrate safeguarding pathways with local Tacloban community resources and Bayanihan relief packs.", "Conduct quarterly 'Mock Audit Readiness' stress tests to identify institutional dependencies."] },
+            exposure: { title: "Mitigate Exposure", solutions: ["Upgrade perimeter defense using our Hybrid Security Leapfrog model (Physical Guarding + Tech Shield/CCTV).", "Pre-position emergency supplies utilizing deep local geography knowledge.", "Secure 100% legal compliance (DOLE DO-174) to eliminate co-employer liability and financial exposure."] }
+        };
+
+        function generateResult() {
+            if (!assessmentDomains.every(isDomainComplete)) return alert("Please complete all domains.");
+            const calc = assessmentDomains.map(d => ({ ...d, ...calculateDomainPercentage(d) }));
+            const scores = { coping: calc.find(d => d.id === "coping").actualScore, adaptability: calc.find(d => d.id === "adaptability").actualScore, sensitivity: calc.find(d => d.id === "sensitivity").actualScore, exposure: calc.find(d => d.id === "exposure").actualScore };
+            const raw = calculateRawCaseScore(scores);
+            const idx = normalizeCaseScore(raw);
+            const status = getReadinessStatus(idx);
+            const priorities = [...calc].sort((a, b) => a.percentage - b.percentage).slice(0, 3);
+
+            document.getElementById("resultInstitution").textContent = document.getElementById("schoolName").value || "School / Institution";
+            document.getElementById("overallScore").textContent = `${idx}%`;
+            document.getElementById("scoreRing").style.setProperty("--score-angle", `${idx * 3.6}deg`);
+            const badge = document.getElementById("readinessBadge");
+            badge.textContent = status.label; badge.className = `px-3 py-1 rounded-full text-xs font-bold ${status.classes}`;
+            document.getElementById("formulaDetail").textContent = `C ${scores.coping} + A ${scores.adaptability} − S ${scores.sensitivity} − E ${scores.exposure} (Raw: ${raw})`;
+
+            document.getElementById("priorityAreas").innerHTML = priorities.map(d => `<div class="rounded-xl border border-slate-200 p-4"><div class="flex items-center gap-3"><span class="w-9 h-9 rounded-lg bg-slate-100 grid place-items-center font-black text-slate-700">${d.letter}</span><div><p class="text-sm font-bold text-slate-800">${d.title}</p><p class="text-xs text-slate-500">${d.percentage}% strength</p></div></div></div>`).join("");
+
+            document.getElementById("actionPlan").innerHTML = priorities.map((d, i) => {
+                const rec = strongholdRecommendations[d.id];
+                return `<div class="flex flex-col gap-3 rounded-xl border border-slate-200 bg-white p-5">
+                    <div class="flex items-center gap-3"><span class="w-8 h-8 shrink-0 rounded-lg bg-blue-50 text-blue-700 grid place-items-center text-sm font-black">${i + 1}</span><p class="text-md font-bold text-slate-800">${rec.title}</p></div>
+                    <ul class="space-y-2 mt-1">${rec.solutions.map(s => `<li class="flex items-start gap-2 text-xs text-slate-600"><i class="fa-solid fa-shield-halved text-brand-blue mt-0.5"></i><span>${s}</span></li>`).join("")}</ul>
+                    <div class="mt-2 pt-2 border-t border-slate-100"><p class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Stronghold A3 Strategic Alignment</p><p class="text-xs text-slate-500 mt-1 italic">Supports our "Zero-Liability" promise and "Armored by Resilience" operational pillars.</p></div>
+                </div>`;
             }).join("");
 
-            // Bind navigation only to completed or previously visited domains.
-            document.querySelectorAll("[data-domain-index]").forEach(button => {
-                button.addEventListener("click", () => {
-                    const requestedDomainIndex = Number(button.dataset.domainIndex);
-
-                    if (
-                        requestedDomainIndex <= currentDomainIndex ||
-                        assessmentDomains
-                            .slice(0, requestedDomainIndex)
-                            .every(domain => isDomainComplete(domain))
-                    ) {
-                        currentDomainIndex = requestedDomainIndex;
-
-                        renderCurrentDomain();
-
-                        document
-                            .getElementById("domainStep")
-                            .scrollIntoView({ behavior: "smooth", block: "start" });
-                    }
-                });
-            });
-        }
-
-        // Update the answer count for the currently displayed domain.
-        function updateCurrentDomainProgress() {
-            const currentDomain = assessmentDomains[currentDomainIndex];
-
-            const answeredCount = currentDomain.questions.filter(
-                (question, questionIndex) =>
-                    assessmentResponses[`${currentDomain.id}-${questionIndex}`] !== undefined
-            ).length;
-
-            document.getElementById("domainProgressText").textContent =
-                `Domain ${currentDomainIndex + 1} of ${assessmentDomains.length}`;
-
-            document.getElementById("domainAnswerText").textContent =
-                `${answeredCount} / ${currentDomain.questions.length} answered`;
-        }
-
-        // Handle a response selection.
-        function handleResponseSelection(event) {
-            const selectedInput = event.target;
-            const questionId = selectedInput.dataset.questionId;
-            const selectedValue = Number(selectedInput.value);
-
-            assessmentResponses[questionId] = selectedValue;
-
-            document
-                .querySelectorAll(`input[data-question-id="${questionId}"]`)
-                .forEach(input => {
-                    input.closest(".response-card").classList.remove("selected");
-                });
-
-            selectedInput
-                .closest(".response-card")
-                .classList.add("selected");
-
-            updateCurrentDomainProgress();
-            updateProgress();
-            renderDomainStepper();
-        }
-
-        // Render the current domain and only its questions.
-        function renderCurrentDomain() {
-            const currentDomain = assessmentDomains[currentDomainIndex];
-
-            document.getElementById("domainStepLabel").textContent =
-                `Step 3 of 5 · Domain ${currentDomainIndex + 1} of ${assessmentDomains.length}`;
-
-            document.getElementById("domainTitle").textContent =
-                `${currentDomain.letter} — ${currentDomain.title}`;
-
-            document.getElementById("domainDescription").textContent =
-                currentDomain.description;
-
-            const questionContainer = document.getElementById("domainQuestions");
-
-            questionContainer.innerHTML = currentDomain.questions.map(
-                (question, questionIndex) => {
-                    const questionId = `${currentDomain.id}-${questionIndex}`;
-                    const savedValue = assessmentResponses[questionId];
-
-                    return `
-                        <fieldset class="rounded-xl border border-slate-200 p-4 sm:p-5">
-                            <legend class="w-full">
-                                <span class="text-xs font-black text-slate-400 mr-2">
-                                    ${String(questionIndex + 1).padStart(2, "0")}
-                                </span>
-                                <span class="text-sm font-semibold text-slate-800">
-                                    ${question}
-                                </span>
-                            </legend>
-
-                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-4">
-                                ${responseOptions.map(option => `
-                                    <label
-                                        class="response-card ${savedValue === option.value ? "selected" : ""}"
-                                        tabindex="0"
-                                    >
-                                        <input
-                                            type="radio"
-                                            name="${questionId}"
-                                            value="${option.value}"
-                                            data-question-id="${questionId}"
-                                            ${savedValue === option.value ? "checked" : ""}
-                                        >
-
-                                        <span class="block text-sm font-bold text-slate-800">
-                                            ${option.value} — ${option.label}
-                                        </span>
-
-                                        <span class="block text-xs text-slate-500 mt-1">
-                                            ${option.description}
-                                        </span>
-                                    </label>
-                                `).join("")}
-                            </div>
-                        </fieldset>
-                    `;
-                }
-            ).join("");
-
-            // Bind response selection to the newly generated controls.
-            document
-                .querySelectorAll("#domainQuestions input[type='radio']")
-                .forEach(input => {
-                    input.addEventListener("change", handleResponseSelection);
-                });
-
-            // Update domain metadata.
-            updateCurrentDomainProgress();
-
-            // Update the domain stepper.
-            renderDomainStepper();
-
-            // Disable previous navigation visually on the first domain.
-            const previousButton = document.getElementById("previousDomainButton");
-
-            previousButton.disabled = currentDomainIndex === 0;
-
-            previousButton.classList.toggle(
-                "opacity-50",
-                currentDomainIndex === 0
-            );
-
-            previousButton.classList.toggle(
-                "cursor-not-allowed",
-                currentDomainIndex === 0
-            );
-
-            // Change the final navigation label to Review.
-            const nextButton = document.getElementById("nextDomainButton");
-
-            nextButton.innerHTML =
-                currentDomainIndex === assessmentDomains.length - 1
-                    ? `Review <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>`
-                    : `Next domain <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>`;
-        }
-
-        // Move to the next domain after validation.
-        function moveToNextDomain() {
-            const currentDomain = assessmentDomains[currentDomainIndex];
-
-            if (!isDomainComplete(currentDomain)) {
-                alert("Please answer every item in this domain before continuing.");
-
-                const firstUnansweredQuestionIndex = currentDomain.questions.findIndex(
-                    (question, questionIndex) =>
-                        assessmentResponses[`${currentDomain.id}-${questionIndex}`] === undefined
-                );
-
-                const firstUnansweredQuestion = document.querySelector(
-                    `input[data-question-id="${currentDomain.id}-${firstUnansweredQuestionIndex}"]`
-                );
-
-                if (firstUnansweredQuestion) {
-                    firstUnansweredQuestion.closest("fieldset").scrollIntoView({
-                        behavior: "smooth",
-                        block: "center"
-                    });
-                }
-
-                return;
-            }
-
-            if (currentDomainIndex === assessmentDomains.length - 1) {
-                showAssessmentStep("reviewStep");
-
-                document
-                    .getElementById("reviewStep")
-                    .scrollIntoView({ behavior: "smooth", block: "start" });
-
-                return;
-            }
-
-            currentDomainIndex += 1;
-
-            renderCurrentDomain();
-
-            updateProgress();
-
-            document
-                .getElementById("domainStep")
-                .scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-
-        // Move to the previous domain.
-        function moveToPreviousDomain() {
-            if (currentDomainIndex === 0) {
-                showAssessmentStep("contextStep");
-
-                document
-                    .getElementById("contextStep")
-                    .scrollIntoView({ behavior: "smooth", block: "start" });
-
-                return;
-            }
-
-            currentDomainIndex -= 1;
-
-            renderCurrentDomain();
-
-            document
-                .getElementById("domainStep")
-                .scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-
-        // Calculate the raw C-A-S-E resilience score using the requested formula.
-        function calculateRawCaseScore(domainScores) {
-            return (
-                domainScores.coping +
-                domainScores.adaptability -
-                domainScores.sensitivity -
-                domainScores.exposure
-            );
-        }
-
-        // Normalize the raw C-A-S-E score to a 0–100 resilience index.
-        function normalizeCaseScore(rawCaseScore) {
-            const minimumPossibleScore = -36;
-            const maximumPossibleScore = 36;
-
-            const normalizedScore =
-                ((rawCaseScore - minimumPossibleScore) /
-                    (maximumPossibleScore - minimumPossibleScore)) *
-                100;
-
-            return Math.max(0, Math.min(100, Math.round(normalizedScore)));
-        }
-
-        // Calculate a domain percentage from the four-point response scale.
-        function calculateDomainPercentage(domain) {
-            const maximumDomainScore = domain.questions.length * 3;
-
-            const actualDomainScore = domain.questions.reduce(
-                (totalScore, question, questionIndex) =>
-                    totalScore +
-                    assessmentResponses[`${domain.id}-${questionIndex}`],
-                0
-            );
-
-            return {
-                actualScore: actualDomainScore,
-                maximumScore: maximumDomainScore,
-                percentage: Math.round(
-                    (actualDomainScore / maximumDomainScore) * 100
-                )
-            };
-        }
-
-        // Convert the resilience index to an understandable status.
-        function getReadinessStatus(resilienceIndex) {
-            if (resilienceIndex >= 80) {
-                return {
-                    label: "Strong resilience",
-                    classes: "bg-emerald-100 text-emerald-700"
-                };
-            }
-
-            if (resilienceIndex >= 60) {
-                return {
-                    label: "Established resilience",
-                    classes: "bg-blue-100 text-blue-700"
-                };
-            }
-
-            if (resilienceIndex >= 40) {
-                return {
-                    label: "Developing resilience",
-                    classes: "bg-amber-100 text-amber-700"
-                };
-            }
-
-            return {
-                label: "Priority improvement",
-                classes: "bg-red-100 text-red-700"
-            };
-        }
-
-        // Generate the final C-A-S-E resilience profile.
-        function generateResult() {
-            if (!assessmentDomains.every(isDomainComplete)) {
-                alert("Please complete all C-A-S-E domains before generating the result.");
-
-                return;
-            }
-
-            // Calculate each domain independently.
-            const calculatedDomains = assessmentDomains.map(domain => {
-                const domainCalculation = calculateDomainPercentage(domain);
-
-                return {
-                    ...domain,
-                    ...domainCalculation
-                };
-            });
-
-            // Convert domain calculations into the variables used by the formula.
-            const domainScores = {
-                coping: calculatedDomains.find(domain => domain.id === "coping").actualScore,
-                adaptability: calculatedDomains.find(domain => domain.id === "adaptability").actualScore,
-                sensitivity: calculatedDomains.find(domain => domain.id === "sensitivity").actualScore,
-                exposure: calculatedDomains.find(domain => domain.id === "exposure").actualScore
-            };
-
-            // Calculate the exact requested C+A-S-E raw score.
-            const rawCaseScore = calculateRawCaseScore(domainScores);
-
-            // Convert the raw score into an intuitive 0–100 index.
-            const resilienceIndex = normalizeCaseScore(rawCaseScore);
-
-            // Determine the overall readiness category.
-            const overallStatus = getReadinessStatus(resilienceIndex);
-
-            // Rank the domains by percentage so the weakest areas appear first.
-            const priorityDomains = [...calculatedDomains]
-                .sort((firstDomain, secondDomain) =>
-                    firstDomain.percentage - secondDomain.percentage
-                )
-                .slice(0, 3);
-
-            // Identify the optional institution context.
-            const schoolName =
-                document.getElementById("schoolName").value.trim() ||
-                "School / Institution";
-
-            const campusName =
-                document.getElementById("campusName").value.trim();
-
-            // Display the institution context.
-            document.getElementById("resultInstitution").textContent =
-                campusName
-                    ? `${schoolName} · ${campusName}`
-                    : schoolName;
-
-            // Display the normalized resilience index.
-            document.getElementById("overallScore").textContent =
-                `${resilienceIndex}%`;
-
-            // Rotate the score ring according to the normalized index.
-            document
-                .getElementById("scoreRing")
-                .style.setProperty(
-                    "--score-angle",
-                    `${resilienceIndex * 3.6}deg`
-                );
-
-            // Display the overall readiness category.
-            const readinessBadge = document.getElementById("readinessBadge");
-
-            readinessBadge.textContent = overallStatus.label;
-
-            readinessBadge.className =
-                `px-3 py-1 rounded-full text-xs font-bold ${overallStatus.classes}`;
-
-            // Display the domain values used by the formula.
-            document.getElementById("formulaDetail").textContent =
-                `C ${domainScores.coping} + A ${domainScores.adaptability} − S ${domainScores.sensitivity} − E ${domainScores.exposure}`;
-
-            // Display the raw mathematical result and normalization range.
-            document.getElementById("formulaRawScore").textContent =
-                `Raw C-A-S-E score: ${rawCaseScore} / possible range −36 to +36 · normalized to ${resilienceIndex}%`;
-
-            // Render the three weakest domains as priorities.
-            document.getElementById("priorityAreas").innerHTML =
-                priorityDomains.map(domain => `
-                    <div class="rounded-xl border border-slate-200 p-4">
-                        <div class="flex items-center gap-3">
-                            <span class="w-9 h-9 rounded-lg bg-slate-100 grid place-items-center font-black text-slate-700">
-                                ${domain.letter}
-                            </span>
-
-                            <div>
-                                <p class="text-sm font-bold text-slate-800">
-                                    ${domain.title}
-                                </p>
-
-                                <p class="text-xs text-slate-500">
-                                    ${domain.percentage}% domain strength
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                `).join("");
-
-            // Render the complete domain profile.
-            document.getElementById("domainResults").innerHTML =
-                calculatedDomains.map(domain => `
-                    <article class="rounded-xl border border-slate-200 p-5">
-                        <div class="flex items-start justify-between gap-4">
-                            <div>
-                                <span class="text-xs font-black text-slate-400">
-                                    ${domain.letter}
-                                </span>
-
-                                <h4 class="font-heading font-bold text-slate-900 mt-1">
-                                    ${domain.title}
-                                </h4>
-                            </div>
-
-                            <span class="px-2 py-1 rounded-full text-xs font-bold ${getReadinessStatus(domain.percentage).classes}">
-                                ${domain.percentage}%
-                            </span>
-                        </div>
-
-                        <div class="mt-4 h-2 rounded-full bg-slate-100 overflow-hidden">
-                            <div
-                                class="h-full bg-blue-600 rounded-full"
-                                style="width: ${domain.percentage}%"
-                            ></div>
-                        </div>
-
-                        <p class="text-xs text-slate-500 mt-3">
-                            ${domain.description}
-                        </p>
-                    </article>
-                `).join("");
-
-            // Generate concise actions for the priority domains.
-            document.getElementById("actionPlan").innerHTML =
-                priorityDomains.map((domain, priorityIndex) => `
-                    <div class="flex items-start gap-3 rounded-xl border border-slate-200 bg-white p-4">
-                        <span class="w-7 h-7 shrink-0 rounded-lg bg-blue-50 text-blue-700 grid place-items-center text-xs font-black">
-                            ${priorityIndex + 1}
-                        </span>
-
-                        <div>
-                            <p class="text-sm font-bold text-slate-800">
-                                ${domain.title}
-                            </p>
-
-                            <p class="text-xs text-slate-500 mt-1">
-                                ${domain.action}
-                            </p>
-                        </div>
-                    </div>
-                `).join("");
-
-            // Reveal the result only after all assessment data has been processed.
             document.getElementById("resultsPanel").hidden = false;
-
-            // Move the user directly to the result.
-            document
-                .getElementById("resultsPanel")
-                .scrollIntoView({ behavior: "smooth", block: "start" });
+            document.getElementById("resultsPanel").scrollIntoView({ behavior: "smooth" });
         }
 
-        // Reset the assessment and require fresh consent.
         function restartAssessment() {
-            Object.keys(assessmentResponses).forEach(responseKey => {
-                delete assessmentResponses[responseKey];
-            });
-
+            Object.keys(assessmentResponses).forEach(k => delete assessmentResponses[k]);
             currentDomainIndex = 0;
-
             document.getElementById("consentCheckbox").checked = false;
             document.getElementById("schoolName").value = "";
-            document.getElementById("campusName").value = "";
-            document.getElementById("respondentRole").value = "";
-
             document.getElementById("resultsPanel").hidden = true;
-
-            showAssessmentStep("assessmentIntroduction");
-
-            updateProgress();
-
-            document
-                .getElementById("assessment")
-                .scrollIntoView({ behavior: "smooth", block: "start" });
+            showAssessmentStep("assessmentIntroduction"); updateProgress();
         }
 
-        // Initialize the application after the document is ready.
         document.addEventListener("DOMContentLoaded", () => {
-            // Initialize global progress.
             updateProgress();
-
-            // Open the consent step.
-            document
-                .getElementById("startAssessmentButton")
-                .addEventListener("click", () => {
-                    showAssessmentStep("consentStep");
-
-                    document
-                        .getElementById("consentStep")
-                        .scrollIntoView({ behavior: "smooth", block: "start" });
-                });
-
-            // Validate consent before continuing.
-            document
-                .getElementById("consentContinueButton")
-                .addEventListener("click", () => {
-                    if (!document.getElementById("consentCheckbox").checked) {
-                        alert("Please review the privacy notice and provide consent before continuing.");
-
-                        return;
-                    }
-
-                    showAssessmentStep("contextStep");
-
-                    document
-                        .getElementById("contextStep")
-                        .scrollIntoView({ behavior: "smooth", block: "start" });
-                });
-
-            // Begin the first C-A-S-E domain.
-            document
-                .getElementById("beginCaseButton")
-                .addEventListener("click", () => {
-                    currentDomainIndex = 0;
-
-                    showAssessmentStep("domainStep");
-
-                    renderCurrentDomain();
-
-                    updateProgress();
-
-                    document
-                        .getElementById("domainStep")
-                        .scrollIntoView({ behavior: "smooth", block: "start" });
-                });
-
-            // Handle forward domain navigation.
-            document
-                .getElementById("nextDomainButton")
-                .addEventListener("click", moveToNextDomain);
-
-            // Handle backward domain navigation.
-            document
-                .getElementById("previousDomainButton")
-                .addEventListener("click", moveToPreviousDomain);
-
-            // Return to the final domain for review.
-            document
-                .getElementById("reviewPreviousButton")
-                .addEventListener("click", () => {
-                    currentDomainIndex = assessmentDomains.length - 1;
-
-                    showAssessmentStep("domainStep");
-
-                    renderCurrentDomain();
-
-                    document
-                        .getElementById("domainStep")
-                        .scrollIntoView({ behavior: "smooth", block: "start" });
-                });
-
-            // Generate the result profile.
-            document
-                .getElementById("generateResultButton")
-                .addEventListener("click", generateResult);
-
-            // Print only the completed assessment result.
-            document
-                .getElementById("printResultButton")
-                .addEventListener("click", () => {
-                    window.print();
-                });
-
-            // Reset the assessment.
-            document
-                .getElementById("restartAssessmentButton")
-                .addEventListener("click", restartAssessment);
+            document.getElementById("startAssessmentButton").addEventListener("click", () => showAssessmentStep("consentStep"));
+            document.getElementById("consentContinueButton").addEventListener("click", () => { if(!document.getElementById("consentCheckbox").checked) return alert("Consent required."); showAssessmentStep("contextStep"); });
+            document.getElementById("beginCaseButton").addEventListener("click", () => { currentDomainIndex = 0; showAssessmentStep("domainStep"); renderCurrentDomain(); });
+            document.getElementById("nextDomainButton").addEventListener("click", moveToNextDomain);
+            document.getElementById("previousDomainButton").addEventListener("click", moveToPreviousDomain);
+            document.getElementById("generateResultButton").addEventListener("click", generateResult);
+            document.getElementById("printResultButton").addEventListener("click", () => window.print());
+            document.getElementById("restartAssessmentButton").addEventListener("click", restartAssessment);
         });
     </script>
 </body>
