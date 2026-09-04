@@ -1,529 +1,1397 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Stronghold A3 Safe School Assessment using the C-A-S-E Resilience Model: Coping Capacity, Adaptability, Sensitivity, and Exposure.">
-    <meta name="robots" content="noindex,nofollow">
-    <title>Safe School Assessment | Stronghold A3</title>
-    <link rel="canonical" href="https://www.strongholda3.com/safe-schools-assessment">
-    <link rel="icon" type="image/x-icon" href="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        montserrat: ["Montserrat", "sans-serif"],
-                        poppins: ["Poppins", "sans-serif"]
-                    },
-                    colors: {
-                        navy: "#0F172A",
-                        "navy-light": "#172554",
-                        "brand-blue": "#2563EB",
-                        "brand-cyan": "#06B6D4",
-                        "brand-gold": "#FFD700",
-                        "brand-emerald": "#10B981",
-                        "brand-amber": "#F59E0B"
-                    },
-                    boxShadow: {
-                        soft: "0 12px 35px rgba(15, 23, 42, 0.08)",
-                        stronghold: "0 20px 50px rgba(15, 23, 42, 0.16)"
-                    }
-                }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Safe School Assessment | Stronghold A3</title>
+<meta name="description" content="A 32-item school safety and security diagnostic built on the C-A-S-E resilience model: Coping Capacity + Adaptability − Sensitivity − Exposure. Delivered by Stronghold A3, Eastern Visayas' Zero-Liability security partner.">
+<meta name="keywords" content="safe school assessment, school security assessment Tacloban, DRRM school, C-A-S-E resilience model, Stronghold A3">
+<meta name="author" content="Stronghold A3 Security Agency">
+<meta name="theme-color" content="#0A1628">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://stronghold-a3.com/safe-schools-assessment.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Safe Schools Assessment | Stronghold A3">
+<meta property="og:description" content="Measure your school's resilience with the C-A-S-E model and get a prioritised action plan backed by Stronghold A3.">
+<meta property="og:image" content="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png">
+<meta property="og:url" content="https://stronghold-a3.com/safe-schools-assessment.html">
+<meta property="og:site_name" content="Stronghold A3 Security Agency">
+
+<link rel="icon" type="image/x-icon" href="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+    darkMode: 'class',
+    theme: {
+        extend: {
+            fontFamily: {
+                montserrat: ['Montserrat', 'sans-serif'],
+                poppins: ['Poppins', 'sans-serif'],
+                mono: ['JetBrains Mono', 'monospace']
             }
-        };
-    </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        html { scroll-behavior: smooth; }
-        body { margin: 0; min-height: 100vh; overflow-x: hidden; background: #F8FAFC; color: #0F172A; font-family: "Poppins", sans-serif; }
-        h1, h2, h3, h4, h5, h6, .font-heading { font-family: "Montserrat", sans-serif; }
-        .stronghold-gradient { background: radial-gradient(circle at 90% 10%, rgba(37, 99, 235, 0.28), transparent 30%), linear-gradient(115deg, #0F172A 0%, #172554 55%, #1E40AF 100%); }
-        .action-gradient { background: linear-gradient(115deg, #2563EB 0%, #1D4ED8 55%, #4338CA 100%); }
-        .app-card { background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 1rem; box-shadow: 0 12px 35px rgba(15, 23, 42, 0.06); }
-        .dark-card { background: #0F172A; border: 1px solid #1E293B; border-radius: 1rem; }
-        .progress-shell { position: sticky; top: 0; z-index: 50; background: rgba(255, 255, 255, 0.96); border-bottom: 1px solid #E2E8F0; backdrop-filter: blur(14px); }
-        .progress-track { height: 0.4rem; overflow: hidden; border-radius: 9999px; background: #E2E8F0; }
-        .progress-fill { height: 100%; width: 0%; border-radius: 9999px; background: linear-gradient(90deg, #2563EB, #06B6D4); transition: width 300ms ease; }
-        .response-card { position: relative; display: block; cursor: pointer; border: 1px solid #E2E8F0; border-radius: 0.875rem; background: #FFFFFF; padding: 1rem; transition: all 180ms ease; }
-        .response-card:hover { border-color: #93C5FD; background: #F8FBFF; transform: translateY(-1px); }
-        .response-card.selected { border-color: #2563EB; background: #EFF6FF; box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.10); }
-        .response-card input { position: absolute; opacity: 0; pointer-events: none; }
-        .response-card:focus-within { outline: 3px solid rgba(37, 99, 235, 0.18); outline-offset: 2px; }
-        .domain-step { border: 1px solid #E2E8F0; background: #FFFFFF; color: #64748B; transition: all 180ms ease; }
-        .domain-step.active { border-color: #2563EB; background: #EFF6FF; color: #1D4ED8; }
-        .domain-step.complete { border-color: #A7F3D0; background: #ECFDF5; color: #047857; }
-        .score-ring { --score-angle: 0deg; position: relative; display: grid; width: 190px; height: 190px; place-items: center; border-radius: 9999px; background: conic-gradient(#2563EB var(--score-angle), #E2E8F0 0deg); }
-        .score-ring::after { position: absolute; inset: 10px; content: ""; border-radius: 9999px; background: #FFFFFF; }
-        .score-ring-content { position: relative; z-index: 1; }
-        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
-        [hidden] { display: none !important; }
-        .assessment-image { width: 100%; height: 100%; object-fit: cover; }
-        .image-frame { overflow: hidden; border: 1px solid #E2E8F0; border-radius: 1rem; background: #F1F5F9; }
-        @media print { header, .progress-shell, .no-print, #assessmentIntroduction, #consentStep, #contextStep, #domainStep, #reviewStep, #privacySection, footer { display: none !important; } body { background: #FFFFFF; } #resultsPanel { display: block !important; border: 0; box-shadow: none; } }
-        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; } }
-    </style>
+        }
+    }
+};
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+:root{
+    --gold:#FFD700; --navy:#0A1628; --blue:#3B82F6; --blue-dark:#2563EB;
+    --green:#22C55E; --red:#DC2626;
+    --c:#60A5FA; --a:#34D399; --s:#FBBF24; --e:#F87171;
+    --radius:0.75rem;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+    font-family:'Poppins',sans-serif;
+    background:radial-gradient(circle at 20% 0%,#002b5c 0%,#001b3d 45%,#000c1f 100%);
+    background-attachment:fixed; min-height:100vh; color:#fff; overflow-x:hidden;
+}
+body::before{
+    content:''; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%);
+    width:min(80vw,80vh); height:min(80vw,80vh);
+    background-image:url('https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png');
+    background-size:contain; background-repeat:no-repeat; background-position:center;
+    opacity:0.04; border-radius:50%; pointer-events:none; z-index:0;
+}
+main,header,footer,nav{position:relative;z-index:1}
+h1,h2,h3,h4,h5,h6{font-family:'Montserrat',sans-serif;letter-spacing:0.02em}
+
+/* ===== GLASS SYSTEM (shared with index.html) ===== */
+.glass{
+    background:linear-gradient(135deg,rgba(255,255,255,.10),rgba(255,255,255,.03));
+    backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%);
+    border:1px solid rgba(255,255,255,.12);
+    box-shadow:0 8px 32px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.18);
+}
+.glass-strong{
+    background:linear-gradient(135deg,rgba(0,43,92,.55),rgba(0,12,31,.65));
+    backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);
+    border:1px solid rgba(255,215,0,.18);
+    box-shadow:0 12px 40px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.15);
+}
+.glass-gold{background:linear-gradient(135deg,rgba(255,215,0,.16),rgba(255,215,0,.04));backdrop-filter:blur(16px);border:1px solid rgba(255,215,0,.35)}
+.glass-blue{background:linear-gradient(135deg,rgba(59,130,246,.25),rgba(29,78,216,.08));border:1px solid rgba(59,130,246,.5)}
+.glass-green{background:linear-gradient(135deg,rgba(34,197,94,.22),rgba(21,128,61,.06));border:1px solid rgba(34,197,94,.45)}
+.glass-red{background:linear-gradient(135deg,rgba(220,38,38,.22),rgba(153,27,27,.06));border:1px solid rgba(220,38,38,.45)}
+
+::-webkit-scrollbar{width:8px;height:8px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(100,116,139,.3);border-radius:4px}
+::-webkit-scrollbar-thumb:hover{background:rgba(100,116,139,.5)}
+
+/* ===== BUTTONS ===== */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.8rem 1.4rem;border-radius:.65rem;font-weight:700;font-size:.85rem;font-family:'Montserrat',sans-serif;cursor:pointer;border:1px solid transparent;transition:transform .25s ease,box-shadow .25s ease,background .25s ease;text-decoration:none}
+.btn:focus-visible{outline:3px solid rgba(255,215,0,.6);outline-offset:3px}
+.btn-primary{background:linear-gradient(135deg,#3B82F6,#1D4ED8);color:#fff;border-color:rgba(59,130,246,.6)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(59,130,246,.45)}
+.btn-gold{background:linear-gradient(135deg,#FFD700,#E0A800);color:#0A1628;border-color:rgba(255,215,0,.6)}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(255,215,0,.35)}
+.btn-ghost{background:rgba(255,255,255,.06);color:#fff;border-color:rgba(255,255,255,.2)}
+.btn-ghost:hover{background:rgba(255,255,255,.14)}
+.btn:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}
+
+/* ===== A3 DROPDOWN NAV (shared with index.html) ===== */
+.a3-nav-container{display:flex;align-items:center;gap:.5rem}
+.a3-dropdown{position:relative}
+.a3-dropdown-btn{display:flex;align-items:center;gap:.5rem;padding:.6rem 1.2rem;border-radius:.5rem;font-weight:700;font-family:'Montserrat',sans-serif;font-size:.85rem;cursor:pointer;transition:all .3s ease;color:#fff;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08)}
+.a3-dropdown-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.a3-dropdown-btn.anchored-btn{background:linear-gradient(135deg,rgba(59,130,246,.4),rgba(29,78,216,.3));border-color:rgba(59,130,246,.5)}
+.a3-dropdown-btn.armored-btn{background:linear-gradient(135deg,rgba(220,38,38,.4),rgba(153,27,27,.3));border-color:rgba(220,38,38,.5)}
+.a3-dropdown-btn.assured-btn{background:linear-gradient(135deg,rgba(34,197,94,.4),rgba(21,128,61,.3));border-color:rgba(34,197,94,.5)}
+.a3-dropdown-menu{position:absolute;top:calc(100% + .5rem);left:50%;transform:translateX(-50%) translateY(-10px);min-width:240px;background:linear-gradient(135deg,rgba(10,22,40,.98),rgba(0,12,31,.98));backdrop-filter:blur(20px);border:1px solid rgba(255,215,0,.2);border-radius:.75rem;padding:.75rem;opacity:0;visibility:hidden;transition:all .3s ease;box-shadow:0 16px 48px rgba(0,0,0,.5);z-index:1000}
+.a3-dropdown.open .a3-dropdown-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+.a3-dropdown-item{display:flex;align-items:center;gap:.75rem;padding:.7rem 1rem;border-radius:.5rem;color:#fff;text-decoration:none;transition:all .2s ease;font-size:.9rem}
+.a3-dropdown-item:hover{background:rgba(255,215,0,.15);color:#FFD700}
+.a3-dropdown-item.current{background:rgba(255,215,0,.12);color:#FFD700}
+.a3-dropdown-item i{width:20px;text-align:center;font-size:.9rem}
+.a3-dropdown-header{padding:.5rem 1rem;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.5);border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:.5rem}
+.a3-chevron{transition:transform .3s ease;font-size:.7rem}
+.a3-dropdown.open .a3-chevron{transform:rotate(180deg)}
+
+/* ===== MOBILE MENU ===== */
+.mobile-menu{position:fixed;top:0;right:-100%;width:80%;max-width:350px;height:100vh;background:#0A1628;z-index:9999;transition:right .3s ease;padding:20px;overflow-y:auto}
+.mobile-menu.open{right:0}
+.overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);z-index:9998;display:none}
+.overlay.show{display:block}
+
+/* ===== PROGRESS RAIL ===== */
+.progress-shell{position:sticky;top:76px;z-index:40;background:rgba(10,22,40,.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,215,0,.15)}
+.progress-track{height:.4rem;border-radius:9999px;background:rgba(255,255,255,.1);overflow:hidden}
+.progress-fill{height:100%;width:0%;border-radius:9999px;background:linear-gradient(90deg,#3B82F6,#FFD700);transition:width .3s ease}
+
+/* ===== VIDEO ===== */
+.video-frame{position:relative;width:100%;aspect-ratio:16/9;border-radius:14px;overflow:hidden;border:1px solid rgba(255,215,0,.2);box-shadow:0 16px 48px rgba(0,0,0,.55);background:#000c1f}
+.video-frame iframe{width:100%;height:100%;border:0;display:block}
+
+/* ===== DOMAIN CARDS ===== */
+.domain-tile{border-radius:14px;padding:1.25rem;border:1px solid rgba(255,255,255,.1);background:linear-gradient(135deg,rgba(255,255,255,.06),rgba(255,255,255,.02));transition:border-color .25s ease}
+.domain-tile:hover{border-color:rgba(255,215,0,.35)}
+.domain-letter{font-family:'Montserrat',sans-serif;font-weight:900;font-size:2.25rem;line-height:1}
+.tile-c .domain-letter{color:var(--c)} .tile-a .domain-letter{color:var(--a)}
+.tile-s .domain-letter{color:var(--s)} .tile-e .domain-letter{color:var(--e)}
+.tile-c{border-left:3px solid var(--c)} .tile-a{border-left:3px solid var(--a)}
+.tile-s{border-left:3px solid var(--s)} .tile-e{border-left:3px solid var(--e)}
+
+/* ===== STEPPER ===== */
+.domain-step{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);color:rgba(255,255,255,.6);border-radius:.75rem;padding:.7rem .4rem;text-align:center;cursor:pointer;transition:all .2s ease}
+.domain-step:hover{background:rgba(255,255,255,.09)}
+.domain-step.active{border-color:var(--gold);background:rgba(255,215,0,.14);color:#FFD700}
+.domain-step.complete{border-color:rgba(34,197,94,.5);background:rgba(34,197,94,.12);color:#34D399}
+
+/* ===== QUESTION CARDS ===== */
+.question-card{border:1px solid rgba(255,255,255,.1);border-radius:14px;background:rgba(0,10,24,.45);padding:1.25rem}
+.question-card legend{width:100%}
+.response-card{position:relative;display:block;cursor:pointer;border:1px solid rgba(255,255,255,.12);border-radius:.7rem;background:rgba(255,255,255,.04);padding:.8rem .9rem;transition:all .18s ease}
+.response-card:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.25)}
+.response-card input{position:absolute;opacity:0;pointer-events:none}
+.response-card:focus-within{outline:3px solid rgba(255,215,0,.5);outline-offset:2px}
+.scale-capacity .response-card.selected{border-color:var(--blue);background:rgba(59,130,246,.22);box-shadow:0 0 0 1px rgba(59,130,246,.45)}
+.scale-vulnerability .response-card.selected{border-color:var(--red);background:rgba(220,38,38,.22);box-shadow:0 0 0 1px rgba(220,38,38,.45)}
+
+/* ===== SCORE RING ===== */
+.score-ring{--score-angle:0deg;position:relative;display:grid;width:200px;height:200px;place-items:center;border-radius:9999px;background:conic-gradient(#FFD700 var(--score-angle),rgba(255,255,255,.09) 0deg);box-shadow:0 0 40px rgba(255,215,0,.18)}
+.score-ring::after{position:absolute;inset:12px;content:"";border-radius:9999px;background:#001127}
+.score-ring-content{position:relative;z-index:1;text-align:center}
+
+/* ===== METERS ===== */
+.meter{height:8px;border-radius:9999px;background:rgba(255,255,255,.1);overflow:hidden}
+.meter span{display:block;height:100%;border-radius:9999px}
+
+/* ===== FINDINGS / RECS ===== */
+.finding{display:flex;gap:.85rem;align-items:flex-start;border:1px solid rgba(255,255,255,.1);border-radius:.75rem;padding:.9rem 1rem;background:rgba(255,255,255,.03)}
+.finding-mark{width:34px;height:34px;flex-shrink:0;border-radius:.55rem;display:grid;place-items:center;font-family:'Montserrat',sans-serif;font-weight:900;font-size:.85rem}
+.rec-card{border-radius:.85rem;padding:1.1rem;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);transition:border-color .25s ease}
+.rec-card:hover{border-color:rgba(255,215,0,.4)}
+.rec-anchored{border-left:4px solid var(--blue)}
+.rec-armored{border-left:4px solid var(--red)}
+.rec-assured{border-left:4px solid var(--green)}
+.pill{display:inline-flex;align-items:center;gap:.35rem;padding:.25rem .7rem;border-radius:9999px;font-size:.68rem;font-weight:700;font-family:'Montserrat',sans-serif;letter-spacing:.04em}
+
+[hidden]{display:none !important}
+
+/* ===== PRINT ===== */
+@media print{
+    body{background:#fff;color:#000}
+    body::before{display:none}
+    header,.progress-shell,.no-print,#videoSection,#introStep,#consentStep,#contextStep,#domainStep,#reviewStep,#privacySection,#overview,#caseModel,footer{display:none !important}
+    #resultsPanel{display:block !important;border:0;box-shadow:none;background:#fff !important;color:#000 !important}
+    #resultsPanel *{color:#000 !important;background:transparent !important;border-color:#999 !important}
+}
+@media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{transition:none !important;animation:none !important}
+}
+@media (max-width:768px){ .progress-shell{top:72px} }
+</style>
 </head>
-<body class="antialiased leading-relaxed">
-    <header class="sticky top-0 z-[60] bg-slate-900 text-white border-b border-slate-800 shadow-lg">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-            <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-                <a href="index.html" class="flex items-center gap-3 group" aria-label="Return to Stronghold A3 home page">
-                    <span class="w-11 h-11 rounded-xl bg-blue-600 text-white grid place-items-center overflow-hidden shadow-inner border border-blue-400/20">
-                        <img src="assets/stronghold-a3-icon.png" alt="Stronghold A3" class="w-9 h-9 object-contain" onerror="this.remove(); this.nextElementSibling.classList.remove('hidden');">
-                        <span class="hidden font-black text-lg" aria-hidden="true">A3</span>
-                    </span>
-                    <span>
-                        <span class="block text-lg font-bold tracking-tight leading-none font-heading group-hover:text-cyan-300 transition-colors">STRONGHOLD A3</span>
-                        <span class="block text-xs text-slate-400 mt-1">Integrated School Safety &amp; Resilience</span>
-                    </span>
-                </a>
-                <nav class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs font-semibold text-slate-300" aria-label="Primary-navigation">
-                    <a href="#overview" class="hover:text-cyan-400 transition-colors">Overview</a>
-                    <a href="#video-briefing" class="hover:text-cyan-400 transition-colors">Briefing</a>
-                    <a href="#assessment" class="hover:text-cyan-400 transition-colors">Assessment</a>
-                    <a href="#resultsPanel" class="hover:text-cyan-400 transition-colors">Results</a>
-                    <a href="index.html" class="hover:text-cyan-400 transition-colors">Stronghold A3</a>
-                </nav>
+
+<body class="antialiased min-h-screen relative dark">
+
+<div class="overlay" id="overlay"></div>
+
+<!-- Mobile menu -->
+<nav class="mobile-menu glass-strong" id="mobileMenu">
+    <div class="flex justify-between items-center mb-6">
+        <img src="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png" alt="Stronghold A3" class="h-14 w-14 rounded-full object-cover">
+        <button onclick="closeMobileMenu()" class="text-white hover:text-yellow-400 transition" aria-label="Close menu"><i class="fas fa-times text-2xl"></i></button>
+    </div>
+    <ul class="space-y-4 text-sm">
+        <li><a href="index.html" class="block text-white hover:text-blue-400 transition">Home</a></li>
+        <li><a href="safe-schools-assessment.html" class="block text-yellow-400 font-bold">Safe School Assessment</a></li>
+        <li><a href="security-assessment.html" class="block text-white hover:text-blue-400 transition">Security Assessment</a></li>
+        <li><a href="compliance.html" class="block text-white hover:text-blue-400 transition">Compliance</a></li>
+        <li><a href="operational-continuity.html" class="block text-white hover:text-blue-400 transition">Operational Continuity</a></li>
+        <li><a href="tech-shield.html" class="block text-white hover:text-blue-400 transition">Tech Shield</a></li>
+        <li><a href="zero-liability.html" class="block text-white hover:text-blue-400 transition">Zero-Liability Promise</a></li>
+        <li><a href="contact.html" class="block text-white hover:text-blue-400 transition">Contact Us</a></li>
+        <li><a href="https://app.stronghold-a3.com" target="_blank" rel="noopener" class="block text-yellow-400 font-bold"><i class="fas fa-mobile-alt mr-2"></i>SMS App</a></li>
+    </ul>
+    <div class="mt-6 pt-6 border-t border-yellow-900/30">
+        <p class="text-sm text-gray-300">&copy; 2026 Stronghold A3 Security Agency</p>
+        <p class="text-xs text-gray-400 mt-1">DOLE DO-174 Compliant</p>
+    </div>
+</nav>
+
+<!-- Header -->
+<header class="sticky top-0 z-50 shadow-lg bg-[#0A1628]/90 backdrop-blur-md border-b border-blue-900/50">
+    <div class="container mx-auto px-4 py-4">
+        <div class="flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-3">
+                <img src="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png" alt="Stronghold A3 Logo" class="h-12 w-12 rounded-full object-cover border-2 border-blue-500">
+                <div class="hidden md:block">
+                    <h1 class="text-xl font-montserrat font-bold tracking-wide text-white">STRONGHOLD A3</h1>
+                    <p class="text-sm text-blue-400">Safe School Assessment</p>
+                </div>
+            </a>
+
+            <nav class="hidden md:flex items-center a3-nav-container">
+                <div class="a3-dropdown" id="anchored-dropdown">
+                    <button class="a3-dropdown-btn anchored-btn" onclick="toggleDropdown('anchored')">
+                        <i class="fas fa-anchor"></i> <span>Anchored</span> <i class="fas fa-chevron-down a3-chevron"></i>
+                    </button>
+                    <div class="a3-dropdown-menu">
+                        <div class="a3-dropdown-header">Stability &amp; Legitimacy</div>
+                        <a href="compliance.html" class="a3-dropdown-item"><i class="fas fa-gavel"></i> Compliance</a>
+                        <a href="audit-readiness.html" class="a3-dropdown-item"><i class="fas fa-file-alt"></i> Audit Readiness</a>
+                        <a href="trust-signals.html" class="a3-dropdown-item"><i class="fas fa-handshake"></i> Trust Signals</a>
+                    </div>
+                </div>
+
+                <div class="a3-dropdown" id="armored-dropdown">
+                    <button class="a3-dropdown-btn armored-btn" onclick="toggleDropdown('armored')">
+                        <i class="fas fa-shield-alt"></i> <span>Armored</span> <i class="fas fa-chevron-down a3-chevron"></i>
+                    </button>
+                    <div class="a3-dropdown-menu">
+                        <div class="a3-dropdown-header">Protection &amp; Resilience</div>
+                        <a href="operational-continuity.html" class="a3-dropdown-item"><i class="fas fa-bolt"></i> Continuity</a>
+                        <a href="guard-empowerment.html" class="a3-dropdown-item"><i class="fas fa-users"></i> Guard Welfare</a>
+                        <a href="tech-shield.html" class="a3-dropdown-item"><i class="fas fa-microchip"></i> Tech Shield</a>
+                        <a href="safe-schools-assessment.html" class="a3-dropdown-item current"><i class="fas fa-school-flag"></i> Safe School Assessment</a>
+                    </div>
+                </div>
+
+                <div class="a3-dropdown" id="assured-dropdown">
+                    <button class="a3-dropdown-btn assured-btn" onclick="toggleDropdown('assured')">
+                        <i class="fas fa-check-circle"></i> <span>Assured</span> <i class="fas fa-chevron-down a3-chevron"></i>
+                    </button>
+                    <div class="a3-dropdown-menu">
+                        <div class="a3-dropdown-header">Confidence &amp; Peace of Mind</div>
+                        <a href="zero-liability.html" class="a3-dropdown-item"><i class="fas fa-shield-alt"></i> Zero-Liability Promise</a>
+                        <a href="customer-transparency.html" class="a3-dropdown-item"><i class="fas fa-chart-line"></i> Customer Transparency</a>
+                        <a href="growth-partnerships.html" class="a3-dropdown-item"><i class="fas fa-rocket"></i> Growth &amp; Partnerships</a>
+                    </div>
+                </div>
+
+                <a href="https://app.stronghold-a3.com" target="_blank" rel="noopener" class="bg-yellow-400 text-[#0A1628] px-4 py-2 rounded-lg font-bold hover:bg-yellow-300 transition ml-4">SMS App</a>
+            </nav>
+
+            <button onclick="openMobileMenu()" class="md:hidden text-white hover:text-blue-400 transition" aria-label="Open menu">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- Progress rail -->
+<div class="progress-shell no-print">
+    <div class="container mx-auto px-4 py-3">
+        <div class="flex items-center justify-between gap-4 text-xs font-semibold">
+            <span id="progressLabel" class="text-white/70">Assessment not started</span>
+            <span id="answerCount" class="text-yellow-400 font-mono">0 / 32 answered</span>
+        </div>
+        <div class="progress-track mt-2" aria-hidden="true"><div id="progressBar" class="progress-fill"></div></div>
+    </div>
+</div>
+
+<main class="container mx-auto px-4 pb-20">
+
+<!-- ==================== HERO ==================== -->
+<section id="overview" class="py-12 md:py-16">
+    <div class="grid lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-7">
+            <div class="inline-flex items-center gap-2 glass-gold px-4 py-2 rounded-full mb-5">
+                <i class="fas fa-school-flag text-[#0A1628]"></i>
+                <span class="text-[#0A1628] font-montserrat font-bold text-xs">SAFE SCHOOLS ACT ALIGNMENT · RA 10121 DRRM</span>
+            </div>
+
+            <h2 class="text-3xl md:text-5xl font-bold text-white font-montserrat leading-tight">
+                How resilient is your school<br class="hidden md:block"> when the day goes wrong?
+            </h2>
+
+            <p class="text-lg text-white/75 mt-5 max-w-2xl">
+                An assessment on preparedness, physical security, safeguarding, digital risks, and continuity.
+                You get a resilience index, the specific gaps behind it, and practical recommendations.
+            </p>
+
+            <div class="glass-strong rounded-2xl p-6 mt-7 max-w-xl">
+                <p class="text-xs font-bold text-white/50 uppercase tracking-widest mb-2">The C-A-S-E resilience model</p>
+                <p class="font-montserrat text-3xl md:text-4xl font-black text-yellow-400 tracking-tight">C + A &minus; S &minus; E</p>
+                <p class="text-sm text-white/70 mt-2">Coping Capacity plus Adaptability, less Sensitivity and Exposure. Capability earns points; vulnerability spends them.</p>
+            </div>
+
+            <div class="flex flex-wrap gap-3 mt-7">
+                <a href="#assessment" class="btn btn-gold"><i class="fas fa-play"></i> Start the assessment</a>
+                <a href="#videoSection" class="btn btn-ghost"><i class="fas fa-video"></i> Watch the 2-minute briefing</a>
+            </div>
+
+            <div class="flex flex-wrap gap-4 mt-6 text-xs text-white/55">
+                <span><i class="fas fa-clock text-yellow-400 mr-2"></i>About 12 minutes</span>
+                <span><i class="fas fa-lock text-yellow-400 mr-2"></i>Scored in your browser</span>
+                <span><i class="fas fa-print text-yellow-400 mr-2"></i>Printable result</span>
             </div>
         </div>
-    </header>
 
-    <div class="progress-shell no-print">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
-            <div class="flex items-center justify-between gap-4 text-xs font-semibold">
-                <span id="progressLabel" class="text-slate-600">Assessment not started</span>
-                <span id="answerCount" class="text-slate-500">0 / 32 answered</span>
-            </div>
-            <div class="progress-track mt-2" aria-hidden="true">
-                <div id="progressBar" class="progress-fill"></div>
+        <div class="lg:col-span-5">
+            <div class="glass-strong rounded-2xl p-6">
+                <h3 class="text-lg font-bold text-white mb-4">What you receive</h3>
+                <ul class="space-y-3 text-sm text-white/75">
+                    <li class="flex gap-3"><i class="fas fa-gauge-high text-yellow-400 mt-1"></i><span>A resilience index from 0 to 100, with a plain-language reading of what that score means for your campus.</span></li>
+                    <li class="flex gap-3"><i class="fas fa-list-check text-yellow-400 mt-1"></i><span>Every weak control and every high-pressure vulnerability, named item by item.</span></li>
+                </ul>
+                <div class="mt-5 pt-5 border-t border-white/10">
+                    <p class="text-xs text-white/50">Serving 80+ institutions across Eastern Visayas under DOLE DO-174 and PNP-SOSIA licensing.</p>
+                </div>
             </div>
         </div>
     </div>
+</section>
 
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-        <section id="overview" class="stronghold-gradient rounded-2xl p-7 sm:p-10 text-white shadow-stronghold overflow-hidden relative">
-            <div class="absolute -right-24 -top-24 w-80 h-80 rounded-full bg-cyan-400/10 blur-3xl" aria-hidden="true"></div>
-            <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                <div class="lg:col-span-8">
-                    <div class="inline-flex items-center gap-2 bg-blue-500/20 border border-blue-400/30 px-3 py-1 rounded-full text-cyan-300 text-xs font-semibold">
-                        <span class="w-2 h-2 rounded-full bg-cyan-400" aria-hidden="true"></span>
-                        Safe Schools Act Alignment
-                    </div>
-                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mt-5">Safe School Resilience Assessment</h1>
-                    <p class="text-slate-300 text-sm sm:text-base max-w-3xl mt-4">A focused diagnostic for educational institutions to identify resilience strengths, vulnerabilities, and priority actions using Zero-Liability security principles.</p>
-                    <div class="mt-6 rounded-2xl border border-white/10 bg-white/5 p-5 max-w-2xl">
-                        <div class="text-cyan-300 text-xs font-extrabold uppercase tracking-widest">Stronghold A3 Resilience Model</div>
-                        <div class="font-heading text-3xl sm:text-4xl font-black mt-2 tracking-tight">C + A − S − E</div>
-                        <p class="text-slate-300 text-sm mt-2">Coping Capacity + Adaptability − Sensitivity − Exposure</p>
-                    </div>
-                </div>
-                <div class="lg:col-span-4">
-                    <div class="image-frame h-64 lg:h-80 border-white/10 bg-white/5">
-                        <img src="assets/Cover1.png" alt="Safe school resilience assessment visual" class="assessment-image" loading="eager">
-                    </div>
-                </div>
+<!-- ==================== VIDEO BRIEFING ==================== -->
+<section id="videoSection" class="py-10">
+    <div class="glass-strong rounded-2xl p-6 md:p-8">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-6">
+            <div>
+                <h2 class="text-2xl md:text-3xl font-bold text-yellow-400 font-montserrat">Safe School briefing</h2>
+                <p class="text-white/70 text-sm mt-2 max-w-2xl">Watch before you begin. The briefing walks through the four C-A-S-E domains, what each response level means, and how schools in Region VIII have used the result.</p>
             </div>
-        </section>
-
-        <section id="case-model" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            <article class="app-card overflow-hidden">
-                <div class="h-36 bg-slate-100"><img src="assets/2.png" alt="Coping Capacity" class="assessment-image" loading="lazy"></div>
-                <div class="p-5">
-                    <div class="flex items-center justify-between"><span class="text-3xl font-black text-blue-600 font-heading">C</span><i class="fa-solid fa-shield-halved text-blue-600"></i></div>
-                    <h2 class="font-heading font-bold text-lg mt-2">Coping Capacity</h2>
-                    <p class="text-xs text-slate-600 mt-1">Prepare, respond, absorb disruption, and maintain essential functions.</p>
-                </div>
-            </article>
-            <article class="app-card overflow-hidden">
-                <div class="h-36 bg-slate-100"><img src="assets/3.png" alt="Adaptability" class="assessment-image" loading="lazy"></div>
-                <div class="p-5">
-                    <div class="flex items-center justify-between"><span class="text-3xl font-black text-cyan-600 font-heading">A</span><i class="fa-solid fa-arrows-rotate text-cyan-600"></i></div>
-                    <h2 class="font-heading font-bold text-lg mt-2">Adaptability</h2>
-                    <p class="text-xs text-slate-600 mt-1">Learn, adjust, improve controls, and adapt to changing risks.</p>
-                </div>
-            </article>
-            <article class="app-card overflow-hidden">
-                <div class="h-36 bg-slate-100"><img src="assets/4.png" alt="Sensitivity" class="assessment-image" loading="lazy"></div>
-                <div class="p-5">
-                    <div class="flex items-center justify-between"><span class="text-3xl font-black text-amber-500 font-heading">S</span><i class="fa-solid fa-triangle-exclamation text-amber-500"></i></div>
-                    <h2 class="font-heading font-bold text-lg mt-2">Sensitivity</h2>
-                    <p class="text-xs text-slate-600 mt-1">Identify conditions that can increase the impact of disruption.</p>
-                </div>
-            </article>
-            <article class="app-card overflow-hidden">
-                <div class="h-36 bg-slate-100"><img src="assets/5.png" alt="Exposure" class="assessment-image" loading="lazy"></div>
-                <div class="p-5">
-                    <div class="flex items-center justify-between"><span class="text-3xl font-black text-red-600 font-heading">E</span><i class="fa-solid fa-location-crosshairs text-red-600"></i></div>
-                    <h2 class="font-heading font-bold text-lg mt-2">Exposure</h2>
-                    <p class="text-xs text-slate-600 mt-1">Identify hazards, threats, dependencies, and conditions that increase risk.</p>
-                </div>
-            </article>
-        </section>
-
-        <!-- NEW: Video Briefing Section -->
-        <section id="video-briefing" class="app-card p-6 sm:p-8 overflow-hidden">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-                <div class="lg:col-span-5">
-                    <span class="text-blue-600 text-xs font-extrabold uppercase tracking-widest">Video Briefing</span>
-                    <h2 class="font-heading text-2xl font-bold text-slate-900 mt-1">Safe School Resilience in Action</h2>
-                    <p class="text-sm text-slate-600 mt-3">Watch our briefing on how the C-A-S-E model integrates with physical security, DRRM, and zero-liability frameworks to protect educational institutions in Eastern Visayas.</p>
-                </div>
-                <div class="lg:col-span-7">
-                    <div class="image-frame aspect-video bg-slate-900 border-slate-200">
-                        <iframe 
-                            src="https://drive.google.com/file/d/198jYEilCLPfnzOqujE-ssIxLHJuVTEt4O6-ZT0561tw/preview" 
-                            class="w-full h-full rounded-lg" 
-                            allow="autoplay; encrypted-media" 
-                            allowfullscreen
-                            title="Safe School-SH3 Briefing Video">
-                        </iframe>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="app-card p-6 sm:p-8">
-            <span class="text-blue-600 text-xs font-extrabold uppercase tracking-widest">Safe Schools Act Alignment</span>
-            <h2 class="font-heading text-2xl font-bold text-slate-900 mt-1">A school safety lens built around readiness and resilience</h2>
-            <p class="text-sm text-slate-600 mt-3 max-w-4xl">The assessment is structured around safe-school priorities including preparedness, emergency response, physical safety, safeguarding, digital risks, continuity, and institutional improvement.</p>
-        </section>
-
-        <section id="assessment" class="app-card overflow-hidden">
-            <div id="assessmentIntroduction" class="p-6 sm:p-8">
-                <span class="text-blue-600 text-xs font-extrabold uppercase tracking-widest">Assessment</span>
-                <h2 class="font-heading text-2xl sm:text-3xl font-bold text-slate-900 mt-1">One step at a time</h2>
-                <button id="startAssessmentButton" type="button" class="mt-6 inline-flex items-center gap-2 bg-blue-600 text-white font-bold px-6 py-3 rounded-xl shadow-md hover:bg-blue-700 transition-colors">Begin <i class="fa-solid fa-arrow-right"></i></button>
-            </div>
-
-            <div id="consentStep" class="p-6 sm:p-8" hidden>
-                <span class="text-blue-600 text-xs font-extrabold uppercase tracking-widest">Step 1 of 5</span>
-                <h3 class="font-heading text-2xl font-bold text-slate-900 mt-1">Privacy, confidentiality &amp; consent</h3>
-                <label for="consentCheckbox" class="mt-6 flex items-start gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4 cursor-pointer">
-                    <input id="consentCheckbox" type="checkbox" class="mt-1 w-4 h-4 accent-blue-600">
-                    <span class="text-sm text-slate-700">I have read and understood the privacy and confidentiality notice. I consent to providing responses.</span>
-                </label>
-                <button id="consentContinueButton" type="button" class="mt-5 inline-flex items-center gap-2 bg-slate-900 text-white font-bold px-6 py-3 rounded-xl hover:bg-slate-800 transition-colors">Continue <i class="fa-solid fa-arrow-right"></i></button>
-            </div>
-
-            <div id="contextStep" class="p-6 sm:p-8 bg-slate-50 border-t border-slate-200" hidden>
-                <span class="text-blue-600 text-xs font-extrabold uppercase tracking-widest">Step 2 of 5</span>
-                <h3 class="font-heading text-2xl font-bold text-slate-900 mt-1">Assessment context</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-                    <label class="block"><span class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">School / Institution</span><input id="schoolName" type="text" class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none" placeholder="Optional"></label>
-                    <label class="block"><span class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Campus / Site</span><input id="campusName" type="text" class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none" placeholder="Optional"></label>
-                    <label class="block"><span class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Respondent Role</span><select id="respondentRole" class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none"><option value="">Optional</option><option value="School Administrator">School Administrator</option><option value="Safety / Security Lead">Safety / Security Lead</option></select></label>
-                </div>
-                <button id="beginCaseButton" type="button" class="mt-6 inline-flex items-center gap-2 bg-blue-600 text-white font-bold px-6 py-3 rounded-xl shadow-md hover:bg-blue-700 transition-colors">Begin C-A-S-E <i class="fa-solid fa-compass"></i></button>
-            </div>
-
-            <div id="domainStep" class="p-6 sm:p-8" hidden>
-                <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5 border-b border-slate-200 pb-5">
-                    <div>
-                        <span id="domainStepLabel" class="text-blue-600 text-xs font-extrabold uppercase tracking-widest">Step 3 of 5</span>
-                        <h3 id="domainTitle" class="font-heading text-2xl font-bold text-slate-900 mt-1"></h3>
-                        <p id="domainDescription" class="text-sm text-slate-600 mt-1 max-w-3xl"></p>
-                    </div>
-                    <div class="rounded-xl bg-slate-100 px-4 py-3 text-center min-w-40">
-                        <div id="domainProgressText" class="text-xs font-bold text-slate-500"></div>
-                        <div id="domainAnswerText" class="text-sm font-bold text-slate-800 mt-1"></div>
-                    </div>
-                </div>
-                <div id="domainStepper" class="grid grid-cols-4 gap-2 mt-5"></div>
-                <form id="domainForm" class="mt-6 space-y-4" novalidate>
-                    <div id="domainQuestions"></div>
-                    <div class="pt-5 border-t border-slate-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-                        <button id="previousDomainButton" type="button" class="inline-flex items-center justify-center gap-2 border border-slate-300 text-slate-700 font-bold px-5 py-3 rounded-xl hover:bg-slate-50 transition-colors"><i class="fa-solid fa-arrow-left"></i> Previous</button>
-                        <button id="nextDomainButton" type="button" class="inline-flex items-center justify-center gap-2 bg-blue-600 text-white font-bold px-6 py-3 rounded-xl shadow-md hover:bg-blue-700 transition-colors sm:ml-auto">Next domain <i class="fa-solid fa-arrow-right"></i></button>
-                    </div>
-                </form>
-            </div>
-
-            <div id="reviewStep" class="p-6 sm:p-8" hidden>
-                <span class="text-emerald-600 text-xs font-extrabold uppercase tracking-widest">Step 4 of 5</span>
-                <h3 class="font-heading text-2xl font-bold text-slate-900 mt-1">C-A-S-E complete</h3>
-                <button id="generateResultButton" type="button" class="mt-6 inline-flex items-center gap-2 bg-blue-600 text-white font-bold px-6 py-3 rounded-xl shadow-md hover:bg-blue-700 transition-colors">Generate resilience profile <i class="fa-solid fa-chart-column"></i></button>
-            </div>
-        </section>
-
-        <section id="resultsPanel" class="app-card overflow-hidden" hidden>
-            <div class="stronghold-gradient text-white p-7 sm:p-9">
-                <span class="text-cyan-300 text-xs font-extrabold uppercase tracking-widest">Step 5 of 5 · Assessment Result</span>
-                <h2 class="font-heading text-2xl sm:text-3xl font-bold mt-1">C-A-S-E Resilience Profile</h2>
-                <p id="resultInstitution" class="text-slate-300 text-sm mt-2"></p>
-            </div>
-            <div class="p-6 sm:p-8">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                    <div class="lg:col-span-4 flex justify-center">
-                        <div id="scoreRing" class="score_ring" aria-label="Overall resilience index">
-                            <div class="score-ring-content text-center">
-                                <div id="overallScore" class="font-heading text-4xl font-black text-slate-900">0%</div>
-                                <div class="text-xs font-semibold text-slate-500">Resilience Index</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="lg:col-span-8">
-                        <span id="readinessBadge" class="px-3 py-1 rounded-full text-xs font-bold"></span>
-                        <div class="mt-4 rounded-xl bg-slate-50 border border-slate-200 p-4">
-                            <p class="text-xs font-extrabold uppercase tracking-widest text-blue-600">Resilience Formula</p>
-                            <p class="font-heading text-2xl font-black text-slate-900 mt-1">C + A − S − E</p>
-                            <p id="formulaDetail" class="text-xs text-slate-500 mt-2"></p>
-                        </div>
-                        <h3 class="font-heading text-xl font-bold text-slate-900 mt-5">Priority areas</h3>
-                        <div id="priorityAreas" class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-3"></div>
-                    </div>
-                </div>
-
-                <div class="mt-8 rounded-2xl bg-slate-50 border border-slate-200 p-6">
-                    <span class="text-blue-600 text-xs font-extrabold uppercase tracking-widest">Next Actions & Stronghold A3 Solutions</span>
-                    <h3 class="font-heading text-xl font-bold text-slate-900 mt-1">Strategic Recommendations</h3>
-                    <div id="actionPlan" class="mt-4 space-y-3"></div>
-                </div>
-
-                <div class="mt-8 flex flex-wrap gap-3 no-print">
-                    <button id="printResultButton" type="button" class="inline-flex items-center gap-2 bg-slate-900 text-white font-bold px-5 py-3 rounded-xl hover:bg-slate-800 transition-colors"><i class="fa-solid fa-print"></i> Print result</button>
-                    <button id="restartAssessmentButton" type="button" class="inline-flex items-center gap-2 border border-slate-300 text-slate-700 font-bold px-5 py-3 rounded-xl hover:bg-slate-50 transition-colors"><i class="fa-solid fa-rotate-left"></i> Start again</button>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="bg-slate-900 text-slate-400 border-t border-slate-800 py-8 mt-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-2">
-            <p class="font-semibold text-slate-300">Stronghold A3 — Safe School Resilience Assessment</p>
-            <p class="text-xs">&copy; 2026 Stronghold A3. All Rights Reserved.</p>
+            <a href="https://docs.google.com/videos/d/198jYEilCLPfnzOqujE-ssIxLHJuVTEt4O6-ZT0561tw/play?usp=sharing" target="_blank" rel="noopener" class="btn btn-ghost shrink-0">
+                <i class="fas fa-arrow-up-right-from-square"></i> Open teh Video
+            </a>
         </div>
-    </footer>
 
-    <script>
-        const assessmentDomains = [
-            {
-                id: "coping", letter: "C", title: "Coping Capacity", icon: "fa-shield-halved", accent: "blue",
-                description: "The school's ability to prepare, respond, absorb disruption, and maintain essential functions.",
-                questions: [
-                    "Emergency response and evacuation procedures are current and accessible.",
-                    "Staff understand their assigned roles during emergencies.",
-                    "Emergency communication channels are tested and have backup methods.",
-                    "Critical contacts for responders and key school personnel are maintained.",
-                    "The school has continuity arrangements for major disruptions.",
-                    "Drills and exercises are documented, reviewed, and followed by corrective action.",
-                    "Physical security personnel are deployed according to a risk-based schedule and maintain clear emergency roles.",
-                    "The school utilizes redundant communication systems (e.g., 3-Bridge Architecture: Cloud, SMS Gateway, Radio) to maintain contact during network outages."
-                ]
-            },
-            {
-                id: "adaptability", letter: "A", title: "Adaptability", icon: "fa-arrows-rotate", accent: "cyan",
-                description: "The school's ability to learn, adjust, improve controls, and adapt to changing risks.",
-                questions: [
-                    "Safety plans are reviewed when hazards, operations, facilities, or community conditions change.",
-                    "Lessons from incidents, drills, exercises, and near misses inform improvements.",
-                    "The school can adjust procedures when an emerging threat or disruption occurs.",
-                    "Staff receive updated guidance when safety roles or procedures change.",
-                    "Corrective actions have owners, timelines, and verification of closure.",
-                    "The school periodically tests whether existing controls still work as intended.",
-                    "Security personnel and staff receive regular, updated training on local hazards (e.g., typhoons) and evolving safeguarding protocols.",
-                    "Post-incident reviews and guard tour data are actively used to adjust security patrol routes and access controls."
-                ]
-            },
-            {
-                id: "sensitivity", letter: "S", title: "Sensitivity", icon: "fa-triangle-exclamation", accent: "amber",
-                description: "The conditions that can increase the impact of hazards or disruptions on people, systems, and school functions.",
-                questions: [
-                    "The school identifies people and groups that may be disproportionately affected by emergencies.",
-                    "Safeguarding, bullying, harassment, and behavioral risks have defined response pathways.",
-                    "Critical school functions and dependencies are identified and prioritized.",
-                    "Accessibility and additional support needs are considered in emergency planning.",
-                    "Student welfare and sensitive information are handled through appropriate safeguards.",
-                    "Warning signs and emerging vulnerabilities have a clear escalation pathway.",
-                    "Protocols are in place to protect vulnerable populations and ensure strict adherence to Data Privacy Act (RA 10173) for incident logs.",
-                    "Safeguarding pathways integrate with local community and DRRM resources for rapid behavioral or welfare interventions."
-                ]
-            },
-            {
-                id: "exposure", letter: "E", title: "Exposure", icon: "fa-location-crosshairs", accent: "red",
-                description: "The hazards, threats, locations, dependencies, and conditions to which the school is exposed.",
-                questions: [
-                    "Perimeters, gates, blind spots, lighting, and access routes are routinely inspected.",
-                    "Visitor, contractor, delivery, and vehicle access is controlled.",
-                    "Physical hazards in classrooms, laboratories, playgrounds, and common areas are identified.",
-                    "Relevant natural, technological, human-caused, and community hazards are identified.",
-                    "Digital systems are assessed for cyber threats and service disruption.",
-                    "High-risk exposures are documented, prioritized, and assigned for mitigation.",
-                    "Physical perimeters, blind spots, and access points are monitored using a hybrid approach (physical guards + offline-first Tech Shield/CCTV).",
-                    "The facility's exposure to regional disruptions is mitigated by pre-positioned emergency supplies and localized contingency planning."
-                ]
-            }
-        ];
+        <div class="video-frame">
+            <iframe
+                src="https://docs.google.com/videos/d/198jYEilCLPfnzOqujE-ssIxLHJuVTEt4O6-ZT0561tw/preview"
+                title="Safe School briefing video — Stronghold A3"
+                allow="autoplay; fullscreen"
+                allowfullscreen
+                loading="lazy"></iframe>
+        </div>
 
-        const responseOptions = [
-            { value: 0, label: "Not in place", description: "No consistent control or practice." },
-            { value: 1, label: "Developing", description: "Partly implemented or inconsistent." },
-            { value: 2, label: "Established", description: "Implemented and generally practiced." },
-            { value: 3, label: "Strong", description: "Documented, practiced, tested, and improved." }
-        ];
+        <p class="text-xs text-white/45 mt-4">
+            <i class="fas fa-circle-info mr-1 text-yellow-400"></i>
+            The video plays for anyone the Google Video file is shared with. If the player stays blank, the file's sharing is still restricted — set it to "Anyone with the link" in Google Drive, or use the button above to open it directly.
+        </p>
+    </div>
+</section>
 
-        const assessmentResponses = {};
-        let currentDomainIndex = 0;
+<!-- ==================== C-A-S-E MODEL ==================== -->
+<section id="caseModel" class="py-10">
+    <div class="text-center mb-8">
+        <h2 class="text-2xl md:text-3xl font-bold text-yellow-400 font-montserrat">Four domains, one equation</h2>
+        <p class="text-white/70 max-w-2xl mx-auto mt-3 text-sm">Two domains measure what your school can do. Two measure what your school is carrying. The gap between them is resilience.</p>
+    </div>
 
-        function getTotalQuestionCount() { return assessmentDomains.reduce((t, d) => t + d.questions.length, 0); }
-        function getAnsweredQuestionCount() { return Object.keys(assessmentResponses).length; }
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <article class="domain-tile tile-c">
+            <div class="flex items-start justify-between"><span class="domain-letter">C</span><i class="fas fa-shield-halved text-[#60A5FA] text-lg"></i></div>
+            <h3 class="font-bold text-white text-lg mt-3">Coping Capacity</h3>
+            <p class="text-xs text-white/60 mt-2">What the school can do on the day: guards on post, plans that exist, comms that reach people, functions that survive.</p>
+            <p class="text-[11px] text-[#60A5FA] mt-3 font-semibold">Higher is better · adds to resilience</p>
+        </article>
 
-        function updateProgress() {
-            const total = getTotalQuestionCount();
-            const answered = getAnsweredQuestionCount();
-            const pct = Math.round((answered / total) * 100);
-            document.getElementById("answerCount").textContent = `${answered} / ${total} answered`;
-            document.getElementById("progressBar").style.width = `${pct}%`;
-            document.getElementById("progressLabel").textContent = answered === 0 ? "Assessment not started" : `Progress: ${pct}%`;
-        }
+        <article class="domain-tile tile-a">
+            <div class="flex items-start justify-between"><span class="domain-letter">A</span><i class="fas fa-arrows-rotate text-[#34D399] text-lg"></i></div>
+            <h3 class="font-bold text-white text-lg mt-3">Adaptability</h3>
+            <p class="text-xs text-white/60 mt-2">Whether lessons stick: reviews, corrective actions with owners, updated post orders, tested controls.</p>
+            <p class="text-[11px] text-[#34D399] mt-3 font-semibold">Higher is better · adds to resilience</p>
+        </article>
 
-        function showAssessmentStep(stepId) {
-            ["assessmentIntroduction", "consentStep", "contextStep", "domainStep", "reviewStep"].forEach(s => {
-                document.getElementById(s).hidden = s !== stepId;
-            });
-        }
+        <article class="domain-tile tile-s">
+            <div class="flex items-start justify-between"><span class="domain-letter">S</span><i class="fas fa-triangle-exclamation text-[#FBBF24] text-lg"></i></div>
+            <h3 class="font-bold text-white text-lg mt-3">Sensitivity</h3>
+            <p class="text-xs text-white/60 mt-2">Conditions that magnify harm: single points of failure, learners needing support, records in one place, no escalation path.</p>
+            <p class="text-[11px] text-[#FBBF24] mt-3 font-semibold">Higher is worse · subtracts from resilience</p>
+        </article>
 
-        function isDomainComplete(domain) {
-            return domain.questions.every((q, i) => assessmentResponses[`${domain.id}-${i}`] !== undefined);
-        }
+        <article class="domain-tile tile-e">
+            <div class="flex items-start justify-between"><span class="domain-letter">E</span><i class="fas fa-location-crosshairs text-[#F87171] text-lg"></i></div>
+            <h3 class="font-bold text-white text-lg mt-3">Exposure</h3>
+            <p class="text-xs text-white/60 mt-2">What the campus is up against: open perimeters, unscreened entry, flood and storm geography, cyber and cash risk.</p>
+            <p class="text-[11px] text-[#F87171] mt-3 font-semibold">Higher is worse · subtracts from resilience</p>
+        </article>
+    </div>
 
-        function renderDomainStepper() {
-            const el = document.getElementById("domainStepper");
-            el.innerHTML = assessmentDomains.map((d, i) => {
-                const cls = i === currentDomainIndex ? "active" : (isDomainComplete(d) ? "complete" : "");
-                return `<button type="button" class="domain-step ${cls} rounded-xl p-3 text-center" data-domain-index="${i}"><span class="block text-sm font-black">${d.letter}</span><span class="block text-[10px] font-semibold mt-1">${d.title}</span></button>`;
-            }).join("");
-            el.querySelectorAll("[data-domain-index]").forEach(btn => {
-                btn.addEventListener("click", () => {
-                    const req = Number(btn.dataset.domainIndex);
-                    if (req <= currentDomainIndex || assessmentDomains.slice(0, req).every(isDomainComplete)) {
-                        currentDomainIndex = req;
-                        renderCurrentDomain();
-                    }
-                });
-            });
-        }
+    <div class="glass rounded-2xl p-5 mt-6">
+        <p class="text-sm text-white/70">
+            <i class="fas fa-square-root-variable text-yellow-400 mr-2"></i>
+            C and A are answered on a capability scale, where 3 means documented, practised and tested. S and E are answered on a pressure scale, where 3 means the condition is present and unmanaged. That is why answering honestly about a weakness lowers the index rather than raising it.
+        </p>
+    </div>
+</section>
 
-        function updateCurrentDomainProgress() {
-            const d = assessmentDomains[currentDomainIndex];
-            const ans = d.questions.filter((q, i) => assessmentResponses[`${d.id}-${i}`] !== undefined).length;
-            document.getElementById("domainProgressText").textContent = `Domain ${currentDomainIndex + 1} of 4`;
-            document.getElementById("domainAnswerText").textContent = `${ans} / ${d.questions.length} answered`;
-        }
+<!-- ==================== ASSESSMENT ==================== -->
+<section id="assessment" class="py-10">
+<div class="glass-strong rounded-2xl overflow-hidden">
 
-        function handleResponseSelection(e) {
-            const input = e.target;
-            const qId = input.dataset.questionId;
-            assessmentResponses[qId] = Number(input.value);
-            document.querySelectorAll(`input[data-question-id="${qId}"]`).forEach(i => i.closest(".response-card").classList.remove("selected"));
-            input.closest(".response-card").classList.add("selected");
-            updateCurrentDomainProgress(); updateProgress(); renderDomainStepper();
-        }
+    <!-- Step 0 · Intro -->
+    <div id="introStep" class="p-6 md:p-9">
+        <h2 class="text-2xl md:text-3xl font-bold text-white font-montserrat">Before you begin</h2>
+        <p class="text-white/70 text-sm mt-3 max-w-3xl">One step is shown at a time. Answer for the campus as it operates today, not as the plan describes it. If a control exists on paper but nobody has practised it, that is Developing, not Established.</p>
 
-        function renderCurrentDomain() {
-            const d = assessmentDomains[currentDomainIndex];
-            document.getElementById("domainStepLabel").textContent = `Step 3 of 5 · Domain ${currentDomainIndex + 1}`;
-            document.getElementById("domainTitle").textContent = `${d.letter} — ${d.title}`;
-            document.getElementById("domainDescription").textContent = d.description;
-            const qc = document.getElementById("domainQuestions");
-            qc.innerHTML = d.questions.map((q, i) => {
-                const qId = `${d.id}-${i}`;
-                const sv = assessmentResponses[qId];
-                return `<fieldset class="rounded-xl border border-slate-200 p-4 sm:p-5"><legend class="w-full"><span class="text-xs font-black text-slate-400 mr-2">${String(i + 1).padStart(2, "0")}</span><span class="text-sm font-semibold text-slate-800">${q}</span></legend><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-4">${responseOptions.map(o => `<label class="response-card ${sv === o.value ? 'selected' : ''}" tabindex="0"><input type="radio" name="${qId}" value="${o.value}" data-question-id="${qId}" ${sv === o.value ? 'checked' : ''}><span class="block text-sm font-bold text-slate-800">${o.value} — ${o.label}</span><span class="block text-xs text-slate-500 mt-1">${o.description}</span></label>`).join("")}</div></fieldset>`;
-            }).join("");
-            qc.querySelectorAll("input[type='radio']").forEach(i => i.addEventListener("change", handleResponseSelection));
-            updateCurrentDomainProgress(); renderDomainStepper();
-            document.getElementById("nextDomainButton").innerHTML = currentDomainIndex === 3 ? `Review <i class="fa-solid fa-arrow-right"></i>` : `Next domain <i class="fa-solid fa-arrow-right"></i>`;
-        }
+        <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-3 mt-7">
+            <div class="glass rounded-xl p-4"><span class="text-xs font-black text-yellow-400 font-mono">01</span><p class="font-bold text-sm mt-1 text-white">Consent</p></div>
+            <div class="glass rounded-xl p-4"><span class="text-xs font-black text-yellow-400 font-mono">02</span><p class="font-bold text-sm mt-1 text-white">Context</p></div>
+            <div class="glass rounded-xl p-4"><span class="text-xs font-black text-yellow-400 font-mono">03</span><p class="font-bold text-sm mt-1 text-white">C-A-S-E</p></div>
+            <div class="glass rounded-xl p-4"><span class="text-xs font-black text-yellow-400 font-mono">04</span><p class="font-bold text-sm mt-1 text-white">Review</p></div>
+            <div class="glass rounded-xl p-4"><span class="text-xs font-black text-yellow-400 font-mono">05</span><p class="font-bold text-sm mt-1 text-white">Result</p></div>
+        </div>
 
-        function moveToNextDomain() {
-            if (!isDomainComplete(assessmentDomains[currentDomainIndex])) return alert("Please answer every item.");
-            if (currentDomainIndex === 3) { showAssessmentStep("reviewStep"); return; }
-            currentDomainIndex++; renderCurrentDomain();
-        }
+        <div class="glass-blue rounded-xl p-4 mt-7 flex items-start gap-3">
+            <i class="fas fa-lock text-blue-300 mt-1"></i>
+            <div>
+                <p class="text-sm font-bold text-white">Keep it institutional.</p>
+                <p class="text-xs text-white/70 mt-1">Do not enter learner or staff names, identification numbers, health records, passwords, or incident narratives. Nothing here needs them.</p>
+            </div>
+        </div>
 
-        function moveToPreviousDomain() {
-            if (currentDomainIndex === 0) { showAssessmentStep("contextStep"); return; }
-            currentDomainIndex--; renderCurrentDomain();
-        }
+        <button id="startAssessmentButton" type="button" class="btn btn-gold mt-7">Begin <i class="fas fa-arrow-right"></i></button>
+    </div>
 
-        function calculateRawCaseScore(s) { return s.coping + s.adaptability - s.sensitivity - s.exposure; }
-        function normalizeCaseScore(raw) { return Math.max(0, Math.min(100, Math.round(((raw - -36) / 72) * 100))); }
-        function calculateDomainPercentage(d) {
-            const max = d.questions.length * 3;
-            const act = d.questions.reduce((t, q, i) => t + assessmentResponses[`${d.id}-${i}`], 0);
-            return { actualScore: act, maximumScore: max, percentage: Math.round((act / max) * 100) };
-        }
-        function getReadinessStatus(idx) {
-            if (idx >= 80) return { label: "Strong resilience", classes: "bg-emerald-100 text-emerald-700" };
-            if (idx >= 60) return { label: "Established resilience", classes: "bg-blue-100 text-blue-700" };
-            if (idx >= 40) return { label: "Developing resilience", classes: "bg-amber-100 text-amber-700" };
-            return { label: "Priority improvement", classes: "bg-red-100 text-red-700" };
-        }
+    <!-- Step 1 · Consent -->
+    <div id="consentStep" class="p-6 md:p-9" hidden>
+        <p class="text-yellow-400 text-xs font-black uppercase tracking-widest font-mono">Step 1 of 5</p>
+        <h3 class="text-2xl font-bold text-white font-montserrat mt-2">Privacy, confidentiality and consent</h3>
+        <p class="text-white/70 text-sm mt-2 max-w-3xl">Read this before continuing. Stronghold A3 operates under the Data Privacy Act (RA 10173) and applies the same discipline to this tool.</p>
 
-        const strongholdRecommendations = {
-            coping: { title: "Strengthen Coping Capacity", solutions: ["Deploy DOLE/PNP-compliant physical security personnel with clear emergency roles.", "Implement Stronghold A3's 3-Bridge Communication System (Cloud SMS, SMS Gateway, Radio Mesh) to ensure zero data loss during outages.", "Establish automated digital guard tours and incident reporting via Offline-First Cloud SMS."] },
-            adaptability: { title: "Enhance Adaptability", solutions: ["Utilize post-incident reviews and digital audit logs to continuously adjust patrol routes.", "Enroll staff and guards in localized DRRM and safeguarding training programs.", "Adopt dynamic contract structuring and RACI protocols to eliminate operational bottlenecks."] },
-            sensitivity: { title: "Reduce Sensitivity", solutions: ["Implement Data Privacy Act (RA 10173) encrypted digital vaults for student welfare logs.", "Integrate safeguarding pathways with local Tacloban community resources and Bayanihan relief packs.", "Conduct quarterly 'Mock Audit Readiness' stress tests to identify institutional dependencies."] },
-            exposure: { title: "Mitigate Exposure", solutions: ["Upgrade perimeter defense using our Hybrid Security Leapfrog model (Physical Guarding + Tech Shield/CCTV).", "Pre-position emergency supplies utilizing deep local geography knowledge.", "Secure 100% legal compliance (DOLE DO-174) to eliminate co-employer liability and financial exposure."] }
-        };
+        <div class="grid md:grid-cols-3 gap-4 mt-6">
+            <article class="glass rounded-xl p-5">
+                <i class="fas fa-bullseye text-blue-400 text-lg"></i>
+                <h4 class="font-bold text-white mt-3">Purpose</h4>
+                <p class="text-xs text-white/60 mt-2">Responses produce your resilience profile and the improvement priorities that follow from it. Nothing else.</p>
+            </article>
+            <article class="glass rounded-xl p-5">
+                <i class="fas fa-user-lock text-yellow-400 text-lg"></i>
+                <h4 class="font-bold text-white mt-3">Confidentiality</h4>
+                <p class="text-xs text-white/60 mt-2">Answer at institutional level. Individual cases, learner records and personnel matters stay out of this form.</p>
+            </article>
+            <article class="glass rounded-xl p-5">
+                <i class="fas fa-database text-green-400 text-lg"></i>
+                <h4 class="font-bold text-white mt-3">Data minimisation</h4>
+                <p class="text-xs text-white/60 mt-2">Scoring runs entirely in your browser. This page sends nothing to a server and stores nothing after you close it.</p>
+            </article>
+        </div>
 
-        function generateResult() {
-            if (!assessmentDomains.every(isDomainComplete)) return alert("Please complete all domains.");
-            const calc = assessmentDomains.map(d => ({ ...d, ...calculateDomainPercentage(d) }));
-            const scores = { coping: calc.find(d => d.id === "coping").actualScore, adaptability: calc.find(d => d.id === "adaptability").actualScore, sensitivity: calc.find(d => d.id === "sensitivity").actualScore, exposure: calc.find(d => d.id === "exposure").actualScore };
-            const raw = calculateRawCaseScore(scores);
-            const idx = normalizeCaseScore(raw);
-            const status = getReadinessStatus(idx);
-            const priorities = [...calc].sort((a, b) => a.percentage - b.percentage).slice(0, 3);
+        <label for="consentCheckbox" class="mt-6 flex items-start gap-3 glass rounded-xl p-4 cursor-pointer">
+            <input id="consentCheckbox" type="checkbox" class="mt-1 w-4 h-4 accent-yellow-400">
+            <span class="text-sm text-white/80">I have read the privacy and confidentiality notice, I understand the purpose of this assessment, and I consent to providing responses for it.</span>
+        </label>
 
-            document.getElementById("resultInstitution").textContent = document.getElementById("schoolName").value || "School / Institution";
-            document.getElementById("overallScore").textContent = `${idx}%`;
-            document.getElementById("scoreRing").style.setProperty("--score-angle", `${idx * 3.6}deg`);
-            const badge = document.getElementById("readinessBadge");
-            badge.textContent = status.label; badge.className = `px-3 py-1 rounded-full text-xs font-bold ${status.classes}`;
-            document.getElementById("formulaDetail").textContent = `C ${scores.coping} + A ${scores.adaptability} − S ${scores.sensitivity} − E ${scores.exposure} (Raw: ${raw})`;
+        <div class="flex flex-wrap gap-3 mt-6">
+            <button id="consentBackButton" type="button" class="btn btn-ghost"><i class="fas fa-arrow-left"></i> Back</button>
+            <button id="consentContinueButton" type="button" class="btn btn-primary">Continue <i class="fas fa-arrow-right"></i></button>
+        </div>
+    </div>
 
-            document.getElementById("priorityAreas").innerHTML = priorities.map(d => `<div class="rounded-xl border border-slate-200 p-4"><div class="flex items-center gap-3"><span class="w-9 h-9 rounded-lg bg-slate-100 grid place-items-center font-black text-slate-700">${d.letter}</span><div><p class="text-sm font-bold text-slate-800">${d.title}</p><p class="text-xs text-slate-500">${d.percentage}% strength</p></div></div></div>`).join("");
+    <!-- Step 2 · Context -->
+    <div id="contextStep" class="p-6 md:p-9" hidden>
+        <p class="text-yellow-400 text-xs font-black uppercase tracking-widest font-mono">Step 2 of 5</p>
+        <h3 class="text-2xl font-bold text-white font-montserrat mt-2">Assessment context</h3>
+        <p class="text-white/70 text-sm mt-2">Optional, and used only to label your printed result.</p>
 
-            document.getElementById("actionPlan").innerHTML = priorities.map((d, i) => {
-                const rec = strongholdRecommendations[d.id];
-                return `<div class="flex flex-col gap-3 rounded-xl border border-slate-200 bg-white p-5">
-                    <div class="flex items-center gap-3"><span class="w-8 h-8 shrink-0 rounded-lg bg-blue-50 text-blue-700 grid place-items-center text-sm font-black">${i + 1}</span><p class="text-md font-bold text-slate-800">${rec.title}</p></div>
-                    <ul class="space-y-2 mt-1">${rec.solutions.map(s => `<li class="flex items-start gap-2 text-xs text-slate-600"><i class="fa-solid fa-shield-halved text-brand-blue mt-0.5"></i><span>${s}</span></li>`).join("")}</ul>
-                    <div class="mt-2 pt-2 border-t border-slate-100"><p class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Stronghold A3 Strategic Alignment</p><p class="text-xs text-slate-500 mt-1 italic">Supports our "Zero-Liability" promise and "Armored by Resilience" operational pillars.</p></div>
-                </div>`;
-            }).join("");
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+            <label class="block">
+                <span class="block text-xs font-bold text-white/60 mb-2">School or institution</span>
+                <input id="schoolName" type="text" autocomplete="organization" maxlength="120" placeholder="Optional" class="w-full glass rounded-lg px-4 py-3 text-sm text-white outline-none focus:ring-2 focus:ring-yellow-400">
+            </label>
+            <label class="block">
+                <span class="block text-xs font-bold text-white/60 mb-2">Campus or site</span>
+                <input id="campusName" type="text" maxlength="120" placeholder="Optional" class="w-full glass rounded-lg px-4 py-3 text-sm text-white outline-none focus:ring-2 focus:ring-yellow-400">
+            </label>
+            <label class="block">
+                <span class="block text-xs font-bold text-white/60 mb-2">Level served</span>
+                <select id="schoolLevel" class="w-full glass rounded-lg px-4 py-3 text-sm text-white outline-none focus:ring-2 focus:ring-yellow-400">
+                    <option value="" class="bg-[#0A1628]">Optional</option>
+                    <option value="Elementary" class="bg-[#0A1628]">Elementary</option>
+                    <option value="Junior High School" class="bg-[#0A1628]">Junior High School</option>
+                    <option value="Senior High School" class="bg-[#0A1628]">Senior High School</option>
+                    <option value="Integrated Basic Education" class="bg-[#0A1628]">Integrated basic education</option>
+                    <option value="Higher Education" class="bg-[#0A1628]">College or university</option>
+                    <option value="Technical / Vocational" class="bg-[#0A1628]">Technical or vocational</option>
+                </select>
+            </label>
+            <label class="block">
+                <span class="block text-xs font-bold text-white/60 mb-2">Your role</span>
+                <select id="respondentRole" class="w-full glass rounded-lg px-4 py-3 text-sm text-white outline-none focus:ring-2 focus:ring-yellow-400">
+                    <option value="" class="bg-[#0A1628]">Optional</option>
+                    <option value="School Head / Administrator" class="bg-[#0A1628]">School head or administrator</option>
+                    <option value="Safety / Security Officer" class="bg-[#0A1628]">Safety or security officer</option>
+                    <option value="DRRM Coordinator" class="bg-[#0A1628]">DRRM coordinator</option>
+                    <option value="Teacher / Staff" class="bg-[#0A1628]">Teacher or staff</option>
+                    <option value="Facilities / Operations" class="bg-[#0A1628]">Facilities or operations</option>
+                    <option value="Board / Governance" class="bg-[#0A1628]">Board or governance</option>
+                </select>
+            </label>
+        </div>
 
-            document.getElementById("resultsPanel").hidden = false;
-            document.getElementById("resultsPanel").scrollIntoView({ behavior: "smooth" });
-        }
+        <div class="glass-red rounded-xl p-4 mt-5 flex items-start gap-3">
+            <i class="fas fa-circle-exclamation text-red-300 mt-1"></i>
+            <p class="text-xs text-white/80">No learner names, staff names, incident narratives, health information, ID numbers or credentials. If a field tempts you to add one, leave it blank.</p>
+        </div>
 
-        function restartAssessment() {
-            Object.keys(assessmentResponses).forEach(k => delete assessmentResponses[k]);
-            currentDomainIndex = 0;
-            document.getElementById("consentCheckbox").checked = false;
-            document.getElementById("schoolName").value = "";
-            document.getElementById("resultsPanel").hidden = true;
-            showAssessmentStep("assessmentIntroduction"); updateProgress();
-        }
+        <div class="flex flex-wrap gap-3 mt-6">
+            <button id="contextBackButton" type="button" class="btn btn-ghost"><i class="fas fa-arrow-left"></i> Back</button>
+            <button id="beginCaseButton" type="button" class="btn btn-gold">Begin C-A-S-E <i class="fas fa-compass"></i></button>
+        </div>
+    </div>
 
-        document.addEventListener("DOMContentLoaded", () => {
-            updateProgress();
-            document.getElementById("startAssessmentButton").addEventListener("click", () => showAssessmentStep("consentStep"));
-            document.getElementById("consentContinueButton").addEventListener("click", () => { if(!document.getElementById("consentCheckbox").checked) return alert("Consent required."); showAssessmentStep("contextStep"); });
-            document.getElementById("beginCaseButton").addEventListener("click", () => { currentDomainIndex = 0; showAssessmentStep("domainStep"); renderCurrentDomain(); });
-            document.getElementById("nextDomainButton").addEventListener("click", moveToNextDomain);
-            document.getElementById("previousDomainButton").addEventListener("click", moveToPreviousDomain);
-            document.getElementById("generateResultButton").addEventListener("click", generateResult);
-            document.getElementById("printResultButton").addEventListener("click", () => window.print());
-            document.getElementById("restartAssessmentButton").addEventListener("click", restartAssessment);
+    <!-- Step 3 · Domains -->
+    <div id="domainStep" class="p-6 md:p-9" hidden>
+        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 border-b border-white/10 pb-5">
+            <div>
+                <p id="domainStepLabel" class="text-yellow-400 text-xs font-black uppercase tracking-widest font-mono">Step 3 of 5</p>
+                <h3 id="domainTitle" class="text-2xl font-bold text-white font-montserrat mt-2"></h3>
+                <p id="domainDescription" class="text-sm text-white/70 mt-2 max-w-3xl"></p>
+            </div>
+            <div class="glass rounded-xl px-5 py-3 text-center shrink-0">
+                <div id="domainProgressText" class="text-xs font-bold text-white/50"></div>
+                <div id="domainAnswerText" class="text-sm font-bold text-yellow-400 mt-1 font-mono"></div>
+            </div>
+        </div>
+
+        <div id="domainStepper" class="grid grid-cols-4 gap-2 mt-5"></div>
+
+        <div id="scaleNotice" class="rounded-xl p-4 mt-5 flex items-start gap-3"></div>
+
+        <form id="domainForm" class="mt-6 space-y-4" novalidate>
+            <div id="domainQuestions" class="space-y-4"></div>
+
+            <div class="pt-5 border-t border-white/10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                <button id="previousDomainButton" type="button" class="btn btn-ghost"><i class="fas fa-arrow-left"></i> Previous</button>
+                <button id="nextDomainButton" type="button" class="btn btn-gold sm:ml-auto">Next domain <i class="fas fa-arrow-right"></i></button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Step 4 · Review -->
+    <div id="reviewStep" class="p-6 md:p-9" hidden>
+        <p class="text-green-400 text-xs font-black uppercase tracking-widest font-mono">Step 4 of 5</p>
+        <h3 class="text-2xl font-bold text-white font-montserrat mt-2">All four domains answered</h3>
+        <p class="text-white/70 text-sm mt-2 max-w-3xl">Go back and change anything that no longer feels accurate, or generate the profile now.</p>
+
+        <div id="reviewSummary" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-6"></div>
+
+        <div class="flex flex-wrap gap-3 mt-7">
+            <button id="reviewPreviousButton" type="button" class="btn btn-ghost"><i class="fas fa-arrow-left"></i> Review answers</button>
+            <button id="generateResultButton" type="button" class="btn btn-gold">Generate resilience profile <i class="fas fa-chart-column"></i></button>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- ==================== RESULTS ==================== -->
+<section id="resultsPanel" class="py-10" hidden>
+<div class="glass-strong rounded-2xl overflow-hidden">
+
+    <div class="p-6 md:p-9 border-b border-white/10">
+        <p class="text-yellow-400 text-xs font-black uppercase tracking-widest font-mono">Step 5 of 5 · Assessment result</p>
+        <h2 class="text-2xl md:text-3xl font-bold text-white font-montserrat mt-2">C-A-S-E Resilience Profile</h2>
+        <p id="resultInstitution" class="text-white/60 text-sm mt-2"></p>
+    </div>
+
+    <div class="p-6 md:p-9">
+        <!-- Score + reading -->
+        <div class="grid lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-4 flex justify-center">
+                <div id="scoreRing" class="score-ring" role="img" aria-label="Overall resilience index">
+                    <div class="score-ring-content">
+                        <div id="overallScore" class="font-montserrat text-5xl font-black text-white">0%</div>
+                        <div class="text-[11px] font-bold text-white/50 tracking-widest mt-1">RESILIENCE INDEX</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-8">
+                <span id="readinessBadge" class="pill"></span>
+                <h3 id="bandHeadline" class="text-xl md:text-2xl font-bold text-white font-montserrat mt-3"></h3>
+                <p id="bandNarrative" class="text-sm text-white/75 mt-3"></p>
+
+                <div class="glass rounded-xl p-4 mt-5">
+                    <p class="text-xs font-bold text-white/50 uppercase tracking-widest">Your equation</p>
+                    <p id="formulaDetail" class="font-montserrat text-xl md:text-2xl font-black text-yellow-400 mt-2"></p>
+                    <p id="formulaRawScore" class="text-xs text-white/50 mt-2 font-mono"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Domain breakdown -->
+        <div class="mt-10">
+            <h3 class="text-lg font-bold text-yellow-400 font-montserrat">Domain by domain</h3>
+            <div id="domainResults" class="grid md:grid-cols-2 gap-4 mt-4"></div>
+        </div>
+
+        <!-- Findings -->
+        <div class="mt-10">
+            <h3 class="text-lg font-bold text-yellow-400 font-montserrat">What is driving the score</h3>
+            <p id="findingsIntro" class="text-sm text-white/60 mt-1"></p>
+            <div id="findingsList" class="space-y-3 mt-4"></div>
+        </div>
+
+        <!-- Recommendations -->
+        <div class="mt-10">
+            <h3 class="text-lg font-bold text-yellow-400 font-montserrat">Stronghold A3 solutions matched to your gaps</h3>
+            <p class="text-sm text-white/60 mt-1">Each recommendation appears because specific answers called for it. Links open the full service page.</p>
+            <div id="recommendations" class="mt-5 space-y-6"></div>
+        </div>
+
+        <!-- Sequence -->
+        <div class="mt-10 glass rounded-2xl p-6">
+            <p class="text-xs font-bold text-white/50 uppercase tracking-widest">Recommended engagement track</p>
+            <h3 id="sequenceTitle" class="text-xl font-bold text-white font-montserrat mt-2"></h3>
+            <p id="sequenceBody" class="text-sm text-white/75 mt-3"></p>
+            <div id="sequenceSteps" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-5"></div>
+        </div>
+
+        <!-- Principles -->
+        <div class="mt-10 grid md:grid-cols-3 gap-4">
+            <div class="rec-card rec-anchored">
+                <p class="pill glass-blue text-blue-200"><i class="fas fa-anchor"></i> ANCHORED</p>
+                <h4 class="font-bold text-white mt-3">Legitimacy you can show an auditor</h4>
+                <p class="text-xs text-white/65 mt-2">Guards deployed under DOLE DO-174 and PNP-SOSIA licensing, with documents retrievable in under 15 minutes. Your school never inherits co-employer liability from us.</p>
+            </div>
+            <div class="rec-card rec-armored">
+                <p class="pill glass-red text-red-200"><i class="fas fa-shield-halved"></i> ARMORED</p>
+                <h4 class="font-bold text-white mt-3">Systems that hold when the grid does not</h4>
+                <p class="text-xs text-white/65 mt-2">The 3-Bridge Communication System keeps reporting alive through Cloud SMS, SMS gateway and radio mesh. Guards stay because they are paid and supported, so attrition stays under 5 percent.</p>
+            </div>
+            <div class="rec-card rec-assured">
+                <p class="pill glass-green text-green-200"><i class="fas fa-check-circle"></i> ASSURED</p>
+                <h4 class="font-bold text-white mt-3">Zero liability transferred to you</h4>
+                <p class="text-xs text-white/65 mt-2">Compliance burden, wage escalation and reporting sit with us. You get daily automated reports and RA 10173-compliant records instead of risk.</p>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="mt-10 glass-gold rounded-2xl p-6 md:p-8">
+            <div class="grid md:grid-cols-3 gap-6 items-center">
+                <div class="md:col-span-2">
+                    <h3 class="text-xl md:text-2xl font-bold text-[#0A1628] font-montserrat">This score is a starting point, not a survey.</h3>
+                    <p class="text-sm text-[#0A1628]/80 mt-2">A Stronghold A3 officer can walk your perimeter, test your comms, review your documents against a DOLE or PNP audit, and convert this profile into a costed plan. The site assessment is complimentary.</p>
+                </div>
+                <div class="flex flex-col gap-3">
+                    <a href="security-assessment.html" class="btn" style="background:#0A1628;color:#FFD700"><i class="fas fa-clipboard-check"></i> Book a site assessment</a>
+                    <a href="contact.html" class="btn" style="background:rgba(10,22,40,.12);color:#0A1628;border-color:rgba(10,22,40,.3)"><i class="fas fa-phone"></i> Talk to us</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Attribution -->
+        <div class="mt-8 glass rounded-2xl p-6">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+                <div>
+                    <p class="text-xs font-bold text-white/50 uppercase tracking-widest">Developed and validated by</p>
+                    <a href="https://alvin-silva.asilvainnovations.com" target="_blank" rel="noopener" class="inline-block font-montserrat text-lg font-bold text-white hover:text-yellow-400 transition mt-1">Alvin Silva</a>
+                    <p class="text-sm text-white/60">Development Management Professional and Resilience Practitioner</p>
+                </div>
+                <p class="text-sm text-white/60 max-w-lg">Stronghold A3 applies the C-A-S-E model across client sites to turn risk information into preparedness, protection and response capability.</p>
+            </div>
+        </div>
+
+        <div class="mt-8 flex flex-wrap gap-3 no-print">
+            <button id="printResultButton" type="button" class="btn btn-primary"><i class="fas fa-print"></i> Print result</button>
+            <button id="copyResultButton" type="button" class="btn btn-ghost"><i class="fas fa-copy"></i> Copy summary</button>
+            <button id="restartAssessmentButton" type="button" class="btn btn-ghost"><i class="fas fa-rotate-left"></i> Start again</button>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- ==================== PRIVACY ==================== -->
+<section id="privacySection" class="py-10">
+    <div class="glass rounded-2xl p-6 md:p-8">
+        <h2 class="text-2xl font-bold text-yellow-400 font-montserrat">Share only what the assessment needs</h2>
+        <div class="grid md:grid-cols-3 gap-4 mt-5">
+            <div class="glass rounded-xl p-5">
+                <i class="fas fa-laptop text-blue-400 text-lg"></i>
+                <h3 class="font-bold text-white mt-3">Nothing is submitted</h3>
+                <p class="text-xs text-white/60 mt-2">This page scores in the browser. Closing the tab discards your answers.</p>
+            </div>
+            <div class="glass rounded-xl p-5">
+                <i class="fas fa-filter text-yellow-400 text-lg"></i>
+                <h3 class="font-bold text-white mt-3">Minimum information</h3>
+                <p class="text-xs text-white/60 mt-2">Context fields are optional. Questions ask about institutional conditions, never individual records.</p>
+            </div>
+            <div class="glass rounded-xl p-5">
+                <i class="fas fa-user-shield text-green-400 text-lg"></i>
+                <h3 class="font-bold text-white mt-3">RA 10173 discipline</h3>
+                <p class="text-xs text-white/60 mt-2">If you share your printed result with us, we handle it under the same Data Privacy Act controls as client operational data.</p>
+            </div>
+        </div>
+        <p class="text-xs text-white/50 mt-5">
+            <span class="text-white/80 font-semibold">Implementation note:</span>
+            Any future server-side storage, dashboard or integration of these responses must be covered by backend access controls, a retention policy and a privacy impact assessment before it goes live.
+        </p>
+    </div>
+</section>
+
+<section class="pb-6">
+    <p class="text-xs text-white/45">
+        <span class="text-white/70 font-semibold">Alignment statement:</span>
+        This tool supports safe-school planning consistent with Safe Schools Act priorities and RA 10121 disaster risk reduction practice. It is not a government inspection, certification, accreditation, legal opinion, or determination of statutory compliance.
+    </p>
+</section>
+
+</main>
+
+<footer class="bg-[#050B14] border-t border-gray-800 pt-14 pb-8 relative z-10">
+    <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-10">
+            <div>
+                <h3 class="text-2xl font-bold font-montserrat text-white mb-3">Stronghold A3</h3>
+                <p class="text-sm text-gray-400 leading-relaxed">Eastern Visayas' premier security agency. Anchored in Legitimacy, Armored by Resilience, Assured by Zero-Liability.</p>
+                <a href="https://app.stronghold-a3.com" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-4 py-2 mt-5 bg-yellow-500/10 text-yellow-500 border border-yellow-500/30 rounded-lg hover:bg-yellow-500/20 transition text-sm font-bold">
+                    <i class="fas fa-mobile-alt"></i> SMS App
+                </a>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4 text-sm">Anchored</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="compliance.html" class="hover:text-blue-400 transition">DO-174 Compliance</a></li>
+                    <li><a href="audit-readiness.html" class="hover:text-blue-400 transition">Audit Readiness</a></li>
+                    <li><a href="trust-signals.html" class="hover:text-blue-400 transition">Trust Signals</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4 text-sm">Armored</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="operational-continuity.html" class="hover:text-red-400 transition">Operational Continuity</a></li>
+                    <li><a href="guard-empowerment.html" class="hover:text-red-400 transition">Guard Empowerment</a></li>
+                    <li><a href="tech-shield.html" class="hover:text-red-400 transition">Tech Shield</a></li>
+                    <li><a href="safe-schools-assessment.html" class="text-yellow-400 hover:text-yellow-300 transition">Safe School Assessment</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4 text-sm">Assured</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="zero-liability.html" class="hover:text-green-400 transition">Zero Liability</a></li>
+                    <li><a href="customer-transparency.html" class="hover:text-green-400 transition">Transparency</a></li>
+                    <li><a href="growth-partnerships.html" class="hover:text-green-400 transition">Growth Partnerships</a></li>
+                    <li><a href="security-assessment.html" class="hover:text-green-400 transition">Security Assessment</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-gray-800 pt-6 flex flex-col lg:flex-row justify-between items-center gap-4">
+            <p class="text-xs text-gray-500 text-center lg:text-left">&copy; 2026 Stronghold A3 Security Agency. All Rights Reserved. Fully Licensed &amp; DOLE DO-174 Compliant.</p>
+            <div class="flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs text-gray-500">
+                <a href="policies.html" class="hover:text-white transition">Policies</a>
+                <a href="terms.html" class="hover:text-white transition">Terms</a>
+                <a href="privacy-policy.html" class="hover:text-white transition">Privacy</a>
+                <a href="accessibility-policy.html" class="hover:text-white transition">Accessibility</a>
+                <a href="cookie-policy.html" class="hover:text-white transition">Cookies</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+/* ============================================================
+   STRONGHOLD A3 — SAFE SCHOOL ASSESSMENT
+   C + A − S − E   |   32 items   |   browser-only scoring
+   ============================================================ */
+
+/* ---------- Stronghold A3 solution catalogue ---------- */
+const SOLUTIONS = {
+    compliance:{name:'DO-174 Compliant Guard Deployment',pillar:'anchored',icon:'fa-gavel',href:'compliance.html',
+        blurb:'Licensed, PNP-SOSIA accredited guards deployed under DOLE DO-174, so the school never carries co-employer liability for the guard force.'},
+    vault:{name:'Digital Document Vault',pillar:'anchored',icon:'fa-cloud-arrow-up',href:'audit-readiness.html',
+        blurb:'Permits, licences, contracts, hazard registers and inspection records in an encrypted cloud repository with a retrieval target under 15 minutes.'},
+    privacy:{name:'RA 10173 Records Discipline',pillar:'anchored',icon:'fa-user-lock',href:'customer-transparency.html',
+        blurb:'Encrypted digital logs with controlled access and retention limits, replacing open logbooks and shared drives for learner and personnel data.'},
+    audit:{name:'Mock Audit Readiness Drill',pillar:'anchored',icon:'fa-clipboard-check',href:'audit-readiness.html',
+        blurb:'A quarterly stress test that mimics a DOLE, PNP or DepEd inspection so gaps surface on your schedule rather than theirs.'},
+
+    bcp:{name:'One-Day Business Continuity Plan',pillar:'armored',icon:'fa-file-shield',href:'bcp.html',
+        blurb:'A single-page Red Alert checklist covering five scenarios — typhoon, earthquake, fire, lockdown, outage — built with your team in one working day.'},
+    bridge:{name:'3-Bridge Communication System',pillar:'armored',icon:'fa-tower-broadcast',href:'operational-continuity.html',
+        blurb:'Cloud SMS, SMS gateway and radio mesh operating as three independent bridges, so no single outage silences the campus.'},
+    tech:{name:'Tech Shield (Offline-First Reporting)',pillar:'armored',icon:'fa-microchip',href:'tech-shield.html',
+        blurb:'Guards log incidents, patrols and headcounts with no signal; records cache locally and sync the moment connectivity returns.'},
+    raci:{name:'RACI Protocol Implementation',pillar:'armored',icon:'fa-sitemap',href:'raci-protocol.html',
+        blurb:'Every safety task assigned as Responsible, Accountable, Consulted or Informed, ending the ambiguity that stalls response.'},
+    workflows:{name:'Post Orders and Operational Workflows',pillar:'armored',icon:'fa-cogs',href:'operational-workflows.html',
+        blurb:'Written, site-specific post orders and SOPs for entry control, hazard handling, safeguarding referral and hand-over between shifts.'},
+    priority:{name:'Priority Response Protocols',pillar:'armored',icon:'fa-triangle-exclamation',href:'priority-protocols.html',
+        blurb:'Tiered escalation with named contacts and time limits, connecting the campus to PNP, BFP, LGU DRRM and medical response.'},
+    guards:{name:'Guard Empowerment Programme',pillar:'armored',icon:'fa-user-shield',href:'guard-empowerment.html',
+        blurb:'Decent wages, continuous training and emergency relief keep attrition below 5 percent, so the guard who knows your campus is still there next term.'},
+
+    zero:{name:'Zero-Liability Contracting',pillar:'assured',icon:'fa-file-contract',href:'zero-liability.html',
+        blurb:'Dynamic contracts with inflation-adjustment clauses that absorb wage orders and compliance exposure instead of passing them to the school.'},
+    transparency:{name:'Customer Transparency Reporting',pillar:'assured',icon:'fa-chart-line',href:'customer-transparency.html',
+        blurb:'Automated daily PDF reports and live visibility, so leadership, parents and the board see the same facts at the same time.'},
+    drrm:{name:'DRRM-Integrated Service Bundle',pillar:'assured',icon:'fa-house-flood-water',href:'capability-statement.html',
+        blurb:'Guarding packaged with RA 10121-aligned emergency response: evacuation support, accountability for learners needing assistance, and pre-positioned supplies.'},
+    bayanihan:{name:'Digital Bayanihan Community Response',pillar:'assured',icon:'fa-people-group',href:'digital-bayanihan.html',
+        blurb:'Localised relief and coordination built on Tacloban geography knowledge, linking the campus to barangay and LGU response after a disaster.'},
+    hybrid:{name:'Hybrid Security Leapfrog',pillar:'assured',icon:'fa-video',href:'growth-partnerships.html',
+        blurb:'Physical guarding combined with CCTV and remote monitoring through local technology partners, extending coverage without linear headcount cost.'},
+    assessment:{name:'On-Site Vulnerability Assessment',pillar:'assured',icon:'fa-magnifying-glass-location',href:'security-assessment.html',
+        blurb:'A complimentary walk-through of perimeter, lighting, blind spots, access routes and dependencies, delivered as a prioritised findings report.'}
+};
+
+const PILLARS = {
+    anchored:{label:'Anchored — Legitimacy',icon:'fa-anchor',cls:'rec-anchored',pill:'glass-blue text-blue-200'},
+    armored:{label:'Armored — Resilience',icon:'fa-shield-halved',cls:'rec-armored',pill:'glass-red text-red-200'},
+    assured:{label:'Assured — Zero Liability',icon:'fa-check-circle',cls:'rec-assured',pill:'glass-green text-green-200'}
+};
+
+/* ---------- Response scales ---------- */
+const SCALES = {
+    capacity:{
+        note:'Rate what is actually in place today. A plan nobody has practised is Developing, not Established.',
+        cls:'scale-capacity', tone:'glass-blue', icon:'fa-shield-halved',
+        options:[
+            {value:0,label:'Not in place',description:'No control or practice exists.'},
+            {value:1,label:'Developing',description:'Partly done, informal or inconsistent.'},
+            {value:2,label:'Established',description:'Implemented and generally practised.'},
+            {value:3,label:'Strong',description:'Documented, practised, tested and improved.'}
+        ]
+    },
+    vulnerability:{
+        note:'These items describe pressure on the school. A higher rating means more exposure, and it lowers your index — answer honestly.',
+        cls:'scale-vulnerability', tone:'glass-red', icon:'fa-triangle-exclamation',
+        options:[
+            {value:0,label:'Negligible',description:'Not a factor, or fully managed.'},
+            {value:1,label:'Low',description:'Present but contained and monitored.'},
+            {value:2,label:'Moderate',description:'Present, only partly managed.'},
+            {value:3,label:'High',description:'Present, unmanaged, and could bite today.'}
+        ]
+    }
+};
+
+/* ---------- The instrument: 32 items across C-A-S-E ---------- */
+const DOMAINS = [
+    {
+        id:'coping', letter:'C', title:'Coping Capacity', scale:'capacity', tone:'c', color:'#60A5FA',
+        description:'What your school can actually do on the day something happens — people on post, plans that exist, messages that arrive, functions that keep running.',
+        questions:[
+            {t:'Emergency response, lockdown and evacuation procedures are written, current, and reachable by staff without asking the principal.', s:'bcp'},
+            {t:'A licensed guard force covers the campus during class hours, after hours, and at school events.', s:'compliance'},
+            {t:'An incident at a far corner of the campus reaches school leadership within minutes, through a channel that still works when the internet is down.', s:'tech'},
+            {t:'Every staff member can name their own role in a lockdown, fire, earthquake or typhoon without checking a manual.', s:'raci'},
+            {t:'Fire suppression, first-aid supplies and emergency equipment are inventoried, in date, and reachable from every building.', s:'workflows'},
+            {t:'Current contacts for PNP, BFP, LGU DRRM, and medical response are posted where guards and duty staff can use them.', s:'priority'},
+            {t:'Classes, payroll, records and family communication can continue through a disruption lasting several days.', s:'bcp'},
+            {t:'Drills and exercises are documented, debriefed, and followed by corrective action rather than filed away.', s:'audit'}
+        ]
+    },
+    {
+        id:'adaptability', letter:'A', title:'Adaptability', scale:'capacity', tone:'a', color:'#34D399',
+        description:'Whether the school learns. Reviews that happen, corrective actions that close, procedures that get re-briefed, controls that get tested instead of assumed.',
+        questions:[
+            {t:'Safety and security plans are reviewed whenever hazards, enrolment, facilities or the surrounding community change.', s:'assessment'},
+            {t:'Lessons from incidents, near misses and drills are recorded and visibly change how the school operates.', s:'transparency'},
+            {t:'Corrective actions carry a named owner, a deadline, and evidence that they were closed.', s:'raci'},
+            {t:'Guard post orders and staff procedures are updated and re-briefed whenever something changes on the ground.', s:'workflows'},
+            {t:'The school can shift to remote or alternative delivery within one day of an unplanned closure.', s:'bcp'},
+            {t:'Security and safety spending is planned into the annual budget rather than released only after an incident.', s:'zero'},
+            {t:'Staff, guards and student leaders receive refresher training at least once a year.', s:'guards'},
+            {t:'Controls are tested rather than assumed — cameras viewed, alarms triggered, radios called, gates checked.', s:'tech'}
+        ]
+    },
+    {
+        id:'sensitivity', letter:'S', title:'Sensitivity', scale:'vulnerability', tone:'s', color:'#FBBF24',
+        description:'Conditions inside the school that would magnify the harm of any disruption: dependencies on single people, records with no copy, learners who need more support, information that travels badly.',
+        questions:[
+            {t:'Learners with disabilities, medical needs or mobility limits would be hard to account for and evacuate quickly.', s:'drrm'},
+            {t:'Bullying, harassment and child-protection concerns are handled informally, with no documented referral pathway.', s:'workflows'},
+            {t:'Losing one key person — a single administrator, guard, or the one who holds the passwords — would stall safety operations.', s:'raci'},
+            {t:'Critical records such as enrolment, health, personnel and financial files exist in only one place or one format.', s:'vault'},
+            {t:'Learner welfare information and personal data are held without controlled access, encryption or retention limits.', s:'privacy'},
+            {t:'The campus depends on a single power, water or internet source with no tested backup.', s:'bridge'},
+            {t:'Early warning signs — threats, unusual absences, online conflict, family disputes — have no clear escalation path.', s:'priority'},
+            {t:'During a crisis, parents and staff would receive delayed, conflicting or rumour-driven information.', s:'transparency'}
+        ]
+    },
+    {
+        id:'exposure', letter:'E', title:'Exposure', scale:'vulnerability', tone:'e', color:'#F87171',
+        description:'What the campus is up against from the outside and the environment: perimeter and entry, geography and weather, digital attack surface, and the moments that attract opportunity.',
+        questions:[
+            {t:'Fencing, gates, lighting or blind spots leave parts of the campus open, especially outside school hours.', s:'assessment'},
+            {t:'Visitors, contractors, deliveries and vehicles enter without verified identification or a usable log.', s:'hybrid'},
+            {t:'The campus sits in an area exposed to flooding, storm surge, landslide, or seismic hazard.', s:'drrm'},
+            {t:'Surrounding roads, markets or gathering places create crowding, traffic or loitering risk at dismissal.', s:'guards'},
+            {t:'Laboratories, canteens, generators or electrical systems carry physical hazards that nobody currently owns.', s:'workflows'},
+            {t:'Enrolment portals, email, cloud drives or CCTV systems are exposed to credential theft, phishing or ransomware.', s:'privacy'},
+            {t:'Cash handling, payroll days, procurement or high-value equipment create theft opportunity on predictable dates.', s:'priority'},
+            {t:'Known high-risk exposures are talked about but not documented, prioritised, or assigned to anyone.', s:'vault'}
+        ]
+    }
+];
+
+const MAX_PER_QUESTION = 3;
+const responses = {};
+let currentDomainIndex = 0;
+
+/* ---------- helpers ---------- */
+const $ = id => document.getElementById(id);
+const totalQuestions = () => DOMAINS.reduce((n,d)=>n+d.questions.length,0);
+const answeredCount = () => Object.keys(responses).length;
+const domainMax = d => d.questions.length * MAX_PER_QUESTION;
+const escapeHtml = str => String(str).replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+
+function domainScore(d){
+    return d.questions.reduce((sum,q,i)=> sum + (responses[d.id+'-'+i] ?? 0), 0);
+}
+function domainPct(d){
+    return Math.round(domainScore(d)/domainMax(d)*100);
+}
+function isDomainComplete(d){
+    return d.questions.every((q,i)=> responses[d.id+'-'+i] !== undefined);
+}
+
+/* ---------- progress ---------- */
+function updateProgress(){
+    const total = totalQuestions(), done = answeredCount();
+    const pct = Math.round(done/total*100);
+    $('answerCount').textContent = done + ' / ' + total + ' answered';
+    $('progressBar').style.width = pct + '%';
+    $('progressLabel').textContent = done === 0 ? 'Assessment not started' : 'Assessment progress: ' + pct + '%';
+}
+
+function showStep(stepId){
+    ['introStep','consentStep','contextStep','domainStep','reviewStep'].forEach(id=>{
+        $(id).hidden = id !== stepId;
+    });
+}
+function scrollTo(id){
+    $(id).scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+/* ---------- domain rendering ---------- */
+function renderStepper(){
+    $('domainStepper').innerHTML = DOMAINS.map((d,i)=>{
+        const state = i === currentDomainIndex ? 'active' : (isDomainComplete(d) ? 'complete' : '');
+        return '<button type="button" class="domain-step '+state+'" data-domain-index="'+i+'" aria-label="'+d.letter+' — '+d.title+'">'
+            + '<span class="block font-montserrat font-black text-base">'+d.letter+'</span>'
+            + '<span class="block text-[10px] font-semibold mt-1">'+d.title+'</span></button>';
+    }).join('');
+
+    document.querySelectorAll('[data-domain-index]').forEach(btn=>{
+        btn.addEventListener('click',()=>{
+            const target = Number(btn.dataset.domainIndex);
+            const reachable = target <= currentDomainIndex || DOMAINS.slice(0,target).every(isDomainComplete);
+            if(reachable){ currentDomainIndex = target; renderDomain(); scrollTo('domainStep'); }
         });
-    </script>
+    });
+}
+
+function updateDomainMeta(){
+    const d = DOMAINS[currentDomainIndex];
+    const done = d.questions.filter((q,i)=> responses[d.id+'-'+i] !== undefined).length;
+    $('domainProgressText').textContent = 'Domain ' + (currentDomainIndex+1) + ' of ' + DOMAINS.length;
+    $('domainAnswerText').textContent = done + ' / ' + d.questions.length + ' answered';
+}
+
+function onResponse(e){
+    const input = e.target;
+    const qid = input.dataset.questionId;
+    responses[qid] = Number(input.value);
+    document.querySelectorAll('input[data-question-id="'+qid+'"]').forEach(i=>{
+        i.closest('.response-card').classList.remove('selected');
+    });
+    input.closest('.response-card').classList.add('selected');
+    updateDomainMeta(); updateProgress(); renderStepper();
+}
+
+function renderDomain(){
+    const d = DOMAINS[currentDomainIndex];
+    const scale = SCALES[d.scale];
+
+    $('domainStepLabel').textContent = 'Step 3 of 5 · Domain ' + (currentDomainIndex+1) + ' of ' + DOMAINS.length;
+    $('domainTitle').innerHTML = '<span style="color:'+d.color+'">' + d.letter + '</span> &nbsp;' + d.title;
+    $('domainDescription').textContent = d.description;
+
+    const notice = $('scaleNotice');
+    notice.className = 'rounded-xl p-4 mt-5 flex items-start gap-3 ' + scale.tone;
+    notice.innerHTML = '<i class="fas '+scale.icon+' mt-1 text-white/80"></i><p class="text-sm text-white/85">'+scale.note+'</p>';
+
+    $('domainQuestions').className = 'space-y-4 ' + scale.cls;
+    $('domainQuestions').innerHTML = d.questions.map((q,i)=>{
+        const qid = d.id + '-' + i;
+        const saved = responses[qid];
+        return '<fieldset class="question-card">'
+            + '<legend><span class="font-mono text-xs font-black mr-2" style="color:'+d.color+'">'+d.letter+String(i+1).padStart(2,'0')+'</span>'
+            + '<span class="text-sm font-semibold text-white">'+escapeHtml(q.t)+'</span></legend>'
+            + '<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-4">'
+            + scale.options.map(o =>
+                '<label class="response-card'+(saved===o.value?' selected':'')+'">'
+                + '<input type="radio" name="'+qid+'" value="'+o.value+'" data-question-id="'+qid+'"'+(saved===o.value?' checked':'')+'>'
+                + '<span class="block text-sm font-bold text-white">'+o.value+' · '+o.label+'</span>'
+                + '<span class="block text-xs text-white/55 mt-1">'+o.description+'</span></label>'
+              ).join('')
+            + '</div></fieldset>';
+    }).join('');
+
+    document.querySelectorAll('#domainQuestions input[type="radio"]').forEach(i=>{
+        i.addEventListener('change', onResponse);
+    });
+
+    updateDomainMeta();
+    renderStepper();
+
+    $('nextDomainButton').innerHTML = currentDomainIndex === DOMAINS.length-1
+        ? 'Review answers <i class="fas fa-arrow-right"></i>'
+        : 'Next domain <i class="fas fa-arrow-right"></i>';
+}
+
+function nextDomain(){
+    const d = DOMAINS[currentDomainIndex];
+    if(!isDomainComplete(d)){
+        const firstMissing = d.questions.findIndex((q,i)=> responses[d.id+'-'+i] === undefined);
+        const el = document.querySelector('input[data-question-id="'+d.id+'-'+firstMissing+'"]');
+        if(el){
+            const card = el.closest('fieldset');
+            card.style.borderColor = '#FFD700';
+            card.scrollIntoView({behavior:'smooth',block:'center'});
+            setTimeout(()=>{ card.style.borderColor = ''; }, 2200);
+        }
+        return;
+    }
+    if(currentDomainIndex === DOMAINS.length-1){
+        renderReview();
+        showStep('reviewStep');
+        scrollTo('reviewStep');
+        return;
+    }
+    currentDomainIndex++;
+    renderDomain(); updateProgress(); scrollTo('domainStep');
+}
+
+function previousDomain(){
+    if(currentDomainIndex === 0){ showStep('contextStep'); scrollTo('contextStep'); return; }
+    currentDomainIndex--; renderDomain(); scrollTo('domainStep');
+}
+
+function renderReview(){
+    $('reviewSummary').innerHTML = DOMAINS.map(d=>{
+        const pct = domainPct(d);
+        const isCap = d.scale === 'capacity';
+        return '<div class="glass rounded-xl p-4">'
+            + '<span class="font-montserrat font-black text-xl" style="color:'+d.color+'">'+d.letter+'</span>'
+            + '<p class="font-bold text-white text-sm mt-1">'+d.title+'</p>'
+            + '<p class="text-xs mt-2 font-mono" style="color:'+d.color+'">'+domainScore(d)+' / '+domainMax(d)+' · '+pct+'% '+(isCap?'capability':'pressure')+'</p>'
+            + '</div>';
+    }).join('');
+}
+
+/* ---------- scoring ---------- */
+function bandFor(index){
+    if(index >= 80) return {
+        key:'fortified', label:'Fortified', pill:'glass-green text-green-200',
+        headline:'Your school is running a genuine safety system, not a folder.',
+        narrative:'Capability clearly outweighs the pressure on your campus. Plans exist, people know their roles, and vulnerabilities are named rather than avoided. The risk at this level is complacency: strong schools slip when a key person leaves or a control quietly stops being tested. Stronghold A3 would work with you on assurance rather than construction — mock audits, hybrid coverage that extends your reach, and contracting that keeps wage and compliance exposure off your books.'
+    };
+    if(index >= 60) return {
+        key:'established', label:'Established', pill:'glass-blue text-blue-200',
+        headline:'Solid foundations, with specific pressure points still open.',
+        narrative:'Your school would cope with a routine incident. A compound event — a typhoon that takes the network down during a school day, or an audit arriving in the same week — would find the seams. The findings below show exactly where capability thins out and where exposure is carrying weight. Most schools at this level need two things: continuity that survives loss of connectivity, and corrective actions that actually close.'
+    };
+    if(index >= 40) return {
+        key:'developing', label:'Developing', pill:'glass-gold text-yellow-200',
+        headline:'Capability exists in pockets and depends on particular people.',
+        narrative:'Safety here rests on individuals doing the right thing rather than on a system that holds without them. That works until the day it does not — a key person is absent, the network drops, or an inspection asks for a document that lives in someone\'s drawer. The priority is not more plans. It is making a small number of controls real: written procedures, a guard force you can account for, a reporting channel that works offline, and named ownership for every corrective action.'
+    };
+    return {
+        key:'critical', label:'Priority improvement', pill:'glass-red text-red-200',
+        headline:'Exposure is currently outrunning your capacity to absorb it.',
+        narrative:'The combination of thin controls and live vulnerabilities means a single significant event — a fire, a lockdown, a storm, a data breach, an unannounced audit — could halt school operations and leave the institution carrying the consequences. This is recoverable, and quickly. Stronghold A3 has taken schools from this position to audit-ready in weeks by starting with continuity and documentation rather than with technology. Begin with the Crisis-Proofing track below and treat the top three findings as this month\'s work.'
+    };
+}
+
+function capabilityBand(pct){
+    if(pct >= 80) return {label:'Strong', color:'#34D399', note:'Documented, practised and tested.'};
+    if(pct >= 60) return {label:'Established', color:'#60A5FA', note:'Working, with gaps in specific items.'};
+    if(pct >= 40) return {label:'Developing', color:'#FBBF24', note:'Partly built and inconsistently applied.'};
+    return {label:'Weak', color:'#F87171', note:'Largely absent — treat as immediate work.'};
+}
+function pressureBand(pct){
+    if(pct >= 70) return {label:'Severe pressure', color:'#F87171', note:'Multiple unmanaged conditions. This is what is subtracting from your index.'};
+    if(pct >= 45) return {label:'Elevated pressure', color:'#FBBF24', note:'Real vulnerabilities that need owners and dates.'};
+    if(pct >= 25) return {label:'Contained', color:'#60A5FA', note:'Present but monitored and mostly managed.'};
+    return {label:'Low', color:'#34D399', note:'Little unmanaged exposure in this domain.'};
+}
+
+function buildFindings(){
+    const findings = [];
+    DOMAINS.forEach(d=>{
+        d.questions.forEach((q,i)=>{
+            const v = responses[d.id+'-'+i];
+            if(d.scale === 'capacity' && v <= 1){
+                findings.push({domain:d, text:q.t, sol:q.s, severity:(2-v), type:'gap',
+                    verdict: v===0 ? 'Not in place' : 'Only partly in place'});
+            }
+            if(d.scale === 'vulnerability' && v >= 2){
+                findings.push({domain:d, text:q.t, sol:q.s, severity:(v-1), type:'pressure',
+                    verdict: v===3 ? 'High and unmanaged' : 'Moderate and only partly managed'});
+            }
+        });
+    });
+    return findings.sort((a,b)=> b.severity - a.severity);
+}
+
+function sequenceFor(index, scores){
+    const cPct = Math.round(scores.coping/24*100);
+    const aPct = Math.round(scores.adaptability/24*100);
+    const sPct = Math.round(scores.sensitivity/24*100);
+    const ePct = Math.round(scores.exposure/24*100);
+
+    const tracks = {
+        one:{
+            title:'Track 1 · Crisis-Proofing — start in weeks 1 to 4',
+            body:'Your continuity and documentation base needs to exist before anything else is worth building. This mirrors Phase 1 of the Stronghold Sequence: a one-page Red Alert BCP covering five scenarios, every licence and safety record moved into the Digital Document Vault, and a mock audit to prove retrieval works. Schools complete this in a month and stop being one bad day away from paralysis.',
+            steps:['One-Day BCP workshop','Digital Document Vault set-up','3-Bridge comms test','Mock DOLE / PNP audit drill']
+        },
+        two:{
+            title:'Track 2 · Digital Transformation — months 2 to 4',
+            body:'The controls exist; the wiring between them does not. This mirrors Phase 2, the highest-ranked option in the Stronghold Sequence: RACI ownership for every safety task, offline-first Cloud SMS reporting so incidents reach leadership without a signal, and automated reporting that replaces the daily chase for information.',
+            steps:['RACI protocol mapping','Offline-first Cloud SMS rollout','Post orders rewritten per site','Automated daily reporting']
+        },
+        three:{
+            title:'Track 3 · Talent Fortress — months 5 to 7',
+            body:'Your systems are sound but they rest on too few people and too little redundancy. This mirrors Phase 3: guard continuity through the Guard Empowerment Programme so the officer who knows your campus stays, contracting that absorbs wage orders rather than passing them on, and pre-positioned local resources through Digital Bayanihan.',
+            steps:['Guard continuity and welfare plan','Zero-liability contract review','Cross-training and deputy roles','Localised pre-positioning']
+        },
+        four:{
+            title:'Track 4 · Coverage and Assurance — months 8 to 12',
+            body:'You are past construction and into assurance. This mirrors Phase 4: hybrid coverage that extends reach without linear cost, DRRM-integrated bundling aligned with RA 10121, and transparency reporting that satisfies the board, parents and regulators from a single source.',
+            steps:['Hybrid guard and CCTV coverage','DRRM service integration','Board-level transparency reporting','Annual assurance cycle']
+        }
+    };
+
+    if(index < 45 || cPct < 55 || ePct >= 65) return tracks.one;
+    if(aPct < 65 || cPct < 75) return tracks.two;
+    if(sPct >= 35) return tracks.three;
+    return tracks.four;
+}
+
+/* ---------- results ---------- */
+function generateResult(){
+    if(!DOMAINS.every(isDomainComplete)){ renderReview(); return; }
+
+    const scores = {};
+    DOMAINS.forEach(d => scores[d.id] = domainScore(d));
+
+    const raw = scores.coping + scores.adaptability - scores.sensitivity - scores.exposure;
+    const min = -(domainMax(DOMAINS[2]) + domainMax(DOMAINS[3]));
+    const max = domainMax(DOMAINS[0]) + domainMax(DOMAINS[1]);
+    const index = Math.max(0, Math.min(100, Math.round((raw - min)/(max - min)*100)));
+    const band = bandFor(index);
+
+    /* header */
+    const school = $('schoolName').value.trim() || 'Unnamed school';
+    const campus = $('campusName').value.trim();
+    const level  = $('schoolLevel').value;
+    const role   = $('respondentRole').value;
+    const meta = [campus, level, role].filter(Boolean).join(' · ');
+    $('resultInstitution').textContent = meta ? school + ' — ' + meta : school;
+
+    /* score */
+    $('overallScore').textContent = index + '%';
+    $('scoreRing').style.setProperty('--score-angle', (index*3.6) + 'deg');
+
+    const badge = $('readinessBadge');
+    badge.className = 'pill ' + band.pill;
+    badge.innerHTML = '<i class="fas fa-circle-dot"></i> ' + band.label.toUpperCase();
+    $('bandHeadline').textContent = band.headline;
+    $('bandNarrative').textContent = band.narrative;
+
+    $('formulaDetail').innerHTML = 'C ' + scores.coping + ' + A ' + scores.adaptability
+        + ' <span class="text-white/50">&minus;</span> S ' + scores.sensitivity
+        + ' <span class="text-white/50">&minus;</span> E ' + scores.exposure
+        + ' <span class="text-white/50">=</span> ' + raw;
+    $('formulaRawScore').textContent = 'Raw score ' + raw + ' on a range of ' + min + ' to +' + max
+        + ', normalised to a resilience index of ' + index + '%.';
+
+    /* domains */
+    $('domainResults').innerHTML = DOMAINS.map(d=>{
+        const pct = domainPct(d);
+        const isCap = d.scale === 'capacity';
+        const b = isCap ? capabilityBand(pct) : pressureBand(pct);
+        return '<article class="domain-tile tile-'+d.tone+'">'
+            + '<div class="flex items-start justify-between gap-4">'
+            + '<div><span class="font-montserrat font-black text-2xl" style="color:'+d.color+'">'+d.letter+'</span>'
+            + '<h4 class="font-bold text-white mt-1">'+d.title+'</h4></div>'
+            + '<span class="pill" style="background:'+b.color+'22;border:1px solid '+b.color+'66;color:'+b.color+'">'+pct+'% · '+b.label+'</span>'
+            + '</div>'
+            + '<div class="meter mt-4"><span style="width:'+pct+'%;background:'+b.color+'"></span></div>'
+            + '<p class="text-xs text-white/45 mt-2 font-mono">'+domainScore(d)+' of '+domainMax(d)+' points · '
+            + (isCap ? 'capability, higher is better' : 'pressure, higher is worse') + '</p>'
+            + '<p class="text-xs text-white/65 mt-3">'+b.note+'</p>'
+            + '</article>';
+    }).join('');
+
+    /* findings */
+    const findings = buildFindings();
+    const shown = findings.slice(0,10);
+    $('findingsIntro').textContent = findings.length === 0
+        ? 'No item fell below the threshold. Every control is at least Established and no vulnerability is unmanaged.'
+        : findings.length + ' item' + (findings.length===1?'':'s') + ' fell below the threshold' + (findings.length>10 ? ', ordered by severity — the ten most serious are shown.' : ', ordered by severity.');
+
+    $('findingsList').innerHTML = shown.map(f=>{
+        const c = f.domain.color;
+        return '<div class="finding">'
+            + '<span class="finding-mark" style="background:'+c+'22;color:'+c+';border:1px solid '+c+'55">'+f.domain.letter+'</span>'
+            + '<div><p class="text-sm text-white">'+escapeHtml(f.text)+'</p>'
+            + '<p class="text-xs mt-2"><span style="color:'+c+'" class="font-semibold">'+f.verdict+'</span>'
+            + '<span class="text-white/40"> · addressed by </span>'
+            + '<a href="'+SOLUTIONS[f.sol].href+'" class="text-yellow-400 hover:underline">'+SOLUTIONS[f.sol].name+'</a></p></div>'
+            + '</div>';
+    }).join('') || '<div class="finding"><span class="finding-mark" style="background:rgba(34,197,94,.15);color:#34D399;border:1px solid rgba(34,197,94,.4)"><i class="fas fa-check"></i></span><div><p class="text-sm text-white">Nothing flagged. Keep the cycle running: test controls, close corrective actions, and re-run this assessment each term.</p></div></div>';
+
+    /* recommendations */
+    const counts = {};
+    findings.forEach(f => counts[f.sol] = (counts[f.sol]||0) + 1);
+
+    /* contextual add-on: hazard-exposed geography pulls in community response */
+    if((responses['exposure-2'] ?? 0) >= 2) counts.bayanihan = (counts.bayanihan||0) + 1;
+
+    const keys = Object.keys(counts).sort((a,b)=> counts[b]-counts[a]);
+    const fallback = ['audit','hybrid','transparency'];
+    const finalKeys = keys.length ? keys : fallback;
+
+    const grouped = {anchored:[],armored:[],assured:[]};
+    finalKeys.forEach(k => grouped[SOLUTIONS[k].pillar].push(k));
+
+    $('recommendations').innerHTML = Object.keys(grouped).filter(p=>grouped[p].length).map(p=>{
+        const meta = PILLARS[p];
+        return '<div>'
+            + '<p class="pill '+meta.pill+' mb-3"><i class="fas '+meta.icon+'"></i> '+meta.label.toUpperCase()+'</p>'
+            + '<div class="grid md:grid-cols-2 gap-4">'
+            + grouped[p].map(k=>{
+                const s = SOLUTIONS[k];
+                const n = counts[k];
+                return '<a href="'+s.href+'" class="rec-card '+meta.cls+' block">'
+                    + '<div class="flex items-start gap-3">'
+                    + '<i class="fas '+s.icon+' text-yellow-400 mt-1"></i>'
+                    + '<div><h4 class="font-bold text-white text-sm">'+s.name+'</h4>'
+                    + '<p class="text-xs text-white/65 mt-2">'+s.blurb+'</p>'
+                    + (n ? '<p class="text-[11px] text-white/40 mt-3 font-mono">Triggered by '+n+' flagged item'+(n===1?'':'s')+'</p>' : '')
+                    + '</div></div></a>';
+            }).join('')
+            + '</div></div>';
+    }).join('');
+
+    /* sequence */
+    const track = sequenceFor(index, scores);
+    $('sequenceTitle').textContent = track.title;
+    $('sequenceBody').textContent = track.body;
+    $('sequenceSteps').innerHTML = track.steps.map((s,i)=>
+        '<div class="glass rounded-xl p-4"><span class="font-mono text-xs font-black text-yellow-400">0'+(i+1)+'</span>'
+        + '<p class="text-sm font-semibold text-white mt-1">'+s+'</p></div>').join('');
+
+    /* store for copy */
+    window.__resultSummary = buildSummaryText(school, campus, index, band, scores, raw, findings, finalKeys, track);
+
+    $('resultsPanel').hidden = false;
+    scrollTo('resultsPanel');
+}
+
+function buildSummaryText(school, campus, index, band, scores, raw, findings, keys, track){
+    const lines = [];
+    lines.push('STRONGHOLD A3 — SAFE SCHOOL ASSESSMENT (C-A-S-E)');
+    lines.push(school + (campus ? ' — ' + campus : ''));
+    lines.push('Date: ' + new Date().toLocaleDateString());
+    lines.push('');
+    lines.push('Resilience index: ' + index + '% (' + band.label + ')');
+    lines.push('Equation: C ' + scores.coping + ' + A ' + scores.adaptability + ' - S ' + scores.sensitivity + ' - E ' + scores.exposure + ' = ' + raw);
+    lines.push('');
+    lines.push('TOP FINDINGS');
+    findings.slice(0,5).forEach((f,i)=> lines.push((i+1) + '. [' + f.domain.letter + '] ' + f.text + ' — ' + f.verdict));
+    if(!findings.length) lines.push('None. No item fell below threshold.');
+    lines.push('');
+    lines.push('RECOMMENDED STRONGHOLD A3 SOLUTIONS');
+    keys.slice(0,6).forEach(k => lines.push('- ' + SOLUTIONS[k].name));
+    lines.push('');
+    lines.push('ENGAGEMENT TRACK: ' + track.title);
+    lines.push('');
+    lines.push('Not a government inspection, certification or determination of statutory compliance.');
+    return lines.join('\n');
+}
+
+function restart(){
+    Object.keys(responses).forEach(k => delete responses[k]);
+    currentDomainIndex = 0;
+    $('consentCheckbox').checked = false;
+    ['schoolName','campusName'].forEach(id => $(id).value = '');
+    ['schoolLevel','respondentRole'].forEach(id => $(id).value = '');
+    $('resultsPanel').hidden = true;
+    showStep('introStep');
+    updateProgress();
+    scrollTo('assessment');
+}
+
+/* ---------- nav helpers (shared with index.html) ---------- */
+function openMobileMenu(){ $('mobileMenu').classList.add('open'); $('overlay').classList.add('show'); }
+function closeMobileMenu(){ $('mobileMenu').classList.remove('open'); $('overlay').classList.remove('show'); }
+function toggleDropdown(id){
+    const dd = $(id + '-dropdown');
+    const open = dd.classList.contains('open');
+    document.querySelectorAll('.a3-dropdown').forEach(d => d.classList.remove('open'));
+    if(!open) dd.classList.add('open');
+}
+
+/* ---------- init ---------- */
+document.addEventListener('DOMContentLoaded', () => {
+    updateProgress();
+
+    $('overlay').addEventListener('click', closeMobileMenu);
+    document.addEventListener('click', e => { if(!e.target.closest('.a3-dropdown')) document.querySelectorAll('.a3-dropdown').forEach(d=>d.classList.remove('open')); });
+    document.addEventListener('keydown', e => { if(e.key === 'Escape') closeMobileMenu(); });
+
+    $('startAssessmentButton').addEventListener('click', () => { showStep('consentStep'); scrollTo('consentStep'); });
+    $('consentBackButton').addEventListener('click', () => { showStep('introStep'); scrollTo('assessment'); });
+
+    $('consentContinueButton').addEventListener('click', () => {
+        const box = $('consentCheckbox');
+        if(!box.checked){
+            const label = box.closest('label');
+            label.style.borderColor = '#FFD700';
+            label.scrollIntoView({behavior:'smooth',block:'center'});
+            setTimeout(()=>{ label.style.borderColor=''; }, 2200);
+            return;
+        }
+        showStep('contextStep'); scrollTo('contextStep');
+    });
+
+    $('contextBackButton').addEventListener('click', () => { showStep('consentStep'); scrollTo('consentStep'); });
+
+    $('beginCaseButton').addEventListener('click', () => {
+        currentDomainIndex = 0;
+        showStep('domainStep');
+        renderDomain();
+        updateProgress();
+        scrollTo('domainStep');
+    });
+
+    $('nextDomainButton').addEventListener('click', nextDomain);
+    $('previousDomainButton').addEventListener('click', previousDomain);
+
+    $('reviewPreviousButton').addEventListener('click', () => {
+        currentDomainIndex = DOMAINS.length - 1;
+        showStep('domainStep');
+        renderDomain();
+        scrollTo('domainStep');
+    });
+
+    $('generateResultButton').addEventListener('click', generateResult);
+    $('printResultButton').addEventListener('click', () => window.print());
+    $('restartAssessmentButton').addEventListener('click', restart);
+
+    $('copyResultButton').addEventListener('click', async () => {
+        const btn = $('copyResultButton');
+        try{
+            await navigator.clipboard.writeText(window.__resultSummary || '');
+            btn.innerHTML = '<i class="fas fa-check"></i> Copied';
+        }catch(err){
+            btn.innerHTML = '<i class="fas fa-triangle-exclamation"></i> Copy blocked — print instead';
+        }
+        setTimeout(()=>{ btn.innerHTML = '<i class="fas fa-copy"></i> Copy summary'; }, 2600);
+    });
+});
+
+console.log('%cStronghold A3 — Safe School Assessment loaded', 'color:#FFD700;font-weight:bold');
+</script>
 </body>
 </html>
