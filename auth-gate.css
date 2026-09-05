@@ -1,0 +1,84 @@
+/* ==========================================================================
+   Stronghold A3 — Internal Page Access Gate
+   Shared by staff.html, strategy.html, and any future password-gated page.
+   Pairs with assets/auth-gate.js (Netlify Identity based).
+   ========================================================================== */
+
+:root {
+    --gate-navy: #0A1628;
+    --gate-gold: #FFD700;
+    --gate-red: #DC2626;
+}
+
+/* Content is hidden until auth-gate.js confirms an authorized session */
+.gated-content { display: none; }
+.gated-content.is-unlocked { display: block; animation: gateFadeIn .5s ease; }
+
+@keyframes gateFadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+.gate-overlay {
+    position: fixed; inset: 0; z-index: 10000;
+    display: flex; align-items: center; justify-content: center;
+    padding: 1.25rem;
+    background: radial-gradient(circle at 50% 20%, #0f2a52 0%, #071021 60%, #010509 100%);
+}
+.gate-overlay.gate-hidden { display: none; }
+
+.gate-card {
+    width: 100%; max-width: 420px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.10), rgba(255,255,255,0.03));
+    backdrop-filter: blur(24px) saturate(160%);
+    -webkit-backdrop-filter: blur(24px) saturate(160%);
+    border: 1px solid rgba(255,215,0,0.25);
+    border-radius: 1.25rem;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.15);
+    padding: 2.25rem 1.75rem;
+    text-align: center;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+}
+.gate-logo {
+    width: 72px; height: 72px; border-radius: 9999px; object-fit: cover;
+    margin: 0 auto 1rem; display: block; border: 2px solid var(--gate-gold);
+    max-width: 100%; height: auto;
+}
+.gate-eyebrow {
+    font-family: 'Montserrat', sans-serif; font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase; color: var(--gate-gold);
+    margin-bottom: 0.35rem;
+}
+.gate-title {
+    font-family: 'Montserrat', sans-serif; font-size: clamp(1.15rem, 4vw, 1.5rem);
+    font-weight: 800; margin-bottom: 0.5rem;
+}
+.gate-subtitle { font-size: 0.85rem; color: rgba(255,255,255,0.7); margin-bottom: 1.5rem; line-height: 1.6; }
+
+.gate-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+    width: 100%; padding: 0.85rem 1.25rem; border-radius: 0.65rem;
+    font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.85rem;
+    letter-spacing: 0.03em; cursor: pointer; border: 1px solid rgba(255,215,0,0.6);
+    background: linear-gradient(135deg, var(--gate-gold), #E0A800); color: var(--gate-navy);
+    transition: transform .25s ease, box-shadow .25s ease; margin-bottom: 0.75rem;
+}
+.gate-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(255,215,0,0.35); }
+.gate-btn:focus-visible { outline: 3px solid rgba(255,215,0,.6); outline-offset: 3px; }
+.gate-btn-ghost {
+    background: rgba(255,255,255,0.06); color: #fff; border-color: rgba(255,255,255,0.2);
+}
+.gate-btn-ghost:hover { background: rgba(255,255,255,0.14); box-shadow: none; }
+
+.gate-status {
+    font-size: 0.78rem; border-radius: 0.6rem; padding: 0.65rem 0.9rem; margin-top: 1rem;
+    text-align: left; display: none; line-height: 1.5;
+}
+.gate-status.show { display: block; }
+.gate-status.gate-error { background: rgba(220,38,38,0.15); border: 1px solid rgba(220,38,38,0.4); color: #FCA5A5; }
+.gate-status.gate-info { background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.4); color: #93C5FD; }
+.gate-status.gate-pending { background: rgba(255,215,0,0.12); border: 1px solid rgba(255,215,0,0.35); color: #FDE68A; }
+
+.gate-footer-note { font-size: 0.68rem; color: rgba(255,255,255,0.4); margin-top: 1.25rem; line-height: 1.5; }
+
+@media (max-width: 380px) {
+    .gate-card { padding: 1.75rem 1.25rem; }
+}
