@@ -67,7 +67,7 @@ Cache-Control = "public, max-age=31536000, immutable"
 [[headers]]
 
 # Apply additional security policy to the assessment page.
-for = "/safe-school-assessment.html"
+for = "/safe-schools-assessment.html"
 
 # Define page-specific response headers.
 [headers.values]
@@ -100,7 +100,7 @@ status = 301
 from = "/assessment"
 
 # Redirect the assessment shortcut to the production assessment page.
-to = "/safe-school-assessment.html"
+to = "/safe-schools-assessment.html"
 
 # Use a permanent redirect for the stable shortcut.
 status = 301
