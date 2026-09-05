@@ -59,6 +59,7 @@
     <!-- Chart.js for Dashboard -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
 
+     <style>
     <!-- Custom CSS with New Design System -->
     <style>
         :root {
@@ -194,6 +195,35 @@
         @media (max-width: 400px) {
             .wide-image-container { aspect-ratio: 1/1; border-radius: 6px; }
             .wide-caption { padding: 12px; }
+        }
+
+        /* ===== A3 WORDMARK BANNERS (Anchored / Armored / Assured) =====
+           These carry edge-to-edge headline text, so the generic
+           4:3 / 1:1 mobile crop above would cut the wordmark off. The
+           source images are pre-padded to an exact 3:1 canvas (see
+           assets/banners/), so this modifier locks the container to
+           that same ratio at every breakpoint — object-fit therefore
+           only ever scales, never crops, and the full word is always
+           visible from desktop down to the smallest phone. */
+        .wide-image-container.wordmark-banner {
+            aspect-ratio: 3/1 !important;
+        }
+        @media (max-width: 768px), (max-width: 400px) {
+            .wide-image-container.wordmark-banner { aspect-ratio: 3/1 !important; }
+        }
+
+        /* ===== TEXT-PANEL BANNERS (Vision / Mission / hero) =====
+           These carry a text panel positioned to one side rather than
+           centered, so a center-weighted crop (the generic 4:3/1:1 mobile
+           rule) risks cutting the text panel off entirely. The source
+           images are all a native 2.7:1, so this modifier just keeps that
+           ratio at every breakpoint instead of forcing a squarer crop —
+           object-fit only ever scales, never crops. */
+        .wide-image-container.text-panel-banner {
+            aspect-ratio: 2.7/1 !important;
+        }
+        @media (max-width: 768px), (max-width: 400px) {
+            .wide-image-container.text-panel-banner { aspect-ratio: 2.7/1 !important; }
         }
 
         /* VIDEO STYLES */
@@ -356,6 +386,8 @@
             *, *::before, *::after { transition: none !important; animation: none !important; }
         }
     </style>
+     <!-- Link to MAIN CSS -->
+    <link rel="stylesheet" href="main.css">
 </head>
 <body class="antialiased min-h-screen relative dark">
 <!-- Overlay -->
@@ -372,7 +404,7 @@
         <li><a href="#anchored" onclick="closeMobileMenu()" class="block text-white hover:text-blue-400 transition">Anchored</a></li>
         <li><a href="#armored" onclick="closeMobileMenu()" class="block text-white hover:text-blue-400 transition">Armored</a></li>
         <li><a href="#assured" onclick="closeMobileMenu()" class="block text-white hover:text-blue-400 transition">Assured</a></li>
-        <li><a href="#safe-schools" onclick="closeMobileMenu()" class="block text-yellow-400 font-bold">Safe Schools Assessment</a></li>
+        <li><a href="#safe-schools" onclick="closeMobileMenu()" class="block text-yellow-400 font-bold">Safe School Assessment</a></li>
         <li><a href="strategy.html" onclick="closeMobileMenu()" class="block text-white hover:text-blue-400 transition"><i class="fas fa-lock mr-1 text-xs"></i>Strategy Map</a></li>
         <li><a href="staff.html" onclick="closeMobileMenu()" class="block text-yellow-400 font-bold"><i class="fas fa-user-shield mr-2"></i>Staff Portal</a></li>
         <li><a href="#contact" onclick="closeMobileMenu()" class="block text-white hover:text-blue-400 transition">Contact Us</a></li>
@@ -453,10 +485,30 @@
 <!-- Main Content Area -->
 <main id="home" class="min-h-screen pb-20">
 
+    <!-- ==================== HOMEPAGE HERO ====================
+         Placement assumption: no hero banner existed above the Anchored
+         section before, so this new "Your Zero-Liability Security
+         Partner" graphic is placed as the top-of-page masthead. Move or
+         remove this block if a different spot was intended. -->
+    <section class="pt-8 container mx-auto px-4">
+        <div class="wide-image-container text-panel-banner">
+            <picture>
+                <source type="image/webp" media="(max-width: 767px)" srcset="assets/banners/HeroZeroLiability-480.webp">
+                <source type="image/webp" srcset="assets/banners/HeroZeroLiability-851.webp">
+                <img src="assets/banners/HeroZeroLiability-851.jpg" alt="Your Zero-Liability Security Partner" width="851" height="315" loading="eager" fetchpriority="high" decoding="async">
+            </picture>
+        </div>
+    </section>
+
     <!-- ==================== ANCHORED SECTION ==================== -->
     <section id="anchored" class="py-16 container mx-auto px-4">
-        <div class="wide-image-container">
-            <img src="assets/Anchored.png" alt="Anchored in Compliance" loading="lazy" decoding="async">
+        <div class="wide-image-container wordmark-banner">
+            <picture>
+                <source type="image/webp" media="(max-width: 599px)" srcset="assets/banners/Anchored-480.webp">
+                <source type="image/webp" media="(max-width: 1023px)" srcset="assets/banners/Anchored-768.webp">
+                <source type="image/webp" srcset="assets/banners/Anchored-1024.webp 1024w, assets/banners/Anchored-1600.webp 1600w" sizes="100vw">
+                <img src="assets/banners/Anchored-768.jpg" alt="Anchored in Compliance" width="1820" height="607" loading="lazy" decoding="async">
+            </picture>
             <div class="wide-caption">
                 <h3 class="text-2xl font-bold text-white font-montserrat">Anchored in Legitimacy</h3>
                 <p class="text-white opacity-80 text-sm">100% DOLE/PNP Compliance · Audit Ready · Entrenched Trust</p>
@@ -517,8 +569,13 @@
 
     <!-- ==================== ARMORED SECTION ==================== -->
     <section id="armored" class="py-16 container mx-auto px-4 bg-gradient-to-r from-[#001b3d] to-[#000c1f]">
-        <div class="wide-image-container">
-            <img src="assets/Armored.png" alt="Armored by Resilience" loading="lazy" decoding="async">
+        <div class="wide-image-container wordmark-banner">
+            <picture>
+                <source type="image/webp" media="(max-width: 599px)" srcset="assets/banners/Armored-480.webp">
+                <source type="image/webp" media="(max-width: 1023px)" srcset="assets/banners/Armored-768.webp">
+                <source type="image/webp" srcset="assets/banners/Armored-1024.webp 1024w, assets/banners/Armored-1600.webp 1600w" sizes="100vw">
+                <img src="assets/banners/Armored-768.jpg" alt="Armored by Resilience" width="1788" height="596" loading="lazy" decoding="async">
+            </picture>
             <div class="wide-caption">
                 <h3 class="text-2xl font-bold text-white font-montserrat">Armored by Resilience</h3>
                 <p class="text-white opacity-80 text-sm">Operational Continuity · Guard Empowerment · Tech Shield</p>
@@ -605,7 +662,7 @@
 
                     <div class="flex flex-wrap gap-3 mt-7">
                         <a href="./safe-schools-assessment.html" class="btn btn-gold"><i class="fas fa-play"></i> START THE ASSESSMENT</a>
-                        <a href="./security-assessment.html" class="btn btn-ghost"><i class="fas fa-clipboard-check"></i> SECURITY RISK ASSESSMENT</a>
+                        <a href="./security-assessment.html" class="btn btn-ghost"><i class="fas fa-clipboard-check"></i> SECURITY ASSESSMENT</a>
                     </div>
 
                     <p class="text-xs text-white/45 mt-4"><i class="fas fa-lock text-yellow-400 mr-1"></i> Scored in your browser. Nothing is submitted, nothing is stored.</p>
@@ -630,8 +687,13 @@
 
     <!-- ==================== ASSURED SECTION ==================== -->
     <section id="assured" class="py-16 container mx-auto px-4">
-        <div class="wide-image-container">
-            <img src="assets/Assured.png" alt="Assured by Zero-Liability" loading="lazy" decoding="async">
+        <div class="wide-image-container wordmark-banner">
+            <picture>
+                <source type="image/webp" media="(max-width: 599px)" srcset="assets/banners/Assured-480.webp">
+                <source type="image/webp" media="(max-width: 1023px)" srcset="assets/banners/Assured-768.webp">
+                <source type="image/webp" srcset="assets/banners/Assured-1024.webp 1024w, assets/banners/Assured-1600.webp 1600w" sizes="100vw">
+                <img src="assets/banners/Assured-768.jpg" alt="Assured by Zero-Liability" width="1770" height="590" loading="lazy" decoding="async">
+            </picture>
             <div class="wide-caption">
                 <h3 class="text-2xl font-bold text-white font-montserrat">Assured by Zero-Liability</h3>
                 <p class="text-white opacity-80 text-sm">Zero-Liability Promise · Customer Transparency · Growth &amp; Partnership</p>
@@ -729,15 +791,23 @@
 
     <!-- ==================== VISION & MISSION ==================== -->
     <section class="py-16 container mx-auto px-4 bg-gradient-to-r from-[#001b3d] to-[#000c1f]">
-        <div class="wide-image-container">
-            <img src="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Vision.png" alt="Our Vision" loading="lazy" decoding="async">
+        <div class="wide-image-container text-panel-banner">
+            <picture>
+                <source type="image/webp" media="(max-width: 767px)" srcset="assets/banners/Vision-480.webp">
+                <source type="image/webp" srcset="assets/banners/Vision-851.webp">
+                <img src="assets/banners/Vision-851.jpg" alt="Our Vision" width="851" height="315" loading="lazy" decoding="async">
+            </picture>
             <div class="wide-caption">
                 <h3 class="text-2xl font-bold text-yellow-400 font-montserrat">VISION</h3>
                 <p class="text-white opacity-90 text-sm md:text-base">The most trusted "Zero-Liability" security partner setting standard for compliance, innovation, and security guard welfare.</p>
             </div>
         </div>
-        <div class="wide-image-container">
-            <img src="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Mission.png" alt="Our Mission" loading="lazy" decoding="async">
+        <div class="wide-image-container text-panel-banner">
+            <picture>
+                <source type="image/webp" media="(max-width: 767px)" srcset="assets/banners/Mission-480.webp">
+                <source type="image/webp" srcset="assets/banners/Mission-851.webp">
+                <img src="assets/banners/Mission-851.jpg" alt="Our Mission" width="851" height="315" loading="lazy" decoding="async">
+            </picture>
             <div class="wide-caption">
                 <h3 class="text-2xl font-bold text-yellow-400 font-montserrat">MISSION</h3>
                 <p class="text-white opacity-90 text-sm md:text-base">To protect people and assets by delivering fully compliant, technology-enabled security solutions while empowering our guards through fair wages, continuous training, and a culture of excellence.</p>
@@ -854,11 +924,8 @@
                     Eastern Visayas' premier security agency. Anchored in Legitimacy, Armored by Resilience, and Assured by Zero-Liability.
                 </p>
                 <div class="flex flex-wrap gap-4 mt-6">
-                    <a href="staff.html" class="inline-flex items-center gap-2 px-4 py-2 bg-yellow-500/10 text-yellow-500 border border-yellow-500/30 rounded-lg hover:bg-yellow-500/20 transition text-sm font-bold shadow-lg">
-                        <i class="fas fa-mobile-alt"></i> Staff Command Portal
-                    </a>
                     <a href="https://app.stronghold-a3.com" class="inline-flex items-center gap-2 px-4 py-2 bg-yellow-500/10 text-yellow-500 border border-yellow-500/30 rounded-lg hover:bg-yellow-500/20 transition text-sm font-bold shadow-lg">
-                        <i class="fas fa-mobile-alt"></i> SMS App
+                        <i class="fas fa-mobile-alt"></i> Security Management System (SMS) App
                     </a>
                     <a href="sms-user-manual.html" class="inline-flex items-center gap-2 px-4 py-2 bg-transparent text-gray-300 border border-gray-700 rounded-lg hover:text-white hover:border-gray-500 transition text-sm">
                         <i class="fas fa-book"></i> SMS App User Manual
@@ -894,7 +961,7 @@
             <div>
                 <h4 class="text-white font-bold mb-4 uppercase tracking-wider text-sm">Resources</h4>
                 <ul class="space-y-2 text-sm text-gray-400">
-                    <li><a href="safe-schools-assessment.html" class="text-yellow-400 hover:text-yellow-300 transition">Safe Schools Assessment</a></li>
+                    <li><a href="safe-schools-assessment.html" class="text-yellow-400 hover:text-yellow-300 transition">Safe School Assessment</a></li>
                     <li><a href="security-assessment.html" class="hover:text-yellow-400 transition">Security Assessment</a></li>
                     <li><a href="bcp.html" class="hover:text-yellow-400 transition">BCP Protocols</a></li>
                     <li><a href="digital-bayanihan.html" class="hover:text-yellow-400 transition">Digital Bayanihan</a></li>
@@ -940,7 +1007,6 @@
         <i class="fas fa-school-flag"></i> SAFE SCHOOLS ASSESSMENT
     </a>
 </div>
-
 <script>
     // ==================== NAVIGATION ====================
     function showPage(pageId) {
@@ -988,6 +1054,20 @@
 
     // ==================== INIT ====================
     console.log('%cStronghold A3 v5.3 — Loaded', 'color:#3B82F6;font-size:16px;font-weight:bold;');
+
+</script>
+    
+    // ==================== SERVICE WORKER REFISTRATION ====================
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js')
+          .then(reg => console.log('Service Worker registered:', reg))
+          .catch(err => console.error('Service Worker registration failed:', err));
+      });
+    }
+    // ==================== APP LOGIC ====================
+<script src="app.js"></script>
 </script>
 </body>
 </html>
