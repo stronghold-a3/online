@@ -25,6 +25,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+    <!-- Access Gate (Netlify Identity) -->
+    <link rel="stylesheet" href="assets/auth-gate.css">
+    <script defer src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
     <!-- Tailwind CSS Engine -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -125,7 +129,25 @@
         }
     </style>
 </head>
-<body class="flex flex-col min-h-screen justify-between relative">
+<body class="flex flex-col min-h-screen justify-between relative" data-gate-role="staff">
+
+    <!-- ==================== ACCESS GATE (Netlify Identity) ==================== -->
+    <div id="gate-overlay" class="gate-overlay">
+        <div class="gate-card">
+            <img src="https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png"
+                 alt="Stronghold A3 Logo" class="gate-logo" loading="lazy" decoding="async">
+            <p class="gate-eyebrow">Restricted Access</p>
+            <h1 class="gate-title">Staff Command Portal</h1>
+            <p class="gate-subtitle">This dashboard is limited to Stronghold A3 personnel. Sign in with your staff email to continue.</p>
+            <button id="gate-login-btn" class="gate-btn"><i class="fas fa-lock" aria-hidden="true"></i> Staff Sign In</button>
+            <a href="index.html" class="gate-btn gate-btn-ghost"><i class="fas fa-arrow-left" aria-hidden="true"></i> Back to Public Site</a>
+            <div id="gate-status" class="gate-status" role="status" aria-live="polite"></div>
+            <p class="gate-footer-note">Need access? Contact your Ops Manager to be invited. Unauthorized access attempts are logged.</p>
+        </div>
+    </div>
+
+    <!-- ==================== GATED CONTENT (hidden until sign-in) ==================== -->
+    <div id="gated-content" class="gated-content">
 
     <!-- Header Command Bar -->
     <header class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 mt-2 z-10">
@@ -377,7 +399,7 @@
                         </p>
                     </div>
                     <div class="flex flex-col gap-2">
-                        <a href="https://sms.stronghold-a3.com" target="_blank" 
+                        <a href="https://app.stronghold-a3.com" target="_blank" 
                            class="w-full py-2.5 bg-gradient-to-br from-yellow-300 via-yellow-500 to-yellow-600 hover:from-yellow-200 hover:via-yellow-400 hover:to-yellow-500 text-[#0A1628] font-bold uppercase rounded-xl text-xs transition text-center tracking-wider block shadow-lg shadow-yellow-500/30">
                             Access SMS App <i class="fa-solid fa-paper-plane text-[9px] ml-1"></i>
                         </a>
@@ -531,5 +553,22 @@
             }, 4000);
         }
     </script>
+
+    </div><!-- /#gated-content -->
+
+    <button id="gate-logout-btn" class="fixed bottom-4 left-4 z-[9500] gate-btn gate-btn-ghost !w-auto px-4 py-2 text-xs" style="display:none" onclick="this.style.display='none'">
+        <i class="fas fa-right-from-bracket"></i> Sign Out
+    </button>
+    <script>
+        // Reveal the floating sign-out control only once the gate has unlocked.
+        document.addEventListener('DOMContentLoaded', function () {
+            var observer = new MutationObserver(function () {
+                var unlocked = document.getElementById('gated-content').classList.contains('is-unlocked');
+                document.getElementById('gate-logout-btn').style.display = unlocked ? 'inline-flex' : 'none';
+            });
+            observer.observe(document.getElementById('gated-content'), { attributes: true, attributeFilter: ['class'] });
+        });
+    </script>
+    <script src="assets/auth-gate.js"></script>
 </body>
 </html>
