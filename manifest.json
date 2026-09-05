@@ -9,14 +9,13 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png",
+      "src": "assets/stronghol-a3_logo.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "https://fhwhqoiucfxmfsclianh.databasepad.com/storage/v1/object/public/sop-files/public/Stronghold%20Logo.png",
-      "sizes": "512x512",
+      "src": "assets/stronghol-a3_logo.png"
       "type": "image/png",
       "purpose": "any maskable"
     }
